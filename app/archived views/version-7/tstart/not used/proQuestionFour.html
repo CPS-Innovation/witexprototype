@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+
+{{ govukBackLink({
+  text: "Back",
+ href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="confirmSchool" method="get" class="form">
+
+     <h1 class="govuk-heading-xl">
+        Question 4
+        </h1>
+
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+    
+          <div class="govuk-form-group">
+              <label class="govuk-label  bold-label" for="email">
+              From the list below, choose the one area that you consider most important to develop in your role and how it will impact on pupils and staff at your school.
+
+              </label>
+              <p style="">   Throughout the programme there will be the opportunity to develop the seven leadership behaviours the Department for Education highlight as being crucial to strong leadership. You can see more information on these in the NPQs content and assessment framework. </p>
+
+   <ul class="govuk-list govuk-list--bullet" style="">
+                <li>commitment</li>
+                <li>collaboration</li>
+                <li>personal drive  </li>
+                <li>resilience  </li>
+                <li>awareness  </li>
+                <li>integrity </li>
+                <li>respect</li>
+            </ul>
+            <p>In your answer please consider:<br />
+Why you feel you need to develop in this area How this area will impact on your leadership development How you will use this learning to create positive change and impact on the staff and pupils at your school</p>
+   
+             <div id="proQuestionFour-hint" class="govuk-hint">
+(3500 characters max)
+            </div>
+
+  <textarea class="govuk-textarea" id="proQuestionFour" name="proQuestionFour" rows="20" aria-describedby="proQuestionFour-hint"></textarea>
+
+          </div>
+
+
+
+          </fieldset>
+
+        <button class="govuk-button">Save and continue</button>
+         <a  class="govuk-button clear-button" href="confirmSchool" >Skip for now</a> 
+
+      </form>
+
+</div>
+{% endblock %}

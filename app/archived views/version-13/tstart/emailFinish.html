@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+
+{% endblock %}
+{% block content %}
+
+<div class="govuk-width-container">
+ 
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <!--       <h1 class="govuk-heading-xl">
+            Add an apprentice
+        </h1> -->
+
+           <p class="govuk-body">[[insert name]]</p>
+           <p>This email address has been used to register for your NPQ application.  </p>
+             <p class="govuk-body">   {{ data['providerName'] }} will contact you to complete your registration.  </p>
+        <p class="govuk-body">They will provide details of timings, costs and deadlines for your NPQ application.</p>
+
+       
+
+<!-- <p class="govuk-body">If you did not register with this service, please ignore the email.</p> -->
+<!-- <p class="govuk-body">Best Regards</p> -->
+<p class="govuk-body">The NPQ Team</p>
+
+
+
+    </div>
+</div>
+</main>
+</div>
+
+{% endblock %}

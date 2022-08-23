@@ -1,0 +1,93 @@
+{% extends "layout.html" %} {% block beforeContent %}  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}  {% endblock %} {% block content %}
+
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">FCA Ltd</h1>
+                <p style="margin-bottom:0; color: #505a5f; ">Payment of</p>
+                <h2 class="govuk-heading-l" style="margin-bottom: 0; padding-top:0">£2,026</h2>
+                 <p style="margin-bottom:50px; color: #505a5f; ">On 21 May 2021</p>
+               <!--  <p> The following shows details of the payment into your account. </p> -->
+                <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                               <!--  <h2 class="govuk-heading-m">Overview</h2> -->
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Payment reference</td>
+                            <td class="govuk-table__cell" scope="row">90210</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Payment period</td>
+                            <td class="govuk-table__cell" scope="row">April 2021</td>
+                        </tr>
+                <!--         <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Payment amount</td>
+                            <td class="govuk-table__cell" scope="row">£235,062.12</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+
+ 
+                 <table class="govuk-table " style="margin-bottom:0">
+                    <thead>
+                        <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Payment breakdown</th>
+                                <th scope="col" class="govuk-table__header"></th>
+                               
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row"><a href="paymentsECF/breakdownOne">ECF FIP Band A</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£1,026</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row"><a href="#">ECF FIP Band B</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£1,000</td>
+                        </tr>
+        
+                    </tbody>
+                </table>
+
+                           <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                            
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="width: 500px; font-weight:700">Total payment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">£2,026</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            <button type="submit" class="govuk-button ">
+                Continue
+            </button>
+
+
+
+            </div>
+        </div>
+</main>
+</div>
+
+
+{% endblock %}
+

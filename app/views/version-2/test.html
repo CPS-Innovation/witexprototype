@@ -1,0 +1,305 @@
+{% extends "layoutCPS.html" %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+
+
+
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+     <!--               <h2 class="govuk-heading-s" style="margin-top: 10px;">Live</h2>
+                <nav role="navigation">
+                    <ul class="robSideNav">
+                        <li>
+                            <a href="#">September 2022</a>
+                        </li>
+                    </ul>
+                </nav> -->
+                <h2 class="govuk-heading-s" style="margin-top: 10px;">Past</h2>
+                <nav role="navigation">
+                    <ul class="robSideNav">
+                        <li>
+                            <a href="#">September 2021</a>
+                        </li>
+    
+                      
+                    </ul>
+                </nav>
+      
+       
+
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">FCA  Ltd</h1>
+                <p style="margin-bottom:0; color: #505a5f; ">Payment of</p>
+                <h2 class="govuk-heading-xl" style="margin-bottom: 0; padding-top:0">£108,000<span style="font-size:30px"></span></h2>
+                <p style="margin-bottom:50px; color: #505a5f; ">On 21 September 2022</p>
+                <!--  <p> The following shows details of the payment into your account. </p> -->
+
+                    <nav role="navigation">
+                              <ul class="robSideNav">
+                                  <li>
+                                    <a href="#">Download PDF</a>
+                                  </li>
+                                  <li>
+                                    <a href="#">Download CSV</a>
+                                  </li>
+                                </ul>
+                        </nav>
+                <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header"></th>
+                            <th scope="col" class="govuk-table__header"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Submission deadline</td>
+                            <td class="govuk-table__cell" scope="row">31 August 2022</td>
+                        </tr>
+                        <!--                     <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Milestone</td>
+                            <td class="govuk-table__cell" scope="row">2</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Induction</td>
+                            <td class="govuk-table__cell" scope="row">Standard</td>
+                        </tr> -->
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">PO reference</td>
+                            <td class="govuk-table__cell" scope="row">90210</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Contract reference</td>
+                            <td class="govuk-table__cell" scope="row">90210</td>
+                        </tr>
+                        <!--            <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Call off contract</td>
+                            <td class="govuk-table__cell" scope="row">x</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header"></th>
+                            <th scope="col" class="govuk-table__header"></th>
+                            <th scope="col" class="govuk-table__header"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+               
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="max-width:370px">Current ECTs</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">600</td>
+                            <td class="govuk-table__cell" scope="row" style="width:200px"></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="max-width:370px">Current mentors</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">300</td>
+                            <td class="govuk-table__cell" scope="row" style="width:200px"></td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="max-width:370px;font-weight:700">Total</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">900</td>
+                            <td class="govuk-table__cell" scope="row" style="width:200px"></td>
+                        </tr>
+                     <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="width:350px">Recruitment target</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">1,125</td>
+                            <td class="govuk-table__cell" scope="row" style="width:200px"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h1 class="govuk-heading-m" style="margin-top:55px; margin-bottom:25px">Payment breakdown</h1>
+                <table class="govuk-table " style="margin-bottom: 55px;">
+                    <thead>
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Payment type</th>
+                            <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Number of <br />participants</th>
+                            <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Payment amount<br />for period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Service fee</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">900</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£90,000</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Output fee </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£0</td>
+                        </tr>
+                        <!--                <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Back payments </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">900</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">-</td>
+                        </tr> -->
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Uplift fee </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£0</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Clawbacks </td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£0</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="">VAT</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row"></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£18,000</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="font-weight:700">Total payment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row"></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">£108,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--               <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header"></th>
+                            <th scope="col" class="govuk-table__header"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="width: 500px; ">VAT</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£10,000</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row" style="width: 500px; font-weight:700">Total payment</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">£324,000</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <div class="accordion" style="margin-top:50px">
+                    <div class="accordion-section">
+                        <div class="accordion-section-header">
+                            <h2 class="govuk-heading-m">Service fee </h2>
+                        </div>
+                        <div class="accordion-section-body">
+                            <table class="govuk-table ">
+                                <thead>
+                                    <h3 class="govuk-heading-s" style="margin-bottom: 0px; margin-top:10px">Band A</h3>
+                                    <tr class="govuk-table__row">
+                                        <th scope="col" class="govuk-table__header"></th>
+                                        <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Forecast</th>
+                                          <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Actual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row">Fee per participant</td>
+                                         <td class="govuk-table__cell govuk-table__cell--numeric" scope="row"></td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£xxx</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row">Number of participants </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">1,125</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">900</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row" style="font-weight:700">Payment</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£112,500</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">£90,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="govuk-table ">
+                                <thead>
+                                    <h3 class="govuk-heading-s" style="margin-bottom: 0px; margin-top:10px">Band B</h3>
+                                    <tr class="govuk-table__row">
+                                        <th scope="col" class="govuk-table__header"></th>
+                                                <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Forecast</th>
+                                          <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Actual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row">Fee per participant</td>
+                                         <td class="govuk-table__cell govuk-table__cell--numeric" scope="row"></td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£xxx</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row">Number of participants </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                                         <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row" style="font-weight:700">Payment</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="">£0</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">£0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="govuk-table ">
+                                <thead>
+                                    <h3 class="govuk-heading-s" style="margin-bottom: 0px; margin-top:10px">Band C</h3>
+                                    <tr class="govuk-table__row">
+                                        <th scope="col" class="govuk-table__header"></th>
+                                               <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Forecast</th>
+                                          <th scope="col" class="govuk-table__header govuk-table__cell--numeric" style="font-weight:700">Actual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row">Fee per participant</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row"></td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£xxx</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row">Number of participants </td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                                          <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell" scope="row" style="font-weight:700">Payment</td>
+                                        <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="">£0</td>
+                                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row" style="font-weight:700">£0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                   
+
+                    </div>
+
+                </div>
+
+            
+            </div>
+
+            
+        </div>
+    </main>
+</div>
+{% endblock %}

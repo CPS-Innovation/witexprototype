@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            How many days were you away from home for more than 10 hours?
+        </h1>
+<p>   If you were away from home for more than 10 hours you can claim £9.75 per day.</p>
+        <form action="../start/travel " method="get" class="form">
+            <div class="govuk-form-group">
+<!--                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
+                    Enter code
+                </label>
+ -->             
+<!--     <span id="email-hint" class="govuk-hint">
+              You will need to upload a receipt for all train journeys.
+            </span> -->
+               <div class="govuk-input__wrapper">
+    <input class="govuk-input govuk-input--width-5" id="away10hours" name="away10hours" type="text" spellcheck="false">
+   
+  </div>
+            </div>
+            <button class="govuk-button">Continue</button>
+        </form>
+      
+    </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+
+{{ govukBackLink({
+  text: "Back",
+ href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.autocomplete-element').each(function() {
+      var selectEl = document.querySelector('#' + $(this).attr('id') )
+      accessibleAutocomplete.enhanceSelectElement({
+        autoselect: false,
+        defaultValue: '',
+        minLength: 2,
+        selectElement: selectEl,
+        placeholder: 'Start typing to search schools',
+        showAllValues: false
+      })
+    })
+  })
+
+  </script>
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="confirmDetails" method="get" class="form">
+
+     <h1 class="govuk-heading-xl">
+        Choose your school
+        </h1>
+         <p>Please choose from schools located in <span style="font-weight:700">{{ data['schoolPostcode'] }}</span> </p>
+
+     <div class="govuk-form-group">
+        <label class="govuk-label bold-label" for="course-name"">
+          Enter your school name
+        </label>
+        <div class="autocomplete-wrapper">
+          <select class="autocomplete-element" id="school-name" name="school-name">
+            <option value="">Select one</option>
+            {% import 'includes/apprenticeships-list.html' as apprenticeshipsData %}
+            {% for apprenticeship in apprenticeshipsData.apprenticeships %}
+            <option name="school-name" value="{{apprenticeship.name}}">{{apprenticeship.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+ <!--        <span id="choose-apprenticeship-hint" class="govuk-hint govuk-!-margin-top-3">
+          This information can be changed later.
+        </span> -->
+      </div>
+
+        <button class="govuk-button">Continue</button>
+       <!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

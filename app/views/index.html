@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<!-- <script src="/socket.io/socket.io.js"></script>
+<script>
+var socket = io();
+</script> -->
+<style>
+.govuk-footer__copyright-logo {
+    display: none;
+}
+
+@media (min-width: 48.0625em) {
+    .govuk-header__logo {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 641px) {
+    .govuk-header__logotype-text {
+        font-size: 22px;
+    }
+}
+</style>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">CPS </h1>
+        <h2 class="govuk-heading-m" style="margin-bottom: 30px;">Prototype versions and links</h2>
+      
+
+
+
+   <div class="holdingBlock">
+            <h2 class="govuk-heading-s" style="margin-bottom:0">Witness Expenses 1</h2>
+               <p style="margin-top:10px; font-weight:700">3 versions</p>
+
+        <p style="margin-top:15px; margin-left:20px"><a href="/witex-v3/start">Simple task list</a></p>
+        <p style="margin-top:15px; margin-left:20px"><a href="/witex-v2/start">Linear journey</a></p>
+        <p style="margin-top:15px; margin-left:20px"><a href="/witex-v1/start">Personalised task list</a></p>
+ 
+
+ 
+        </div>
+
+
+
+</div>
+</details>
+</div>
+</div>
+{% endblock %}

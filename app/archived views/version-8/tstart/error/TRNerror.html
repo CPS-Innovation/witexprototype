@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl" >We cannot find your details</h1>
+
+      
+    <p>We cannot find anyone matching the details you have provided.</p>
+    <p>Please check you have entered your details correctly</p>
+
+
+    <p>We may be unable to find your details because:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>something about first name - rob/robert</li>
+            <li>change of surname</li>
+             <li>incorrect TRN</li>
+             <li>incorrect date of birth </li>
+        </ul>
+
+        <p>If you cannot find your TRN, you can request a reminder.</p>
+
+    <h2 class="govuk-heading-m">Request a TRN reminder by email</h2>
+    <p>Send an email <a href="">qts.enquiries@education.gov.uk</a> which includes your:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>full name</li>
+            <li>date of birth</li>
+             <li>National Insurance number</li>
+        </ul>
+      
+
+         <h2 class="govuk-heading-m">Request a TRN reminder by phone</h2>
+         <p>Call the Teaching Regulation Agency on 020 7593 5394<br />Make sure you have your National Insurance number ready before you call.</p>
+ <form action="../../tstart" >
+
+  <button class="govuk-button">Try again</button>
+</form>
+      
+
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+
+{{ govukBackLink({
+  text: "Back",
+ href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">This month's starters</h1>
+           
+     
+               <!--  <p> The following shows details of the payment into your account. </p> -->
+                <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                               <!--  <h2 class="govuk-heading-m">Overview</h2> -->
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Provider</td>
+                            <td class="govuk-table__cell" scope="row">FCA Ltd</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Course</td>
+                            <td class="govuk-table__cell " scope="row">ECF Fip Band A</td>
+                        </tr>
+       
+                <!--         <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Payment amount</td>
+                            <td class="govuk-table__cell" scope="row">£235,062.12</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+
+ 
+                 <table class="govuk-table " style="">
+                    <thead>
+                        <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Name</th>
+                                <th scope="col" class="govuk-table__header">TRN</th>
+                               
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Helen O'Connor</td>
+                            <td class="govuk-table__cell " scope="row">9021022</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Satoko Jenkins</td>
+                            <td class="govuk-table__cell " scope="row">1234567</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">David Jenkins</td>
+                            <td class="govuk-table__cell " scope="row">7654321</td>
+                        </tr>
+                         <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Penelope Partridge</td>
+                            <td class="govuk-table__cell " scope="row">7778888</td>
+                        </tr>
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Geoff Capes</td>
+                            <td class="govuk-table__cell " scope="row">2222333</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+</main>
+</div>
+
+
+{% endblock %}
+

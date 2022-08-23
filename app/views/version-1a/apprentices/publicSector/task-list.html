@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apprenticeships
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+#navigation-primary, #kill-me {
+  display:none ;
+}
+
+  .task-completed {
+    padding: 4px 10px 1px 10px;
+  }
+
+</style>
+
+<script>
+
+var yourDetails =JSON.parse(localStorage.getItem('annualReport.aboutYou'));
+var employeesDone =JSON.parse(localStorage.getItem('annualReport.employees'));
+var apprenticesDone =JSON.parse(localStorage.getItem('annualReport.apprentices'));
+var fulltimeDone =JSON.parse(localStorage.getItem('annualReport.fullTime'));
+
+$(document).ready(function() {
+  var changeStuff = function() {
+  if (yourDetails=='done') {
+   // document.getElementById("commitmentsName").textContent = " Hackney Skills & Training Ltd";
+   // document.getElementById("providerName").textContent = "Provider:" ;
+    $(yourDetailsComplete).removeClass("rj-dont-display")
+   //  $(addDate).addClass("rj-dont-display")
+    }
+else {
+  //  $(notesStuff).removeClass("rj-dont-display");
+        };
+
+  if (employeesDone=='done') {
+    $(employeesComplete).removeClass("rj-dont-display")
+    }
+else {};
+
+
+  if (apprenticesDone=='done') {
+    $(apprenticesComplete).removeClass("rj-dont-display")
+    }
+else {};
+
+
+  if (fulltimeDone=='done') {
+    $(fulltimeComplete).removeClass("rj-dont-display")
+    }
+else {};
+
+//if (fundingStatus=='transferFunding') {
+//   $(eligibilityTransfer).removeClass("rj-dont-display")
+//    }
+//else { };
+
+// if (fundingStatus=='nope' || fundingStatus=='wakanai' ) {
+//     $(eligibilityCoinvestment).removeClass("rj-dont-display")
+//    }
+// else { };
+  }
+changeStuff();
+});
+
+</script>
+<main id="content" role="main">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds column-minimum">
+      <h1 class="govuk-heading-l">
+        Reporting your progress towards the Public Sector Apprenticeship Target
+      </h1>
+      <p class="">Use this step by step list to help you report your progress towards meeting the public sector apprenticeship target:</p>
+
+      <ol class="task-list">
+        <li>
+          <h2 class="task-list-section">
+           <span class="task-list-section-number">1. </span> Organisation name
+          </h2>
+
+          <ul class="task-list-items">
+            <li class="task-list-item">
+              <a class="" href="/support/annual-return/about-you" aria-describedby="eligibility-completed">
+                Your organisation’s name
+              </a>
+                 <strong class="task-completed rj-dont-display" id="yourDetailsComplete">Complete</strong>
+              </li>
+          </ul>
+
+        <li>
+          <h2 class="task-list-section">
+           <span class="task-list-section-number">2. </span> Report numbers in the following categories
+          </h2>
+
+          <ul class="task-list-items">
+            <li class="task-list-item">
+              <a class="" href="/support/annual-return/employees" aria-describedby="eligibility-completed">
+                Number of employees who work in England
+              </a>
+                 <strong class="task-completed rj-dont-display" id="employeesComplete">Complete</strong>
+              </li>
+              <li class="task-list-item">
+              <a class="" href="support/annual-return/apprentices" aria-describedby="eligibility-completed">
+                Number of apprentices who work in England
+              </a>
+                 <strong class="task-completed rj-dont-display" id="apprenticesComplete">Complete</strong>
+              </li>
+            <li class="task-list-item">
+              <a class="" href="/support/annual-return/headcount" aria-describedby="eligibility-completed">
+                Number of full-time equivalents who work <br />in England (optional)
+              </a>
+                 <strong class="task-completed rj-dont-display" style="margin-top:-15px" id="fulltimeComplete">Complete</strong>
+              </li>
+          </ul>
+
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">3. </span>  Factors that impacted your ability to meet the target
+          </h2>
+
+          <ul class="task-list-items">
+            <li class="task-list-item">
+              <a class="task-name" href="support/annual-return/reached2"  aria-describedby="company-information-completed">
+                Outline any actions you have taken to help you progress towards meeting the public sector target
+              </a> 
+              <!--strong class="task-completed" id="company-information-completed">Completed</strong-->
+            </li>
+            <li class="task-list-item">
+              <a class="task-name" href="support/annual-return/reached3">
+                Tell us about any challenges you have faced in meeting the target
+              </a>
+             <!--strong class="task-completed" id="savedApps" style="min-width:60px; text-align: center; " id="contact-details-completed"><span>0</span></strong-->
+            </li>
+                        <li class="task-list-item">
+              <a class="task-name" href="support/annual-return/reached4">
+              What are you plans for meeting the target in future, and what impact do you expect these to have?
+              </a>
+             <!--strong class="task-completed" id="savedApps" style="min-width:60px; text-align: center; " id="contact-details-completed"><span>0</span></strong-->
+            </li>
+  
+            <li class="task-list-item">
+              <a class="task-name" href="support/annual-return/reached6">
+                Do you have anything else you want to tell us? For Local Authorities this could include commenting on how schools and fire services in your control have contributed to the target (optional)
+              </a>
+             <!--strong class="task-completed" id="savedApps" style="min-width:60px; text-align: center; " id="contact-details-completed"><span>0</span></strong-->
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="task-list-section">
+            <span class="task-list-section-number">4. </span> Review answers
+          </h2>
+          <ul class="task-list-items">
+            <li class="task-list-item">
+
+              <a class="task-name" href="support/annual-return/confirmation"   aria-describedby="contact-details-completed">
+                Review and submit answers
+              </a>
+              <!--a class="task-name" href="NLD-find/training" aria-describedby="contact-details-completed">
+                Find training providers
+              </a-->
+              <!--strong class="task-completed" id="contact-details-completed">Completed</strong-->
+            </li>
+          </ul>
+       </li>
+
+      </ol>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,606 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Task list
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+<style>
+.app-task-list__section-number {
+    min-width: 0 !important
+}
+
+.app-task-list__items {
+    padding-left: 0
+}
+</style>
+
+
+<script>
+
+ var workStatus =  {{ data['employmentTypeShow'] }};
+  var lossPay =  {{ data['lossPayShow'] }};
+ var overNightStay =  {{ data['overNightStayShow'] }};
+   var showTravel =  {{ data['travelShow'] }};
+    var showChildcare =  {{ data['childcareShow'] }};
+    var showPetSitting =  {{ data['petSittingShow'] }};
+
+    var showTrain =  {{ data['trainCostShow'] }};
+    var showTube =  {{ data['tubeCostShow'] }};
+      var showfoodAndDrinkDays =  {{ data['foodAndDrinkShow'] }};
+      var showPetConfirmed =  {{ data['petConfirmedShow'] }};
+
+$(document).ready(function () {
+
+    var changeStuff = function() {
+      if (workStatus==false) {
+           $(someoneElseJobID).addClass("rj-dont-display");
+      } else{};
+      if (lossPay==false) {
+           $(lossOfPay).addClass("rj-dont-display");
+      } else{};
+      if (overNightStay==false) {
+           $(overNightStayID).addClass("rj-dont-display");
+      } else{};
+      if (showTravel==false) {
+           $(showTravelID).addClass("rj-dont-display");
+      } else{};
+      if (showChildcare==false) {
+           $(showChildcareID).addClass("rj-dont-display");
+      } else{};
+      if (showPetSitting==false) {
+           $(showPetSittingID).addClass("rj-dont-display");
+      } else{};
+
+//food and drink
+
+            if (showfoodAndDrinkDays==true) {
+           $(foodanddrinkNotStarted).addClass("rj-dont-display");
+           $(foodanddrinkCompleted).removeClass("rj-dont-display");
+      } else{};
+
+//end of food and drink
+
+// show the travel stuff when train and tube have been completed
+            if (showTrain==true) {
+           $(travelTrainAdded).removeClass("rj-dont-display");
+            $(travelNotStarted).addClass("rj-dont-display");
+           $(travelCompleted).removeClass("rj-dont-display");
+           // show the relevent receipts bit
+            $(receiptCantAdd).addClass("rj-dont-display");
+         $(trainReceiptAdd).removeClass("rj-dont-display");
+       
+
+      } else{};
+            if (showTube==true) {
+           $(travelTubeAdded).removeClass("rj-dont-display");
+      } else{};
+
+// end of travel stuff
+
+//pet
+    if (showPetConfirmed==true) {
+           $(petTimeNotStarted).addClass("rj-dont-display");
+           $(petTimeCompleted).removeClass("rj-dont-display");
+            $(petCostNotStarted).addClass("rj-dont-display");
+           $(petCostCompleted).removeClass("rj-dont-display");
+           // show receipts
+          $(receiptCantAdd).addClass("rj-dont-display");
+         $(petReceiptAdd).removeClass("rj-dont-display");
+
+
+      } else{};
+
+// end of pet
+
+      // end
+      }
+
+changeStuff();
+   });
+
+</script>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Claim witness expenses
+        </h1>
+        <p class="govuk-body-l">Claim expenses for being a witness in English and Welsh criminal courts.</p>
+        <!-- <p class="govuk-body-l">Only complete the sections you want to claim for.</p> -->
+        <ol class="app-task-list">
+            <li>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number"> </span> Before you start
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/shareProvider" aria-describedby="eligibility-completed">
+                                Your details
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                    </li>
+    <!--                 <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/trncheck" aria-describedby="read-declaration-completed">
+                                Type of witness
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+                    </li> -->
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/email" aria-describedby="company-information-completed">
+                                Who are you claiming for
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="company-information-completed">Completed</strong>
+                    </li>
+ <!--                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/email" aria-describedby="company-information-completed">
+                                Choose the expenses you want to claim
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="company-information-completed">Completed</strong>
+                    </li> -->
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section" style="margin-bottom:5px">
+                    <span class="app-task-list__section-number"> </span> Food and drink
+                </h2>
+                <p>You can claim up to £9.75 per day for food and drink on the days you were in court. You don't need receipts. </p>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="foodanddrink" aria-describedby="contact-details-completed">
+                                Days away from home
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="foodanddrinkNotStarted" style="float:right">Not started</strong>
+                          <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="foodanddrinkCompleted" style="float:right">Completed</strong>
+                    </li>
+                    <!--            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="task/chooseProvider">
+                  Choose your provider
+                </a>
+              </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="medical-information-completed" style="float:right">Not started</strong>
+            </li> -->
+                    <!--            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="task/confirmSchool" aria-describedby="medical-information-completed">
+                 Choose your school
+                </a>
+              </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="medical-information-completed"style="float:right">Not started</strong>
+            </li> -->
+                </ul>
+            </li>
+              <li id="showTravelID">
+                <h2 class="app-task-list__section" style="margin-bottom:5px">
+                    <span class="app-task-list__section-number" > </span> Travel
+                </h2>
+                <p>You can claim for your expenses travelling to and from court. This includes train, tube, coach, car, parking, motorcyle, bicycle, air and ferry.<br /> You will need receipts to claim for train, coach, parking, taxi, air or ferry trips.  </p>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="travel">
+                                How did you get to court?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="travelNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="travelCompleted" style="float:right">Completed</strong>
+                    </li>
+                     <li class="app-task-list__item rj-dont-display" id="travelTrainAdded">
+                        <span class="app-task-list__task-name">
+                            <a href="travel">
+                                Cost of train tickets
+                            </a>
+                        </span>
+
+                        <strong class="govuk-tag app-task-list__task-completed" id="travelTrainCompleted" style="float:right">Completed</strong>
+                    </li>
+                     <li class="app-task-list__item rj-dont-display" id="travelTubeAdded">
+                        <span class="app-task-list__task-name">
+                            <a href="travel">
+                                Cost of tube tickets
+                            </a>
+                        </span>
+                      <!--   <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="travelNotStarted" style="float:right">Not started</strong> -->
+                        <strong class="govuk-tag app-task-list__task-completed " id="travelTubeCompleted" style="float:right">Completed</strong>
+                    </li>
+
+                </ul>
+            </li>
+            <li id="overNightStayID">
+                <h2 class="app-task-list__section" style="margin-bottom:5px">
+                    <span class="app-task-list__section-number" > </span> Overnight stay
+                </h2>
+                <p style="margin-bottom:10px">Everyone who stayed overnight can claim for a fixed amount to cover food and drink.</p> <p>If you paid for your overnight stay you can claim between £65 and £95 to cover the hotel cost depending on the location. </p>
+                             <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Amounts you can claim
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                 <p> Attendance overnight in London, Birmingham, Manchester, Leeds, Liverpool and Newcastle upon Tyne - £95.00 </p>
+                <p> Attendance elsewhere - £95.00 </p>
+                <p>The CPS will normally arrange the hotel accommodation for witnesses and pay for it. Where an
+evening meal is also included you will be entitled to the Personal Incidental Allowance only. Where no
+evening meal is included you will also be entitled to the Night Subsistence Allowance. These are fixed
+amount towards the cost of meals, refreshments, accommodation and other expenses where you had to
+stay away from home. The overnight allowance covers an absence of 24 hours and day subsistence is
+then only paid if you were away for more than 24 hours.</p>
+<p>Night Subsistence Allowance - £21.00 </p>
+<p>Personal Incidental Allowance - £5.00 </p>
+<p> If you stayed with family or friends, in place of the above, you can claim: </p>
+<p>Night Subsistence Allowance - £25 </p>
+                </div>
+              </details>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/proQuestionOne">
+                                How many nights do you want to claim for?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/proQuestionTwo" aria-describedby="medical-information-completed">
+                                Where did you stay?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+<!--                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/proQuestionThree" aria-describedby="medical-information-completed">
+                                Question 3
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Cannot start yet</strong>
+                    </li> -->
+<!--                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/proQuestionFour" aria-describedby="medical-information-completed">
+                                Question 4
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Cannot start yet</strong>
+                    </li> -->
+                </ul>
+            </li>
+
+            <li id="lossOfPay">
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Loss of pay
+                </h2>
+                <p>If you took unpaid time off from work you can claim up to £67 per day. <br />We will need proof of your income. </p>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Did you take an unpaid day off to go to court?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How many days were you away from work?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How much are you paid?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Your employers details
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                </ul>
+            </li>
+            <li id="someoneElseJobID">
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Pay someone to do your work
+                </h2>
+                <p>If you paid someone to do your work while you were at court you can claim £67 per day. We will need proof that you employed someone. </p>
+                <ul class="app-task-list__items">
+      <!--               <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Did you take an unpaid day off to go to court?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How many days do you want to claim for?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How much did you pay the person to do your work?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Details of the person who did your work
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                </ul>
+            </li>
+            <li id="showChildcareID">
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Childcare
+                </h2>
+                <p>If you paid someone to look after your children while you were at court and have an invoice from an Ofsted registered childcare provider you can claim for the full cost of childcare. If you do not have this you can claim up to £67 per day. </p>
+                <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    What is Ofsted registered childcare?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  Ofsted inpect services providing education and skills for learners of all ages.  Most childcare providers looking after children under the age of 8 must register with Ofsted (or a childminder agency).<br /> <br />If you have a receipt from your Ofsted registered childcare provider it will have an Ofsted registeration number. <br /> <br />You can check if your childcare provider is registered with Ofsted here: https://reports.ofsted.gov.uk/childcare 
+                </div>
+              </details>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                               Do you have an invoice for the childcare?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How many days do you want to claim for?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How much did you pay for childcare?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+<!--                      <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Details of the person who did your work
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+                </ul>
+            </li>
+             <li id="showPetSittingID">
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Pet sitting
+                </h2>
+                <p>If you paid someone to look after your pets while you were at court and have a receipt you can claim up to £67 per day. </p>
+                <ul class="app-task-list__items">
+             
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="pet">
+                                How many days do you want to claim for?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="petTimeNotStarted" style="float:right">Not started</strong>
+                       <strong class="govuk-tag app-task-list__task-completed  rj-dont-display" id="petTimeCompleted" style="float:right">Completed</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="pet">
+                                How much did you pay for pet sitting?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="petCostNotStarted" style="float:right">Not started</strong>
+                      <strong class="govuk-tag app-task-list__task-completed  rj-dont-display" id="petCostCompleted" style="float:right">Completed</strong>
+                    </li>
+<!--                      <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Details of the person who did your work
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+                </ul>
+            </li>
+             <li>
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Other expenses
+                </h2>
+                <p>You can claim for expenses such as covid tests, visas or items needed for an unexpected overnight stay. </p>
+                <ul class="app-task-list__items">
+             
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Add another expense
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+  <!--                   <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How much did you pay for pet sitting?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+<!--                      <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Details of the person who did your work
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Add your reciepts
+                </h2>
+                <p>Upload all your receipts.  </p>
+                <ul class="app-task-list__items">
+
+                    <li class="app-task-list__item" id="receiptCantAdd">
+                        <span class="app-task-list__task-name" >
+                            <a href="task/confirmDetails">
+                                Add receipts
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Cannot start yet</strong>
+                    </li>
+             
+                     <li class="app-task-list__item rj-dont-display" id="trainReceiptAdd" style=" border-top: 1px solid #b1b4b6;">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Add train travel receipts
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="trainReceiptNotStarted" style="float:right">Not started</strong>
+                    </li>
+                     <li class="app-task-list__item rj-dont-display" id="petReceiptAdd" style=" border-top: 1px solid #b1b4b6;">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Add pet sitting receipts
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="petReceiptNotStarted" style="float:right">Not started</strong>
+                    </li>
+
+                </ul>
+            </li>
+              <li>
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> How should we pay you?
+                </h2>
+                <p>We can pay into a UK bank or building society, an international bank or with a cheque </p>
+                <ul class="app-task-list__items">
+             
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                How do you want to be paid?
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Your payment details
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">CANNOT start yet</strong>
+                    </li>
+<!--                      <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Details of the person who did your work
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+                </ul>
+            </li>
+            
+             <li>
+                <h2 class="app-task-list__section" style="margin-bottom: 5px;">
+                    <span class="app-task-list__section-number"> </span> Check and submit expenses
+                </h2>
+                
+                <ul class="app-task-list__items">
+             
+                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Check your answers
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Check your receipts
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Check the amount you are claiming
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li>
+
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Submit expenses
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Cannot start yet</strong>
+                    </li>
+<!--                      <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="task/confirmDetails">
+                                Details of the person who did your work
+                            </a>
+                        </span>
+                        <strong class="govuk-tag govuk-tag--grey" id="medical-information-completed" style="float:right">Not started</strong>
+                    </li> -->
+                </ul>
+            </li>
+
+
+
+        </ol>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+<script>
+
+$(document).ready( function () {
+
+var $head = $("#botframe").contents().find("head");
+
+$head.append($("<link/>", {
+    rel: "stylesheet",
+    href: "https://das-nonlevy-prototype.herokuapp.com/public/stylesheets/application.css",
+    type: "text/css"
+}));
+
+
+});
+
+</script>
+
+
+<div id='chatAppear' class='rj-dont-display'>
+      <div class='chatWrapper'>
+            <div class='chat-header'>
+                  <div class='chatMin'>
+                        <p style='cursor:pointer' onclick='hideWebChat()'>hide</p>
+                  </div>
+                  <div class='chatClose'>
+                        <p style='text-align:right; cursor:pointer' onclick='shutWebchat()'>close</p>
+                  </div>
+            </div>
+
+            <div class='chat-operator flex-chat'>
+                  <div class='chat-picture'>
+                        <img src='/public/images/avatar.jpg'>
+                  </div>
+                  <div class='chat-copy' style="margin-left:10px; padding-top:15px">
+                        <span>Hi, I'm Appy, the Apprenticeships chatbot</span>
+                  </div>
+            </div>
+            <div class='chat-body'>
+                  <ul id='messages'></ul>
+            </div>
+
+     <!--  <iframe id="botframe" style="height:475px; width:100%; font-size:19px" src="http://matt-dev2.westeurope.cloudapp.azure.com/Home/BotFrame"></iframe>  -->
+           <div style='margin-top:15px'></div>
+            <div class='chat-enter'>
+                  <form action=''>
+                        <div class='form-group'>
+                              <input autocomplete='off' class='form-control' id='m' autocomplete='off' style='width:100%' placeholder='> Type here'
+                              />
+                              <button class='button' style='width:100%'>Send </button>
+                        </div>
+                  </form>
+            </div>
+      </div>
+</div>
+
+<div id='hideBar' class='rj-dont-display'>
+      <div id='hideWebChat' class='chat-header '>
+            <div class='chatMin'>
+                  <p style='cursor:pointer' onclick='unhideWebChat()'>open web chat</p>
+            </div>
+            <div class='chatClose'>
+                  <p style='text-align:right'></p>
+            </div>
+      </div>
+</div>

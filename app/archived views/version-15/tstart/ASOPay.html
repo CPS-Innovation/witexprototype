@@ -1,0 +1,101 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+<!-- <script>
+
+function whereNow() {
+   var status = $('input[name=asoHead]:checked').val();
+   console.log(status);
+       switch (true) {
+          case  (status == 'Yes'):
+                console.log('Yes')
+                // localStorage.setItem("commitments.apprenticestatus", JSON.stringify('paused'));
+                 window.location.href='npqASOtwo';
+                break;
+
+        case  (status == 'No'):
+            console.log('headteacherNo')
+           // localStorage.setItem("commitments.apprenticestatus", JSON.stringify('stopped'));
+             window.location.href='ASOno';
+            break;
+       
+        default:
+             console.log('gyahhhhhhhh, bork bork bork')
+            break;
+        }
+    }
+
+</script> -->
+
+
+<div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl">How is your additional support being paid for?</h1>
+                             <!--   <p>Some more guidance on this as it might confuse people about the NPQ itself</p> -->
+
+                 <form action="ASOPayhow" >
+                       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <!--       
+                                        <label class="govuk-label  bold-label" for="firstName">
+Do you want to pay for this without government funds?
+
+              </label> -->
+                    </legend>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+
+                      <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="headteacherYes" name="asoHowPay" type="radio" value="My school or college is covering the cost" {{ checked( 'chooseSearch', '  My school or college is covering the cost') }}>
+                                    <label class="govuk-label govuk-radios__label" for="headteacherYes">
+                                        My school or college is covering the cost
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="headteacherNo" name="asoHowPay" type="radio" value="My trust is paying" {{ checked( 'chooseSearch', ' My trust is paying') }}>
+                                    <label class="govuk-label govuk-radios__label" for="headteacherNo">
+                                       My trust is paying
+                                    </label>
+                                </div>
+                                       <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="headteacherNo" name="asoHowPay" type="radio" value="I am paying" {{ checked( 'chooseSearch', ' I am paying') }}>
+                                    <label class="govuk-label govuk-radios__label" for="headteacherNo">
+                                       I am paying
+                                    </label>
+                                </div>
+                                       <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="headteacherNo" name="asoHowPay" type="radio" value="My ASO is being paid in another way" {{ checked( 'chooseSearch', ' My ASO is being paid in another way') }}>
+                                    <label class="govuk-label govuk-radios__label" for="headteacherNo">
+                                       My ASO is being paid in another way
+                                    </label>
+                                                                    <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+          For example, I am sharing the costs with my school or college
+        </div>
+                                </div>
+
+                                
+                            </div>
+                        </fieldset>
+                    </div>
+                <!--      <input class="button govuk-button" id="saveAndContinue" type="button" onclick="whereNow()" value="Continue"> -->
+                    <button class="govuk-button">Continue</button>
+                </form>
+
+
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}

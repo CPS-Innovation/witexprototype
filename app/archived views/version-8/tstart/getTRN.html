@@ -1,0 +1,42 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+
+
+
+<div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl" >Get a Teacher Reference Number (TRN)</h1>
+
+      
+    <p>Government rules mean in order to teach at a school in England you must have a TRN number.</p>
+
+
+
+    <h2 class="govuk-heading-m">Request a TRN by email</h2>
+    <p>Send an email to <a href="">qts.enquiries@education.gov.uk</a> which includes your:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>full name</li>
+            <li>date of birth</li>
+             <li>National Insurance number</li>
+        </ul>
+      
+
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

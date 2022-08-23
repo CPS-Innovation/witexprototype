@@ -1,0 +1,93 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+
+{% endblock %}
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+           There is a problem with this file   
+        </h1>
+
+  <p class="govuk-body-l">The file/s you uploaded have errors </p>
+     <h2 class="govuk-heading-s" style="margin-bottom:0px">
+          File name  
+        </h2>
+        <p>newUpdateFile_Final_Final23.csv </p>
+
+          <h2 class="govuk-heading-s" style="margin-bottom:0px">
+         Status 
+        </h2>
+        <p>Can’t upload file, is not a valid CSV file. Please check the file and try again. </p>
+
+
+    
+
+      <!--   <h2 class="govuk-heading-m">Before you start</h2> -->
+
+<!--         <p class="govuk-body">
+            This file will:
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>add 15 new teachers</li>
+                <li>change 85 Existing teachers details</li>
+
+            </ul> -->
+            <form method="get" action="finish">
+
+      <div style="margin-top:25px"></div>
+ <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+                              <!--   <p>Choose the End Point Assessment Organisation for   {{ data['course-name'] }}</p> -->
+       
+
+                                <label class="govuk-label  bold-label" for="firstName">
+Do you want to upload another file?
+
+              </label>
+
+                            </legend>
+                            <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="emailChange" name="emailChange" type="radio" value="email-yes" >
+                                    <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                      Yes, I want to upload another file
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="emailChange" name="emailChange" type="radio" value="email-no" >
+                                    <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                       No, I do not want to upload another file
+                                    </label>
+                                </div>
+                    <!--             <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="epaoName-coventry" name="epao-name" type="radio" value="Coventry University" {{ checked( "epao-name", "Coventry University") }}>
+                                    <label class="govuk-label govuk-radios__label" for="epaoName-coventry">
+                                       Coventry University
+                                    </label>
+                                </div> -->
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+            <button type="submit" class="govuk-button">Continue </button>
+             <!--  <a  class="govuk-button clear-button" href="confirm-training-provider" >Cancel</a> -->
+        </form>
+    </div>
+        </p>        
+    </div>
+</div>
+</main>
+</div>
+
+{% endblock %}

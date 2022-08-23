@@ -1,0 +1,98 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+<script>
+//// ------------- UNCOMMENT TO MAKE THE NEW CHATAPPEARN THING WORK -------------------------------
+ 
+  var webChatActive = JSON.parse(localStorage.getItem('webchat.active'));
+  var webChatActiveN = JSON.parse(localStorage.getItem('webchat.activeN'));
+
+  $(document).ready(function () {
+    var socket = io();
+    $('form').submit(function () {
+      socket.emit('internal message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+
+    socket.on('internal message', function (msgInternal) {
+      $('#messages').append($('<li class=\"listMessageInternal\">').text(msgInternal));
+      localStorage.setItem('chatHistory', $('#messages').get(0).innerHTML);
+    });
+
+    socket.on('chat message', function (msg) {
+      $('#messages').append($('<li class=\"listMessage\">').text(msg));
+      localStorage.setItem('chatHistory', $('#messages').get(0).innerHTML);
+    });
+
+    if (webChatActive === 'yes') {
+      $('#messages').append(localStorage.getItem('chatHistory'));
+      $(chatAppear).removeClass('rj-dont-display');
+    } else {
+      $(chatAppear).addClass('rj-dont-display');
+    }
+
+/*
+      if (webChatActiveN === 'yes') {
+      $('#messages').append(localStorage.getItem('chatHistory'));
+      $(chatAppearN).removeClass('rj-dont-display');
+    } else {
+      $(chatAppearN).addClass('rj-dont-display');
+    }
+    */
+  });
+
+   
+
+  function openSesame() {
+    localStorage.setItem('webchat.active', JSON.stringify('yes'));
+    $(chatAppear).removeClass('rj-dont-display');
+  };
+
+  function shutWebchat() {
+    localStorage.setItem('webchat.active', JSON.stringify('no'));
+    window.localStorage.removeItem('chatHistory');
+    $('#messages').empty();
+    $(chatAppear).addClass('rj-dont-display');
+  };
+
+  function hideWebChat() {
+    localStorage.setItem('webchat.active', JSON.stringify('hidden'));
+    $(chatAppear).addClass('rj-dont-display');
+    $(hideBar).removeClass('rj-dont-display');
+  };
+
+  function unhideWebChat() {
+    localStorage.setItem('webchat.active', JSON.stringify('yes'));
+    $(chatAppear).removeClass('rj-dont-display');
+    $(hideBar).addClass('rj-dont-display');
+  }
+
+  ///////////////////////////////////
+/*
+    function openSesameN() {
+    localStorage.setItem('webchat.activeN', JSON.stringify('yes'));
+    $(chatAppearN).removeClass('rj-dont-display');
+  };
+
+  function shutWebchatN() {
+    localStorage.setItem('webchat.activeN', JSON.stringify('no'));
+    window.localStorage.removeItem('chatHistory');
+    $('#messages').empty();
+    $(chatAppearN).addClass('rj-dont-display');
+  };
+
+  function hideWebChatN() {
+    localStorage.setItem('webchat.activeN', JSON.stringify('hidden'));
+    $(chatAppearN).addClass('rj-dont-display');
+    $(hideBarN).removeClass('rj-dont-display');
+  };
+
+  function unhideWebChatN() {
+    localStorage.setItem('webchat.activeN', JSON.stringify('yes'));
+    $(chatAppearN).removeClass('rj-dont-display');
+    $(hideBarN).addClass('rj-dont-display');
+  }
+*/
+</script>

@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- <script>
+
+function whereNow(clickedID) {
+  // var status = $('input[name=radio-group]:checked').val();
+
+                             switch (true) {
+                      case  (clickedID == 'box1'):
+                                window.location.href='box2';
+                            break;
+                    default:
+                          window.location.href='denied';
+                        break;
+            }
+
+}
+</script> -->
+
+
+<div class="govuk-width-container">
+  
+        <div class="govuk-grid-row"">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form method="get" action="careerStage">
+         
+            <h1 class="govuk-heading-xl">Your career stage</h1>
+   <!--          <p>The information you provide will help us personalise your experience and will not used for anything else.</p> -->
+           <!--  <p class="govuk-body-l">Do you want to use a saved apprenticeship?</p> -->
+      
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">
+                          Which of these teaching qualifications do you currently have?
+                       <!--    <span class="govuk-hint">The information you provide will help us personalise your experience and will not used for anything else.</span> -->
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="confirm-yes" name="confirm" type="radio" value="ecf">
+                            <label class="govuk-label govuk-radios__label" for="confirm-yes">
+                            Early Career Framework 
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="confirm-no" name="confirm" type="radio" value="npq" >
+                            <label class="govuk-label govuk-radios__label" for="confirm-no">
+                               National Professional Qualification (NPQ)
+                            </label>
+                        </div> 
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="confirm-no" name="confirm" type="radio" value="neither" >
+                            <label class="govuk-label govuk-radios__label" for="confirm-no">
+                               None of these
+                            </label>
+                        </div>  
+                     
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button">
+                Continue
+            </button>
+          <!--     <input class="govuk-button" id="arse"  onclick="whereNow(this.id)" type="submit" value="Send invitation"> -->
+        </form>
+    </div>
+</div>
+</main>
+</div>
+
+{% endblock %}

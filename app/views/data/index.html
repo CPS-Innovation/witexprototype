@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+
+
+span.rjValue {
+    padding-left: 28px;
+}
+
+
+      span.rjOuterRadio {
+        background-color:white;
+        color:white;
+        width: 30px;
+        height: 30px;
+        border-radius:50%; 
+        text-align:center;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        border: 3px solid black;
+        position: absolute;
+        top: 9%;
+        left: 1%;
+    }
+
+
+    span.rjInnerRadio {
+        background-color: white;
+        color: white;
+        width: 16px;
+        height: 16px; 
+        border-radius:50%;
+        margin: 0 auto;
+         } 
+
+  .selected span.rjInnerRadio {
+    background-color: #000;
+}
+
+</style>
+
+
+<!-- Main content starts -->
+
+ <!-- Full width heading starts -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">
+      {{serviceName}} Analytics and dashboards          
+    </h1>
+  </div>
+</div>
+ <!-- Full width heading ends -->
+
+  <!-- Two thirds header section starts -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">    
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">
+      What is Analytics and dashboard work?
+    </h2>
+    <p class="govuk-body">
+      The analytics team handle all the data, analytics and visualisation for the service. This project created the design styles and sketches for future dashboards.
+    </p>
+    <p class="govuk-body">
+      This documents the work to create design patterns for the dashboards and sketches and work to implement those.
+    </p>
+    
+    {{ govukWarningText({
+      text: "No user research has been undertaken on any of these designs yet",
+      iconFallbackText: "Warning"
+    }) }} 
+    
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">
+      Who has worked on this?
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">      
+
+      <li><a  class="govuk-link govuk-link--no-visited-state" href="https://skillsfundingagency.atlassian.net/wiki/people/557058:b48e5dfb-65d5-460e-b8f0-536b184b880a" title="Link to Rob's profile on Confluence">Rob Jenkins</a> &ndash; UX Designer</li>
+       <li><a  class="govuk-link govuk-link--no-visited-state" href="https://skillsfundingagency.atlassian.net/wiki/people/5d7663055a4d810d2c4dd922" title="Link to Pallavi's profile on Confluence">Pallavi Kumar</a> &ndash; Delivery Manager</li>
+        <li><a  class="govuk-link govuk-link--no-visited-state" href="https://skillsfundingagency.atlassian.net/wiki/people/5a26592e151a4f1e363d5831" title="Link to Pallavi's profile on Confluence">Rob Tanner</a> </li>
+ 
+    </ul>
+
+     <h2 class="govuk-heading-m govuk-!-margin-top-6">
+      Useful resources
+    </h2>
+    <ul class="govuk-list govuk-list--bullet">      
+
+      <li><a  class="govuk-link govuk-link--no-visited-state" href="https://style.ons.gov.uk/category/data-visualisation/" title="ONS">ONS guide to data visualisation</a></li>
+      	  <li><a  class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/performance" title="ONS">GOV UK performance dashboard</a><br/> (this has links out to many other dashboards across govt)</li>
+ 
+    </ul>
+
+  </div>
+  <!-- Two thirds header section ends -->
+
+  <!-- One third header section starts -->
+  <div class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m">
+      <br>Design artefacts
+    </h2>
+    <div class="govuk-inset-text">
+      <ul class='govuk-list govuk-list--bullet'>                
+        <li><a href='/public/files/handOverAllDash.graffle.pdf' class='govuk-link govuk-link--no-visited-state'>All dashboard sketches (PDF)</a></li>
+        <li><a href='/public/files/handOverAllDash.graffle.zip' class='govuk-link govuk-link--no-visited-state'>All dashboard sketches (Omnigraffle Zipped)</a></li>
+        <li><a href='/public/files/handOverDashPatternsOnly.graffle.pdf' class='govuk-link govuk-link--no-visited-state'>Dashboard patterns only (PDF)</a></li>
+           <li><a href='/public/files/handOverDashPatternsOnly.graffle.zip' class='govuk-link govuk-link--no-visited-state'>Dashboard patterns only (Omnigraffle Zipped)</a></li>
+                <li><a href='https://datastudio.google.com/reporting/4a3ee28a-7198-4a01-90e6-20df50f18400/page/8XZKB/edit' class='govuk-link govuk-link--no-visited-state'>Example data studio dashboard (desktop)</a></li>
+
+      </ul>
+    </div>
+  </div>
+  <!-- One third header section ends -->
+</div>
+
+<div class="govuk-grid-row">
+  <!-- Full width header section starts -->
+  <div class="govuk-grid-column-full">
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <h2 class="govuk-heading-m">
+      What have been our design goals and what has been done?
+    </h2>
+    <p class="govuk-body">
+      {{ govukDetails({
+        summaryText: "Design goals",
+        html: "<table class='govuk-table'>                    
+          <thead class='govuk-table__head'>
+            <tr class='govuk-table__row'>
+              <th scope='col' class='govuk-table__header'>What's been done</th>
+              <th scope='col' class='govuk-table__header'>How and why it was done</th>
+            </tr>
+          </thead>
+          <tbody class='govuk-table__body'>
+            <tr class='govuk-table__row'>
+              <td class='govuk-table__cell'>Create a consistent set of patterns for dashboards</td>
+              <td class='govuk-table__cell'>Worked with the team and using existing gov resources  to create a design pattern that lets us build clear and simple dashboards with a consitent UI</td>
+            </tr>
+            <tr class='govuk-table__row'>
+              <td class='govuk-table__cell'>Created sketches and designs for a wide variety of dashboards </td>
+              <td class='govuk-table__cell'>Mostly ad hoc based on SLT requests but also created based on requirements from teams and clans to show how we could use data to build a better service. Mostly unimplemented</td>
+            </tr>
+
+          </tbody>
+        </table>"
+      }) }}     
+    </p>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <h2 class="govuk-heading-m">
+      What would we do next?
+    </h2>
+    {{ govukDetails({
+      summaryText: "Future design goals",
+      html: "<table class='govuk-table'>                    
+        <thead class='govuk-table__head'>
+          <tr class='govuk-table__row'>
+            <th scope='col' class='govuk-table__header'>What could be done</th>
+            <th scope='col' class='govuk-table__header'>Why we would do it</th>
+          </tr>
+        </thead>
+        <tbody class='govuk-table__body'>
+          <tr class='govuk-table__row'>
+            <td class='govuk-table__cell'>Test and user research</td>
+            <td class='govuk-table__cell'>To make sure the planned dashboards contained the data that teams and clans needed. Iterate and update the sketches and designs.</td>
+          </tr>
+          <tr class='govuk-table__row'>
+            <td class='govuk-table__cell'>Build the dashboards</td>
+            <td class='govuk-table__cell'>To use data to make the service better</td>
+          </tr>
+
+        </tbody>
+      </table>"
+    }) }}     
+    <hr class="govuk-section-break--l">
+  </div>   
+  <!-- Full width header section ends -->
+</div>
+
+<div class="govuk-grid-row">
+  <!-- Sprints section starts -->
+  <div class="govuk-grid-column-two-thirds">
+    <!--  include './sprint-12/_summary.html'  -->
+                
+    
+
+  <!-- One third column starts -->
+  <div class="govuk-grid-column-one-third">
+  </div>
+  <!-- One third column ends -->
+
+</div>
+
+<!-- <div class="thing"><p style="padding:0;margin:0">text here<p></div> -->
+<!-- 
+  <div class="encase">
+    <div id="blackcircle">
+     <div id="whitecircle"></div>
+   </div> -->
+<!-- Main content ends -->
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+
+{{ govukBackLink({
+  text: "Back",
+ href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="details" method="get" class="form">
+     <h1 class="govuk-heading-xl" style="">
+Confirm your contact details
+        </h1>
+        <p>To confirm your details, we've sent a code to {{ data['email'] }}</p>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-width-three-quarters bold-label" for="firstName">
+                 Enter your code
+              </label>
+              <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+              <input class="govuk-input govuk-!-width-three-quarters" id="firstName" name="firstName" type="text" aria-describedby="First Name">
+          </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button">Continue</button>
+
+      </form>
+    <h3 class="govuk-heading-s">Not received an email? </h3>
+    <a href="#">Request another email</a>
+    </div>
+
+  </div>
+  <p style="margin-top:400px"> <a href="emailSent">inbox</a>  </p>
+{% endblock %}

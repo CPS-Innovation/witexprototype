@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+            <div class="do-a-thing"></div>
+{% else %}
+            <div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+
+
+<div class="govuk-width-container">
+  
+        <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+
+      <form action="signInCheckEmail" method="get" class="form">
+
+     <h1 class="govuk-heading-xl">
+          Sign in
+        </h1>
+
+    
+
+        <div class="govuk-form-group" style="margin-bottom:10px">
+          <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+          </legend>
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-width-three-quarters bold-label" for="email">
+                  Email address
+              </label>
+              <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+              <input class="govuk-input govuk-!-width-three-quarters" id="email" name="email" type="text" aria-describedby="">
+          </div>
+ <!--          <div class="govuk-form-group">
+              <label class="govuk-label bold-label govuk-!-width-three-quarters" for="password">
+                 Password
+              </label>
+   
+              <input class="govuk-input govuk-!-width-three-quarters" id="password" name="password" type="text" aria-describedby="">
+          </div> -->
+
+          </fieldset>
+        </div>
+         <!--   <p><a href="#" style="">I can't access my account</a></p> -->
+
+        <button class="govuk-button" style="margin-top:15px; margin-bottom:15px">Sign in</button>
+
+        <h2 class="govuk-heading-m" style="margin-top:25px">How to access this service</h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+            
+                <li><a href="./">create an account</a> </li>
+                <li>we don't use DfE sign in or passwords, you just need your account's email address</li>
+        
+            </ul>
+
+           <!--         <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                                Activate your account
+                            </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                          <ol class="govuk-list govuk-list--number">
+                                <li>Once you've created an account we'll send you an activation code.</li>
+                                <li>Sign in using your email address and password.</li>
+                                <li>You'll then be asked to enter you activation code.</li>
+                        </ol>
+                        </div>
+                    </details> -->
+
+           <!--         <h2 class="govuk-heading-l" style="margin-top: 25px">New to this service?</h2>
+                    <p>If you haven't used this service before, you must <a href="./">create an account</a></p>
+                       <p class="govuk-body">Creating an account allows you to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>apply for an NPQ</li>
+                 <li>check the progress of an application</li> -->
+           <!--      <li>track your applications</li> -->
+              
+            </ul>
+      </form>
+
+     
+
+
+    </div>
+  </div>
+
+  <script>
+
+//store details entered into the form in local storage
+var createButton = document.getElementById('createAccountButton');
+EventUtil.addHandler(createButton, 'click', function(){
+              // save the form info to local storage by first putting the data into an object
+              var userDetails = {
+                email: document.getElementById('email-address').value,
+                password: document.getElementById('password').value
+            };
+
+            //store the object in local storage using json stringify
+              localStorage.setItem("login", JSON.stringify(userDetails));
+
+    });
+</script>
+{% endblock %}

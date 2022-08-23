@@ -1,0 +1,27 @@
+trigger:
+  branches:
+    include:
+      - master
+
+  paths:
+    include:
+      - "prototype" 
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+      
+  - task: Npm@1
+    inputs:
+      command: "install"
+      workingDir: "prototype"
+    displayName: "npm install"
+
+  - task: PublishPipelineArtifact@0
+    inputs:
+      targetPath: "prototype"
+      ArtifactName: "prototype-drop"

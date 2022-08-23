@@ -1,0 +1,185 @@
+<div class="govuk-tabs  " data-module="govuk-tabs">
+    <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#searchResultsTab">
+                "restraining order"
+            </a>
+            <svg class="closeButtonOnCPS">
+                <circle cx="12" cy="12" r="13" stroke="white" stroke-width="1" fill="white" />
+                <path stroke="white" stroke-width="3" fill="none" d="M6.25,6.25,17.75,17.75" />
+                <path stroke="white" stroke-width="3" fill="none" d="M6.25,17.75,17.75,6.25" />
+            </svg>
+        </li>
+    </ul>
+    <div class="govuk-tabs__panel searchTabScroll" id="searchResultsTab">
+        <div class="searchTab " id="searchTab">
+            <div class="das-cookie-banner__wrapper govuk-width-container">
+                <div class="govuk-grid-row">
+                    <!-- start of filters -->
+                    <div class="govuk-grid-column-one-quarter">
+                        <div class="notOnMobile">
+                            <div class="filter-form filtering " style="border: 1px solid #dee0e2;">
+                                <div id="finder-frontend" class="inner-block">
+                                    <div style="border-bottom: 1px solid #dee0e2;">
+                                        <H3 class="govuk-heading-m" style="margin: 10px 0 10px 10px;">Filter </H3>
+                                    </div>
+                                    <div class="filter text-filter">
+                                        <div class="govuk-form-group" style="margin-bottom:15px">
+                                            <label class="govuk-label   govuk-label--s legend" for="partialCost" style="margin-bottom:15px">
+                                                Document type
+                                            </label>
+                                            {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+                                            {{ govukCheckboxes({
+                                            classes: "govuk-checkboxes--small",
+                                            idPrefix: "caseStatus",
+                                            name: "case-status",
+                                            fieldset: {
+                                            legend: {
+                                            text: "",
+                                            isPageHeading: true,
+                                            classes: "govuk-fieldset__legend--l"
+                                            }
+                                            },
+                                            items: [
+                                            {
+                                            value: "all",
+                                            text: "MG3/MG3A (1)"
+                                            },
+                                            {
+                                            value: "not-yet-charged",
+                                            text: "MG11 (1)"
+                                            },
+                                            {
+                                            value: "not-yet-charged",
+                                            text: "MG5 (0)"
+                                            },
+                                            {
+                                            value: "not-yet-charged",
+                                            text: "MG6 (0)"
+                                            },
+                                            {
+                                            value: "charged",
+                                            text: "Other (1)"
+                                            }
+                                            ]
+                                            }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Filters -->
+                    <div class="govuk-grid-column-three-quarters">
+                        <p style="margin:5px 0 5px 0">We've found <span style="font-weight:700">8</span> results in <span style="font-weight:700">3</span> documents that match "restraining order"</p>
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                        <div class="column details" style=" float:left">
+                            <div id="resultsOne">
+                                <div class="twoFlexContainer">
+                                    <div class="twoFlexItem" style="padding-left:0">
+                                        <h2 class="govuk-heading-m results-header" style="margin-bottom:5px"><a href="../casefile">MCLOVEMG3.pdf </a>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex-support-meta">
+                                        <div class=" " style="margin-right:30px;">
+                                            <p style="margin-bottom:0">Uploaded:</p>
+                                        </div>
+                                        <div class="WideMobile175" style=" ">
+                                            <p style="margin-bottom:0">5 June 2020</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-support-meta">
+                                        <div class=" " style="margin-right:49px; ">
+                                            <p style="margin-bottom:0">Results:</p>
+                                        </div>
+                                        <div class="WideMobile175" style="  ">
+                                            <p style="margin-bottom:10px">1 result</p>
+                                         
+                                        </div>
+                                    </div>
+                                       <div class="flex-support-meta">
+                                        <div class="govuk-inset-text cpsInsetChange">
+                                                <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                            </div>
+                                    
+                                    </div>
+
+
+
+                               
+
+
+
+                                </div>
+                                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                            </div>
+                            <div id="resultsTwo">
+                                <div class="twoFlexContainer">
+                                    <div class="twoFlexItem" style="padding-left:0">
+                                        <h2 class="govuk-heading-m results-header" style="margin-bottom:5px"><a href="../casefile">Shelagh McLove VPS mg11 </a>
+                                        </h2>
+                                    </div>
+                                    <div class="twoFlexItem">
+                                    </div>
+                                </div>
+                                <div class="flex-support-meta">
+                                    <div class=" " style="margin-right:30px;">
+                                        <p style="margin-bottom:0">Uploaded:</p>
+                                    </div>
+                                    <div class="WideMobile175" style=" ">
+                                        <p style="margin-bottom:0">5 June 2020</p>
+                                    </div>
+                                </div>
+                                <div class="flex-support-meta">
+                                    <div class=" " style="margin-right:49px; ">
+                                        <p style="margin-bottom:0">Results:</p>
+                                    </div>
+                                </div>
+                                <div class="flex-support-meta">
+                                    <div class="WideMobile175" style="  ">
+                                        <p style="margin-bottom:10px">6 results:</p>
+                                        <div class="govuk-inset-text cpsInsetChange">
+                                            <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                        </div>
+                                        <div class="govuk-inset-text cpsInsetChange">
+                                            <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                        </div>
+                                        <details class="govuk-details" data-module="govuk-details">
+                                            <summary class="govuk-details__summary">
+                                                <span class="govuk-details__summary-text">
+                                                    View 4 more
+                                                </span>
+                                            </summary>
+                                            <div class="">
+                                                <div class="govuk-inset-text cpsInsetChange">
+                                                    <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                                </div>
+                                                <div class="govuk-inset-text cpsInsetChange">
+                                                    <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                                </div>
+                                                <div class="govuk-inset-text cpsInsetChange">
+                                                    <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                                </div>
+                                                <div class="govuk-inset-text cpsInsetChange">
+                                                    <p class="searchResultsHighlights" style="">..victim’s views and IDAA/specialist support service views) Referred <span class="searchFound">Restraining</span> - does the victim want an RO and if so with that terms? Victim Personal Statement requested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                </div>
+     
+                                </div>
+                                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                    <!--  </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

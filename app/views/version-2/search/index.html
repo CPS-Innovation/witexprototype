@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% endblock %}
+{% block content %}
+<style>
+
+.govuk-footer__copyright-logo {
+  display: none;
+}
+
+@media (min-width: 48.0625em) {
+.govuk-header__logo {
+  width: 50% !important;
+}
+}
+
+  @media (max-width: 641px) {
+.govuk-header__logotype-text {
+  font-size: 22px;
+}
+ }
+</style>
+
+<!-- Here is the code to show conditional stuff in liquid-->
+<!-- {% if data.FAALoggedIn %}
+{% include "includes/RAALoggedIn.html" %}
+{% else %}
+{% include "includes/RAAUnloggedIn.html" %}
+{% endif %} -->
+<!-- end of conditional statement -->
+<!-- <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" /> -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl" style="">Find a case <span class="govuk-hint" style="font-size:20px; padding-top:8px">
+                Search and review a CPS case in England
+            </span></h1>
+        <!--            <p style="margin:5px 0 5px 0; width:66%">There are <span style="font-weight:700">4</span> training providers and <span style="font-weight:700">2</span> end-point assessment organisations for the <span style="font-weight:700">Financial Services Administrator, level 3</span> apprenticeship</span>.</p>
+                <p style="margin:15px 0 5px 0">Training provider results are ordered by distance from<span style="font-weight:700"> 'N4 3BJ'</span></p> -->        
+                <div class="govuk-tabs" data-module="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+                Contents
+            </h2>
+
+            
+
+<!-- THIS NEXT BIT HAS CSS THAT DOESN'T SHOW IT ON MOBILE TILL I CAN FIX THE WEIRD MOBILE TABS BUG -->
+ <!-- ADD CLASS  "notOnMobile" to hide this on mobile -->     
+                <form method="get" action="search/searchresults">
+            
+                    <div class="govuk-form-group">
+                        <label class="govuk-label   govuk-label--s" for="partialCost">
+                            Search for a case URN
+                        </label>
+                  <!--       <span id="reference-hint" class="govuk-hint">
+                            Enter URN
+                        </span> -->
+                        <input class="govuk-input" id="searchURN" name="searchURN" type="text" aria-describedby="FirstName-hint" value="" />
+                    </div>
+                </fieldset>
+
+
+                    <button type="submit" class="govuk-button" style="">Search</button>
+                   <!--  <a class="" href="searchResults">Reset search options </a> -->
+                </form>
+            </section>
+            <div style="margin-bottom:25px"></div>
+        </div>
+    </div>
+
+
+<!--     <div class="govuk-grid-column-one-third">
+        <div style="border-top: 10px solid #005ea5; padding-top:5px"></div>
+        <h3 class="govuk-heading-m" style="margin-top:10px">Help </h3>
+  
+        <p><a href="">Contact us</a></p>
+
+    </div> -->
+
+</div>
+</div>
+</main>
+</div>
+
+{% endblock %}

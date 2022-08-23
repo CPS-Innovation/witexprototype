@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+
+{{ govukBackLink({
+  text: "Back",
+ href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">Payment breakdown</h1>
+                <!--   <h2 class="govuk-heading-l">NPQ Leading teaching</h2> -->
+     
+               <!--  <p> The following shows details of the payment into your account. </p> -->
+                <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                               <!--  <h2 class="govuk-heading-m">Overview</h2> -->
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Provider</td>
+                            <td class="govuk-table__cell " scope="row">FCA Ltd</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Course</td>
+                            <td class="govuk-table__cell " scope="row">ECF Fip Band A</td>
+                        </tr>
+          
+          <!--               <tr class="govuk-table__row">
+                            <td class="govuk-table__header" scope="row">Payment period</td>
+                            <td class="govuk-table__cell" scope="row">April 2021</td>
+                        </tr> -->
+                <!--         <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Payment amount</td>
+                            <td class="govuk-table__cell" scope="row">£235,062.12</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+                 <table class="govuk-table ">
+                    <thead>
+                        <tr class="govuk-table__row">
+                               <!--  <h2 class="govuk-heading-m">Overview</h2> -->
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+            
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Total price paid per teacher</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£250</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+ 
+                 <table class="govuk-table " style="">
+                    <thead>
+                        <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Service fee</th>
+                                <th scope="col" class="govuk-table__header"></th>
+                               
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Service fee per teacher</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£100</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Target number of teachers</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">100</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Course length in months</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">19</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="govuk-table " style="">
+                    <thead>
+                        <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Variable fee</th>
+                                <th scope="col" class="govuk-table__header"></th>
+                               
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Variable fee per event</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£50</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row"><a href="starts">Total starts</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">5</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row"><a href="">Total retained</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">5</td>
+                        </tr>
+                         <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row"><a href="">Total completed</a></td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="govuk-table " style="">
+                    <thead>
+                        <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Payment breakdown</th>
+                                <th scope="col" class="govuk-table__header"></th>
+                               
+                     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Service fee</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£526</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell" scope="row">Variable fee</td>
+                            <td class="govuk-table__cell govuk-table__cell--numeric" scope="row">£500</td>
+                        </tr>
+                            <tr class="govuk-table__row">
+                            <td class="govuk-table__header" scope="row">Total payment</td>
+                            <td class="govuk-table__header govuk-table__header--numeric" scope="row">£1,026</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+
+
+
+            </div>
+        </div>
+</main>
+</div>
+
+
+{% endblock %}
+

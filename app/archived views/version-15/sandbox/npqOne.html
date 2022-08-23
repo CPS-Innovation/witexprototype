@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+
+
+
+<div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl" >Testing as an NPQ starter</h1>
+
+      
+    <p>The NPQ registration test service does not send out emails.</p>
+    <p>To prevent testers having to use One Time Password (OTP) emails, we’ve created a list of emails ending with your domain name which simply provide the OTP code on screen. </p>
+
+    
+     <div class="govuk-inset-text">Any data you enter into a test environment should be invented or anonymous.</div>
+
+  <!--   <p>If you cannot find your TRN, you can request a reminder.</p> -->
+
+    <!-- <h2 class="govuk-heading-m">Request a TRN reminder by email</h2>
+    <p> Send an email to <a href="">qts.enquiries@education.gov.uk</a>. Put the phrase ‘Undertaking an NPQ and require TRN clarification’ in the subject line. The email needs to include your:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>full name</li>
+            <li>date of birth</li>
+             <li>National Insurance number</li>
+        </ul>
+      
+<p>The team aim to respond to valid email requests within 5 working days.</p>
+         <h2 class="govuk-heading-m">Request a TRN reminder by phone</h2>
+         <p>Call the Teaching Regulation Agency on 020 7593 5394.</p><p> Make sure you have your National Insurance number ready before you call.</p><p> Phone lines are open 9 AM – 5PM Monday – Thursday and 9AM – 4:30 PM on Friday. Lines are closed on bank holidays.</p><p>  State that you are studying for a National Professional Qualification and need a reminder of your TRN.</p> -->
+
+   <form action="https://npq-registration-sandbox.london.cloudapps.digital/" method="get" class="form">
+     <button class="govuk-button">Continue</button>
+                    <!--  <a  class="govuk-button clear-button" href="apprenticeDetails/add-apprentice" >Skip and continue</a> -->
+                </form>
+         
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

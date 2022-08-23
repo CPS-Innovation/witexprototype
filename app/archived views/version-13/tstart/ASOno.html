@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+<script>
+
+function whereNow() {
+   var status = $('input[name=assessment]:checked').val();
+   console.log(status);
+       switch (true) {
+
+       
+        default:
+             localStorage.setItem("npq.qualifyASO", JSON.stringify('yes'));
+              window.location.href='chooseProvider';
+            break;
+        }
+    }
+
+</script>
+
+
+<div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl">Contact your provider</h1>
+                                <p>Government funding for ASO is only available for teachers in their first two years of a headship. </p>
+                                <p>Contact your provider for other funding options for an ASO. </p>
+
+                                <p><a href="#">Get guidance on ASO funding options</a>
+
+                 <form action="" >
+                      
+                  
+                 <!--     <input class="button govuk-button" id="saveAndContinue" type="button" onclick="whereNow()" value="Continue"> -->
+                   <!--  <button class="govuk-button">Continue</button> -->
+                </form>
+
+
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}

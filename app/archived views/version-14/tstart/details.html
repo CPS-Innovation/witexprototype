@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+
+{{ govukBackLink({
+  text: "Back",
+ href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<script>
+/*
+// putting this here so i don't forget it.
+
+  //store details entered into the form in local storage
+var createButton = document.getElementById('createAccountButton');
+EventUtil.addHandler(createButton, 'click', function(){
+              // save the form info to local storage by first putting the data into an object
+              var userDetails = {
+                email: document.getElementById('email-address').value,
+                password: document.getElementById('password').value
+            };
+
+            //store the object in local storage using json stringify
+              localStorage.setItem("login", JSON.stringify(userDetails));
+
+            //store the users email address in a cookie to repeat back to them later. Remember that we have some of the data stored in an object in local storage as well -  so we'll use that again if we need it.
+            document.cookie =  "emailAddress="  + userDetails.email 
+            // shows the cookie in the console log to check it is working
+            console.log (document.cookie)
+
+        // not needed at the moment
+
+              //hide the login form
+              //$('#login').addClass('hidden');
+              //show the quiz
+           // $('#wrapper').removeClass('hidden')
+    });
+*/
+</script>
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="chooseSchoolPost" method="get" class="form">
+
+     <h1 class="govuk-heading-xl">
+         Check your details
+        </h1>
+         <p>We need to check your details on the Teaching Regulation Agency records to ensure you  {% if data.asoHeadTwo %}eligible for the Additional Support Offer (ASO) for NPQ Headship .{% else %}qualify to study for a national professional qualification (NPQ).>{% endif %}</p>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+          </legend>
+                <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-width-three-quarters bold-label" for="trnd">
+                 Teacher reference number (TRN)
+              </label>
+             <span id="email-hint" class="govuk-hint">
+             Your TRN is between 6 and 7 characters long. It may begin with "RP"
+            </span>
+              <input class="govuk-input govuk-input--width-10" id="trnd" name="trnd" type="text" aria-describedby="trnd">
+          </div>
+    <!--       <h3 class="govuk-heading-s" style="margin-bottom:10px">Name</h3>
+          <p>We need your first and last name as registered on the DQT. If you have changed your name and not updated it on the DQT, use your previous name. </p> -->
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-width-three-quarters bold-label" for="firstName">
+                 Full name
+              </label>
+              <span id="email-hint" class="govuk-hint">
+             Your full name exactly as it appears on the Teaching Regulation Agency records
+            </span>
+              <input class="govuk-input govuk-!-width-three-quarters" id="firstName" name="firstName" type="text" aria-describedby="First Name">
+          </div>
+   <!--        <div class="govuk-form-group">
+              <label class="govuk-label bold-label govuk-!-width-three-quarters" for="lastName">
+                 Last name
+              </label>
+           <span id="email-hint" class="govuk-hint">
+              Your surname exactly as it appears on the DQT.
+            </span>
+              <input class="govuk-input govuk-!-width-three-quarters" id="lastName" name="lastName" type="text" aria-describedby="Last name">
+          </div> -->
+
+            <div class="govuk-form-group">
+              <label class="govuk-label bold-label govuk-!-width-three-quarters" for="lastName">
+                Date of birth
+              </label>
+              <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+           <div id="passport-issued-hint" class="govuk-hint">
+      For example, 12 11 1990
+    </div>
+    <div class="govuk-date-input" id="dob">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="dob-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+      </div>
+    </div>
+          </div>
+
+             <div class="govuk-form-group">
+              <label class="govuk-label bold-label govuk-!-width-three-quarters" for="NI">
+                National Insurance number (optional)
+              </label>
+           <span id="email-hint" class="govuk-hint">
+              This will help us match your details. It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+            </span>
+              <input class="govuk-input govuk-!-width-three-quarters" id="NI" name="NI" type="text" aria-describedby="NI">
+          </div>
+
+
+          </fieldset>
+        </div>
+        <button class="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+<div style="margin-top:300px">
+  <a style="" href="error/TRNerror">error</a>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+
+{% endblock %}
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Register for a National Professional Qualification (NPQ)
+        </h1>
+
+
+
+<h2 class="govuk-heading-m">This service is for:</h2>
+     <ul class="govuk-list govuk-list--bullet">
+              <li>teachers who want to register to study for an NPQ</li>
+                <li>headteachers who want to apply for the Additional Support Offer (ASO) for NPQ Headship .</li>
+      </ul>
+
+        <h2 class="govuk-heading-m">Before you start</h2>
+
+        <p class="govuk-body">
+            You must:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>only use this service if you are a teacher working in England, Guernsey, Jersey or the Isle of Man - if you are a teacher working outside these locations contact your provider directly to register  </li>
+                <li>have your teacher reference number (TRN)</li>
+                   <details class="govuk-details" style="margin-bottom:5px">
+                        <summary class="govuk-details__summary">
+                          <span class="govuk-details__summary-text">
+                            What is a teacher reference number?
+                          </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                      <p>A teacher reference number (TRN) is a unique ID that allows us to check you are a teacher.</p>
+
+
+                          <p>If you don’t know what your teacher reference number (TRN) is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
+
+                          <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.  </p>
+                          <p>You may not have a TRN if you are working in further education or qualified outside England or overseas.</p>
+                        </div>
+                      </details>
+                <li>have your funding source confirmed - either a scholarship, school, college or personal funding</li>
+                <li>know which NPQ you want to study</li>
+                <li>have chosen a provider for either your NPQ or ASO</li>
+            </ul>
+
+            <div style="margin-top:35px"></div>
+            <form action="tstart/npqProviderCheck">
+             <button class="govuk-button govuk-button--start">Start now</button>
+            </form> 
+          
+    </div>
+</div>
+</main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,215 @@
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.41.0.min.js"></script>
+ <style>
+.accordion-controls {display:none;}
+
+</style>
+    <style language="text/css">
+        input#wisdom {
+            padding: 4px;
+            font-size: 1em;
+            width: 344px
+        }
+        input::placeholder {
+            color: #aaa ;
+            
+        }
+
+
+        p.userRequest {
+            margin: 4px;
+            padding: 6px 10px 6px 10px;
+            border-radius: 4px;
+            min-width: 50%;
+            max-width: 85%;
+            float: right;
+            background-color: #eee;
+        }
+
+        p.lexResponse {
+            margin: 4px;
+            padding: 6px 10px 6px 10px;
+            border-radius: 4px;
+            text-align: left;
+            min-width: 50%;
+            max-width: 85%;
+            float: left;
+            font-size:14px;
+            background-color: #eee;
+
+        }
+
+        p.lexError {
+            margin: 4px;
+            padding: 4px 10px 4px 10px;
+            border-radius: 4px;
+            text-align: right;
+            min-width: 50%;
+            max-width: 85%;
+            float: right;
+            background-color: #f77;
+        }
+    </style>
+
+
+
+<div id='chatAppearN' class='rj-dont-display'>
+      <div class='chatWrapperN'>
+            <div class='chat-headerN'>
+                  <div class='chatMinN'>
+                        <p style='cursor:pointer' onclick='hideWebChatN()'>Hide</p>
+                  </div>
+                  <div class='chatCloseN'>
+                        <p style='text-align:right; cursor:pointer' onclick='shutWebchatN()'>Close</p>
+                  </div>
+            </div>
+
+            <div class='chat-operatorN flex-chatN' style="height:55px" >
+                  <!--div class='chat-picture'>
+                        <img src='/public/images/avatar.jpg'>
+                  </div-->
+                  <div class='' style="margin-left:10px; padding-top:15px">
+                        <h2 class="heading-medium" style="margin-top:0; margin-bottom:0">Quick help</h2>
+                  </div>
+            </div>
+
+             <div id="conversation" style="width: 356px; height: 320px; overflow: scroll">
+                   <p class="lexResponse">Hello, I'm Kevin, let me see if I can help you solve all your problems.</p>
+
+             </div>
+    <form id="chatform" style="margin-top: 10px" onsubmit="return pushChat();">
+        <input type="text" id="wisdom" size="80" value="" placeholder="Talk to me">
+    </form>
+
+
+
+
+
+            <!--div class='chat-body' style="height:268px" >
+                  <ul id='messages'></ul>
+            </div-->
+
+            <!--div style='margin-top:20px'></div>
+            <div class='chat-enter '>
+                  <form action=''>
+                        <div class='form-group' style="margin-bottom:15px">
+                              <input autocomplete='off' class='form-control' id='m' autocomplete='off' style='width:100%' placeholder='Type a question'
+                              />
+                              <button class='button' style='width:100%'>Send </button>
+                        </div>
+                  </form>
+            </div-->
+
+<div>
+      <h2 class="heading-medium looks-like-a-link" style="text-decoration: none; padding-left:6px;margin-top:10px">Contact us</h2>
+</div>
+        </div>
+      </div>
+</div>
+
+<div id='hideBarN' class='rj-dont-display'>
+      <div id='hideWebChatN' class='chat-headerN '>
+            <div class='chatMinN'>
+                  <p style='cursor:pointer' onclick='unhideWebChatN()'>Show help</p>
+            </div>
+            <div class='chatCloseN'>
+                  <p style='text-align:right'></p>
+            </div>
+      </div>
+</div>
+
+
+ <script type="text/javascript">
+        // set the focus to the input box
+        document.getElementById("wisdom").focus();
+
+        // Initialize the Amazon Cognito credentials provider
+        AWS.config.region = 'eu-west-1'; // Region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: 'eu-west-1:750a44bf-ebef-4974-91e8-26377e4bb2d4',
+        });
+
+        var lexruntime = new AWS.LexRuntime();
+        var lexUserId = 'chatbot-demo' + Date.now();
+        var sessionAttributes = {};
+
+        function pushChat() {
+
+            // if there is text to be sent...
+            var wisdomText = document.getElementById('wisdom');
+            if (wisdomText && wisdomText.value && wisdomText.value.trim().length > 0) {
+
+                // disable input to show we're sending it
+                var wisdom = wisdomText.value.trim();
+                wisdomText.value = '...';
+                wisdomText.locked = true;
+
+                // send it to the Lex runtime
+                var params = {
+                    botAlias: '$LATEST',
+                    botName: 'Kevin',
+                    inputText: wisdom,
+                    userId: lexUserId,
+                    sessionAttributes: sessionAttributes
+                };
+                showRequest(wisdom);
+                lexruntime.postText(params, function(err, data) {
+                    if (err) {
+                        console.log(err, err.stack);
+                        showError('Error:  ' + err.message + ' (see console for details)')
+                    }
+                    if (data) {
+                        // capture the sessionAttributes for the next cycle
+                        sessionAttributes = data.sessionAttributes;
+                        // show response and/or error/dialog status
+                        showResponse(data);
+                    }
+                    // re-enable input
+                    wisdomText.value = '';
+                    wisdomText.locked = false;
+                });
+            }
+            // we always cancel form submission
+            return false;
+        }
+
+        function showRequest(daText) {
+
+            var conversationDiv = document.getElementById('conversation');
+            var requestPara = document.createElement("P");
+            requestPara.className = 'userRequest';
+            requestPara.appendChild(document.createTextNode(daText));
+            conversationDiv.appendChild(requestPara);
+            conversationDiv.scrollTop = conversationDiv.scrollHeight;
+        }
+
+        function showError(daText) {
+
+            var conversationDiv = document.getElementById('conversation');
+            var errorPara = document.createElement("P");
+            errorPara.className = 'lexError';
+            errorPara.appendChild(document.createTextNode(daText));
+            conversationDiv.appendChild(errorPara);
+            conversationDiv.scrollTop = conversationDiv.scrollHeight;
+        }
+
+        function showResponse(lexResponse) {
+
+            var conversationDiv = document.getElementById('conversation');
+            var responsePara = document.createElement("P");
+            responsePara.className = 'lexResponse';
+            if (lexResponse.message) {
+                responsePara.appendChild(document.createTextNode(lexResponse.message));
+                responsePara.appendChild(document.createElement('br'));
+            }
+            if (lexResponse.dialogState === 'ReadyForFulfillment') {
+                responsePara.appendChild(document.createTextNode(
+                    'Ready for fulfillment'));
+                // TODO:  show slot values
+            } else {
+                responsePara.appendChild(document.createTextNode(
+                    '(' + lexResponse.dialogState + ')'));
+            }
+            conversationDiv.appendChild(responsePara);
+            conversationDiv.scrollTop = conversationDiv.scrollHeight;
+        }
+    </script>

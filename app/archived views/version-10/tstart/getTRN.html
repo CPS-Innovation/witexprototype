@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+
+
+
+<div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl" >Get a Teacher Reference Number (TRN)</h1>
+
+      
+    <p>Government rules mean in order to teach at a school in England you must have a TRN number.</p>
+
+
+
+    <h2 class="govuk-heading-m">Request a TRN by email</h2>
+    <p>To obtain a TRN send an email to <a href="">qts.enquiries@education.gov.uk</a> </p>
+    <p>To send a secure email to the department, please go to the <a href="https://switch.egress.com/ui/signin.aspx?ReturnUrl=%2fui%2fadmin">Egress site</a> </p>
+    <p>Include the following information:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>enter in the subject line: Undertaking an NPQ, do not have a TRN and require a number to be issued</li>
+            <li>state you are undertaking an NPQ, do not have a TRN and require a number to be issued</li>
+             <li>your full legal name (we will use this to create a record for you) </li>
+             <li>your date of birth </li>
+             <li>an email address for us to respond to you at </li>
+        </ul>
+       <p>Attach a copy of one of the following types of identification:</p>
+            <ul class="govuk-list govuk-list--bullet">
+            <li>passport</li>
+            <li>driving licence (full or provisional)</li>
+             <li>certificate of residence</li>
+             <li>birth certificate</li>
+        </ul>
+
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

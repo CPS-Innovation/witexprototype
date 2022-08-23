@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+
+{% endblock %}
+{% block content %}
+
+<script src="/public/javascripts/accordion.js"></script>
+
+<script>
+// uncomment this to turn on the accordions
+
+if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+
+
+
+
+<!-- include "includes/webchat/chatjsuser.html" 
+ -->
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l">
+           <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl" >Take a national professional qualification (NPQ)</h1>
+       <p>A National Professional Qualification (NPQ) is one of a series of leadership qualifications available to qualified teachers.</p>
+<p>Each is designed to equip teachers with the skills and knowledge to make a big impact at the next stage of their career, as well as providing the basis to make improvements across their current school.</p>
+<p>From September 2021, the existing four NPQs will be replaced by six new NPQs, designed to reform the qualifications first established in the 1990s.</p>
+
+                <div class="accordion">
+                    <div class="accordion-section">
+                        <div class="accordion-section-header">
+                            <h2 class="govuk-heading-m">Why should I study for an NPQ</h2>
+                        </div>
+                        <div class="accordion-section-body">
+                            <div style="margin-top:25px"></div>
+                                     <p>Studying for an NPQ is a major step forward in your career’s development.</p>
+<p>The skills you learn during the NPQ you choose will benefit your own career and the teaching environment in which you work.</p>
+<p>Benefits for schools include:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>an increase in workforce capacity and individual capabilities</li>
+            <li>successful retention of staff</li>
+             <li>knowledge-based experience for the staffroom</li>
+        </ul>
+                    </div>
+                </div>
+                <div class="accordion-section">
+                        <div class="accordion-section-header">
+                            <h2 class="govuk-heading-m">What courses are available</h2>
+                        </div>
+                        <div class="accordion-section-body">
+                                  <div style="margin-top:25px"></div>
+                      <p>From September 2021, NPQ courses previously will be changed.</p>
+<p>These changes include:</p>
+       <ul class="govuk-list govuk-list--bullet">
+            <li>replacing the existing NPQs in senior leadership, headship and executive leadership</li>
+            <li>replacing the current NPQ in middle leadership with 3 new NPQs for teachers and leaders who want to develop their expertise in specialist areas of teaching practice:</li>
+             <ul class="govuk-list govuk-list--bullet">
+              <LI>supporting the training and development of others</LI>
+              <LI>developing teachers who are subject leads or responsible for improving teaching practice in a subject or phase</LI>
+              <li>developing teachers who have responsibilities for leading behaviour and culture</li>
+
+            </UL>
+             <li>knowledge-based experience for the staffroom</li>
+        </ul>
+        <p>These will be known as:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>NPQ Senior Leadership </li>
+             <li>NPQ Executive Leadership </li>
+              <li>NPQ Headship </li>
+               <li>NPQ Leading Teaching Development </li>
+                <li>NPQ Leading Teaching </li>
+                 <li>NPW Leading Behaviour and Culture </li>
+
+          </ul>
+                    </div>
+                </div>
+                <div class="accordion-section">
+                        <div class="accordion-section-header">
+                           
+                            <h2 class="govuk-heading-m">Who will pay for my NPQ</h2>
+                        </div>
+                        <div class="accordion-section-body">
+                           <div style="margin-top:25px"></div>
+                                        <p>Candidates from schools that sit within a Category 5 or Category 6 area are eligible for fully funded DfE scholarships. </p>
+
+<p>Candidates from schools within MATs or dioceses where at least one school sits within a Category 5 or Category 6 area are also eligible.</p> 
+
+                    </div>
+                </div>
+
+                    <div class="accordion-section">
+                        <div class="accordion-section-header">
+                           
+                            <h2 class="govuk-heading-m">How do I find a provider</h2>
+                        </div>
+                        <div class="accordion-section-body">
+                           <div style="margin-top:25px"></div>
+                                        <p>There are 18 training providers across the United Kingdom which run training courses.</p>
+<p>Some providers may have specific criteria depending on your school’s circumstances.</p>
+<p>For example, the provider may require your school to be rated ‘good’ or ‘outstanding’ if you wish </p>
+                    </div>
+                </div>
+                      <div class="accordion-section">
+                        <div class="accordion-section-header">
+                           
+                            <h2 class="govuk-heading-m">How do I apply</h2>
+                        </div>
+                        <div class="accordion-section-body">
+                           <div style="margin-top:25px"></div>
+                                     <p>You should check with your school’s qualification officer regarding eligibility for your chosen course.</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+</div>
+            <div class="column-one-third">
+          
+            <!--    <h3 class="govuk-heading-s"  >Related content</h3> -->
+
+        
+          </div>
+</div>
+<!--  include "includes/webchat/chatbox.html" 
+ --></main>
+{% endblock %}
