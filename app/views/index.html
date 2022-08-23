@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-GOV.UK Prototype Kit
+{% include "includes/cps/universal-header-tweak.html" %}
 {% endblock %}
 {% block content %}
 <!-- <script src="/socket.io/socket.io.js"></script>
@@ -8,6 +8,9 @@ GOV.UK Prototype Kit
 var socket = io();
 </script> -->
 <style>
+.caseReviewHeader {
+    display: none;
+}
 .govuk-footer__copyright-logo {
     display: none;
 }
