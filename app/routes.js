@@ -694,6 +694,7 @@ router.get('/*/start/setupTaskListRoute' , function (req, res) {
               req.session.data['tubeCostShow'] = false;
               req.session.data['foodAndDrinkShow'] = false;
               req.session.data['petConfirmedShow'] = false;
+              req.session.data['receiptDoneShow'] = false;
               res.redirect(`../tasklist`)
    
 })
@@ -746,6 +747,14 @@ router.get('/*/pet/petCostRoute' , function (req, res) {
             req.session.data['petConfirmedShow'] = true;
               res.redirect(`../tasklist`)
 })
+
+router.get('/*/receipts/receiptsDone' , function (req, res) {
+
+            req.session.data['receiptDoneShow'] = true;
+              res.redirect(`../tasklist`)
+})
+
+
 
 
 

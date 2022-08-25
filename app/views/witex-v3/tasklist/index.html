@@ -31,6 +31,10 @@ Task list
       var showfoodAndDrinkDays =  {{ data['foodAndDrinkShow'] }};
       var showPetConfirmed =  {{ data['petConfirmedShow'] }};
 
+
+       var showReceiptAdded =  {{ data['receiptDoneShow'] }};
+    
+
 $(document).ready(function () {
 
     var changeStuff = function() {
@@ -86,13 +90,21 @@ $(document).ready(function () {
             $(petCostNotStarted).addClass("rj-dont-display");
            $(petCostCompleted).removeClass("rj-dont-display");
            // show receipts
-          $(receiptCantAdd).addClass("rj-dont-display");
-         $(petReceiptAdd).removeClass("rj-dont-display");
+         //  $(receiptCantAdd).addClass("rj-dont-display");
+         // $(petReceiptAdd).removeClass("rj-dont-display");
+
+                $(receiptCantAdd).addClass("rj-dont-display");
+         $(trainReceiptAdd).removeClass("rj-dont-display");
 
 
       } else{};
 
 // end of pet
+//reciepts done
+    if (showReceiptAdded==true) {
+         $(trainReceiptAdd).addClass("rj-dont-display");
+         $(receiptsAdded).removeClass("rj-dont-display");
+      } else{};
 
       // end
       }
@@ -496,19 +508,27 @@ then only paid if you were away for more than 24 hours.</p>
              
                      <li class="app-task-list__item rj-dont-display" id="trainReceiptAdd" style=" border-top: 1px solid #b1b4b6;">
                         <span class="app-task-list__task-name">
-                            <a href="task/confirmDetails">
-                                Add train travel receipts
+                            <a href="./receipts/">
+                                Add receipts
                             </a>
                         </span>
                         <strong class="govuk-tag govuk-tag--grey" id="trainReceiptNotStarted" style="float:right">Not started</strong>
                     </li>
-                     <li class="app-task-list__item rj-dont-display" id="petReceiptAdd" style=" border-top: 1px solid #b1b4b6;">
+ <!--                     <li class="app-task-list__item rj-dont-display" id="petReceiptAdd" style=" border-top: 1px solid #b1b4b6;">
                         <span class="app-task-list__task-name">
                             <a href="task/confirmDetails">
                                 Add pet sitting receipts
                             </a>
                         </span>
                         <strong class="govuk-tag govuk-tag--grey" id="petReceiptNotStarted" style="float:right">Not started</strong>
+                    </li> -->
+                 <li class="app-task-list__item rj-dont-display" id="receiptsAdded" style=" border-top: 1px solid #b1b4b6;">
+                        <span class="app-task-list__task-name">
+                            <a href="./receipts/">
+                                Add receipts
+                            </a>
+                        </span>
+                           <strong class="govuk-tag app-task-list__task-completed  " id="receiptsAddedCompleted" style="float:right">Completed</strong>
                     </li>
 
                 </ul>
