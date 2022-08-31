@@ -508,7 +508,7 @@ router.get('/*/start/lossPayRoute2' , function (req, res) {
               req.session.data['lossPayShow'] = true;
               req.session.data['employmentTypeShow'] = false;
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`childcare`)
+              res.redirect(`../unpaidDay`)
             
            break;
 
@@ -638,6 +638,56 @@ router.get('/*/payyou/paymetypeRoute2' , function (req, res) {
 
           case  (confirmTraining == 'Cheque'):
             res.redirect(`3`)
+            
+        default:
+            console.log("bork bork bork bork");
+             //   req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`./receipts`)
+            break;
+        }
+})
+
+router.get('/*/unpaidDay/takeHomeRoute2' , function (req, res) {
+  var confirmTraining = req.query.takehome
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+             // req.session.data['Show'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`confirmUnpaid`)
+           break;
+
+           case  (confirmTraining == 'No'):
+          // req.session.data['other'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`takeHomePay`)
+
+          case  (confirmTraining == 'Dont know'):
+            res.redirect(`takeHomePay`)
+            
+        default:
+            console.log("bork bork bork bork");
+             //   req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`./receipts`)
+            break;
+        }
+})
+
+router.get('/*/unpaidDay/payProof2' , function (req, res) {
+  var confirmTraining = req.query.uploadProof
+       switch (true) {
+          case  (confirmTraining == 'Give employer details'):
+             // req.session.data['Show'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`employerDetails`)
+           break;
+
+           case  (confirmTraining == 'Upload proof'):
+          // req.session.data['other'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`upload`)
+
             
         default:
             console.log("bork bork bork bork");
