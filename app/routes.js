@@ -540,6 +540,25 @@ router.get('/*/overnightstay/didUserPay' , function (req, res) {
         }
 })
 
+router.get('/*/overnightstay/whereHotelRoute' , function (req, res) {
+
+    var confirmTraining = req.session.data['userPaidOvernight']
+       switch (true) {
+          case  (confirmTraining == 'yes'):
+              res.redirect(`whereHotel`)
+            
+           break;
+
+           case  (confirmTraining == 'no'):
+            res.redirect(`../start/lossOfPay`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`3`)
+            break;
+        }
+})
+
 router.get('/*/start/lossPayRoute2' , function (req, res) {
   var confirmTraining = req.query.lossPay
        switch (true) {
