@@ -482,7 +482,7 @@ router.get('/*/start/overNightStayRoute2' , function (req, res) {
           case  (confirmTraining == 'Yes'):
               req.session.data['overNightStayShow'] = true;
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`lossOfPay`)
+              res.redirect(`../overnightstay`)
             
            break;
 
@@ -500,6 +500,45 @@ router.get('/*/start/overNightStayRoute2' , function (req, res) {
         }
 })
 
+router.get('/*/overnightstay/paidAlready' , function (req, res) {
+  var confirmTraining = req.query.overnightPaid
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`meal`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`accomodation`)
+            
+        default:
+            console.log("bork bork bork bork");
+
+              res.redirect(`meal`)
+            break;
+        }
+})
+
+router.get('/*/overnightstay/didUserPay' , function (req, res) {
+  var confirmTraining = req.query.overnightUserPaid
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+          req.session.data['userPaidOvernight'] = 'yes';
+              res.redirect(`nights`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+            req.session.data['userPaidOvernight'] = 'no';
+            res.redirect(`nights`)
+            
+        default:
+            console.log("bork bork bork bork");
+            req.session.data['userPaidOvernight'] = 'yes';
+              res.redirect(`nights`)
+            break;
+        }
+})
 
 router.get('/*/start/lossPayRoute2' , function (req, res) {
   var confirmTraining = req.query.lossPay
