@@ -18,27 +18,25 @@ href: "javascript:history.back()"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
-            Claiming for less than 5 hours
+            Confirm your email address
         </h1>
-<p>   If you were away from home or work for less than 5 hours in one day you can claim £2.25.</p>
-<!-- <p>   You can claim £2.25 for each day you are away from home or work for less than 5 hours.</p> -->
-        <form action="foodanddrink/fiveToten" method="get" class="form">
+
+        <p> We've emailed a confirmation code to {{ data['email'] }}. Check your inbox and enter the code we sent you.</p>
+        <p></p>
+        <form action="whoClaiming" method="get" class="form">
             <div class="govuk-form-group">
                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
-                   Enter the number of these days you are claiming for
+                    Enter code
                 </label>
-             
-    <span id="email-hint" class="govuk-hint">
-              For example 0, 2 or 10
-            </span>
-               <div class="govuk-input__wrapper">
-    <input class="govuk-input govuk-input--width-5" id="away5hours" name="away5hours" type="text" spellcheck="false">
-   
-  </div>
+                <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+                <input class="govuk-input govuk-input--width-10" id="code" name="code" type="text" aria-describedby="code">
             </div>
             <button class="govuk-button">Continue</button>
         </form>
-      
+        <p style="margin-top:400px"> <a href="emailSent">inbox</a> </p>
+
     </div>
     </main>
 </div>

@@ -12,31 +12,26 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="foodRoute2">
-                <h1 class="govuk-heading-xl">Are you claiming for food and drink? </h1>
-                      <p>We will pay you a fixed amount towards the cost of food and drink, depending on how long you are away from home or work:</p>
-                      <ul class="govuk-list govuk-list--bullet">
-                      <li>£2.25 for less than 5 hours in one day </li>
-                      <li>£4.50 for between 5 and 10 hours in one day</li>
-                      <li>£9.75 for more than 10 hours in one day  </li>
-                    </ul>
+            <form method="get" action="overnightstay/paidAlready">
+                <h1 class="govuk-heading-xl">Did the Crown Prosecution Service (CPS) pay for your overnight stay?</h1>
+                     <!--  <p>You can claim between £2.25 and £9.75 per day for food and drink on the days you were in court.</P><p>You don't need receipts </p> -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                     <!--    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                          
- <!--                            <label class="govuk-label  bold-label" for="firstName">
+                            <label class="govuk-label  bold-label" for="firstName">
                                     Do you want to claim for food and drink?</label>
                         </legend> -->
                   
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="foodclaim" name="foodclaim" type="radio" value="Yes">
+                                <input class="govuk-radios__input" id="overnightPaid" name="overnightPaid" type="radio" value="Yes">
                                 <label class="govuk-label govuk-radios__label" for="TRN-yes">
                                     Yes
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="foodclaim" name="foodclaim" type="radio" value="No">
+                                <input class="govuk-radios__input" id="overnightPaid" name="overnightPaid" type="radio" value="No">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     No
                                 </label>

@@ -12,33 +12,29 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="foodRoute2">
-                <h1 class="govuk-heading-xl">Are you claiming for food and drink? </h1>
-                      <p>We will pay you a fixed amount towards the cost of food and drink, depending on how long you are away from home or work:</p>
-                      <ul class="govuk-list govuk-list--bullet">
-                      <li>£2.25 for less than 5 hours in one day </li>
-                      <li>£4.50 for between 5 and 10 hours in one day</li>
-                      <li>£9.75 for more than 10 hours in one day  </li>
-                    </ul>
+            <form method="get" action="../start/lossOfPay">
+                <h1 class="govuk-heading-xl">Accomodation</h1>
+                      <p>You can claim between £95 per night for a stay in London, Birmingham, Manchester, Leeds, Liverpool and Newcastle.</p>
+                      <p>You can claim £65 per night for stays in other parts of the country. </p>
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                          
- <!--                            <label class="govuk-label  bold-label" for="firstName">
-                                    Do you want to claim for food and drink?</label>
-                        </legend> -->
+                            <label class="govuk-label  bold-label" for="firstName">
+                                    Where was your accomodation?</label>
+                        </legend>
                   
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="foodclaim" name="foodclaim" type="radio" value="Yes">
+                                <input class="govuk-radios__input" id="whereAccom" name="whereAccom" type="radio" value="London, Birmingham, Manchester, Leeds, Liverpool or Newcastle">
                                 <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    Yes
+                                    London, Birmingham, Manchester, Leeds, Liverpool or Newcastle
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="foodclaim" name="foodclaim" type="radio" value="No">
+                                <input class="govuk-radios__input" id="whereAccom" name="whereAccom" type="radio" value="Elsewhere in England and Wales">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    No
+                                    Elsewhere in England and Wales
                                 </label>
                             </div>
                     </fieldset>

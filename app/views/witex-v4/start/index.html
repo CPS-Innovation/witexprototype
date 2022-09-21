@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Claim witness expenses
+        </h1>
+      <!--   <p class="govuk-body-l">Do the thing with witness expenses</p> -->
+        <p>
+            Use this service to:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>claim expenses for being a witness in English and Welsh criminal courts</li>
+        </ul>
+       
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p class="govuk-body">
+            You must:
+            <ul class="govuk-list govuk-list--bullet">
+                <li>have receipts if you are claiming for: 
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>train</li> <li>bus</li><li>taxi</li> <li>parking</li> <li>overnight stays</li> <li>childcare (if claiming more than £67 per day)</li> <li>pet sitting</li> <li>covid tests</li> <li>visas</li> </ul></li>
+                <li>be able to upload receipts as a pdf or an image</li>
+                <li>have your sort code and account number if you want your expenses to be paid into a bank or buidling society
+                </li>
+            </ul>
+             <p>You can save your application and come back to it at any time.</p>
+            <div style="margin-top:35px"></div>
+            <form action="start/details">
+                <button class="govuk-button govuk-button--start">Start now</button>
+            </form>
+        </p>
+    </div>
+</div>
+{% endblock %}
