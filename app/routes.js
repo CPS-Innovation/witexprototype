@@ -559,6 +559,45 @@ router.get('/*/overnightstay/whereHotelRoute' , function (req, res) {
         }
 })
 
+
+router.get('/*/start/employedornotroute' , function (req, res) {
+
+    var confirmTraining = req.query.workornot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`employedornot`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`childcare`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`3`)
+            break;
+        }
+})
+
+router.get('/*/start/selfemployedornotroute' , function (req, res) {
+
+    var confirmTraining = req.query.employedornot
+       switch (true) {
+          case  (confirmTraining == 'Employed'):
+              res.redirect(`../lossOfPay`)
+            
+           break;
+
+           case  (confirmTraining == 'Self employed'):
+            res.redirect(`../selfEmployed`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`3`)
+            break;
+        }
+})
+
 router.get('/*/start/lossPayRoute2' , function (req, res) {
   var confirmTraining = req.query.lossPay
        switch (true) {
@@ -584,6 +623,31 @@ router.get('/*/start/lossPayRoute2' , function (req, res) {
         }
 })
 
+router.get('/*/lossOfPay/unpaiddayoffroute' , function (req, res) {
+  var confirmTraining = req.query.unpaiddayoff
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['lossPayShow'] = true;
+              req.session.data['employmentTypeShow'] = false;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../unpaidDay`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['lossPayShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../start/childcare`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['lossPayShow'] = 'arse';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`childcare`)
+            break;
+        }
+})
+
 router.get('/*/start/claimPayRoute2' , function (req, res) {
   var confirmTraining = req.query.employmentType
        switch (true) {
@@ -597,6 +661,29 @@ router.get('/*/start/claimPayRoute2' , function (req, res) {
            req.session.data['employmentTypeShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`childcare`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['employmentTypeShow'] = 'arse';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`childcare`)
+            break;
+        }
+})
+
+router.get('/*/selfEmployed/claimPayRoute3' , function (req, res) {
+  var confirmTraining = req.query.employmentType
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['employmentTypeShow'] = true;
+              res.redirect(`../start/childcare`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['employmentTypeShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../start/childcare`)
             
         default:
             console.log("bork bork bork bork");
