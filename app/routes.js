@@ -831,14 +831,14 @@ router.get('/*/unpaidDay/payProof2' , function (req, res) {
            case  (confirmTraining == 'Upload proof'):
           // req.session.data['other'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
-            res.redirect(`upload`)
+            res.redirect(`../start/childcare`)
 
             
         default:
             console.log("bork bork bork bork");
              //   req.session.data['childcareShow'] = 'goneWrong';
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`./receipts`)
+              res.redirect(`../start/childcare`)
             break;
         }
 })
