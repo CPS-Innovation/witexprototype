@@ -35,11 +35,11 @@ href: "javascript:history.back()"
       }) }}
     {% endif %}
 
-    <h1 class="govuk-heading-xl">Upload receipts</h1>
-    <p>You need to upload the following receipts:</p>
+    <h1 class="govuk-heading-xl">Upload evidence</h1>
+    <p>You need to upload the following evidence:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>Train tickets</li>
-      <li>Pet sitting</li>
+      <li>receipts for train tickets</li>
+      <li>invoices for pet sitting</li>
     </ul>
 
     <form action="./payyou" method="post" enctype="multipart/form-data">
@@ -49,7 +49,7 @@ href: "javascript:history.back()"
           name: "documents",
           classes: 'moj-multi-file-upload__input',
           label: {
-            text: "Upload a receipt",
+            text: "Upload file(s)",
             classes: 'govuk-label--m'
           },
           attributes: { multiple: '' },
@@ -64,7 +64,7 @@ href: "javascript:history.back()"
 
       {{ mojMultiFileUpload({
         uploadedFiles: {
-          heading: { text: 'Receipts added' },
+          heading: { text: 'Files added' },
           items: uploadedFiles
         },
         uploadHtml: uploadHtml
