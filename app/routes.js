@@ -676,20 +676,89 @@ router.get('/*/selfEmployed/claimPayRoute3' , function (req, res) {
        switch (true) {
           case  (confirmTraining == 'Yes'):
               req.session.data['employmentTypeShow'] = true;
-              res.redirect(`../start/childcare`)
+              res.redirect(`lostIncome`)
             
            break;
 
            case  (confirmTraining == 'No'):
            req.session.data['employmentTypeShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
-            res.redirect(`../start/childcare`)
+            res.redirect(`hired`)
             
         default:
             console.log("bork bork bork bork");
                 req.session.data['employmentTypeShow'] = 'arse';
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`childcare`)
+              res.redirect(`3`)
+            break;
+        }
+})
+
+router.get('/*/selfEmployed/lostIncome/losemore85route' , function (req, res) {
+  var confirmTraining = req.query.losemore85
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+            
+              res.redirect(`../../start/childcare`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+         
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`takeHomePay`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['employmentTypeShow'] = 'arse';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`3`)
+            break;
+        }
+})
+
+router.get('/*/selfEmployed/hired/doworkforyouroute' , function (req, res) {
+  var confirmTraining = req.query.doWork4You
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+            
+              res.redirect(`days`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+         
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../../start/childcare`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['employmentTypeShow'] = 'arse';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`3`)
+            break;
+        }
+})
+
+router.get('/*/selfEmployed/hired/losemorePaidroute' , function (req, res) {
+  var confirmTraining = req.query.losemorePaid
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+            
+              res.redirect(`proof`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+         
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`takeHomePay`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['employmentTypeShow'] = 'arse';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`3`)
             break;
         }
 })

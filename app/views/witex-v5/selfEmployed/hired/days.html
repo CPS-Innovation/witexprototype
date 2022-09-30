@@ -18,42 +18,31 @@ href: "javascript:history.back()"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
-            Number of days in court
+           Days you paid someone else to do your work
         </h1>
         <!-- <p>   If you were away from home or work for less than 5 hours in one day you can claim £2.25.</p> -->
         <!-- <p>   You can claim £2.25 for each day you are away from home or work for less than 5 hours.</p> -->
-        <form action="start/travel" method="get" class="form">
+        <form action="loseMore" method="get" class="form">
             <div class="govuk-form-group">
                 <label class="govuk-label  bold-label" for="code">
-                    How many days were you away for up to 5 hours?
+                    How many days did you pay someone for up to 4 hours (half day)?
                 </label>
                 <span id="email-hint" class="govuk-hint">
                     This includes travelling to and from court
                 </span>
                 <div class="govuk-input__wrapper">
-                    <input class="govuk-input govuk-input--width-5" id="away5hours" name="away5hours" type="text" spellcheck="false">
+                    <input class="govuk-input govuk-input--width-5" id="paid4hours" name="paid4hours" type="text" spellcheck="false">
                 </div>
             </div>
                         <div class="govuk-form-group">
                 <label class="govuk-label  bold-label" for="code">
-                    How many days were you away for between 5 and 10 hours?
+                    How many days did you pay someone for more than 4 hours (full day)?
                 </label>
                 <span id="email-hint" class="govuk-hint">
                     This includes travelling to and from court
                 </span>
                 <div class="govuk-input__wrapper">
-                    <input class="govuk-input govuk-input--width-5" id="away510hours" name="away510hours" type="text" spellcheck="false">
-                </div>
-            </div>
-                        <div class="govuk-form-group">
-                <label class="govuk-label  bold-label" for="code">
-                    How many days were you away for more than 10 hours?
-                </label>
-                <span id="email-hint" class="govuk-hint">
-                    This includes travelling to and from court
-                </span>
-                <div class="govuk-input__wrapper">
-                    <input class="govuk-input govuk-input--width-5" id="away10hours" name="away10hours" type="text" spellcheck="false">
+                    <input class="govuk-input govuk-input--width-5" id="paidmorethan4" name="paidmorethan4" type="text" spellcheck="false">
                 </div>
             </div>
             <button class="govuk-button">Continue</button>
