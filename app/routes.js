@@ -1102,7 +1102,7 @@ router.get('/*/travel/transportChoiceRoute2' , function (req, res) {
            case  (confirmTraining == 'Car'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
-            res.redirect(`Car`)
+            res.redirect(`car`)
 
         case  (confirmTraining == 'Motorbike/scooter'):
            // req.session.data['petSittingShow'] = false;
