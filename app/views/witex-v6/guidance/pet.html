@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+
+<script src="/public/javascripts/accordion.js"></script>
+
+<script>
+// uncomment this to turn on the accordions
+
+if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+
+
+
+
+<!-- include "includes/webchat/chatjsuser.html" 
+ -->
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l">
+           <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl" >Claiming for expenses as a witness</h1>
+
+      <p class="linksAtTop">Contents</p>
+      <p class="linksAtTop">&#8212 <a href="./"> How to claim witness expenses</p>
+      <p class="linksAtTop">&#8212 <a href="study">Travel </a></p>
+       <p class="linksAtTop">&#8212  <a href="courses"> Overnight stays</a></p>
+       <p class="linksAtTop">&#8212 <a href="pay"> Food and drink</a></p>
+       <p class="linksAtTop">&#8212 <a href="provider"> Loss of earnings</a></p>
+       <p class="linksAtTop">&#8212 <a href="apply">Care and childcare </a></p>
+       <p class="linksAtTop">&#8212 Paying someone to look after your pet(s)</a></p>
+       <p class="linksAtTop">&#8212 <a href="other"> Other expenses </a></p>
+       
+
+
+<h2 class="govuk-heading-m" >Paying someone to look after your pet(s)</h2>
+<p>You can claim up to £67 a day if someone looked after your pet(s).</p>
+<p>You will need to provide receipts. </p>
+
+
+
+
+
+<!-- <nav class="gem-c-pagination" role="navigation" aria-label="Pagination">
+  <ul class="gem-c-pagination__list" data-module="track-click">
+      <li class="gem-c-pagination__item gem-c-pagination__item--next">
+        <a href="apply" class="gem-c-pagination__link" rel="next" data-track-category="contentsClicked" data-track-action="next" data-track-label="guidance/pay" data-track-dimension="next" data-track-dimension-index="29">
+          <span class="gem-c-pagination__link-title">
+            <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+              <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+            <span class="gem-c-pagination__link-text">
+              Next
+            </span>
+          </span>
+            <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+            <span class="gem-c-pagination__link-label" style="margin-left:27px">How do I apply</span>
+        </a>
+      </li>
+  </ul>
+</nav> -->
+</div>
+            <div class="column-one-third">
+          
+         <!--       <h3 class="govuk-heading-s"  >Related content</h3> -->
+
+        
+          </div>
+</div>
+<!--  include "includes/webchat/chatbox.html" 
+ --></main>
+{% endblock %}
