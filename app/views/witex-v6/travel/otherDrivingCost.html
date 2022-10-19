@@ -8,13 +8,9 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
-<!-- Here is the code to show conditional stuff in liquid-->
-{% if data.FAALoggedIn %}
-<div class="do-a-thing"></div>
-{% else %}
-<div class="dont-a-thing"></div>
-{% endif %}
-<!-- end of conditional statement -->
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/add-another.js"></script>
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
@@ -73,4 +69,8 @@ href: "javascript:history.back()"
     </div>
     </main>
 </div>
+
+<script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
 {% endblock %}
