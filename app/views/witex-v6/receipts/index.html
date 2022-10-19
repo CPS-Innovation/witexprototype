@@ -9,11 +9,7 @@ href: "javascript:history.back()"
 {% endblock %}
 {% block content %}
 <!-- Here is the code to show conditional stuff in liquid-->
-{% if data.FAALoggedIn %}
-<div class="do-a-thing"></div>
-{% else %}
-<div class="dont-a-thing"></div>
-{% endif %}
+
 <!-- end of conditional statement -->
 
 <script src="/public/javascripts/mojall.js"></script>
@@ -38,8 +34,12 @@ href: "javascript:history.back()"
     <h1 class="govuk-heading-xl">Upload proof of expenses</h1>
     <p>You need to upload the following proof:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>receipts for train tickets</li>
-      <li>invoices for pet sitting</li>
+      <li>receipts for public transport tickets</li>
+      {% if data.FAALoggedIn %}
+        <div class="do-a-thing"></div>
+        {% else %}
+        <div class="dont-a-thing"></div>
+      {% endif %}
     </ul>
 
     <form action="./payyou" method="post" enctype="multipart/form-data">

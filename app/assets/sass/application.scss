@@ -130,6 +130,22 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     right: 0px;
     border-top: 4px solid $govuk-border-colour;
 }*/
+
+@media  (max-width: 900px) {
+.govuk-header__logotype {
+  width: 380px;
+}
+}
+
+
+@media  (max-width: 400px) {
+.govuk-header__logotype {
+  width: 320px;
+}
+}
+
+
+
 .moj-multi-file-upload {
   margin-bottom: 40px;
 }
