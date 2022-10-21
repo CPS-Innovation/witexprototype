@@ -1132,8 +1132,8 @@ router.get('/*/travel/transportChoiceRoute2' , function (req, res) {
 
 // travel in the tasklist route v3 - setting to show pub transport after
 router.get('/*/travel/multiTravelRouterPubTrans' , function (req, res) {
-         req.session.data['showPubTrans'] = false;
-              res.redirect(`multiTravelRouter`)
+         req.session.data['showReceipt'] = true;
+              res.redirect(`car`)
 })
 
 router.get('/*/travel/multiTravelRouterCar' , function (req, res) {
@@ -1149,7 +1149,7 @@ router.get('/*/travel/multiTravelRouter' , function (req, res) {
         case  (req.session.data['showPubTrans'] == true):
          res.redirect(`../bork`)
           break;
-        case  (req.session.data['needReceiptPark'] == true  || req.session.data['needReceiptDrive'] == true):
+        case  (req.session.data['needReceiptPark'] == true  || req.session.data['needReceiptDrive'] == true ||  req.session.data['showReceipt'] == true):
          res.redirect(`../receipts`)
           break;
         case  (req.session.data['needReceiptPark'] == false && req.session.data['needReceiptDrive'] == false):
