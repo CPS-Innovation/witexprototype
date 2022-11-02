@@ -1010,6 +1010,52 @@ router.get('/*/travel/otherDrivingRoute' , function (req, res) {
         }
 })
 
+
+
+router.get('/*/receipts/receiptsEndDecide' , function (req, res) {
+  var confirmTraining = req.query.receiptsOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+            req.session.data['needReceiptDrive'] = true;
+              res.redirect(`add`)
+           break;
+
+           case  (confirmTraining == 'No, I have some of my receipt(s)'):
+           req.session.data['haveSomeRecipts'] = true;
+            res.redirect(`reasonWhy`)
+            break;
+
+         case  (confirmTraining == 'No, I dont have any of my receipt(s)'):
+              req.session.data['haveSomeRecipts'] = false;
+              res.redirect(`reasonWhy`)
+           break;
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+
+router.get('/*/receipts/receiptMissingRoute' , function (req, res) {
+  
+       switch (true) {
+        case  (req.session.data['haveSomeRecipts'] == true):
+         res.redirect(`add`)
+          break;
+
+       case  (req.session.data['haveSomeRecipts'] == false):
+         res.redirect(`../payyou`)
+          break;
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
 // NOT SURE HOW ELSE TO DO THIS, SETS UP ALL THE OTHER req.session stuff before going into task list for first time
 
 router.get('/*/start/petSittingRoute' , function (req, res) {
