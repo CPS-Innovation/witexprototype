@@ -1174,6 +1174,46 @@ router.get('/*/travel/transportChoiceRoute2' , function (req, res) {
         }
 })
 
+// travel in the tasklist route v3
+router.get('/*/travel/transportChoiceRoute3' , function (req, res) {
+  var confirmTraining = req.query.transportChoice
+       switch (true) {
+          case  (confirmTraining == 'Train'):
+              // req.session.data['petSittingShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`trainCost`)
+            
+           break;
+
+           case  (confirmTraining == 'Car'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`car`)
+
+        case  (confirmTraining == 'Motorbike/scooter'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`motorbike`)
+
+        case  (confirmTraining == 'Bicycle'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`bicycle`)
+
+        case  (confirmTraining == 'Taxi'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`taxi`)
+            
+        default:
+            console.log("bork bork bork bork");
+                // req.session.data['petSittingShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`trainCost`)
+            break;
+        }
+})
+
 
 
 // travel in the tasklist route v3 - setting to show pub transport after

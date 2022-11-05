@@ -15,8 +15,9 @@ href: "javascript:history.back()"
             <form method="get" action="receipts/receiptsEndDecide">
                 <h1 class="govuk-heading-xl">Do you have your receipt(s)?</h1> 
                 <p>You need receipt(s) for: </p>
+                 <ul class="govuk-list govuk-list--bullet">
                  {% if data.trainCost %}
-                  <ul class="govuk-list govuk-list--bullet">
+
                       <li> £{{ data['trainCost'] }} of train tickets </li>
                       {% else %}
                     {% endif %}
@@ -30,9 +31,7 @@ href: "javascript:history.back()"
                         <li>£{{ data['taxiMilesClaimed'] }} for your taxi</li>
                       {% else %}
                     {% endif %}
-
-    
-<!-- end of conditional statement -->
+<!-- end of conditional statements -->
                     </ul>
 
                     

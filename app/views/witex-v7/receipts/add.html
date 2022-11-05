@@ -37,9 +37,9 @@ href: "javascript:history.back()"
                       {% else %}
                         <p>You need all your receipt(s) for: </p>
                     {% endif %}
-                
+                      <ul class="govuk-list govuk-list--bullet">
                  {% if data.trainCost %}
-                  <ul class="govuk-list govuk-list--bullet">
+            
                       <li> £{{ data['trainCost'] }} of train tickets </li>
                       {% else %}
                     {% endif %}

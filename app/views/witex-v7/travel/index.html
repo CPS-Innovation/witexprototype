@@ -12,7 +12,7 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="travel/transportChoiceRoute2">
+            <form method="get" action="travel/transportChoiceRoute3">
  <!--                <h1 class="govuk-heading-xl">Travel costs </h1>
                       <p>You can claim if you travelled to and from court by train, tube, coach, bus, air, ferry, car, motorbike or bicycle. </P><p>You will need receipts to claim for train, coach, air or ferry trips. </p> -->
                 <div class="govuk-form-group">
@@ -32,8 +32,22 @@ href: "javascript:history.back()"
                               },
                               items: [
                                 {
-                                  value: "Public transport",
-                                  text: "Public transport"
+                                  value: "London transport",
+                                  text: "London transport",
+                                  hint: { text: "For example: Tube, Bus, Docklands Light Railway (DLR), Elizabeth Line, Overground"}
+
+                                },
+                                {
+                                  value: "Bus/Tram/Metro outside London",
+                                  text: "Bus/Tram/Metro outside London"
+                                },
+                                {
+                                  value: "Train",
+                                  text: "Train"
+                                },
+                                {
+                                  value: "Coach",
+                                  text: "Coach"
                                 },
                                 {
                                   value: "Car",
