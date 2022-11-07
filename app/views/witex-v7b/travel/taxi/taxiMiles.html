@@ -17,33 +17,31 @@ href: "javascript:history.back()"
 <!-- end of conditional statement -->
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">
-                <span class="govuk-caption-xl">Car</span>
-           How many miles are you claiming for?
+        <h1 class="govuk-heading-xl">    <span class="govuk-caption-xl">Taxi</span>
+           How much did you pay for your taxi(s)?
         </h1>
-                   <p>You can claim 25p per mile.</p>
-
-<p>You do not need receipts for mileage claims.</p>
+                   <p>We will not pay for waiting time.</p>
+  <div class="govuk-inset-text">
+                        You will need to provide a receipt for each journey.
+                        </div>
   
-        <form action="parking" method="get" class="form">
+        <form action="../../receipts" method="get" class="form">
             <div class="govuk-form-group">
-                <label class="govuk-label  bold-label" for="code">
-                   Total miles
-                </label>
+     <!--            <label class="govuk-label  bold-label" for="code">
+                   Miles
+                </label> -->
      <!--            <span id="email-hint" class="govuk-hint">
                     This includes travelling to and from court
                 </span> -->
                 <div class="govuk-input__wrapper">
-                    <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false">
-                    <div class="govuk-input__suffix" aria-hidden="true">miles</div>
+                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-5" id="taxiMilesClaimed" name="taxiMilesClaimed" type="text" spellcheck="false">
                 </div>
-                <p style="margin-top:15px"> You can use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to calculate your mileage.</p>
             </div>
 
 
             <button class="govuk-button">Continue</button>
         </form>
-
     </div>
     </main>
 </div>

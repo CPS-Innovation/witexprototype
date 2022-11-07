@@ -990,6 +990,66 @@ router.get('/*/travel/parkingRoute' , function (req, res) {
         }
 })
 
+router.get('/*/travel/parkingRoute2' , function (req, res) {
+  var confirmTraining = req.query.parkOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+            req.session.data['needReceiptPark'] = true;
+              res.redirect(`howMuchParkReceipts`)
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['needReceiptPark'] = false;
+            res.redirect(`otherDriving`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+router.get('/*/travel/parkingRoute2b' , function (req, res) {
+  var confirmTraining = req.query.parkOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`howMuchParkReceipts`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`otherDriving`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+router.get('/*/travel/parkingRoute3' , function (req, res) {
+  var confirmTraining = req.query.parkinghaveReceipts
+       switch (true) {
+          case  (confirmTraining == 'yes'):
+             req.session.data['haveSomeRecipts'] = true;
+              res.redirect(`otherDriving`)
+           break;
+
+           case  (confirmTraining == 'No, I have some of my receipt(s)'):
+            req.session.data['haveSomeRecipts'] = true;
+            res.redirect(`otherDriving`)
+             break;
+
+           case  (confirmTraining == 'No, I dont have any of my receipts'):
+            res.redirect(`otherDriving`)
+             break;
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
 
 router.get('/*/travel/otherDrivingRoute' , function (req, res) {
   var confirmTraining = req.query.drivingCostsOrNot
@@ -1010,6 +1070,50 @@ router.get('/*/travel/otherDrivingRoute' , function (req, res) {
         }
 })
 
+router.get('/*/travel/otherDrivingRoute2' , function (req, res) {
+  var confirmTraining = req.query.drivingCostsOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+            req.session.data['needReceiptDrive'] = true;
+              res.redirect(`otherDrivingCost`)
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['needReceiptDrive'] = false;
+            res.redirect(`multiTravelRouterCar2`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+
+router.get('/*/travel/parkingRoute' , function (req, res) {
+  var confirmTraining = req.query.parkinghaveReceipts
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+           req.session.data['haveSomeRecipts'] = true;
+              res.redirect(`otherDrivingCost`)
+           break;
+
+           case  (confirmTraining == 'No, I have some of my receipt(s)'):
+            req.session.data['haveSomeRecipts'] = true;
+             res.redirect(`otherDrivingCost`)
+            break;
+
+            case  (confirmTraining == 'No, I dont have any of my receipts'):
+             res.redirect(`otherDrivingCost`)
+            break;
+
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
 
 
 router.get('/*/receipts/receiptsEndDecide' , function (req, res) {
@@ -1215,6 +1319,73 @@ router.get('/*/travel/transportChoiceRoute3' , function (req, res) {
 })
 
 
+// travel in the tasklist route v3
+router.get('/*/travel/transportChoiceRoute4' , function (req, res) {
+  var confirmTraining = req.query.transportChoice
+       switch (true) {
+          case  (confirmTraining == 'Train'):
+              // req.session.data['petSittingShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`trainCostReceipts`)
+            
+           break;
+
+           case  (confirmTraining == 'Car'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`car`)
+
+        case  (confirmTraining == 'Motorbike/scooter'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`motorbike`)
+
+        case  (confirmTraining == 'Bicycle'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`bicycle`)
+
+        case  (confirmTraining == 'Taxi'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`taxi`)
+            
+        default:
+            console.log("bork bork bork bork");
+                // req.session.data['petSittingShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`trainCostReceipts`)
+            break;
+        }
+})
+
+
+// travel in the tasklist route v3 - setting to show pub transport after
+router.get('/*/travel/multiTravelRouterPubTrain' , function (req, res) {
+      var confirmTraining = req.query.haveReceipts
+       switch (true) {
+          case  (confirmTraining == 'yes'):
+            req.session.data['haveSomeRecipts'] = true;
+              res.redirect(`car`)
+           break;
+
+           case  (confirmTraining == 'No, I have some of my receipt(s)'):
+           req.session.data['haveSomeRecipts'] = true;
+            res.redirect(`car`)
+            break;
+
+         case  (confirmTraining == 'No, I dont have any of my receipts'):
+              res.redirect(`car`)
+           break;
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+        
+
+})
 
 // travel in the tasklist route v3 - setting to show pub transport after
 router.get('/*/travel/multiTravelRouterPubTrans' , function (req, res) {
@@ -1228,6 +1399,12 @@ router.get('/*/travel/multiTravelRouterCar' , function (req, res) {
               res.redirect(`multiTravelRouter`)
 })
 
+router.get('/*/travel/multiTravelRouterCar2' , function (req, res) {
+         req.session.data['showPubTrans'] = false;
+         req.session.data['showCar'] = false;
+              res.redirect(`multiTravelRouter`)
+})
+
 
 // route the multi travel things
 router.get('/*/travel/multiTravelRouter' , function (req, res) {
@@ -1235,15 +1412,15 @@ router.get('/*/travel/multiTravelRouter' , function (req, res) {
         case  (req.session.data['showPubTrans'] == true):
          res.redirect(`../bork`)
           break;
-        case  (req.session.data['needReceiptPark'] == true  || req.session.data['needReceiptDrive'] == true ||  req.session.data['showReceipt'] == true):
-         res.redirect(`../receipts`)
+        case  (req.session.data['needReceiptPark'] == true  || req.session.data['needReceiptDrive'] == true ||  req.session.data['showReceipt'] == true || req.session.data['haveSomeRecipts'] == true):
+         res.redirect(`../receipts/add`)
           break;
         case  (req.session.data['needReceiptPark'] == false && req.session.data['needReceiptDrive'] == false):
          res.redirect(`../payyou`)
           break;
             
         default:
-            res.redirect(`../receipts`)
+            res.redirect(`../payyou`)
         break;
         }
 })

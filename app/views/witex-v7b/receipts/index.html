@@ -12,44 +12,49 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="otherWitnesses">
-                <h1 class="govuk-heading-xl">    <span class="govuk-caption-xl">Car</span>Why are you claiming the higher mileage rate?</h1> 
+            <form method="get" action="receipts/receiptsEndDecide">
+                <h1 class="govuk-heading-xl">Do you have your receipt(s)?</h1> 
+                <p>You need receipt(s) for: </p>
+                 <ul class="govuk-list govuk-list--bullet">
+                 {% if data.trainCost %}
+
+                      <li> £{{ data['trainCost'] }} of train tickets </li>
+                      {% else %}
+                    {% endif %}
+
+                      {% if data.parkCost %}
+                        <li>£{{ data['parkCost'] }} of parking</li>
+                      {% else %}
+                    {% endif %}
+
+                     {% if data.taxiMilesClaimed %}
+                        <li>£{{ data['taxiMilesClaimed'] }} for your taxi</li>
+                      {% else %}
+                    {% endif %}
+<!-- end of conditional statements -->
+                    </ul>
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                                     <div class="govuk-radios" data-module="govuk-radios">
                                         <div class="govuk-radios__item">
-                                            <input class="govuk-radios__input" id="whyHigher" name="whyHigher" type="radio" value="There was no public transport" data-aria-controls="conditional-contact">
+                                            <input class="govuk-radios__input" id="receiptsOrNot" name="receiptsOrNot" type="radio" value="Yes" data-aria-controls="conditional-contact">
                                             <label class="govuk-label govuk-radios__label" for="contact">
-                                             There was no public transport
+                                            Yes
                                             </label>
                                         </div>
                                         <div class="govuk-radios__item">
-                                            <input class="govuk-radios__input" id="whyHigher" name="whyHigher" type="radio" value="Cheaper or faster to drive than take public transport" data-aria-controls="conditional-contact-2">
+                                            <input class="govuk-radios__input" id="receiptsOrNot" name="receiptsOrNot" type="radio" value="No, I have some of my receipt(s)" data-aria-controls="conditional-contact-2">
                                             <label class="govuk-label govuk-radios__label" for="contact-2">
-                                                Cheaper or faster to drive than take public transport
+                                               No, I have some of my receipt(s)
                                             </label>
                                         </div>
                                         <div class="govuk-radios__item">
-                                            <input class="govuk-radios__input" id="whyHigher" name="whyHigher" type="radio" value="Disability" data-aria-controls="conditional-contact-2">
+                                            <input class="govuk-radios__input" id="receiptsOrNot" name="receiptsOrNot" type="radio" value="No, I dont have any of my receipt(s)" data-aria-controls="conditional-contact-2">
                                             <label class="govuk-label govuk-radios__label" for="contact-2">
-                                                Disability
+                                                 No, I don't have any of my receipt(s)
                                             </label>
                                         </div>
-                                        <div class="govuk-radios__item">
-                                            <input class="govuk-radios__input" id="contact-3" name="whyHigher" type="radio" value="text" data-aria-controls="conditional-contact-3">
-                                            <label class="govuk-label govuk-radios__label" for="contact-3">
-                                                 No choice to use your own car
-                                            </label>
-                                        </div>
-                                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
-                                            <div class="govuk-form-group">
-                                                <label class="govuk-label bold-label" for="contact-by-text">
-                                                  Reason you had no choice
-                                                </label>
-                                                <input class="govuk-input " id="reasonHigherMileage" name="reasonHigherMileage" type="text" autocomplete="tel">
-                                            </div>
-                                        </div> 
 <!--                                         <div class="govuk-radios__item">
                                             <input class="govuk-radios__input" id="whyHigher" name="whyHigher" type="radio" value="text" data-aria-controls="conditional-contact-3">
                                             <label class="govuk-label govuk-radios__label" for="contact-3">
