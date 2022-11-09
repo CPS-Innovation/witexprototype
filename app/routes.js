@@ -990,6 +990,8 @@ router.get('/*/travel/parkingRoute' , function (req, res) {
         }
 })
 
+
+
 router.get('/*/travel/parkingRoute2' , function (req, res) {
   var confirmTraining = req.query.parkOrNot
        switch (true) {
@@ -1055,12 +1057,10 @@ router.get('/*/travel/otherDrivingRoute' , function (req, res) {
   var confirmTraining = req.query.drivingCostsOrNot
        switch (true) {
           case  (confirmTraining == 'Yes'):
-            req.session.data['needReceiptDrive'] = true;
               res.redirect(`otherDrivingCost`)
            break;
 
            case  (confirmTraining == 'No'):
-           req.session.data['needReceiptDrive'] = false;
             res.redirect(`multiTravelRouterCar`)
             
         default:
@@ -1081,6 +1081,23 @@ router.get('/*/travel/otherDrivingRoute2' , function (req, res) {
            case  (confirmTraining == 'No'):
            req.session.data['needReceiptDrive'] = false;
             res.redirect(`multiTravelRouterCar2`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+router.get('/*/travel/otherDrivingRoute3' , function (req, res) {
+  var confirmTraining = req.query.drivingCostsOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`otherDrivingCost`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`../receipts/`)
             
         default:
             console.log("bork bork bork bork");
@@ -1421,6 +1438,25 @@ router.get('/*/travel/multiTravelRouter' , function (req, res) {
             
         default:
             res.redirect(`../payyou`)
+        break;
+        }
+})
+
+// v7 router to make the receipts question show at the end
+router.get('/*/travel/receiptRouter' , function (req, res) {
+       switch (true) {
+        case  (req.session.data['showPubTrans'] == true):
+         res.redirect(`../bork`)
+          break;
+        case  (req.session.data['needReceiptPark'] == true  || req.session.data['needReceiptDrive'] == true ||  req.session.data['showReceipt'] == true || req.session.data['haveSomeRecipts'] == true):
+         res.redirect(`../receipts/`)
+          break;
+        case  (req.session.data['needReceiptPark'] == false && req.session.data['needReceiptDrive'] == false):
+         res.redirect(`../payyou`)
+          break;
+            
+        default:
+            res.redirect(`../receipts`)
         break;
         }
 })
