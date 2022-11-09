@@ -19,16 +19,16 @@ href: "javascript:history.back()"
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
             <span class="govuk-caption-xl">Train</span>
-            Your train journey
+            Your train journey(s)
         </h1>
         <p>You can only claim for standard class tickets. </p>
         <div class="govuk-inset-text">
-            You can only claim for a journey if you provide a receipt or give us a satisfactory reason for not providing evidence of your payment.
+            You must provide a receipt or give us a satisfactory reason for not providing evidence of your payment.
         </div>
         <form action="multiTravelRouterPubTrain" method="get" class="form">
             <div class="govuk-form-group">
                 <label class="govuk-label bold-label" for="more-detail">
-                    Total cost of train journey(s)
+                    Enter the total cost of your train journey(s)
                 </label>
                 <div class="govuk-input__wrapper">
                     <div class="govuk-input__prefix" aria-hidden="true">£</div>
@@ -39,7 +39,7 @@ href: "javascript:history.back()"
                 <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <label class="govuk-label bold-label" for="more-detail">
-                            Do you have all your receipts?
+                            Do you have all your train receipts?
                         </label>
                     </legend>
                     <div class="govuk-radios" data-module="govuk-radios">
@@ -52,7 +52,7 @@ href: "javascript:history.back()"
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="contact-2" name="haveReceipts" type="radio" value="No, I have some of my receipt(s)" data-aria-controls="conditional-contact-2">
                             <label class="govuk-label govuk-radios__label" for="contact-2">
-                                No, I have some of my receipt(s)
+                                No, I have some of my receipts
                             </label>
                         </div>
                         <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
@@ -72,7 +72,7 @@ href: "javascript:history.back()"
                         <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
                             <div class="govuk-form-group">
                                 <label class="govuk-label bold-label" for="contact-by-text">
-                                  Reason for missing receipts
+                                  Reason for not having receipts
                                 </label>
                                 <input class="govuk-input " id="reasonNoReceipts" name="reasonNoReceipts" type="text" autocomplete="tel">
                             </div>
