@@ -32,10 +32,10 @@ href: "javascript:history.back()"
     {% endif %}
 
     <h1 class="govuk-heading-xl">Upload proof of expenses</h1>
-             {% if data.haveSomeRecipts %}
-                      <p>You need the receipts you have for:</p>
+      {% if data.haveSomeRecipts %}
+                      <p>Upload your available receipts:</p>
                       {% else %}
-                        <p>You need all your receipt(s) for: </p>
+                        <p>Upload all your receipts for: </p>
                     {% endif %}
                       <ul class="govuk-list govuk-list--bullet">
                  {% if data.trainCost %}
