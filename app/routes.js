@@ -936,6 +936,30 @@ router.get('/*/start/travelRoute3' , function (req, res) {
         }
 })
 
+router.get('/*/start/travelRoute4' , function (req, res) {
+  var confirmTraining = req.query.travelclaim
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['travelShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../travel`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['travelShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../start/overnightStay`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['travelShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../overnightStay`)
+            break;
+        }
+})
+
 router.get('/*/travel/higherMileRoute' , function (req, res) {
   var confirmTraining = req.query.higherMile
        switch (true) {
@@ -1098,6 +1122,23 @@ router.get('/*/travel/otherDrivingRoute3' , function (req, res) {
 
            case  (confirmTraining == 'No'):
             res.redirect(`../receipts/`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+router.get('/*/travel/otherDrivingRoute4' , function (req, res) {
+  var confirmTraining = req.query.drivingCostsOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`otherDrivingCost`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`../start/overnightStay/`)
             
         default:
             console.log("bork bork bork bork");
@@ -1460,6 +1501,8 @@ router.get('/*/travel/receiptRouter' , function (req, res) {
         break;
         }
 })
+
+
 
 
 router.get('/*/travel/tubeCostRoute' , function (req, res) {
