@@ -519,6 +519,25 @@ router.get('/*/overnightstay/paidAlready' , function (req, res) {
         }
 })
 
+router.get('/*/overnightstay/paidAlready2' , function (req, res) {
+  var confirmTraining = req.query.overnightPaid
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`nights`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`accomodation`)
+            
+        default:
+            console.log("bork bork bork bork");
+
+              res.redirect(`meal`)
+            break;
+        }
+})
+
 router.get('/*/overnightstay/didUserPay' , function (req, res) {
   var confirmTraining = req.query.overnightUserPaid
        switch (true) {
@@ -531,6 +550,27 @@ router.get('/*/overnightstay/didUserPay' , function (req, res) {
            case  (confirmTraining == 'No'):
             req.session.data['userPaidOvernight'] = 'no';
             res.redirect(`nights`)
+            
+        default:
+            console.log("bork bork bork bork");
+            req.session.data['userPaidOvernight'] = 'yes';
+              res.redirect(`nights`)
+            break;
+        }
+})
+
+router.get('/*/overnightstay/didUserPay2' , function (req, res) {
+  var confirmTraining = req.query.overnightUserPaid
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+         req.session.data['userPaidOvernight'] = 'no';
+              res.redirect(`nights`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+            req.session.data['userPaidOvernight'] = 'no';
+            res.redirect(`meal`)
             
         default:
             console.log("bork bork bork bork");
@@ -769,7 +809,7 @@ router.get('/*/start/childcareRoute2' , function (req, res) {
           case  (confirmTraining == 'Yes'):
               req.session.data['childcareShow'] = true;
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`petSitting`)
+              res.redirect(`../childcare`)
             
            break;
 
@@ -777,6 +817,31 @@ router.get('/*/start/childcareRoute2' , function (req, res) {
            req.session.data['childcareShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`petSitting`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`petSitting`)
+            break;
+        }
+})
+
+
+router.get('/*/ofstedRoute' , function (req, res) {
+  var confirmTraining = req.query.ofsted
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['childcareShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`childcare/ofsted`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['childcareShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`childcare/notOfsted`)
             
         default:
             console.log("bork bork bork bork");
@@ -817,7 +882,7 @@ router.get('/*/start/otherRoute2' , function (req, res) {
           case  (confirmTraining == 'Yes'):
               req.session.data['otherShow'] = true;
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`../receipts`)
+              res.redirect(`../otherExpenses`)
             
            break;
 
