@@ -523,7 +523,7 @@ router.get('/*/overnightstay/paidAlready2' , function (req, res) {
   var confirmTraining = req.query.overnightPaid
        switch (true) {
           case  (confirmTraining == 'Yes'):
-              res.redirect(`nights`)
+              res.redirect(`why`)
             
            break;
 
@@ -564,7 +564,7 @@ router.get('/*/overnightstay/didUserPay2' , function (req, res) {
        switch (true) {
           case  (confirmTraining == 'Yes'):
          req.session.data['userPaidOvernight'] = 'no';
-              res.redirect(`nights`)
+              res.redirect(`why`)
             
            break;
 
@@ -858,7 +858,7 @@ router.get('/*/start/petsittingRoute2' , function (req, res) {
           case  (confirmTraining == 'Yes'):
               req.session.data['petSittingShow'] = true;
               // req.session.data['MG11SheMcNotRedacted'] = false;
-              res.redirect(`../pet`)
+              res.redirect(`../pet/petCost`)
             
            break;
 
