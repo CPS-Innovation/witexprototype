@@ -827,6 +827,30 @@ router.get('/*/start/childcareRoute2' , function (req, res) {
         }
 })
 
+router.get('/*/start/childcareRoute3' , function (req, res) {
+  var confirmTraining = req.query.childcare
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['childcareShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../childcare`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['childcareShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`carer`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`petSitting`)
+            break;
+        }
+})
+
 
 router.get('/*/ofstedRoute' , function (req, res) {
   var confirmTraining = req.query.ofsted
@@ -866,6 +890,30 @@ router.get('/*/start/petsittingRoute2' , function (req, res) {
            req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`otherExpenses`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`petSitting`)
+            break;
+        }
+})
+
+router.get('/*/start/carerRoute2' , function (req, res) {
+  var confirmTraining = req.query.carer
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['petSittingShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../carer/careCost`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`petSitting`)
             
         default:
             console.log("bork bork bork bork");

@@ -18,24 +18,25 @@ href: "javascript:history.back()"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
-           What was your total lost income?
+            What was the total cost of someone looking after your family member?
         </h1>
-        <p>State the total amount of income you lost before taxes and any other deductions for the {{ data['selffullday'] }} day you were in court.</p>
-   <!--      <p>Take home pay is the amount of money you are paid after all taxes and deductions are taken out. This will usually be shown on your payslip as a monthly or weekly figure. </p> -->
+        <p>You can claim up to £67 a day.</p>
+             <div class="govuk-inset-text">
+           You must provide a receipt.
+        </div>
 
-
-        <form action="../../start/childcare" method="get" class="form">
+        <form action="../start/petSitting" method="get" class="form">
             <div class="govuk-form-group">
 <!--                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
-                    Take home pay per day
-                </label> -->
-             
+                    Enter code
+                </label>
+ -->           
 <!--     <span id="email-hint" class="govuk-hint">
-              For example: 0,2 or 10
+              You will need to upload a receipt for all train journeys.
             </span> -->
-                             <div class="govuk-input__wrapper">
+               <div class="govuk-input__wrapper">
     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-    <input class="govuk-input govuk-input--width-5" id="selfLost" name="selfLost" type="text" spellcheck="false">
+    <input class="govuk-input govuk-input--width-5" id="petCost" name="petCost" type="text" spellcheck="false">
    
   </div>
             </div>

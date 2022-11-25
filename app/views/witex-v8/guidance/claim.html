@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+{% block content %}
+           <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl" >Claiming for expenses as a witness</h1>
+
+      <p class="linksAtTop">Contents</p>
+      <p class="linksAtTop">&#8212 <a href="./"> How to claim witness expenses</a></p>
+      <p class="linksAtTop">&#8212 <a href="study">Travel </a></p>
+       <p class="linksAtTop">&#8212 <a href="courses">Overnight stays</a></p>
+       <p class="linksAtTop">&#8212 <a href="pay">Food and drink</a></p>
+       <p class="linksAtTop">&#8212 <a href="rovider">Loss of earnings</a></p>
+       <p class="linksAtTop">&#8212 <a href="apply">Care and childcare </a></p>
+       <p class="linksAtTop">&#8212 <a href="pet">Paying someone to look after your pet(s)</a></p>
+         <p class="linksAtTop">&#8212 <a href="other"> Other expenses </a></p>
+            <p class="linksAtTop">&#8212 Make a claim</p>
+       
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<h2 class="govuk-heading-m" >Make a claim
+</h2>
+        <p>Use this service to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>claim expenses for being a prosecution witness in English and Welsh criminal courts</li>
+        </ul>
+
+        <a href="start/details" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
+                Start now
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+                </svg>
+            </a>
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p class="govuk-body">
+            You must have :
+            <ul class="govuk-list govuk-list--bullet">
+                <li>receipts if you are claiming for:</li>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>train</li>
+                    <li>coach</li>
+                    <li>taxi</li>
+                    <li>parking</li>
+                    <li>overnight stays</li>
+                    <li>lost income for self employed</li>
+                    <li>childcare</li>
+                    <li>pet care</li>
+                    <li>covid tests</li>
+                </ul>
+            </ul>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>You must have proof of self employment if you are claiming for:</li>
+                <ul class="govuk-list govuk-list--bullet">
+                        <li> lost income for self employed</li>
+                    </ul>
+                </ul>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>be able to upload receipts as a PDF or an image</li>
+                <li>have your sort code and account number if you want your expenses to be paid into a bank or building society
+                </li>
+            </ul>
+            <p>We will deal with your claim as quickly as possible and, as long as you have filled the form in correctly, we aim to pay within 10 working days.</p>
+            <p>The online service is also <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.</p>
+            <!-- <a href="start/details" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
+                Start now
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+                </svg>
+            </a> -->
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <aside class="app-related-items" role="complementary">
+            <h2 class="govuk-heading-m" id="subsection-title">
+                Related content
+            </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li>
+                        <a href="guidance">
+                            Claiming witness expenses - a guide
+                        </a>
+                    </li>
+                    <!--             <li>
+              <a href="#">
+                Related link
+              </a>
+            </li> -->
+                    <!--             <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li> -->
+                </ul>
+            </nav>
+        </aside>
+    </div>
+</div>
+{% endblock %}
