@@ -803,7 +803,7 @@ router.get('/*/selfEmployed/hired/losemorePaidroute' , function (req, res) {
         }
 })
 
-router.get('/*/start/childcareRoute2' , function (req, res) {
+router.get('/*/start/childcareRoute2' , function (req, res) { 
   var confirmTraining = req.query.childcare
        switch (true) {
           case  (confirmTraining == 'Yes'):
