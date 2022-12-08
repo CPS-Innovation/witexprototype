@@ -19,17 +19,23 @@
         font-size: 22px;
     }
 }
+/**
+ * Enable smooth scrolling on the whole document
+ */
+html {
+    scroll-behavior: smooth;
+}
 </style>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-           <p style="margin-bottom:5px"><a href="">PCD request </a></p>
+           <p style="margin-bottom:5px"><a href="#request">PCD request </a></p>
 <!--             <p style="margin-bottom:5px"><a href="">Comments </a></p> -->
-             <p style="margin-bottom:5px"><a href="">PCD response </a></p>
+             <p style="margin-bottom:5px"><a href="#response">PCD response </a></p>
 <!--              <p><a href="" style="margin-bottom:5px">Case review</a></p>
              <p><a href="" >Action plan</a></p> -->
-        <h1 class="govuk-heading-l" style="">PCD request</h1>
-             <p style="margin-bottom:5px"><a href="">Case outline</a></p>
-                 <p style=""><a href="">Comments</a></p>
+        <h1 class="govuk-heading-l" style="" id="request" >PCD request</h1>
+             <p style="margin-bottom:5px"><a href="#outline">Case outline</a></p>
+                 <p style=""><a href="#comments">Comments</a></p>
 
         <table class="govuk-table">
             <tbody class="govuk-table__body">
@@ -60,13 +66,14 @@
                     <td class="govuk-table__cell"></td>
                 </tr>
                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell" style="width:250px">Proposed charge</td>
-                    <td class="govuk-table__cell" style="min-width:220px">ABC123</td>
-                </tr>
-                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Description</td>
                     <td class="govuk-table__cell">Possession with the intent to supply </td>
                 </tr>
+               <tr class="govuk-table__row">
+                    <td class="govuk-table__cell" style="width:250px">Proposed charge</td>
+                    <td class="govuk-table__cell" style="min-width:220px">ABC123</td>
+                </tr>
+ 
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Code</td>
                     <td class="govuk-table__cell">ABC123</td>
@@ -92,14 +99,15 @@
                     <td class="govuk-table__cell"></td>
                     <td class="govuk-table__cell"></td>
                 </tr>
+                                 <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Description</td>
+                    <td class="govuk-table__cell">Common assault </td>
+                </tr>
                <tr class="govuk-table__row">
                     <td class="govuk-table__cell" style="width:250px">Proposed charge</td>
                     <td class="govuk-table__cell">123BC</td>
                 </tr>
-                 <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Description</td>
-                    <td class="govuk-table__cell">Common assault </td>
-                </tr>
+
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Code</td>
                     <td class="govuk-table__cell">BBB123</td>
@@ -128,14 +136,15 @@
                     <td class="govuk-table__cell"></td>
                     <td class="govuk-table__cell"></td>
                 </tr>
+                                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Description</td>
+                    <td class="govuk-table__cell">Possession with the intent to supply </td>
+                </tr>
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Proposed charge</td>
                     <td class="govuk-table__cell">ABC123</td>
                 </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Description</td>
-                    <td class="govuk-table__cell">Possession with the intent to supply </td>
-                </tr>
+
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Code</td>
                     <td class="govuk-table__cell">XYZ123</td>
@@ -158,7 +167,7 @@
    
 
        
-        <h3 class="govuk-heading-m" style="">Case outline</h3>
+        <h3 class="govuk-heading-m" style="" id="outline">Case outline</h3>
        
      <p>Summary of Key Evidence </p>
 <p>PCDR - Op Re John Jones PWITS </p>
@@ -226,7 +235,7 @@
 
 
 
- <h3 class="govuk-heading-m" style="">Comments</h3>
+ <h3 class="govuk-heading-m" style="" id="comments">Supervisors comments</h3>
  <p>I have reviewed this matter and have applied the FCT as per the DGC 6th Ed. </p>
 
 <p>All key evidence is available and all reasonable lines of enquiry are complete. Any additional enquiries will not alter the charging decision/case presentation.</p>
@@ -247,10 +256,10 @@
 
 
  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-      <h1 class="govuk-heading-l" style="">PCD response</h1>
+      <h1 class="govuk-heading-l" id="response" style="">PCD response</h1>
                      
-             <p style="margin-bottom:5px"><a href="">Review</a></p>
-                 <p style=""><a href="">Action plan</a></p>
+             <p style="margin-bottom:5px"><a href="#review">Review</a></p>
+                 <p style=""><a href="#action">Action plan</a></p>
         <table class="govuk-table">
             <tbody class="govuk-table__body">
                                                 <tr class="govuk-table__row">
@@ -291,6 +300,10 @@
                     <td class="govuk-table__cell"></td>
                     <td class="govuk-table__cell"></td>
                 </tr>
+                 <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Description</td>
+                    <td class="govuk-table__cell" style="">Possess with intent to supply a controlled drug of Class A - Cocaine </td>
+                </tr>
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Principle offence category</td>
                     <td class="govuk-table__cell">Doing the thing</td>
@@ -299,10 +312,7 @@
                     <td class="govuk-table__cell">Proposed charge</td>
                     <td class="govuk-table__cell" style="min-width:220px">MD71230 </td>
                 </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Description</td>
-                    <td class="govuk-table__cell" style="">Possess with intent to supply a controlled drug of Class A - Cocaine </td>
-                </tr>
+
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Decision</td>
                     <td class="govuk-table__cell" style="min-width:220px">Accept</td>
@@ -314,10 +324,6 @@
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell" style="min-width:200px">Qualifier</td>
                     <td class="govuk-table__cell">ABC123</td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Principle offence category</td>
-                    <td class="govuk-table__cell">Offences against the person</td>
                 </tr>
                                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">From</td>
@@ -335,6 +341,10 @@
                     <td class="govuk-table__cell"></td>
                     <td class="govuk-table__cell"></td>
                 </tr>
+                                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Description</td>
+                    <td class="govuk-table__cell" style="">Acquire / use / possess criminal property  </td>
+                </tr>
                 <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Principle offence category</td>
                     <td class="govuk-table__cell">Theft and handling</td>
@@ -343,10 +353,7 @@
                     <td class="govuk-table__cell">Proposed charge</td>
                     <td class="govuk-table__cell" style="min-width:220px">PC02021  </td>
                 </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Description</td>
-                    <td class="govuk-table__cell" style="">Acquire / use / possess criminal property  </td>
-                </tr>
+
                                <tr class="govuk-table__row">
                     <td class="govuk-table__cell" style="width:175px">Decision</td>
                     <td class="govuk-table__cell" style="min-width:220px">Reject - Evidential </td>
@@ -371,9 +378,59 @@
             </tbody>
         </table>
 
+        <h3 class="govuk-heading-m" style="">Crilly, Ted</h1>
+
+
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+                                                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"></td>
+                    <td class="govuk-table__cell"></td>
+                </tr>
+                                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Description</td>
+                    <td class="govuk-table__cell">Possession with the intent to supply </td>
+                </tr>
+                                                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Principle offence category</td>
+                    <td class="govuk-table__cell">Doing the thing</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Proposed charge</td>
+                    <td class="govuk-table__cell">ABC123</td>
+                </tr>
+
+                                               <tr class="govuk-table__row">
+                    <td class="govuk-table__cell" style="width:175px">Decision</td>
+                    <td class="govuk-table__cell" style="min-width:220px">Reject - Evidential </td>
+                </tr>
+
+
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Code</td>
+                    <td class="govuk-table__cell">XYZ123</td>
+                </tr>
+
+
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell" style="min-width:200px">Qualifier</td>
+                    <td class="govuk-table__cell">XYZ123</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">From</td>
+                    <td class="govuk-table__cell">01 Nov 2023</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">To</td>
+                    <td class="govuk-table__cell">02 Nov 2023</td>
+                </tr>
+            </tbody>
+        </table>
+   
+
          
 <!-- <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> -->
- <h3 class="govuk-heading-m" style="">Review</h1>
+ <h3 class="govuk-heading-m" style="" id="review">Review</h1>
 
      <table class="govuk-table">
             <tbody class="govuk-table__body">
@@ -601,7 +658,7 @@ Police response to NFQ/DG6 Assessment:<br /><br />
  </p>
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
- <h3 class="govuk-heading-m" style="">Action plan</h1>
+ <h3 class="govuk-heading-m" id="action" style="">Action plan</h1>
 
              <table class="govuk-table">
             <tbody class="govuk-table__body">
