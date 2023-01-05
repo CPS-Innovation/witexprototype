@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="../start/lossOfPay">
+                <h1 class="govuk-heading-xl">Where was your accommodation?</h1>
+                      <p>You can claim for a paid stay in London, Birmingham, Manchester, Leeds, Liverpool and Newcastle upon Tyne - up to £121.00 per night.
+</p>
+                      <p>You can claim for a paid stay elsewhere - up to £91.00 per night. </p>
+                      <div class="govuk-inset-text">
+You will need to provide a receipt for your stay.
+</div>
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+<!--                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                         
+                            <label class="govuk-label  bold-label" for="firstName">
+                                    Where was your accomodation?</label>
+                        </legend> -->
+                  
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="whereAccom" name="whereAccom" type="radio" value="London, Birmingham, Manchester, Leeds, Liverpool or Newcastle">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    London, Birmingham, Manchester, Leeds, Liverpool or Newcastle
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="whereAccom" name="whereAccom" type="radio" value="Elsewhere in England and Wales">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Elsewhere in England and Wales
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

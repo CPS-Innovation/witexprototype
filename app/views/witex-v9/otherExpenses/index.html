@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/add-another.js"></script>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">  
+          Other expenses
+        </h1>
+          <div class="govuk-inset-text">
+           You must provide a receipt.
+        </div>
+        <div data-module="moj-add-another">
+         <!--    <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Other driving costs</h2> -->
+            <form method="post" >
+                <fieldset class="govuk-fieldset moj-add-another__item">
+                    <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
+                        Expense
+                    </legend>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-!-font-weight-bold" for="person[0][first_name]">
+                          Type of expense
+                        </label>
+                        <input class="govuk-input" id="person[0][first_name]" name="person[0][first_name]" type="text" data-name="person[%index%][first_name]" data-id="person[%index%][first_name]">
+                    </div>
+   <!--                  <div class="govuk-form-group">
+                        <label class="govuk-label govuk-!-font-weight-bold" for="person[0][last_name]">
+                            Amount
+                        </label>
+                        <input class="govuk-input" id="person[0][last_name]" name="person[0][last_name]" type="text" data-name="person[%index%][last_name]" data-id="person[%index%][last_name]">
+                    </div> -->
+
+            <div class="govuk-form-group">
+                   <label class="govuk-label govuk-!-font-weight-bold" for="person[0][cost]">
+                           Amount
+                        </label>
+                    <div class="govuk-input__wrapper">
+                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-5" id="person[0][cost]" name="person[0][cost]" type="text" spellcheck="false" data-name="person[0][cost]" data-id="person[0][cost]">
+                </div>
+            </div>
+
+                </fieldset>
+                <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
+                        Add another expense
+                    </button>
+                </div>
+            </form>
+            <form action="receipts" method="get" class="form">
+                <div class="moj-button-action">
+                    <button class="govuk-button" data-module="govuk-button">
+                        Submit
+                    </button>
+                </div>
+            </form>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+
+<script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+{% endblock %}
