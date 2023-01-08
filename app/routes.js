@@ -995,6 +995,30 @@ router.get('/*/start/otherRoute2' , function (req, res) {
         }
 })
 
+router.get('/*/start/otherRoute3' , function (req, res) {
+  var confirmTraining = req.query.otherexpenses
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['otherShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../otherExpenses`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['other'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../receipts/add`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`./receipts/add`)
+            break;
+        }
+})
+
 
 router.get('/*/payyou/paymetypeRoute2' , function (req, res) {
   var confirmTraining = req.query.paymetype
