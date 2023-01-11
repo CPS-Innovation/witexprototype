@@ -538,6 +538,25 @@ router.get('/*/overnightstay/paidAlready2' , function (req, res) {
         }
 })
 
+router.get('/*/overnightstay/paidAlready3' , function (req, res) {
+  var confirmTraining = req.query.overnightPaid
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`whyPay`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`accomodation`)
+            
+        default:
+            console.log("bork bork bork bork");
+
+              res.redirect(`meal`)
+            break;
+        }
+})
+
 router.get('/*/overnightstay/didUserPay' , function (req, res) {
   var confirmTraining = req.query.overnightUserPaid
        switch (true) {

@@ -21,16 +21,16 @@ href: "javascript:history.back()"
         </div>
         <div data-module="moj-add-another">
          <!--    <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Other driving costs</h2> -->
-            <form method="post" >
+           <form action="receipts/add" method="get" class="form">
                 <fieldset class="govuk-fieldset moj-add-another__item">
                     <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
                         Expense
                     </legend>
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-!-font-weight-bold" for="person[0][first_name]">
+                        <label class="govuk-label govuk-!-font-weight-bold" for="other[0][expense]">
                           Type of expense
                         </label>
-                        <input class="govuk-input" id="person[0][first_name]" name="person[0][first_name]" type="text" data-name="person[%index%][first_name]" data-id="person[%index%][first_name]">
+                        <input class="govuk-input" id="other[0][expense]" name="other[0][expense]" type="text" data-name="other[%index%][expense]" data-id="other[%index%][expense]">
                     </div>
    <!--                  <div class="govuk-form-group">
                         <label class="govuk-label govuk-!-font-weight-bold" for="person[0][last_name]">
@@ -40,12 +40,12 @@ href: "javascript:history.back()"
                     </div> -->
 
             <div class="govuk-form-group">
-                   <label class="govuk-label govuk-!-font-weight-bold" for="person[0][cost]">
+                   <label class="govuk-label govuk-!-font-weight-bold" for="other[0][cost]">
                            Amount
                         </label>
                     <div class="govuk-input__wrapper">
                     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                    <input class="govuk-input govuk-input--width-5" id="person[0][cost]" name="person[0][cost]" type="text" spellcheck="false" data-name="person[0][cost]" data-id="person[0][cost]">
+                    <input class="govuk-input govuk-input--width-5" id="other[0][cost]" name="other[0][cost]" type="text" spellcheck="false" data-name="person[0][cost]" data-id="other[0][cost]">
                 </div>
             </div>
 
@@ -55,8 +55,8 @@ href: "javascript:history.back()"
                         Add another expense
                     </button>
                 </div>
-            </form>
-            <form action="receipts/add" method="get" class="form">
+         
+            
                 <div class="moj-button-action">
                     <button class="govuk-button" data-module="govuk-button">
                         Submit

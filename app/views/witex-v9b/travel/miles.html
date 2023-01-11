@@ -21,7 +21,7 @@ href: "javascript:history.back()"
                 <span class="govuk-caption-xl">Car</span>
            How many miles are you claiming for?
         </h1>
-                   <p>You can claim 25p per mile.</p>
+                   <p>You can claim  {% if data.higherMile == "Yes" %} 45p {% else %} 25p {% endif %} per mile.</p>
 
 <p>You don't need receipts for mileage claims.</p>
   
