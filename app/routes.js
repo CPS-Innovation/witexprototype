@@ -1697,6 +1697,27 @@ router.get('/*/travel/multiTravelRouterPubTrain' , function (req, res) {
               res.redirect(`../bork`)
             break;
         }
+    
+})
+
+// screener at the beginning
+router.get('/*/screenerRoute' , function (req, res) {
+      var confirmTraining = req.query.screener
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`courtDetails`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`blueForm`)
+            break;
+
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        }
         
 
 })
