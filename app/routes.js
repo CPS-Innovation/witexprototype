@@ -1,6 +1,9 @@
 const express = require('express')
 const router = new express.Router()
 
+var NotifyClient = require('notifications-node-client').NotifyClient,
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+
 // route middleware that will happen on every request
 router.use(function(req, res, next) {
     // log each request to the console
@@ -21,6 +24,29 @@ router.use('/', (req, res, next) => {
  // var arse = req.params[0];
   next()
 })
+
+
+// Send emails from notify
+// The URL here needs to match the URL of the page that the user is on
+// when they type in their email address
+router.post('/*/details', function (req, res) {
+
+  notify.sendEmail(
+    // this long string is the template ID, copy it from the template
+    // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
+    // in your code.
+    'b6b7d5e5-6096-4191-9e70-b93483557ca1',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    req.body.email
+  );
+
+  // This is the URL the users will be redirected to once the email
+  // has been sent
+ 
+  res.redirect('confirmEmail');
+
+});
 
 
 // Versions routing stuff - so indivdual routes are in the sub version
