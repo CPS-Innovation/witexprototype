@@ -29,40 +29,40 @@ router.use('/', (req, res, next) => {
 // Send emails from notify
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
- router.post('/*/details', function (req, res) {
+// router.post('/*/details', function (req, res) {
 
-  notify.sendEmail(
+//  notify.sendEmail(
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
     // in your code.
-    'b6b7d5e5-6096-4191-9e70-b93483557ca1',
+ //   'b6b7d5e5-6096-4191-9e70-b93483557ca1',
     // `emailAddress` here needs to match the name of the form field in
-    req.body.email
-  );
+//    req.body.email
+//  );
 
   // This is the URL the users will be redirected to once the email
   // has been sent
  
+//  res.redirect('confirmEmail');
+
+//});
+
+function errorHandler(err, req, res, next) {
+  console.error(err);
+  next();
+}
+
+router.use(errorHandler);
+
+router.post('/*/details', function (req, res, next) {
+  notify.sendEmail(
+    'b6b7d5e5-6096-4191-9e70-b93483557ca1',
+    req.body.email
+  );
+  next();
+}, function(req, res) {
   res.redirect('confirmEmail');
-
 });
-
-// function errorHandler(err, req, res, next) {
-//   console.error(err);
-//   next();
-// }
-
-// router.use(errorHandler);
-
-// router.post('/*/details', function (req, res, next) {
-//   notify.sendEmail(
-//     'b6b7d5e5-6096-4191-9e70-b93483557ca1',
-//     req.body.email
-//   );
-//   next();
-// }, function(req, res) {
-//   res.redirect('confirmEmail');
-// });
 
 
 
