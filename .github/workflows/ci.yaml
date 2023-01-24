@@ -50,7 +50,7 @@ jobs:
       - name: Un-Tar files
         run: |
           tar -xjf files.tbz
-          ls
+          rm files.tbz
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
