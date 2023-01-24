@@ -49,8 +49,8 @@ jobs:
 
       - name: Tar files
         run: |
-          tar -xjf files.tar
           ls
+          tar -xjf files.tar
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
