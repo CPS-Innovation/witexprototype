@@ -48,7 +48,9 @@ jobs:
           name: node-app
 
       - name: Un-Tar files
-        run: tar -xjf files.tbz
+        run: |
+          tar -xjf files.tbz
+          ls
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -57,4 +59,4 @@ jobs:
           app-name: 'witex-proto'
           slot-name: 'production'
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_930c43ba121d47d0bb686f15f799f701 }}
-          package: files/
+          package: .
