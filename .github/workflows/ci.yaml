@@ -26,13 +26,13 @@ jobs:
           npm prune --omit dev
 
       - name: Tar files
-        run: tar -cjf files.tbz .
+        run: tar -cjf /tmp/files.tbz .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: files.tbz
+          path: /tmp/files.tbz
 
   deploy:
     runs-on: ubuntu-latest
