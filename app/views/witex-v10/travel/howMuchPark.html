@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+                <span class="govuk-caption-xl">Car</span>
+            Total cost of parking
+        </h1>
+        <p>We will not pay for parking fines.</P>
+        <div class="govuk-inset-text">
+           You must provide a receipt or give us a satisfactory reason for not providing evidence of your payment.
+        </div>
+        <form action="otherDriving" method="get" class="form">
+           <!--  <form action="multiTravelRouterPubTrain" method="get" class="form"> -->
+            <div class="govuk-form-group">
+                <label class="govuk-label bold-label" for="more-detail">
+                    How much did you spend in total on parking?
+                </label>
+                <div class="govuk-input__wrapper">
+                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-5" id="parkCost" name="parkCost" type="text" spellcheck="false">
+                </div>
+            </div>
+            <div class="govuk-form-group" style="padding-top:15px">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <label class="govuk-label bold-label" for="more-detail">
+                            Do you have all your parking receipts?
+                        </label>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact" name="haveReceiptsPark" type="radio" value="yes" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-2" name="haveReceiptsPark" type="radio" value="No, I have some of my receipt(s)" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                No, I have some of my receipts
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label bold-label" for="contact-by-phone">
+                                    Reason for missing receipts
+                                </label>
+                                <input class="govuk-input " id="reasonSomeReceiptsPark" name="reasonSomeReceiptsPark" type="text" autocomplete="tel">
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-3" name="haveReceiptsPark" type="radio" value="No, I dont have any of my receipts" data-aria-controls="conditional-contact-3">
+                            <label class="govuk-label govuk-radios__label" for="contact-3">
+                                 No, I don't have any of my receipts
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label bold-label" for="contact-by-text">
+                                  Reason for not having receipts
+                                </label>
+                                <input class="govuk-input " id="reasonNoReceiptsPark" name="reasonNoReceiptsPark" type="text" autocomplete="tel">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button class="govuk-button">Continue</button>
+        </form>
+    </div>
+    </main>
+</div>
+{% endblock %}

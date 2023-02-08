@@ -47,6 +47,8 @@ router.use('/', (req, res, next) => {
 
 //});
 
+
+// Send emails from notify
 function errorHandler(err, req, res, next) {
   console.error(err);
   next();

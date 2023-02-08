@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            How much was your accommodation?
+        </h1>
+        <p>You can claim up to £95 a night for your accommodation.</p>
+
+
+             <div class="govuk-inset-text">
+           You must provide a receipt for the overnight stay but not for any food or drink.
+        </div>
+
+        <form action="../start/lossOfPay" method="get" class="form">
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
+                    Enter the full amount you paid
+                </label>
+           
+<!--     <span id="email-hint" class="govuk-hint">
+              You will need to upload a receipt for all train journeys.
+            </span> -->
+               <div class="govuk-input__wrapper">
+    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+    <input class="govuk-input govuk-input--width-5" id="overnightCost" name="overnightCost" type="text" spellcheck="false">
+   
+  </div>
+            </div>
+            <button class="govuk-button">Continue</button>
+        </form>
+      
+    </div>
+    </main>
+</div>
+{% endblock %}

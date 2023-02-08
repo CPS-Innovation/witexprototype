@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            Why is your proof missing?
+        </h1>
+
+        <p>You must have a satisfactory reason for not providing evidence for your claim. </p>
+
+   
+        <form action="receiptMissingRoute" method="get" class="form">
+            <div class="govuk-form-group">
+<!--                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
+                    Enter code
+                </label> -->
+     <textarea class="govuk-textarea" id="receiptReason" name="receiptReason" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+            </div>
+            <button class="govuk-button">Continue</button>
+        </form>
+        <p style="margin-top:400px"> <a href="emailSent">inbox</a> </p>
+
+    </div>
+    </main>
+</div>
+{% endblock %}
