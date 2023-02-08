@@ -1173,6 +1173,11 @@ router.get('/*/unpaidDay/payProof2' , function (req, res) {
               // req.session.data['MG11SheMcNotRedacted'] = false;
               res.redirect(`employerDetails`)
            break;
+                     case  (confirmTraining == 'Limited Company Details'):
+             // req.session.data['Show'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`companyDetails`)
+           break;
 
            case  (confirmTraining == 'Upload proof'):
           // req.session.data['other'] = false;

@@ -23,7 +23,7 @@ href: "javascript:history.back()"
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
+ 
     {% if errorSummary.items.length %}
       {{ govukErrorSummary({
         titleText: 'There is a problem',
@@ -32,6 +32,71 @@ href: "javascript:history.back()"
     {% endif %}
 
     <h1 class="govuk-heading-xl">Upload your proof</h1>
+
+              <p>You can provide your proof by uploading a:</p>
+          <ul class="govuk-list govuk-list--bullet ">
+
+            <li>
+              photo
+            </li>
+                        <li>
+              screengrab
+            </li>
+                                    <li>
+              scan
+            </li>
+
+                                      <li>
+              PDF
+            </li>
+          </ul>
+
+
+          <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                   Rules for uploading proof
+
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+      <p>You must ensure files are:</p>
+          <ul class="govuk-list govuk-list--bullet ">
+ 
+            <li>
+              showing the entire document or image
+            </li>
+            <li>
+              legible - words and numbers can be read
+            </li>
+             <li>
+              unaltered by computer software
+            </li>
+            <li>
+             no more than 15MB
+            </li>
+          </ul>
+    
+        <p>We can accept these files:</p>
+          <ul class="govuk-list govuk-list--bullet ">
+            <li>
+              JPG
+            </li>
+            <li>
+              PNG
+            </li>
+             <li>
+              Apple HEIC (iPhone live photos)
+            </li>
+             <li>
+              PDF
+            </li>
+          </ul>
+                </div>
+              </details>
+
+
              {% if data.haveSomeRecipts %}
                       <p>Upload your available evidence:</p>
                       {% else %}
@@ -134,7 +199,7 @@ href: "javascript:history.back()"
           name: "documents",
           classes: 'moj-multi-file-upload__input',
           label: {
-            text: "Upload file(s) for example - photos or PDFs",
+            text: "Upload file(s)",
             classes: 'govuk-label--m'
           },
           attributes: { multiple: '' },
@@ -160,6 +225,9 @@ href: "javascript:history.back()"
       })}}
     </form>
   </div>
+
+
+
 </div>
 
       
