@@ -1128,7 +1128,7 @@ router.get('/*/payyou/paymetypeRoute2' , function (req, res) {
             res.redirect(`2`)
 
           case  (confirmTraining == 'Cheque'):
-            res.redirect(`3`)
+            res.redirect(`cheque`)
             
         default:
             console.log("bork bork bork bork");
@@ -1283,8 +1283,25 @@ router.get('/*/travel/higherMileRoute' , function (req, res) {
         }
 })
 
+router.get('/*/travel/higherMileRouteBike' , function (req, res) {
+  var confirmTraining = req.query.higherMileBike
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`motorbike/whyHigher`)
+           break;
 
-router.get('/*/travel/otherWitnessRoute' , function (req, res) {
+           case  (confirmTraining == 'No'):
+            res.redirect(`motorbike/otherWitnesses`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+
+router.get('/*/*/otherWitnessRoute' , function (req, res) {
   var confirmTraining = req.query.otherWitnesses
        switch (true) {
           case  (confirmTraining == 'Yes'):
@@ -1301,7 +1318,7 @@ router.get('/*/travel/otherWitnessRoute' , function (req, res) {
         }
 })
 
-router.get('/*/travel/parkingRoute' , function (req, res) {
+router.get('/*/*/parkingRoute' , function (req, res) {
   var confirmTraining = req.query.parkOrNot
        switch (true) {
           case  (confirmTraining == 'Yes'):
@@ -1436,7 +1453,7 @@ router.get('/*/travel/otherDrivingRoute3' , function (req, res) {
         }
 })
 
-router.get('/*/travel/otherDrivingRoute4' , function (req, res) {
+router.get('/*/*/otherDrivingRoute4' , function (req, res) {
   var confirmTraining = req.query.drivingCostsOrNot
        switch (true) {
           case  (confirmTraining == 'Yes'):
@@ -1445,6 +1462,23 @@ router.get('/*/travel/otherDrivingRoute4' , function (req, res) {
 
            case  (confirmTraining == 'No'):
             res.redirect(`../start/overnightStay/`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+router.get('/*/*/otherDrivingRouteBike' , function (req, res) {
+  var confirmTraining = req.query.drivingCostsOrNot
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`otherDrivingCost`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`../../start/overnightStay/`)
             
         default:
             console.log("bork bork bork bork");
@@ -1617,21 +1651,30 @@ router.get('/*/travel/transportChoiceRoute2' , function (req, res) {
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`car`)
+             break;
 
         case  (confirmTraining == 'Motorbike/scooter'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`motorbike`)
+             break;
 
         case  (confirmTraining == 'Bicycle'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`bicycle`)
+             break;
 
         case  (confirmTraining == 'Taxi'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`taxi`)
+             break;
+                     case  (confirmTraining == 'Coach'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`coach`)
+             break;
             
         default:
             console.log("bork bork bork bork");
@@ -1657,21 +1700,43 @@ router.get('/*/travel/transportChoiceRoute3' , function (req, res) {
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`car`)
+                 break;
 
         case  (confirmTraining == 'Motorbike/scooter'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`motorbike`)
+                 break;
 
         case  (confirmTraining == 'Bicycle'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`bicycle`)
+                 break;
 
         case  (confirmTraining == 'Taxi'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`taxi`)
+                 break;
+
+          case  (confirmTraining == 'Coach'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`coach`)
+                 break;
+
+          case  (confirmTraining == 'Bus/Tram/Metro outside London'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`notLondon`)
+                 break;
+
+           case  (confirmTraining == 'London transport'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`londonTransport`)
+                 break;
             
         default:
             console.log("bork bork bork bork");
