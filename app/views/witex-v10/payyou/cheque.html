@@ -14,45 +14,20 @@ href: "javascript:history.back()"
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="../checkdetails/">
-                <h1 class="govuk-heading-l">Paid in UK cheque</h1>
+            <form method="get" action="cheque2">
+                <h1 class="govuk-heading-l">Who's the cheque for?</h1>
+                <!-- <p>Tell us the name of the person the cheque should be made out to. -->
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="name-on-the-account">
-                        Name
+                    <label class="govuk-label bold-label" for="name-on-the-account">
+                        Full name 
                     </label>
+                    <div id="sort-code-hint" class="govuk-hint">
+                        As it should appear on the cheque
+                    </div>
                     <input class="govuk-input " id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
                 </div>
 
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="address-line-1">
-                          Address line 1
-                        </label>
-                        <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="address-line-2">
-                          Address line 2 (optional)
-                        </label>
-                        <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="address-town">
-                          Town or city
-                        </label>
-                        <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="address-county">
-                          County (optional)
-                        </label>
-                        <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="address-postcode">
-                          Postcode
-                        </label>
-                        <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
-                      </div>
+                     
                     </fieldset>
 
                 <button class="govuk-button" data-module="govuk-button">
