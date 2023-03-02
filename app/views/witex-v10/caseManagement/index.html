@@ -1,139 +1,85 @@
-{% extends "layout.html" %}
+{% extends "layoutCPS.html" %}
 {% block header %}
-{% include "includes/cps/v11/banner.html" %}
+{% include "includes/cps/v12/banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-{% include "includes/cps/universal-header-tweak.html" %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:history.back()"
-}) }}
+{% include "includes/version1/mainNav.html" %}
+{% include "includes/version1/homeNav.html" %}
 {% endblock %}
 {% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<style>
+.makeBold {
+    font-weight: 700;
+}
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">
-            Dodgy cases
-        </h1>
-        <table class="govuk-table">
+.makeBannerMiddle {
+    display: none;
+}
 
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Item</th>
-      <th scope="col" class="govuk-table__header">User input</th>
-          <th scope="col" class="govuk-table__header">CMS</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell" >First name</td>
-      <td class="govuk-table__cell" style="font-weight:700">Rob</td>
-         <td class="govuk-table__cell">Robert <br/>David<br/>Jack</td>
-    </tr>
-    <tr class="govuk-table__row">
-     <td scope="row" class="govuk-table__cell">Last name </td>
-      <td class="govuk-table__cell">Jenkins</td>
-         <td class="govuk-table__cell">Jenkins</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">URN</td>
-      <td class="govuk-table__cell">EE12345678</td>
-         <td class="govuk-table__cell">EE12345678</td>
-    </tr>
-        <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">Court</td>
-      <td class="govuk-table__cell" style="font-weight:700">Westminister</td>
-         <td class="govuk-table__cell">Croydon</td>
-    </tr>
-            <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">Date of hearing</td>
-      <td class="govuk-table__cell" >1/11/22</td>
-         <td class="govuk-table__cell">1/11/22</td>
-    </tr>
-  </tbody>
-</table>
-
- 
-        <table class="govuk-table">
-
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Item</th>
-      <th scope="col" class="govuk-table__header">User input</th>
-          <th scope="col" class="govuk-table__header">CMS</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell" >First name</td>
-      <td class="govuk-table__cell" >Richard</td>
-         <td class="govuk-table__cell">Richard</td>
-    </tr>
-    <tr class="govuk-table__row">
-     <td scope="row" class="govuk-table__cell">Last name </td>
-      <td class="govuk-table__cell">Edwards</td>
-         <td class="govuk-table__cell">Edwards</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">URN</td>
-      <td class="govuk-table__cell" style="font-weight:700">EE12345678</td>
-         <td class="govuk-table__cell">EE72345678</td>
-    </tr>
-        <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">Court</td>
-      <td class="govuk-table__cell" >Westminister</td>
-         <td class="govuk-table__cell">Westminister</td>
-    </tr>
-            <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">Date of hearing</td>
-      <td class="govuk-table__cell" >1/11/22</td>
-         <td class="govuk-table__cell">1/11/22</td>
-    </tr>
-  </tbody>
-</table>
-
-        <table class="govuk-table">
-
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Item</th>
-      <th scope="col" class="govuk-table__header">User input</th>
-          <th scope="col" class="govuk-table__header">CMS</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell" >First name</td>
-      <td class="govuk-table__cell" style="font-weight:700" >David</td>
-         <td class="govuk-table__cell">Richard <br />Robert<br />James<br />Fred</td>
-    </tr>
-    <tr class="govuk-table__row">
-     <td scope="row" class="govuk-table__cell">Last name </td>
-      <td class="govuk-table__cell" style="font-weight:700">Shaw</td>
-         <td class="govuk-table__cell">Edwards <br />Jenkins<br />Stockly<br />Cowling</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">URN</td>
-      <td class="govuk-table__cell" >EE12345678</td>
-         <td class="govuk-table__cell">EE12345678</td>
-    </tr>
-        <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">Court</td>
-      <td class="govuk-table__cell" >Westminister</td>
-         <td class="govuk-table__cell">Westminister</td>
-    </tr>
-            <tr class="govuk-table__row">
-      <td scope="row" class="govuk-table__cell">Date of hearing</td>
-      <td class="govuk-table__cell" >1/11/22</td>
-         <td class="govuk-table__cell">1/11/22</td>
-    </tr>
-  </tbody>
-</table>
-
+.caseReviewHeader {
+    display: none
+}
+</style>
+<h1 class="govuk-heading-xl">Claims (5)</h1>
+<div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
+    <div class="govuk-grid-column-one-quarter" style="">
+        search and filters might go here
+    </div>
+    <div class="govuk-grid-column-three-quarters" style="width:72.5%">
+        <div class=" weirdFix1400">
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header" scope="col">ID</th>
+                        <th class="govuk-table__header" scope="col">Name</th>
+                        <th class="govuk-table__header" scope="col">Status</th>
+                        <th class="govuk-table__header" scope="col">Assigned to</th>
+                        <th class="govuk-table__header" scope="col">Claim amount</th>
+                        <th class="govuk-table__header" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">HD90210</td>
+                        <td class="govuk-table__cell">Robert Edwards</td>
+                        <td class="govuk-table__cell">New</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cell">£256.98</td>
+                        <td class="govuk-table__cell"><a href="#">View</a></td>
+                    </tr>
+                     <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">HD01209</td>
+                        <td class="govuk-table__cell">James Collyer</td>
+                        <td class="govuk-table__cell">New</td>
+                        <td class="govuk-table__cell"></td>
+                        <td class="govuk-table__cell">£2.25</td>
+                        <td class="govuk-table__cell"><a href="#">View</a></td>
+                    </tr>
+                     <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">ZF92011</td>
+                        <td class="govuk-table__cell">Bal Jackson</td>
+                        <td class="govuk-table__cell">In progress</td>
+                        <td class="govuk-table__cell">David Barton</td>
+                        <td class="govuk-table__cell">£98.99</td>
+                        <td class="govuk-table__cell"><a href="#">View</a></td>
+                    </tr>
+                     <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">ZF92011</td>
+                        <td class="govuk-table__cell">Mel Hilton</td>
+                        <td class="govuk-table__cell">Blocked</td>
+                        <td class="govuk-table__cell">Fred Basset</td>
+                        <td class="govuk-table__cell">£598.99</td>
+                        <td class="govuk-table__cell"><a href="#">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-</main>
+</div>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}
