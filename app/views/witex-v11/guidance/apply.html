@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+
+<script src="/public/javascripts/accordion.js"></script>
+
+<script>
+// uncomment this to turn on the accordions
+
+if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+
+
+
+
+<!-- include "includes/webchat/chatjsuser.html" 
+ -->
+
+<div class="govuk-width-container">
+   
+           <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+       <h1 class="govuk-heading-xl" >Claiming for expenses as a witness</h1>
+
+      <p class="linksAtTop">Contents</p>
+      <p class="linksAtTop">&#8212 <a href="./"> Make a claim</a></p>
+             <p class="linksAtTop">&#8212 <a href="pay"> Food and drink</a></p>
+      <p class="linksAtTop">&#8212 <a href="study">Travel </a></p>
+       <p class="linksAtTop">&#8212  <a href="courses"> Overnight stays</a></p>
+
+       <p class="linksAtTop">&#8212  <a href="provider"> Loss of earnings</a></p>
+       <p class="linksAtTop">&#8212 Childcare </a></p>
+             <p class="linksAtTop">&#8212 <a href="adult"> Adult care </a></p>
+         <p class="linksAtTop">&#8212 <a href="other"> Other expenses </a></p>
+       
+
+<h2 class="govuk-heading-m" >Childcare expenses</h2>
+<p>If you paid an OFSTED registered childcare provider to look after your children while you attended court, you can claim for the full cost of childcare. </p>
+<p>Most providers caring for children under 8 years old for more than 2 hours a day in England must register with Ofsted.</p>
+
+<p>Registered childcare providers will usually put their unique reference number (URN) on their invoice.</p>
+
+<p>You can also check on the Ofsted website if <a href="https://reports.ofsted.gov.uk/childcare">your childcare is registered.</a></p>
+<p>If not, for example leaving children with a family member, you can claim up to £67 per day. </p>
+<p> You need to provide receipts.</p>
+
+
+
+
+<nav class="gem-c-pagination" role="navigation" aria-label="Pagination">
+  <ul class="gem-c-pagination__list" data-module="track-click">
+      <li class="gem-c-pagination__item gem-c-pagination__item--next">
+        <a href="adult" class="gem-c-pagination__link" rel="next" data-track-category="contentsClicked" data-track-action="next" data-track-label="guidance/adult" data-track-dimension="next" data-track-dimension-index="29">
+          <span class="gem-c-pagination__link-title">
+            <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+              <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+            <span class="gem-c-pagination__link-text">
+              Next
+            </span>
+          </span>
+            <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+            <span class="gem-c-pagination__link-label" style="margin-left:27px">Adult care</span>
+        </a>
+      </li>
+  </ul>
+</nav>
+</div>
+            <div class="column-one-third">
+          
+         <!--       <h3 class="govuk-heading-s"  >Related content</h3> -->
+
+        
+          </div>
+</div>
+<!--  include "includes/webchat/chatbox.html" 
+ --></main>
+{% endblock %}

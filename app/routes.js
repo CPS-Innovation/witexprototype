@@ -545,6 +545,30 @@ router.get('/*/start/overNightStayRoute2' , function (req, res) {
         }
 })
 
+router.get('/*/start/overNightStayRoute3' , function (req, res) {
+  var confirmTraining = req.query.overnightStay
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['overNightStayShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../overnightstay/stayDays`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['overNightStayShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`lossOfPay`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['overNightStayShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`lossOfPay`)
+            break;
+        }
+})
+
 router.get('/*/overnightstay/paidAlready' , function (req, res) {
   var confirmTraining = req.query.overnightPaid
        switch (true) {
@@ -706,6 +730,29 @@ router.get('/*/start/selfemployedornotroute' , function (req, res) {
         }
 })
 
+router.get('/*/start/selfemployedornotroute2' , function (req, res) {
+
+    var confirmTraining = req.query.employedornot
+       switch (true) {
+          case  (confirmTraining == 'Employed'):
+              res.redirect(`../lossOfPay`)
+            
+           break;
+
+           case  (confirmTraining == 'Self employed'):
+            res.redirect(`../selfEmployed`)
+             break;
+
+                 case  (confirmTraining == 'Director'):
+            res.redirect(`../ltdDirector`)
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`3`)
+            break;
+        }
+})
+
 router.get('/*/start/lossPayRoute2' , function (req, res) {
   var confirmTraining = req.query.lossPay
        switch (true) {
@@ -739,6 +786,31 @@ router.get('/*/lossOfPay/unpaiddayoffroute' , function (req, res) {
               req.session.data['employmentTypeShow'] = false;
               // req.session.data['MG11SheMcNotRedacted'] = false;
               res.redirect(`../unpaidDay`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['lossPayShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../start/childcare`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['lossPayShow'] = 'arse';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`childcare`)
+            break;
+        }
+})
+
+router.get('/*/lossOfPay/unpaiddayoffroute2' , function (req, res) {
+  var confirmTraining = req.query.unpaiddayoff
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['lossPayShow'] = true;
+              req.session.data['employmentTypeShow'] = false;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`payDays`)
             
            break;
 
