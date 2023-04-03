@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+                <span class="govuk-caption-xl">Motorbike or scooter</span>
+           How many miles are you claiming for?
+        </h1>
+                   <p>You can claim  {% if data.higherMileBike == "Yes" %} 23.8p {% else %} 25.4p {% endif %} per mile.</p>
+
+<p>You don't need receipts for mileage claims.</p>
+  
+        <form action="parking" method="get" class="form">
+            <div class="govuk-form-group">
+                <label class="govuk-label  bold-label" for="code">
+                   Total miles
+                </label>
+     <!--            <span id="email-hint" class="govuk-hint">
+                    This includes travelling to and from court
+                </span> -->
+                <div class="govuk-input__wrapper">
+                    <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">miles</div>
+                </div>
+                <p style="margin-top:15px"> You can use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to calculate your mileage.</p>
+            </div>
+
+
+            <button class="govuk-button">Continue</button>
+        </form>
+
+    </div>
+    </main>
+</div>
+{% endblock %}

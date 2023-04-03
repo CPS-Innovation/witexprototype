@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="../start/lossOfPay">
+                <h1 class="govuk-heading-xl">Did you have to pay extra for an evening meal?</h1>
+                    
+                      <p>If you were not provided an evening meal with your accomodation, you can claim a fixed amount of £78 for 3 nights to cover this. </p>
+                      <p>If your evening meal was included with your accomodation, you can claim £15 for 3 nights.</p>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                     <!--    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                         
+                            <label class="govuk-label  bold-label" for="firstName">
+                                    Do you want to claim for food and drink?</label>
+                        </legend> -->
+                  
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="mealOrNot" name="mealOrNot" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="mealOrNot" name="mealOrNot" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    No
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
