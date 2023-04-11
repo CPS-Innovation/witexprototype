@@ -15,10 +15,12 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="didUserPay2">
-                <h1 class="govuk-heading-xl">Did you stay with friends and family?</h1>
-                 <!--      <p>If you paid for your overnight stay, you can claim a fixed amount for your accommodation, meals and refreshments.</p><p> This ranges between £91 and £121 per night depending on your accomodation's location. You will need to provide a receipt for your stay. </p> -->
-                      <p>If you stayed with friends and family, you can claim a fixed amount of £25 a night. You do not need to provide a receipt. </p>
+            <form method="get" action="../start/lossOfPay">
+                <h1 class="govuk-heading-xl">Did you have to pay extra for an evening meal?</h1>
+                    
+                      <p>If you were not provided an evening meal with your accomodation, you can claim a fixed amount of £78 for 3 nights to cover this. </p>
+                      <p>If your evening meal was included with your accomodation, you can claim £15 for 3 nights.</p>
+
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
                      <!--    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -29,13 +31,13 @@ href: "javascript:history.back()"
                   
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="overnightUserPaid" name="overnightUserPaid" type="radio" value="Yes">
+                                <input class="govuk-radios__input" id="mealOrNot" name="mealOrNot" type="radio" value="Yes">
                                 <label class="govuk-label govuk-radios__label" for="TRN-yes">
                                     Yes
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="overnightUserPaid" name="overnightUserPaid" type="radio" value="No">
+                                <input class="govuk-radios__input" id="mealOrNot" name="mealOrNot" type="radio" value="No">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     No
                                 </label>

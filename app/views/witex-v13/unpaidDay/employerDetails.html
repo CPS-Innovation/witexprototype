@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="../start/childcare" method="get" class="form">
+                <h1 class="govuk-heading-xl">
+                    Your employer details
+                </h1>
+                <p>We may check the information you give us. </p>
+               <!--  <p>We need this to help you save and return to your claim.</p> -->
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        </legend>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-width-three-quarters bold-label" for="EmployerName">
+                                Employer name
+                            </label>
+                            <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+                            <input class="govuk-input govuk-!-width-three-quarters" id="EmployerName" name="EmployerName" type="text" aria-describedby="EmployerName">
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-width-three-quarters bold-label" for="managerName">
+                               Line manager contact name
+                            </label>
+                            <input class="govuk-input govuk-!-width-three-quarters" id="managerName" name="managerName" type="text" aria-describedby="managerName">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-width-three-quarters bold-label" for="managerJob">
+                                Line manager job title
+                            </label>
+                            <input class="govuk-input govuk-!-width-three-quarters" id="managerJob" name="managerJob" type="text" aria-describedby="managerJob">
+                        </div>
+
+                         <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-width-three-quarters bold-label" for="managerPhone">
+                               Line manager phone number
+                            </label>
+                            <input class="govuk-input govuk-!-width-three-quarters" id="managerPhone" name="managerPhone" type="text" aria-describedby="last-name-real">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-!-width-three-quarters bold-label" for="managerEmail">
+                                Line manager email address
+                            </label>
+                            <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+                            <input class="govuk-input govuk-!-width-three-quarters" id="managerEmail" name="managerEmail" type="text" aria-describedby="managerEmail">
+                        </div>
+                    </fieldset>
+                </div>
+                <button class="govuk-button">Continue</button>
+                <!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
+            </form>
+        </div>
+    </div>
+    {% endblock %}
