@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="overnightCost">
+                <h1 class="govuk-heading-xl">Did you make a single payment for your whole stay?</h1>
+                <!--  <p>You can claim between £2.25 and £9.75 per day for food and drink on the days you were in court.</P><p>You don't need receipts </p> -->
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="oneCost" name="oneCost" type="radio" value="it took me 90 minutes or more to travel to court" data-aria-controls="conditional-contact">
+                                <label class="govuk-label govuk-radios__label" for="contact">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="oneCost" name="oneCost" type="radio" value="I have a disability" data-aria-controls="conditional-contact-2">
+                                <label class="govuk-label govuk-radios__label" for="contact-2">
+                                    No
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
