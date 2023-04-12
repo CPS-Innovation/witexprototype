@@ -11,6 +11,8 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/add-another.js"></script>
 <!-- Here is the code to show conditional stuff in liquid-->
 {% if data.FAALoggedIn %}
 <div class="do-a-thing"></div>
@@ -21,33 +23,46 @@ href: "javascript:history.back()"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">
-                <span class="govuk-caption-xl">Car</span>
-           How many miles are you claiming for?
+            <span class="govuk-caption-xl">Car</span>
+            Miles
         </h1>
-                   <p>You can claim  {% if data.higherMile == "Yes" %} 45p {% else %} 25p {% endif %} per mile.</p>
-
-<p>You don't need receipts for mileage claims.</p>
-  
-        <form action="parking" method="get" class="form">
-            <div class="govuk-form-group">
-                <label class="govuk-label  bold-label" for="code">
-                   Total miles
-                </label>
-     <!--            <span id="email-hint" class="govuk-hint">
+        <p>You can claim {% if data.higherMile == "Yes" %} 45p {% else %} 25p {% endif %} per mile.</p>
+        <p>You don't need receipts for mileage claims.</p>
+        <p style=""> You can use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to calculate your mileage.</p>
+        <!-- <form action="parking" method="get" class="form"> -->
+        <div data-module="moj-add-another">
+            <form method="post">
+                <fieldset class="govuk-fieldset moj-add-another__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label  bold-label" for="miles[0][number]">
+                            How many miles are you claiming for on day x?
+                        </label>
+                        <!--            <span id="email-hint" class="govuk-hint">
                     This includes travelling to and from court
                 </span> -->
-                <div class="govuk-input__wrapper">
-                    <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false">
-                    <div class="govuk-input__suffix" aria-hidden="true">miles</div>
+                        <div class="govuk-input__wrapper">
+                            <input class="govuk-input govuk-input--width-5" id="miles[0][number]" name="miles[0][number]" type="text" spellcheck="false" data-name="miles[%index%][number]" data-id="miles[%index%][number]">
+                            <div class="govuk-input__suffix" aria-hidden="true">miles</div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
+                        Add another day
+                    </button>
                 </div>
-                <p style="margin-top:15px"> You can use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to calculate your mileage.</p>
-            </div>
-
-
-            <button class="govuk-button">Continue</button>
-        </form>
-
+            </form>
+            <form action="parking" method="get" class="form">
+                <div class="moj-button-action">
+                    <button class="govuk-button" data-module="govuk-button">
+                        Continue
+                    </button>
+                </div>
+            </form>
+        </div>
+        </main>
     </div>
-    </main>
-</div>
-{% endblock %}
+    <script type="text/javascript">
+    MOJFrontend.initAll();
+    </script>
+    {% endblock %}
