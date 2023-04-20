@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="overnightStayRoute2">
+                <h1 class="govuk-heading-xl">Overnight stay </h1>
+                <p>You can claim expenses for an overnight stay if:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                      <li>it takes you 90 minutes or more to travel to court </li>
+                      <li>you are disabled</li>
+                      <li>you have another good reason for staying overnight</li>
+                    </ul>
+
+                    <p>If you paid for your overnight stay you can claim for your accommodation and a fixed amount to cover your meals and refreshments.
+
+ </p>
+
+                    <p>If you didn't pay for your stay, you can still claim a fixed allowance for food and drink.</p>
+
+                  <!--  <p> Everyone who stayed overnight can claim for a fixed allowance to cover food and drink.</p> -->
+
+
+
+
+
+<!--                  <div class="govuk-inset-text">
+           You must provide a receipt
+        </div> -->
+
+<!--              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Amounts you can claim for staying overnight
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+            <h2 class="govuk-heading-s">If your accommodation was paid for you </h2>
+                         
+<p>If your evening meal wasn't included - £26.00 per night </p>
+<p>If your evening meal was included - £5.00 per night </p>
+             <h2 class="govuk-heading-s">If you paid for your accommodation </h2>
+
+                <p> Up to £91.00 per night </p>
+             <h2 class="govuk-heading-s">If you stayed with friends or family</h2>
+             <p> £25 per night</p>
+                </div>
+              </details> -->
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                         
+                            <label class="govuk-label  bold-label" for="firstName">
+Do you want to claim expenses for an overnight stay?                             </label>
+                        </legend>
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="overnightStay" name="overnightStay" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="overnightStay" name="overnightStay" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    No
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
