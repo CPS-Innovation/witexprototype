@@ -12,6 +12,21 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
+
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
 <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
 <style>
 .govuk-header__logotype {
@@ -60,12 +75,9 @@ href: "javascript:history.back()"
 <div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
     <div class="govuk-grid-column-two-thirds">
         <div class="">
-            <!--         <div class="govuk-form-group" style="margin-bottom:15px">
-            <label class="govuk-label   govuk-label--s" for="partialCost" style="">
-                Search
-            </label>
-            <input class="govuk-input" id="partialCost" name="partialCost" type="text" aria-describedby="FirstName-hint" value="" />
-        </div> -->
+
+
+ 
             <table class="govuk-table">
                 <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
@@ -125,13 +137,13 @@ href: "javascript:history.back()"
                 <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Food</td>
-                        <td class="govuk-table__cell "></td>
+
                         <td class="govuk-table__cell ">£2.25</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">London transport</td>
-                        <td class="govuk-table__cell "></td>
+
                         <td class="govuk-table__cell">£9.78</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
@@ -143,96 +155,195 @@ href: "javascript:history.back()"
                     </tr> -->
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Train</td>
-                        <td class="govuk-table__cell ">Some receipts <br />"Machine ate my ticket"</td>
                         <td class="govuk-table__cell">£96.00</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Car</td>
-                        <td class="govuk-table__cell "></td>
-                        <td class="govuk-table__cell">£90.00</td>
+                        <td class="govuk-table__cell">Mileage</td>
+                        <td class="govuk-table__cell">£80.00</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Car parking</td>
-                        <td class="govuk-table__cell ">All receipts</td>
                         <td class="govuk-table__cell">£10.00</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
-                    <!--                      <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Other car expenses</td>
-                        <td class="govuk-table__cell">£0.00</td>
-                        <td class="govuk-table__cell"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell">Motorbike/scooter</td>
-                        <td class="govuk-table__cell">£0.00</td>
-                        <td class="govuk-table__cell"><a href="#">Edit</a></td>
-                    </tr>
-                                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Motorbike/scooter parking</td>
-                        <td class="govuk-table__cell">£0.00</td>
-                        <td class="govuk-table__cell"><a href="#">Edit</a></td>
-                    </tr>
-                                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Other Motorbike/scooter expenses</td>
-                        <td class="govuk-table__cell">£0.00</td>
-                        <td class="govuk-table__cell"><a href="#">Edit</a></td>
-                    </tr> -->
-                    <!--                      <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Bicycle</td>
-                        <td class="govuk-table__cell">£0.00</td>
-                        <td class="govuk-table__cell"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Taxi</td>
-                        <td class="govuk-table__cell">£0.00</td>
-                        <td class="govuk-table__cell"><a href="#">Edit</a></td>
-                    </tr> -->
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Overnight accomodation</td>
-                        <td class="govuk-table__cell ">Must have receipts</td>
-                        <td class="govuk-table__cell">£95.00</td>
+                        <td class="govuk-table__cell">£121.00</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell" style="font-weight:700">Total</td>
-                        <td class="govuk-table__cell" style="font-weight:700"></td>
+                    
                         <td class="govuk-table__cell" style="font-weight:700">£303.03</td>
+                            <td class="govuk-table__cell" style="font-weight:700"></td>
                         <td class="govuk-table__cell"><a href="#"></a></td>
                     </tr>
                 </tbody>
             </table>
 
-                        <table class="govuk-table">
-                <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th class="govuk-table__header" scope="col"></th>
-                        <th class="govuk-table__header" scope="col"></th>
-                        <td class="govuk-table__cell"><a href="#"></a></td>
-                    </tr>
-                </thead>
-                <caption class="govuk-table__caption govuk-table__caption--m">Receipts</caption>
-                <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">  
-                        <td class="govuk-table__cell "><a href="#">My train tickets.pdf</a></td>
-                        <td class="govuk-table__cell"><a href="#"></a></td>
-                         <td class="govuk-table__cell"></td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell "><a href="#">hjlahjdnaush8791637163ahjshdjad.jpg</a></td>
-                        <td class="govuk-table__cell"><a href="#"></a></td>
-                         <td class="govuk-table__cell"></td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell "><a href="#">jashdjkahd asudh8797987 8789 7987.jpg</a></td>
-                        <td class="govuk-table__cell"><a href="#"></a></td>
-                         <td class="govuk-table__cell"></td>
-                    </tr>
 
-                </tbody>
-            </table>
+             
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col"></th>
+            <td class="govuk-table__cell"><a href="#"></a></td>
+        </tr>
+    </thead>
+    <caption class="govuk-table__caption govuk-table__caption--m">Proof</caption>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Train</td>
+            <td class="govuk-table__cell ">Some receipts <br />"Machine ate my ticket"</td>
+            <td class="govuk-table__cell">£96.00</td>
+            <td class="govuk-table__cell"><a href="#">Edit</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Car parking</td>
+            <td class="govuk-table__cell ">All receipts</td>
+            <td class="govuk-table__cell">£10.00</td>
+            <td class="govuk-table__cell"><a href="#">Edit</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Overnight accomodation</td>
+            <td class="govuk-table__cell ">Must have receipts</td>
+            <td class="govuk-table__cell">£95.00</td>
+            <td class="govuk-table__cell"><a href="#">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
 
+<div class="accordion">
+    <div class="accordion-section">
+        <div class="accordion-section-header">
+            <h2 class="govuk-heading-s"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</h2>
+        </div>
+        <div class="accordion-section-body">
+            <img src="/public/images/IMG_3983.jpg" style="width:100%">
+        </div>
+    </div>
+    <div class="accordion-section">
+        <div class="accordion-section-header">
+            <h2 class="govuk-heading-s">khkjhkj h kjh jkhkj hkj .jpg</h2>
+        </div>
+        <div class="accordion-section-body">
+           <img src="/public/images/IMG_8919.jpg" style="width:100%"> 
+        </div>
+    </div>
+        <div class="accordion-section">
+        <div class="accordion-section-header">
+            <h2 class="govuk-heading-s">yuyiuyi. nmbnmbnb nbmn bmn b.jpg</h2>
+        </div>
+        <div class="accordion-section-body">
+            <img src="/public/images/IMG_8921.jpg" style="width:100%"> 
+        </div>
+    </div>
+</div>  
+
+<div style="margin-bottom:30px"></div>
+
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col"></th>
+            <td class="govuk-table__cell"><a href="#"></a></td>
+        </tr>
+    </thead>
+    <caption class="govuk-table__caption govuk-table__caption--m">Checks</caption>
+       <caption class="govuk-table__caption govuk-table__caption--s">Overnight Stay</caption>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Type</td>
+            <td class="govuk-table__cell ">Paid overnight stay</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Reason</td>
+            <td class="govuk-table__cell">it takes you 90 minutes or more to travel to court</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Accomodation claim</td>
+            <td class="govuk-table__cell">£95.00</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Area of country</td>
+            <td class="govuk-table__cell">London</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Court name</td>
+            <td class="govuk-table__cell ">Westminister magistrates court</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Court postcode</td>
+            <td class="govuk-table__cell ">NW1 5BR</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Claimants postcode</td>
+            <td class="govuk-table__cell ">N4 3BJ</td>
+        </tr>
+
+         <tr class="govuk-table__row">
+             <td class="govuk-table__cell ">Check</td>
+            <td class="govuk-table__cell"><a href="https://www.google.com/maps/dir/Bracey+St,+Finsbury+Park,+London+N4+3BJ/London+NW1+5BR/@51.5429064,-0.1761175,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x48761ba2eeb7d1cf:0xab0e0856c14c8082!2m2!1d-0.1196079!2d51.5659081!1m5!1m1!1s0x48761ac9e327baf9:0x5c9dee0d1268cba5!2m2!1d-0.1641802!2d51.5207075!3e3" target=”_blank”>Journey on Google maps</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col"></th>
+            <td class="govuk-table__cell"><a href="#"></a></td>
+        </tr>
+    </thead>
+       <caption class="govuk-table__caption govuk-table__caption--s">Car</caption>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Type</td>
+            <td class="govuk-table__cell ">Claiming higher mileage</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Reason</td>
+            <td class="govuk-table__cell">There was no public transport</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Number of miles</td>
+            <td class="govuk-table__cell">177</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Cost </td>
+            <td class="govuk-table__cell">£80</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Court name</td>
+            <td class="govuk-table__cell ">Westminister magistrates court</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Court postcode</td>
+            <td class="govuk-table__cell ">NW1 5BR</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Claimants postcode</td>
+            <td class="govuk-table__cell ">N4 3BJ</td>
+        </tr>
+
+         <tr class="govuk-table__row">
+             <td class="govuk-table__cell ">Check</td>
+            <td class="govuk-table__cell"><a href="https://www.google.com/maps/dir/Bracey+St,+Finsbury+Park,+London+N4+3BJ/London+NW1+5BR/@51.5438783,-0.1847095,13z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x48761ba2eeb7d1cf:0xab0e0856c14c8082!2m2!1d-0.1196079!2d51.5659081!1m5!1m1!1s0x48761ac9e327baf9:0x5c9dee0d1268cba5!2m2!1d-0.1641802!2d51.5207075!3e0" target=”_blank”>Journey on Google maps</a></td>
+        </tr>
+    </tbody>
+</table>
+              
+
+<div style="margin-top:40px"></div>
 
             <table class="govuk-table">
                 <thead class="govuk-table__head">
@@ -279,6 +390,18 @@ href: "javascript:history.back()"
                         <td class="govuk-table__cell">Machine ate my tickets</td>
                         <td class="govuk-table__cell"><a href="#">Edit</a></td>
                     </tr>
+                     </tbody>
+                    </table>
+
+       <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header" scope="col"></th>
+                        <th class="govuk-table__header" scope="col"></th>
+                        <td class="govuk-table__cell"><a href="#"></a></td>
+                    </tr>
+                </thead>
+                     <caption class="govuk-table__caption govuk-table__caption--s">Car</caption>
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">Are you claiming the higher rate of mileage for your car? </td>
                         <td class="govuk-table__cell">Yes</td>
@@ -479,18 +602,44 @@ href: "javascript:history.back()"
 
         </div>
     </div>
-    <div class="govuk-grid-column-one-third">
-        <p>maybe status and assigned go here</p>
-        <div class="govuk-form-group">
-            <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--s" for="more-detail">
-                    Add a note
-                </label>
-            </h1>
-            <textarea class="govuk-textarea" style="margin-bottom:10px" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-             <button type="submit" class="govuk-button govuk-button--secondary">Add note </button>
-        </div>
+        <div class="govuk-grid-column-one-third">
 
+            <div class="govuk-form-group" style="margin-bottom:10px">
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--s" for="more-detail">
+                        Add a note
+                    </label>
+                </h1>
+                <textarea class="govuk-textarea" style="margin-bottom:10px" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                <button type="submit" class="govuk-button govuk-button--secondary">Add note </button>
+            </div>
+             <div class="govuk-form-group" style="margin-bottom:10px">
+            <label class="govuk-label   govuk-label--s" for="partialCost">
+                Status
+            </label>
+            <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%; ">
+                <option value="5 miles">In progress</option>
+                <option value="approved">Approved</option>
+                <option value="20 miles">Blocked</option>
+                <option value="20 miles">Rejected</option>
+            </select>
+            <form action="#" method="get" class="form">
+                <button class="govuk-button govuk-button--secondary">Update</button>
+            </form>
+        </div>
+                     <div class="govuk-form-group" style="margin-bottom:10px">
+            <label class="govuk-label   govuk-label--s" for="partialCost">
+                Assigned to
+            </label>
+            <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%; ">
+                <option value="5 miles">David Barton</option>
+                <option value="approved">Fred Basset</option>
+                <option value="20 miles">Not assigned</option>
+            </select>
+            <form action="#" method="get" class="form">
+                <button class="govuk-button govuk-button--secondary">Update</button>
+            </form>
+        </div>
     </div>
 </div>
 </div>

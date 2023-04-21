@@ -51,6 +51,7 @@
 
 </style>
 <h1 class="govuk-heading-xl">Claims (5)</h1>
+<p>think there is another version of this with tabs at the top for the status rather than filters...</p>
 <div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
     <div class="govuk-grid-column-one-quarter" style="">
         <!-- desktop version of the filters -->
@@ -71,7 +72,6 @@
                               <option value="2 miles">All</option>
                             <option value="2 miles">New</option>
                             <option value="5 miles">In progress</option>
-                            <option value="15 miles">Paid</option>
                             <option value="20 miles">Blocked</option>
                              <option value="20 miles">Rejected</option>
                         </select>
@@ -91,7 +91,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="filter text-filter">
+<!--                     <div class="filter text-filter">
                         <div class="govuk-form-group" style="margin-bottom:0">
                             <label class="govuk-label   govuk-label--s legend" for="partialCost">
                                 Claim levels
@@ -104,7 +104,7 @@
                                 <option value="Degree">Over £1,000</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
 <!--                     <div class="govuk-option-select js-collapsible" style="background-color: #fff">
                         <button class="js-container-head" type="button" aria-expanded="false" aria-controls="case_state">
                             <label class="govuk-label   govuk-label--s legend" for="partialCost" style="margin-bottom:-10px">
@@ -150,9 +150,10 @@
                     <tr class="govuk-table__row">
                         <th class="govuk-table__header" scope="col">ID</th>
                         <th class="govuk-table__header" scope="col">Name</th>
+                           <th class="govuk-table__header" scope="col">Recieved</th>
                         <th class="govuk-table__header" scope="col">Status</th>
                         <th class="govuk-table__header" scope="col">Assigned to</th>
-                        <th class="govuk-table__header" scope="col">Claim amount</th>
+                        <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                         <th class="govuk-table__header" scope="col"></th>
                     </tr>
                 </thead>
@@ -160,41 +161,46 @@
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell">HD90210</td>
                         <td class="govuk-table__cell">Robert Edwards</td>
+                         <td class="govuk-table__cell">21 April 2022</td>
                         <td class="govuk-table__cell">New</td>
                         <td class="govuk-table__cell"></td>
-                        <td class="govuk-table__cell">£303.03</td>
+                        <!-- <td class="govuk-table__cell">£303.03</td> -->
                         <td class="govuk-table__cell"><a href="caseManagement/claim">View</a></td>
                     </tr>
                      <tr class="govuk-table__row">
                         <td class="govuk-table__cell">HD01209</td>
                         <td class="govuk-table__cell">James Collyer</td>
+                         <td class="govuk-table__cell">20 April 2022</td>
                         <td class="govuk-table__cell">New</td>
                         <td class="govuk-table__cell"></td>
-                        <td class="govuk-table__cell">£2.25</td>
+                        <!-- <td class="govuk-table__cell">£2.25</td> -->
                         <td class="govuk-table__cell"><a href="#">View</a></td>
                     </tr>
                      <tr class="govuk-table__row">
                         <td class="govuk-table__cell">ZF92011</td>
                         <td class="govuk-table__cell">Bal Jackson</td>
+                         <td class="govuk-table__cell">20 April 2022</td>
                         <td class="govuk-table__cell">In progress</td>
                         <td class="govuk-table__cell">David Barton</td>
-                        <td class="govuk-table__cell">£98.99</td>
+                        <!-- <td class="govuk-table__cell">£98.99</td> -->
                         <td class="govuk-table__cell"><a href="#">View</a></td>
                     </tr>
                      <tr class="govuk-table__row">
                         <td class="govuk-table__cell">ZF92011</td>
                         <td class="govuk-table__cell">Mel Hilton</td>
+                         <td class="govuk-table__cell">05 April 2022</td>
                         <td class="govuk-table__cell">Blocked</td>
                         <td class="govuk-table__cell">Fred Basset</td>
-                        <td class="govuk-table__cell">£598.99</td>
+                        <!-- <td class="govuk-table__cell">£598.99</td> -->
                         <td class="govuk-table__cell"><a href="#">View</a></td>
                     </tr>
                       <tr class="govuk-table__row">
                         <td class="govuk-table__cell">AB57824</td>
                         <td class="govuk-table__cell">Colette Phipps</td>
+                         <td class="govuk-table__cell">01 April 2022</td>
                         <td class="govuk-table__cell">Blocked</td>
                         <td class="govuk-table__cell">Fred Basset</td>
-                        <td class="govuk-table__cell">£499.99</td>
+                        <!-- <td class="govuk-table__cell">£499.99</td> -->
                         <td class="govuk-table__cell"><a href="#">View</a></td>
                     </tr>
                 </tbody>
