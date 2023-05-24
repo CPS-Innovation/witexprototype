@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full"></div>
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                Expenses submitted
+            </h1>
+              <div class="govuk-panel__body">
+    Your reference number<br><strong>HDJ2123F</strong>
+  </div>
+        </div>
+  <!--       <p class="govuk-body">
+           <i class="far fa-envelope" style="margin-right:3px"></i>We've sent you an email confirming your <span style="font-weight:700">Business admin apprentice</span> application
+        </p> -->
+        <p>An email confirmation has been sent to {{ data['email'] }}.  </p>
+         <h2 class="govuk-heading-m">What happens next</h2>
+         <p>We will deal with your claim as quickly as possible and, as long as you have filled the form in correctly, we aim to pay within 10 working days. </p>
+            <p>If you are not paid within 20 working days, call 01924 205 200 or email <a href="">witness.query@cps.gov.uk</a>. </p>
+
+<form method="get" action="feedback3">
+                 <h2 class="govuk-heading-m" style="margin-top:45px">Help us improve our service</h2>
+                <!-- <p>Tell us the name of the person the cheque should be made out to. -->
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                          <h1 class="govuk-fieldset__heading">
+                          How would you describe the expenses claim you have completed today?
+                          </h1>
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                              Very easy
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                              Easy
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                              Neither easy or difficult
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Difficult
+                            </label>
+                          </div>
+                           <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="very-difficult">
+                            <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                              Very difficult
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+
+
+        <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        
+      
+      <!--   <p> <a href="#"> to complete your registration with them</a>  </p> -->
+<!--           <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                      Contact the provider
+                  </span>
+              </summary>
+              <div class="govuk-details__text">
+                 <p>Alyson Abrahms 01923 385 4100</p>
+                 <p>apprentice@business.com</p>
+              </div>
+          </details> -->
+<!--           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+           <h1 class="govuk-heading-m" style="">Saved apprenticeships</h1>
+           <p style="margin-bottom:5px; font-weight:700"><a href="" >Hairdressing apprentice</a></p>
+           <p>Closing date: 04 Apr 2020</p>
+           <p><a href="">Resume</a></p>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible"> -->
+
+    </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,442 @@
+{% extends "layoutCPS.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/version1/mainNav.html" %}
+{% include "includes/version1/homeNav.html" %}
+{% endblock %}
+{% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<style>
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form  {
+    border: 1px solid lightgrey;
+    padding:10px;
+
+}
+
+.options-container {
+    border:0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button 
+{
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color:#fff !important;
+}
+
+#finder-frontend .govuk-option-select, #finder-frontend .filter {
+    margin-bottom:0 !important;
+}
+
+#finder-frontend .govuk-form-group {
+
+}
+
+.govuk-width-container {
+    max-width: 1400px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+</style>
+<h1 class="govuk-heading-xl">Active witness expense claims</h1>
+<div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
+    <div class="govuk-grid-column-one-quarter" style="">
+        <!-- desktop version of the filters -->
+        <div class="notOnMobile">
+            <div class="filter-form filtering ">
+                <div id="finder-frontend" class="inner-block">
+                    <div class="filter text-filter">
+                        <div class="govuk-form-group" style="margin-bottom:15px">
+                            <label class="govuk-label   govuk-label--s legend" for="partialCost" style="">
+                                Search
+                            </label>
+                            <input class="govuk-input" style="margin-bottom: 0px" id="partialCost" name="partialCost" type="text" aria-describedby="FirstName-hint" value="" />
+                        </div>
+                    </div>
+                    <div class="filter text-filter">
+                        <div class="govuk-form-group" style="margin-bottom:0">
+                            <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                                Assigned to
+                            </label>
+                            <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%">
+                                <option value="All" selected>All</option>
+                                <option value="Employer">Not assigned</option>
+                                <option value="Job title">David Barton</option>
+                                <option value="Description">Fred Basset</option>
+                                <option value="Employer">Not assigned</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="govuk-button" style="margin-left:10px; margin-top:15px">Update results</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="govuk-grid-column-three-quarters" >
+        <div class=" weirdFix1400">
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <ul class="govuk-tabs__list">
+<!--                     <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#all">
+                            All (6)
+                        </a>
+                    </li> -->
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#new">
+                            New (2)
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#progress">
+                            In progress 
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#blocked">
+                            Sent back
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#blockeded">
+                            Blocked
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#sentApproval">
+                            Sent for approval
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#rejected">
+                            Rejected
+                        </a>
+                    </li>
+                    <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#paid">
+                            Approved
+                        </a>
+                    </li>
+                    <!-- <div class="govuk-tabs__panel" id="all">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Case ID</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <th class="govuk-table__header" scope="col">Status</th>
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                  
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">21 April 2022</td>
+                                    <td class="govuk-table__cell">New</td>
+                                    <td class="govuk-table__cell"></td>
+                           
+                                    <td class="govuk-table__cell"><a href="claim2">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">HD01209</td>
+                                    <td class="govuk-table__cell">James Collyer</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <td class="govuk-table__cell">New</td>
+                                    <td class="govuk-table__cell"></td>
+                             
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZF92011</td>
+                                    <td class="govuk-table__cell">Bal Jackson</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <td class="govuk-table__cell">In progress</td>
+                                    <td class="govuk-table__cell">David Barton</td>
+                                
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZF92011</td>
+                                    <td class="govuk-table__cell">Mel Hilton</td>
+                                    <td class="govuk-table__cell">05 April 2022</td>
+                                    <td class="govuk-table__cell">Pending</td>
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">AB57824</td>
+                                    <td class="govuk-table__cell">Colette Phipps</td>
+                                    <td class="govuk-table__cell">01 April 2022</td>
+                                    <td class="govuk-table__cell">Pending</td>
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                              
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZA57829</td>
+                                    <td class="govuk-table__cell">Claire Postlethwaite</td>
+                                    <td class="govuk-table__cell">02 April 2022</td>
+                                    <td class="govuk-table__cell">Paid</td>
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                            
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> -->
+                    <div class="govuk-tabs__panel" id="new">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <!-- <th class="govuk-table__header" scope="col">Assigned to</th> -->
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">21 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">New</td> -->
+                                    <!-- <td class="govuk-table__cell"></td> -->
+                                    <!-- <td class="govuk-table__cell">£303.03</td> -->
+                                    <td class="govuk-table__cell"><a href="claim2">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">HD01209</td>
+                                    <td class="govuk-table__cell">James Collyer</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">New</td> -->
+                                    <!-- <td class="govuk-table__cell"></td> -->
+                                    <!-- <td class="govuk-table__cell">£2.25</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="govuk-tabs__panel" id="progress">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZF92011</td>
+                                    <td class="govuk-table__cell">Bal Jackson</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">In progress</td> -->
+                                    <td class="govuk-table__cell">David Barton</td>
+                                    <!-- <td class="govuk-table__cell">£98.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="govuk-tabs__panel" id="blocked">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZF92011</td>
+                                    <td class="govuk-table__cell">Mel Hilton</td>
+                                    <td class="govuk-table__cell">05 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Pending</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£598.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">AB57824</td>
+                                    <td class="govuk-table__cell">Colette Phipps</td>
+                                    <td class="govuk-table__cell">01 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Pending</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£499.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="govuk-tabs__panel" id="blockeded">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">AF920221</td>
+                                    <td class="govuk-table__cell">Geoff Wurst</td>
+                                    <td class="govuk-table__cell">05 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Pending</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£598.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">BA57843</td>
+                                    <td class="govuk-table__cell">Adam Ackbar</td>
+                                    <td class="govuk-table__cell">01 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Pending</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£499.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="govuk-tabs__panel" id="sentApproval">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">BN57856</td>
+                                    <td class="govuk-table__cell">Rod Hull</td>
+                                    <td class="govuk-table__cell">02 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Paid</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£499.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                                        <div class="govuk-tabs__panel" id="rejected">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZA57829</td>
+                                    <td class="govuk-table__cell">BIll Irons</td>
+                                    <td class="govuk-table__cell">02 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Paid</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£499.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="govuk-tabs__panel" id="paid">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">Reference number</th>
+                                    <th class="govuk-table__header" scope="col">Name</th>
+                                    <th class="govuk-table__header" scope="col">Received</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Status</th> -->
+                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">ZA57829</td>
+                                    <td class="govuk-table__cell">Claire Postlethwaite</td>
+                                    <td class="govuk-table__cell">02 April 2022</td>
+                                    <!-- <td class="govuk-table__cell">Paid</td> -->
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <!-- <td class="govuk-table__cell">£499.99</td> -->
+                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
