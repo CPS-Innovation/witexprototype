@@ -130,6 +130,106 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+/* DELETE WHEN UPDATED PROTOTYPE KIT */
+
+.govuk-summary-card {
+    margin-bottom: 20px;
+    border: 1px solid #b1b4b6;
+}
+
+.govuk-summary-card__title-wrapper {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0);
+    background-color: #f3f2f1;
+}
+
+.govuk-summary-list {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.govuk-summary-list__row {
+    display: table-row;
+}
+
+.govuk-summary-list__row {
+    border-bottom: 1px solid #b1b4b6;
+}
+
+.govuk-summary-card__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 15px 20px;
+}
+
+.govuk-summary-card__title-wrapper {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0);
+    background-color: #f3f2f1;
+}
+
+.govuk-summary-card__title {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin: 5px 20px 10px 0;
+       display: flex;
+}
+
+.govuk-summary-card__title {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+}
+
+.govuk-summary-card__title {
+    margin-bottom: 5px;
+}
+
+.govuk-summary-card__actions {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+    }
+
+    .govuk-summary-card__actions {
+    justify-content: right;
+    text-align: right;
+}
+
+.govuk-summary-card__actions {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+}
+
+    .govuk-summary-card__action {
+    display: inline;
+    margin: 0 10px 0 0;
+    padding-right: 10px;
+    border-right: 1px solid #b1b4b6;
+  }
+
+
+/*END OF DELTE WHEN UPDATED*/
+
 blink {
   animation: 2s linear infinite condemned_blink_effect;
 }

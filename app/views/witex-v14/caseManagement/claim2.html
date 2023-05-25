@@ -95,6 +95,11 @@ href: "javascript:history.back()"
                         Claim details
                     </a>
                 </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#audit">
+                        Notes
+                    </a>
+                </li>
             </ul>
             <div class="govuk-tabs__panel" id="past-day">
                 <div class="">
@@ -148,82 +153,58 @@ href: "javascript:history.back()"
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
                                 <th class="govuk-table__header" scope="col"></th>
-                                <th class="govuk-table__header" scope="col"></th>
-                                <th class="govuk-table__header" scope="col"></th>
-                                <td class="govuk-table__cell"><a href="#"></a></td>
+                                <th class="govuk-table__header" scope="col">Entered</th>
+                                <th class="govuk-table__header" scope="col">To pay</th>
                             </tr>
                         </thead>
-                        <caption class="govuk-table__caption govuk-table__caption--m">Amounts to be paid</caption>
+                        <caption class="govuk-table__caption govuk-table__caption--m">Amounts</caption>
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">Food</td>
                                 <td class="govuk-table__cell ">£2.25</td>
-                                 <td class="govuk-table__cell ">£2.25</td>
+                                <td class="govuk-table__cell ">£2.25</td>
                                 <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
                             </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">London transport</td>
                                 <td class="govuk-table__cell">£9.78</td>
-                                 <td class="govuk-table__cell">£9.78</td>
+                                <td class="govuk-table__cell">£9.78</td>
                                 <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
                             </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">Train</td>
                                 <td class="govuk-table__cell">£96.00</td>
-                                 <td class="govuk-table__cell">£96.00</td>
+                                <td class="govuk-table__cell">£96.00</td>
                                 <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
                             </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">Mileage</td>
                                 <td class="govuk-table__cell">£80.00</td>
-                                 <td class="govuk-table__cell">£80.00</td>
+                                <td class="govuk-table__cell">£80.00</td>
                                 <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
                             </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">Car parking</td>
                                 <td class="govuk-table__cell">£10.00</td>
-                                 <td class="govuk-table__cell">£10.00</td>
+                                <td class="govuk-table__cell">£10.00</td>
                                 <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
                             </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">Overnight accommodation</td>
+                                <td class="govuk-table__cell">£134.50</td>
                                 <td class="govuk-table__cell">£121.00</td>
-                                 <td class="govuk-table__cell">£134.50</td>
                                 <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
                             </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell" style="font-weight:700">Total</td>
+                                <td class="govuk-table__cell" style="font-weight:700">£332.53</td>
                                 <td class="govuk-table__cell" style="font-weight:700">£319.03</td>
-                                 <td class="govuk-table__cell" style="font-weight:700">£332.53</td>
                                 <!-- <td class="govuk-table__cell" style="font-weight:700"></td> -->
                                 <!-- <td class="govuk-table__cell"><a href="#"></a></td> -->
                             </tr>
                         </tbody>
                     </table>
                 </div>
-<div style="  ">
-
-             <button class="govuk-button" data-module="govuk-button">
-                    Approve
-                </button>
-
-        <div class="govuk-form-group" style="margin-bottom:10px; ">
-            <label class="govuk-label   govuk-label--s" for="partialCost">
-               Do a thing
-            </label>
-            <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:33%;  ">
-                <option value="5 miles">---</option>
-                <option value="approved">Send back to user</option>
-                <option value="20 miles">Block</option>
-                <option value="20 miles">Send for approval</option>
-                 <option value="20 miles">Reject</option>
-            </select>
-            <form action="#" method="get" class="form">
-                <button class="govuk-button govuk-button--secondary">Do the thing</button>
-            </form>
-        </div>
-
-</div>
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
                 <table class="govuk-table">
@@ -263,7 +244,24 @@ href: "javascript:history.back()"
                             <h2 class="govuk-heading-s"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</h2>
                         </div>
                         <div class="accordion-section-body">
-                            <img src="/public/images/IMG_3983.jpg" style="width:100%">
+                            <div class="govuk-summary-card">
+                                <div class="govuk-summary-card__title-wrapper">
+                                    <h2 class="govuk-summary-card__title"></h2>
+                                    <ul class="govuk-summary-card__actions">
+                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                                Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
+                                            </a>
+                                        </li>
+                                     <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                      Add note<span class="govuk-visually-hidden"> to the thing</span>
+                                    </a>
+                                  </li> 
+                                    </ul>
+                                </div>
+                                <div class="govuk-summary-card__content">
+                                    <img src="/public/images/IMG_3983.jpg" style="width:100%">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-section">
@@ -271,7 +269,24 @@ href: "javascript:history.back()"
                             <h2 class="govuk-heading-s">khkjhkj h kjh jkhkj hkj .jpg</h2>
                         </div>
                         <div class="accordion-section-body">
-                            <img src="/public/images/IMG_8919.jpg" style="width:100%">
+                            <div class="govuk-summary-card">
+                                <div class="govuk-summary-card__title-wrapper">
+                                    <h2 class="govuk-summary-card__title"></h2>
+                                    <ul class="govuk-summary-card__actions">
+                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                                Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
+                                            </a>
+                                        </li>
+                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                      Add note<span class="govuk-visually-hidden"> to the thing</span>
+                                    </a>
+                                  </li> 
+                                    </ul>
+                                </div>
+                                <div class="govuk-summary-card__content">
+                                    <img src="/public/images/IMG_8919.jpg" style="width:100%">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-section">
@@ -279,7 +294,24 @@ href: "javascript:history.back()"
                             <h2 class="govuk-heading-s">yuyiuyi. nmbnmbnb nbmn bmn b.jpg</h2>
                         </div>
                         <div class="accordion-section-body">
-                            <img src="/public/images/IMG_8921.jpg" style="width:100%">
+                            <div class="govuk-summary-card">
+                                <div class="govuk-summary-card__title-wrapper">
+                                    <h2 class="govuk-summary-card__title"></h2>
+                                    <ul class="govuk-summary-card__actions">
+                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                                Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
+                                            </a>
+                                        </li>
+                                  <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                      Add note<span class="govuk-visually-hidden"> to the thing</span>
+                                    </a>
+                                  </li> 
+                                    </ul>
+                                </div>
+                                <div class="govuk-summary-card__content">
+                                    <img src="/public/images/IMG_8921.jpg" style="width:100%">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -701,14 +733,65 @@ href: "javascript:history.back()"
                     </div>
                 </div>
             </div>
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="audit" style="padding:0">
+                <div class="govuk-summary-card" style="border:none; margin-bottom:0">
+                    <div class="govuk-summary-card__title-wrapper" style="padding:5px 15px; background-color:#fff;">
+                        <h2 class="govuk-summary-card__title" style="font-size: 1.5rem;"></h2>
+                        <ul class="govuk-summary-card__actions">
+                            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                    Add note<span class="govuk-visually-hidden"> to the thing</span>
+                                </a>
+                            </li>
+                            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                    Upload a file<span class="govuk-visually-hidden"> to the thing</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="padding:0px 20px">
+                    <h2 class="govuk-heading-m" style="margin-top:-16px">Notes</h2>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                   <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 4.46pm </span></p>
+                   <p>The note or file that the user entered would go here, in date order, newest first.</p>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 3.46pm </span></p>
+
+                     <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th class="govuk-table__header" scope="col"></th>
+                                <th class="govuk-table__header" scope="col">Original</th>
+                                <th class="govuk-table__header" scope="col">Changed to</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Name</td>
+                                <td class="govuk-table__cell ">Rob Edwards</td>
+                                <td class="govuk-table__cell ">Robert Edwards</td>
+                                <!-- <td class="govuk-table__cell"><a href="#">Edit</a></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                   <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 3.44pm </span></p>
+                   <p>Witness called to say their name had been entered wrongly, wanted to change it from Rob to Robert</p>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+
+                </div>
+            </div>
         </div>
     </div>
     <div class="govuk-grid-column-one-third">
-        <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px">
-            <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--s" for="more-detail">
-                    Add a note
-                </label>
+        <!--         <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px">
+                                    <h1 class="govuk-label-wrapper">
+                                <label class="govuk-label govuk-label--s" for="more-detail">
+                                    Add a note
+                                </label>
             </h1>
             <textarea class="govuk-textarea" style="margin-bottom:10px" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
             <button type="submit" class="govuk-button govuk-button--secondary">Add note </button>
@@ -718,8 +801,67 @@ href: "javascript:history.back()"
                 Upload a file
             </label>
             <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+        </div> -->
+        <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px ">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h1 class="govuk-fieldset__heading">
+                        Do the thing
+                    </h1>
+                </legend>
+                <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                            Approve
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                            Send back to user
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                            Block
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                            Send for approval
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
+                            Reject
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <form action="#" method="get" class="form" style="margin-top:10px">
+                <button class="govuk-button govuk-button--secondary">Do the thing</button>
+            </form>
         </div>
-
+        <!--         <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px ">
+            <label class="govuk-label   govuk-label--s" for="partialCost">
+                Do a thing
+            </label>
+            <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%;  ">
+                <option value="5 miles">---</option>
+                <option value="approved">Approve</option>
+                <option value="approved">Send back to user</option>
+                <option value="20 miles">Block</option>
+                <option value="20 miles">Send for approval</option>
+                <option value="20 miles">Reject</option>
+            </select>
+            <form action="#" method="get" class="form">
+                <button class="govuk-button govuk-button--secondary">Do the thing</button>
+            </form>
+        </div> -->
         <div class="govuk-form-group" style="margin-bottom:10px">
             <label class="govuk-label   govuk-label--s" for="partialCost">
                 Assigned to
