@@ -245,6 +245,16 @@ router.param('employer', function (req, res, next, employer) {
  })
 
 
+/// Witex nav
+
+ router.get('/*/caseManagement/homeNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/index2`)
+ })
+
+  router.get('/*/*/caseManagement/homeNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/index2`)
+ })
+
 
 /// registration > used service before?
 router.get('/*/manage-apprenticeships/signin' , function (req, res) {
