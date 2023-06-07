@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+
+<!-- end of conditional statement -->
+
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/multi-file-upload.js"></script>
+
+
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+ 
+    {% if errorSummary.items.length %}
+      {{ govukErrorSummary({
+        titleText: 'There is a problem',
+        errorList: errorSummary.items
+      }) }}
+    {% endif %}
+
+    <h1 class="govuk-heading-xl">Upload a file</h1>
+
+      
+          <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                   Rules for uploading proof
+
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+      <p>You must ensure files are:</p>
+          <ul class="govuk-list govuk-list--bullet ">
+ 
+            <li>
+              showing the entire document or image
+            </li>
+            <li>
+              legible - words and numbers can be read
+            </li>
+             <li>
+              unaltered by computer software
+            </li>
+            <li>
+             no more than 15MB
+            </li>
+          </ul>
+    
+        <p>We can accept these files:</p>
+          <ul class="govuk-list govuk-list--bullet ">
+            <li>
+              JPG
+            </li>
+            <li>
+              PNG
+            </li>
+             <li>
+              Apple HEIC (iPhone live photos)
+            </li>
+             <li>
+              PDF
+            </li>
+          </ul>
+                </div>
+              </details>
+
+
+             
+                                        
+
+    <form action="claim2" method="post" enctype="multipart/form-data">
+      {% set uploadHtml %}
+        {{ govukFileUpload({
+          id: "documents",
+          name: "documents",
+          classes: 'moj-multi-file-upload__input',
+          label: {
+            text: "Upload file(s)",
+            classes: 'govuk-label--m'
+          },
+          attributes: { multiple: '' },
+          errorMessage: errorMessage
+        }) }}
+
+        {{govukButton({
+          text: 'Upload file',
+          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+        })}}
+      {% endset %}
+
+      {{ mojMultiFileUpload({
+        uploadedFiles: {
+          heading: { text: 'Files added' },
+          items: uploadedFiles
+        },
+        uploadHtml: uploadHtml
+      }) }}
+
+     <div class="govuk-button-group">
+  {{ govukButton({
+    text: "Save and return"
+  }) }}
+
+  <a class="govuk-link" href="claim2">Cancel</a>
+    </form>
+  </div>
+
+
+
+</div>
+
+      
+    </div>
+    </main>
+</div>
+
+<script>
+
+    if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
+  new MOJFrontend.MultiFileUpload({
+    container: $(".moj-multi-file-upload"),
+    uploadUrl: "/ajax-upload",
+    deleteUrl: "/ajax-delete",
+  });
+}
+
+</script>
+{% endblock %}
