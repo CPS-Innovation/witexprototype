@@ -2027,6 +2027,50 @@ router.get('/*/foodChooseRouter' , function (req, res) {
         }
 })
 
+// Case management actions
+// http://127.0.0.1:3000/witex-v15/caseManagement/claim2
+router.get('/*/caseManagement/caseActions' , function (req, res) {
+      var caseActions = req.query.caseActions
+       switch (true) {
+          case  (caseActions == 'Approve'):
+             req.session.data['homepageBanner'] = 'approve';
+              res.redirect(`index2`)
+           break;
+
+           case  (caseActions == 'Send back to user'):
+            req.session.data['homepageBanner'] = 'back';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Block'):
+                req.session.data['homepageBanner'] = 'block';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Send for approval'):
+                req.session.data['homepageBanner'] = 'send';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Reject'):
+                req.session.data['homepageBanner'] = 'reject';
+            res.redirect(`addNoteAction`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`bork`)
+            break;
+        }
+})
+
+
+// screener at the beginning
+router.get('/*/caseManagement/claim2Router' , function (req, res) {
+           delete req.session.data['homepageBanner'] ;
+              res.redirect(`claim2`)    
+
+})
 
 
 
