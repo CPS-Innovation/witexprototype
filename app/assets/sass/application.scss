@@ -130,6 +130,17 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+.cps-td-width {
+
+  width:350px;
+}
+
+.hidden {
+  opacity: 0;
+  height: 0px;
+  margin: 0 auto;
+}
+
 /* DELETE WHEN UPDATED PROTOTYPE KIT */
 
 .govuk-summary-card {

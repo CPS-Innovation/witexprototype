@@ -85,7 +85,7 @@ href: "javascript:history.back()"
              
                                         
 
-    <form action="claim2" method="post" enctype="multipart/form-data">
+    <form action="claim2#audit" method="post" enctype="multipart/form-data">
       {% set uploadHtml %}
         {{ govukFileUpload({
           id: "documents",
@@ -118,7 +118,7 @@ href: "javascript:history.back()"
     text: "Save and return"
   }) }}
 
-  <a class="govuk-link" href="claim2">Cancel</a>
+  <a class="govuk-link" href="claim2#audit">Cancel</a>
     </form>
   </div>
 

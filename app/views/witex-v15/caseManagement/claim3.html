@@ -12,8 +12,22 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
+
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/multi-file-upload.js"></script>
+
+
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
 <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
 <script src="/public/javascripts/accordion.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     if (
     'addEventListener' in document &&
@@ -27,6 +41,38 @@ href: "javascript:history.back()"
     })
 }
 </script>
+<script type="text/javascript">
+//     function revealNote() { 
+  // $(revealTheNote).removeClass("rj-dont-display");
+//     $(revealTheNote).switchClass( "rj-dont-display", "nothing", 1000, "linear" );
+// }
+
+
+ $(document).ready(function(){
+  $("#openMe").click(function(){
+    $(".revealTheNote").slideToggle(0);
+  });
+});
+
+  $(document).ready(function(){
+  $("#openMeUpload").click(function(){
+    $(".revealTheUpload").slideToggle(0);
+  });
+});
+
+// $(document).ready(function(){
+// var box = $('.revealTheNote');
+
+// $('p#openMe').on('click', function () { 
+//   box.toggleClass('hidden');
+// });
+// });
+
+
+</script>
+
+
+
 <style>
     .govuk-header__logotype {
     width: 500px
@@ -68,6 +114,13 @@ href: "javascript:history.back()"
 }
 
 #finder-frontend .govuk-form-group {}
+
+.moj-multi-file__uploaded-files .govuk-heading-m,
+.moj-multi-file__uploaded-files .govuk-summary-list  {
+    margin:0;
+}
+
+
 </style>
 <span class="govuk-caption-xl">HD90210</span>
 <h1 class="govuk-heading-xl" style="">Robert Edwards</h1>
@@ -451,7 +504,7 @@ href: "javascript:history.back()"
                                 <!-- <caption class="govuk-table__caption govuk-table__caption--m">Travel</caption> -->
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <td class="govuk-table__cell cps-td-width"">Do you want to claim for travel to and from the court?</td>
+                                        <td class="govuk-table__cell cps-td-width">Do you want to claim for travel to and from the court?</td>
                                         <td class="govuk-table__cell ">Yes</td>
                                   
                                     </tr>
@@ -496,7 +549,7 @@ href: "javascript:history.back()"
                                 </thead>
                                 <caption class="govuk-table__caption govuk-table__caption--s">Car</caption>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell cps-td-width"">Are you claiming the higher rate of mileage for your car? </td>
+                                    <td class="govuk-table__cell cps-td-width">Are you claiming the higher rate of mileage for your car? </td>
                                     <td class="govuk-table__cell">Yes</td>
                                    
                                 </tr>
@@ -555,7 +608,7 @@ href: "javascript:history.back()"
                                 <!-- <caption class="govuk-table__caption govuk-table__caption--m">Overnight stay</caption> -->
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <td class="govuk-table__cell cps-td-width"">Do you want to claim expenses for an overnight stay?</td>
+                                        <td class="govuk-table__cell cps-td-width">Do you want to claim expenses for an overnight stay?</td>
                                         <td class="govuk-table__cell ">Yes</td>
                             
                                     </tr>
@@ -599,7 +652,7 @@ href: "javascript:history.back()"
                                 <!-- <caption class="govuk-table__caption govuk-table__caption--m">Work</caption> -->
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <td class="govuk-table__cell cps-td-width"">Are you in paid work?</td>
+                                        <td class="govuk-table__cell cps-td-width">Are you in paid work?</td>
                                         <td class="govuk-table__cell ">Yes</td>
                                      
                                     </tr>
@@ -633,7 +686,7 @@ href: "javascript:history.back()"
                                 <!-- <caption class="govuk-table__caption govuk-table__caption--m">Childcare</caption> -->
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <td class="govuk-table__cell cps-td-width"">Did you pay someone to look after your children?</td>
+                                        <td class="govuk-table__cell cps-td-width">Did you pay someone to look after your children?</td>
                                         <td class="govuk-table__cell ">No</td>
                                       
                                     </tr>
@@ -657,7 +710,7 @@ href: "javascript:history.back()"
                                 <!-- <caption class="govuk-table__caption govuk-table__caption--m">Carer</caption> -->
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <td class="govuk-table__cell cps-td-width"">Did you pay for a carer?</td>
+                                        <td class="govuk-table__cell cps-td-width">Did you pay for a carer?</td>
                                         <td class="govuk-table__cell ">No</td>
                                       
                                     </tr>
@@ -680,7 +733,7 @@ href: "javascript:history.back()"
                                 </thead>
                                 <tbody class="govuk-table__body">
                                     <tr class="govuk-table__row">
-                                        <td class="govuk-table__cell cps-td-width"">Do you want to claim for other expenses?</td>
+                                        <td class="govuk-table__cell cps-td-width">Do you want to claim for other expenses?</td>
                                         <td class="govuk-table__cell ">No</td>
                                 
                                     </tr>
@@ -734,21 +787,11 @@ href: "javascript:history.back()"
                 </div>
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="audit" style="padding:0">
-                <div class="govuk-summary-card" style="border:none; margin-bottom:0">
-                    <div class="govuk-summary-card__title-wrapper" style="padding:5px 15px; background-color:#fff;">
-                        <h2 class="govuk-summary-card__title" style="font-size: 1.5rem;"></h2>
-                        <ul class="govuk-summary-card__actions">
-                            <li class="govuk-summary-card__action"> <a class="govuk-link" href="addNote">
-                                    Add note<span class="govuk-visually-hidden"> to the thing</span>
-                                </a>
-                            </li>
-                            <li class="govuk-summary-card__action"> <a class="govuk-link" href="upload">
-                                    Upload a file<span class="govuk-visually-hidden"> to the thing</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+
+                {% include "includes/cps/caseManagement/addNote.html" %}
+
+
                 <div style="padding:0px 20px">
                     <h2 class="govuk-heading-m" style="margin-top:-16px">Notes and amends</h2>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -883,4 +926,16 @@ href: "javascript:history.back()"
 </div>
 </div>
 </div>
+
+<script>
+
+    if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
+  new MOJFrontend.MultiFileUpload({
+    container: $(".moj-multi-file-upload"),
+    uploadUrl: "/ajax-upload",
+    deleteUrl: "/ajax-delete",
+  });
+}
+
+</script>
 {% endblock %}

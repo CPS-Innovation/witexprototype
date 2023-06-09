@@ -2033,8 +2033,8 @@ router.get('/*/caseManagement/caseActions' , function (req, res) {
       var caseActions = req.query.caseActions
        switch (true) {
           case  (caseActions == 'Approve'):
-             req.session.data['homepageBanner'] = 'approve';
-              res.redirect(`index2`)
+            req.session.data['homepageBanner'] = 'approve';
+            res.redirect(`index2`)
            break;
 
            case  (caseActions == 'Send back to user'):
@@ -2043,17 +2043,17 @@ router.get('/*/caseManagement/caseActions' , function (req, res) {
             break;
 
             case  (caseActions == 'Block'):
-                req.session.data['homepageBanner'] = 'block';
+            req.session.data['homepageBanner'] = 'block';
             res.redirect(`addNoteAction`)
             break;
 
             case  (caseActions == 'Send for approval'):
-                req.session.data['homepageBanner'] = 'send';
+            req.session.data['homepageBanner'] = 'send';
             res.redirect(`addNoteAction`)
             break;
 
             case  (caseActions == 'Reject'):
-                req.session.data['homepageBanner'] = 'reject';
+            req.session.data['homepageBanner'] = 'reject';
             res.redirect(`addNoteAction`)
             break;
 
@@ -2065,11 +2065,16 @@ router.get('/*/caseManagement/caseActions' , function (req, res) {
 })
 
 
-// screener at the beginning
+// sent to correct page and reset the variable that control the success banner
 router.get('/*/caseManagement/claim2Router' , function (req, res) {
            delete req.session.data['homepageBanner'] ;
               res.redirect(`claim2`)    
+})
 
+// reset the successbanner and show rob edwards again
+router.get('/*/caseManagement/resetAll' , function (req, res) {
+           delete req.session.data['homepageBanner'] ;
+              res.redirect(`index2`)    
 })
 
 

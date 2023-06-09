@@ -1,0 +1,86 @@
+<div class="govuk-summary-card" style="border:none; margin-bottom:0">
+    <div class="govuk-summary-card__title-wrapper" style="padding:5px 15px; background-color:#fff;">
+        <h2 class="govuk-summary-card__title" style="font-size: 1.5rem;"></h2>
+        <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+                <p class="govuk-link looks-like-a-link " id="openMe" style="margin-bottom:0; cursor:pointer">
+                    Add note<span class="govuk-visually-hidden"> to the thing</span>
+                </p>
+            </li>
+            <li class="govuk-summary-card__action" id="openMeUpload"> <p class="govuk-link looks-like-a-link" style="margin-bottom:0; cursor:pointer">
+                    Upload a file<span class="govuk-visually-hidden"> to the thing</span>
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div style="padding: 25px 25px 0px 25px;  " class="revealTheNote rj-dont-display" id="revealTheNote ">
+    <div class="grow-wrapper">
+        <form method="get" action="claim2#audit">
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--m " for="more-detail">
+                        Add a note
+                    </label>
+                </h1>
+                <!--            <div id="more-detail-hint" class="govuk-hint">
+                        Do not include personal or financial information, like your National Insurance number or credit card details.
+                      </div> -->
+                <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="8" aria-describedby="more-detail-hint"></textarea>
+            </div>
+            <div class="govuk-button-group">
+                <button class="govuk-button" data-module="govuk-button">
+                    Save and return
+                </button>
+                <a class="govuk-link" href="claim2#audit">Cancel</a>
+            </div>
+        </form>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <div style="margin-bottom:50px"></div>
+    </div>
+</div>
+<div style="padding: 25px 25px 0px 25px;  " class="revealTheUpload rj-dont-display" id="revealTheUpload ">
+    <div class="grow-wrapper">
+        <form method="get" action="claim2#audit">
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--m " for="more-detail" style="margin-bottom:15px">
+                        Upload a file
+                    </label>
+                </h1>
+                <form action="claim2#audit" method="post" enctype="multipart/form-data">
+                    {% set uploadHtml %}
+                    {{ govukFileUpload({
+                    id: "documents",
+                    name: "documents",
+                    classes: 'moj-multi-file-upload__input',
+                    label: {
+                    text: "",
+                    classes: ''
+                    },
+                    attributes: { multiple: '' },
+                    errorMessage: errorMessage
+                    }) }}
+                    {{govukButton({
+                    text: 'Upload file',
+                    classes: 'govuk-button--secondary moj-multi-file-upload__button'
+                    })}}
+                    {% endset %}
+                    {{ mojMultiFileUpload({
+
+                    uploadHtml: uploadHtml
+                    }) }}
+                    <div class="govuk-button-group">
+                        {{ govukButton({
+                        text: "Save and return"
+                        }) }}
+                        <a class="govuk-link" href="claim2#audit">Cancel</a>
+                    </div>
+                </form>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                <div style="margin-bottom:50px"></div>
+            </div>
+         </form>
+    </div>
+
+  </div>
