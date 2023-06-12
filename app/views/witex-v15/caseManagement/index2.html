@@ -89,13 +89,13 @@ $( document ).ready(function() {
   <div class="govuk-notification-banner__content" >
     <h3 class="govuk-notification-banner__heading" style="max-width:1000px">
      {% if data.homepageBanner == 'approve' %}
-      HD90210 - Robert Edwards has been approved and sent to payment
+      HD90210 - Robert Edwards's claim has been sent to payment
     {% elif data.homepageBanner == 'back' %}
-        HD90210 - Robert Edwards has been marked as sent back to the user
+        HD90210 - Robert Edwards's claim has been marked as returned
     {% elif data.homepageBanner == 'block' %}
         HD90210 - Robert Edwards has been blocked
     {% elif data.homepageBanner == 'send' %}
-        HD90210 - Robert Edwards has been sent for approval
+        HD90210 - Robert Edwards's claim has been sent for final approval
     {% elif data.homepageBanner == 'reject' %}
         HD90210 - Robert Edwards has been rejected
     {% else %}
@@ -103,8 +103,8 @@ $( document ).ready(function() {
 
     </h3>
 {% if data.homepageBanner == 'back' or data.homepageBanner == 'reject' or data.homepageBanner == 'block'  %}
-    <p class="govuk-body" style="max-width:1000px">Make sure you send an email to rob@cps.gov.uk
- to tell the user what to do.</p>
+    <p class="govuk-body" style="max-width:1000px">You need to send an email to rob@cps.gov.uk
+ to explain why the claim has been rejected.</p>
         {% else %}
  {% endif %}
   </div>
