@@ -89,13 +89,13 @@ $( document ).ready(function() {
   <div class="govuk-notification-banner__content" >
     <h3 class="govuk-notification-banner__heading" style="max-width:1000px">
      {% if data.homepageBanner == 'approve' %}
-      HD90210 - Robert Edwards's claim has been sent to payment
+      HD90210 - Robert Edwards's claim has been submitted
     {% elif data.homepageBanner == 'back' %}
-        HD90210 - Robert Edwards's claim has been marked as returned
+        HD90210 - Robert Edwards's claim has been marked sent back to the witness
     {% elif data.homepageBanner == 'block' %}
-        HD90210 - Robert Edwards has been blocked
+        HD90210 - Robert Edwards has been marked as under query
     {% elif data.homepageBanner == 'send' %}
-        HD90210 - Robert Edwards's claim has been sent for final approval
+        HD90210 - Robert Edwards's claim has been escalated
     {% elif data.homepageBanner == 'reject' %}
         HD90210 - Robert Edwards has been rejected
     {% else %}
