@@ -1787,7 +1787,7 @@ router.get('/*/travel/transportChoiceRoute3' , function (req, res) {
         case  (confirmTraining == 'Motorbike/scooter'):
            // req.session.data['petSittingShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
-            res.redirect(`motorbike`)
+            res.redirect(`motorbike/otherWitnesses`)
                  break;
 
         case  (confirmTraining == 'Bicycle'):
