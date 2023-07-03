@@ -39,8 +39,9 @@ href: "javascript:history.back()"
             <button class="govuk-button">Continue</button>
         </form>
                      <p style="margin-top:0">If you didn't receive the code sent to {{ data['email'] }} please check your junk folder or <a href="emailSent">resend the email</a> </p>
-
+      {% include "includes/cps/v11/help.html" %}
     </div>
+    
     </main>
 </div>
 {% endblock %}
