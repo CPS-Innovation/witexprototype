@@ -133,14 +133,14 @@ $( document ).ready(function() {
                     <div class="filter text-filter">
                         <div class="govuk-form-group" style="margin-bottom:0">
                             <label class="govuk-label   govuk-label--s legend" for="partialCost">
-                                Assigned to
+                                Last action
                             </label>
                             <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%">
                                 <option value="All" selected>All</option>
-                                <option value="Employer">Not assigned</option>
+                                <!-- <option value="Employer">Not assigned</option> -->
                                 <option value="Job title">David Barton</option>
                                 <option value="Description">Fred Basset</option>
-                                <option value="Employer">Not assigned</option>
+                                <option value="Employer">No actions</option>
                             </select>
                         </div>
                     </div>
@@ -162,32 +162,32 @@ $( document ).ready(function() {
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#progress">
-                            Pending
+                            Pending (5)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
-                        <a class="govuk-tabs__tab" href="#blocked">
-                            Sent back
+                        <a class="govuk-tabs__tab" style="min-width:153px" href="#blocked">
+                            Witness query (10)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#blockeded">
-                            Under query
+                            Area query (11)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#sentApproval">
-                           Escalated
+                           Escalated (2)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#rejected">
-                            Rejected
+                            Rejected 
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#paid">
-                            Submitted
+                            Submitted 
                         </a>
                     </li>
                 </ul>
@@ -209,7 +209,7 @@ $( document ).ready(function() {
                                 <tr class="govuk-table__row" id="robEdwards">
                                     <td class="govuk-table__cell">HD90210</td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
-                                    <td class="govuk-table__cell">21 April 2022</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
                                     <!-- <td class="govuk-table__cell">New</td> -->
                                     <!-- <td class="govuk-table__cell"></td> -->
                                     <!-- <td class="govuk-table__cell">£303.03</td> -->
@@ -218,7 +218,7 @@ $( document ).ready(function() {
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">HD01209</td>
                                     <td class="govuk-table__cell">James Collyer</td>
-                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <td class="govuk-table__cell">21 April 2022</td>
                                     <!-- <td class="govuk-table__cell">New</td> -->
                                     <!-- <td class="govuk-table__cell"></td> -->
                                     <!-- <td class="govuk-table__cell">£2.25</td> -->
@@ -235,7 +235,7 @@ $( document ).ready(function() {
                                     <th class="govuk-table__header" scope="col">Name</th>
                                     <th class="govuk-table__header" scope="col">Received</th>
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
-                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
@@ -261,7 +261,7 @@ $( document ).ready(function() {
                                     <th class="govuk-table__header" scope="col">Name</th>
                                     <th class="govuk-table__header" scope="col">Received</th>
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
-                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
@@ -270,7 +270,7 @@ $( document ).ready(function() {
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">ZF92011</td>
                                     <td class="govuk-table__cell">Mel Hilton</td>
-                                    <td class="govuk-table__cell">05 April 2022</td>
+                                    <td class="govuk-table__cell">01 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£598.99</td> -->
@@ -279,7 +279,7 @@ $( document ).ready(function() {
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">AB57824</td>
                                     <td class="govuk-table__cell">Colette Phipps</td>
-                                    <td class="govuk-table__cell">01 April 2022</td>
+                                    <td class="govuk-table__cell">05 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£499.99</td> -->
@@ -296,7 +296,7 @@ $( document ).ready(function() {
                                     <th class="govuk-table__header" scope="col">Name</th>
                                     <th class="govuk-table__header" scope="col">Received</th>
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
-                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
@@ -305,7 +305,7 @@ $( document ).ready(function() {
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">AF920221</td>
                                     <td class="govuk-table__cell">Geoff Wurst</td>
-                                    <td class="govuk-table__cell">05 April 2022</td>
+                                    <td class="govuk-table__cell">01 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£598.99</td> -->
@@ -314,7 +314,7 @@ $( document ).ready(function() {
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">BA57843</td>
                                     <td class="govuk-table__cell">Adam Ackbar</td>
-                                    <td class="govuk-table__cell">01 April 2022</td>
+                                    <td class="govuk-table__cell">05 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£499.99</td> -->
@@ -331,7 +331,7 @@ $( document ).ready(function() {
                                     <th class="govuk-table__header" scope="col">Name</th>
                                     <th class="govuk-table__header" scope="col">Received</th>
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
-                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
@@ -357,7 +357,7 @@ $( document ).ready(function() {
                                     <th class="govuk-table__header" scope="col">Name</th>
                                     <th class="govuk-table__header" scope="col">Received</th>
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
-                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
@@ -383,7 +383,7 @@ $( document ).ready(function() {
                                     <th class="govuk-table__header" scope="col">Name</th>
                                     <th class="govuk-table__header" scope="col">Received</th>
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
-                                    <th class="govuk-table__header" scope="col">Assigned to</th>
+                                    <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
