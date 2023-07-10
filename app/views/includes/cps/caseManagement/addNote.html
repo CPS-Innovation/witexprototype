@@ -7,7 +7,8 @@
                     Add note<span class="govuk-visually-hidden"> to the thing</span>
                 </p>
             </li>
-            <li class="govuk-summary-card__action" id="openMeUpload"> <p class="govuk-link looks-like-a-link" style="margin-bottom:0; cursor:pointer">
+            <li class="govuk-summary-card__action">
+                <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0; cursor:pointer">
                     Upload a file<span class="govuk-visually-hidden"> to the thing</span>
                 </p>
             </li>
@@ -16,7 +17,7 @@
 </div>
 <div style="padding: 25px 25px 0px 25px;  " class="revealTheNote rj-dont-display" id="revealTheNote ">
     <div class="grow-wrapper">
-        <form method="get" action="claim2#audit">
+       
             <div class="govuk-form-group">
                 <h1 class="govuk-label-wrapper">
                     <label class="govuk-label govuk-label--m " for="more-detail">
@@ -29,19 +30,19 @@
                 <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="8" aria-describedby="more-detail-hint"></textarea>
             </div>
             <div class="govuk-button-group">
-                <button class="govuk-button" data-module="govuk-button">
+                <button class="govuk-button" data-module="govuk-button" id="submitNote">
                     Save and return
                 </button>
-                <a class="govuk-link" href="claim2#audit">Cancel</a>
+                <p class="looks-like-a-link" id="shutMeNote" style="font-weight:400; cursor:pointer" >Cancel</a>
             </div>
-        </form>
+     
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
         <div style="margin-bottom:50px"></div>
     </div>
 </div>
 <div style="padding: 25px 25px 0px 25px;  " class="revealTheUpload rj-dont-display" id="revealTheUpload ">
     <div class="grow-wrapper">
-        <form method="get" action="claim2#audit">
+      
             <div class="govuk-form-group">
                 <h1 class="govuk-label-wrapper">
                     <label class="govuk-label govuk-label--m " for="more-detail" style="margin-bottom:15px">
@@ -67,20 +68,18 @@
                     })}}
                     {% endset %}
                     {{ mojMultiFileUpload({
-
                     uploadHtml: uploadHtml
                     }) }}
                     <div class="govuk-button-group">
                         {{ govukButton({
                         text: "Save and return"
                         }) }}
-                        <a class="govuk-link" href="claim2#audit">Cancel</a>
+                        <p class="looks-like-a-link" id="shutMe" style="font-weight:400; cursor:pointer" >Cancel</a>
                     </div>
                 </form>
                 <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                 <div style="margin-bottom:50px"></div>
             </div>
-         </form>
+      
     </div>
-
-  </div>
+</div>

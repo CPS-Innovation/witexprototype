@@ -50,15 +50,93 @@ href: "javascript:history.back()"
 
  $(document).ready(function(){
   $("#openMe").click(function(){
-    $(".revealTheNote").slideToggle(0);
+    $(".revealTheNote").slideDown(0);
+    $(".revealTheUpload").slideUp(0)
+     $("#openMeUpload").addClass("inactiveLink");
+     $("#openMe").removeClass("inactiveLink");
+
   });
 });
 
   $(document).ready(function(){
   $("#openMeUpload").click(function(){
-    $(".revealTheUpload").slideToggle(0);
+    $(".revealTheUpload").slideDown(0);
+    $(".revealTheNote").slideUp(0)
+      $("#openMe").addClass("inactiveLink");
+    $("#openMeUpload").removeClass("inactiveLink");
+  
   });
 });
+
+ $(document).ready(function(){
+  $("#shutMe").click(function(){
+    $(".revealTheUpload").slideUp(0);
+     $("#openMeUpload").removeClass("inactiveLink");
+     $("#openMe").removeClass("inactiveLink");
+
+  });
+});
+
+  $(document).ready(function(){
+  $("#shutMeNote").click(function(){
+    $(".revealTheNote").slideUp(0);
+     $("#openMeUpload").removeClass("inactiveLink");
+     $("#openMe").removeClass("inactiveLink");
+
+  });
+});
+
+    $(document).ready(function(){
+         $("#submitNote").click(function(){
+
+            var myDate = new Date();
+
+            let daysList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            let monthsList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Aug', 'Oct', 'Nov', 'Dec'];
+
+
+            let date = myDate.getDate();
+            let month = monthsList[myDate.getMonth()];
+            let year = myDate.getFullYear();
+            let day = daysList[myDate.getDay()];
+
+            let today = ` ${day}, ${date} ${month} ${year}`;
+
+            let amOrPm;
+            let twelveHours = function (){
+                if(myDate.getHours() > 12)
+                {
+                    amOrPm = 'PM';
+                    let twentyFourHourTime = myDate.getHours();
+                    let conversion = twentyFourHourTime - 12;
+                    return `${conversion}`
+
+                }else {
+                    amOrPm = 'AM';
+                    return `${myDate.getHours()}`}
+            };
+            let hours = twelveHours();
+            let minutes = myDate.getMinutes();
+
+            let currentTime = `${hours}:${minutes} ${amOrPm}`;
+          
+
+            var textarea = document.getElementById("more-detail")
+            
+            var text = textarea.value;
+            document.getElementById('userNotes').innerHTML = '<p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;' + today + " at "  + currentTime + ' </span></p><p id="noteHere"></p><hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">' ;
+            var p = document.getElementById("noteHere");
+
+            p.textContent=text;
+
+            $(".revealTheNote").slideUp(0);
+             $("#openMeUpload").removeClass("inactiveLink");
+        $("#openMe").removeClass("inactiveLink");
+    
+});
+  });
+
+
 
 // $(document).ready(function(){
 // var box = $('.revealTheNote');
@@ -298,10 +376,10 @@ href: "javascript:history.back()"
                         </div>
                         <div class="accordion-section-body">
                             <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
+                                <div class="govuk-summary-card__title-wrapper" style="background-color: #fff;">
                                     <h2 class="govuk-summary-card__title"></h2>
                                     <ul class="govuk-summary-card__actions">
-                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                        <li class="govuk-summary-card__action" style="border-right:none"> <a class="govuk-link" href="#">
                                                 Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
                                             </a>
                                         </li>
@@ -323,10 +401,10 @@ href: "javascript:history.back()"
                         </div>
                         <div class="accordion-section-body">
                             <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
+                                <div class="govuk-summary-card__title-wrapper" style="background-color: #fff;">
                                     <h2 class="govuk-summary-card__title"></h2>
                                     <ul class="govuk-summary-card__actions">
-                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                        <li class="govuk-summary-card__action" style="border-right:none"> <a class="govuk-link" href="#">
                                                 Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
                                             </a>
                                         </li>
@@ -348,10 +426,10 @@ href: "javascript:history.back()"
                         </div>
                         <div class="accordion-section-body">
                             <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
+                                <div class="govuk-summary-card__title-wrapper" style="background-color: #fff;">
                                     <h2 class="govuk-summary-card__title"></h2>
                                     <ul class="govuk-summary-card__actions">
-                                        <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                                        <li class="govuk-summary-card__action" style="border-right:none"> <a class="govuk-link" href="#">
                                                 Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
                                             </a>
                                         </li>
@@ -792,11 +870,16 @@ href: "javascript:history.back()"
                 {% include "includes/cps/caseManagement/addNote.html" %}
 
 
-                <div style="padding:0px 20px">
+                <div style="padding:0px 20px" id="notesArea" class="notesArea">
                     <h2 class="govuk-heading-m" style="margin-top:-16px">Notes and amends</h2>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <div id="userNotes"> 
+                        <!-- <p id="noteHere"></p> -->
+
+                    </div>
                    <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 4.46pm </span></p>
                    <p>The note or file that the user entered would go here, in date order, newest first.</p>
+                    
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                     <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 3.46pm </span></p>
 
@@ -820,8 +903,13 @@ href: "javascript:history.back()"
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                    <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 3.44pm </span></p>
                    <p>Witness called to say their name had been entered wrongly, wanted to change it from Rob to Robert</p>
+                                       <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    <p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;30 May 2023 at 3.42pm </span></p>
+                   <p>David Barton opened the case</p>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
+    <p style="font-size:16px"><span style="font-weight:700">Rob Edwards</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;29 May 2023 at 9.01am </span></p>
+                   <p>Rob Edwards opened the case</p>
+                    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
 
 
@@ -829,22 +917,8 @@ href: "javascript:history.back()"
             </div>
         </div>
     </div>
+
     <div class="govuk-grid-column-one-third">
-        <!--         <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px">
-                                    <h1 class="govuk-label-wrapper">
-                                <label class="govuk-label govuk-label--s" for="more-detail">
-                                    Add a note
-                                </label>
-            </h1>
-            <textarea class="govuk-textarea" style="margin-bottom:10px" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-            <button type="submit" class="govuk-button govuk-button--secondary">Add note </button>
-        </div>
-        <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--s " for="file-upload-1">
-                Upload a file
-            </label>
-            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-        </div> -->
         <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px ">
               <form action="caseActions" method="get" class="form" style="">
             <fieldset class="govuk-fieldset">
@@ -854,34 +928,35 @@ href: "javascript:history.back()"
                     </h1>
                 </legend>
                 <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
-                        <label class="govuk-label govuk-radios__label" for="caseActions">
-                            Submit claim for payment
-                        </label>
-                    </div>
+
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="caseActions-2" name="caseActions" type="radio" value="Send back to user">
                         <label class="govuk-label govuk-radios__label" for="caseActions-2">
-                             Send claim back to witness
+                             Mark as witness query
                         </label>
                     </div>
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="caseActions-3" name="caseActions" type="radio" value="Block">
                         <label class="govuk-label govuk-radios__label" for="caseActions-3">
-                            Mark as under query
+                            Mark as area query
                         </label>
                     </div>
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Send for approval">
                         <label class="govuk-label govuk-radios__label" for="caseActions-4">
-                           Escalate claim (wouldn't show)
+                           Escalate claim
                         </label>
                     </div>
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Reject">
                         <label class="govuk-label govuk-radios__label" for="caseActions-4">
                              Reject claim
+                        </label>
+                    </div>
+                     <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
+                        <label class="govuk-label govuk-radios__label" for="caseActions">
+                            Submit claim for payment
                         </label>
                     </div>
                 </div>
@@ -906,7 +981,7 @@ href: "javascript:history.back()"
                 <button class="govuk-button govuk-button--secondary">Do the thing</button>
             </form>
         </div> -->
-        <div class="govuk-form-group" style="margin-bottom:10px">
+<!--         <div class="govuk-form-group" style="margin-bottom:10px">
             <label class="govuk-label   govuk-label--s" for="partialCost">
                 Assigned to
             </label>
@@ -918,7 +993,7 @@ href: "javascript:history.back()"
             <form action="#" method="get" class="form">
                 <button class="govuk-button govuk-button--secondary">Update</button>
             </form>
-        </div>
+        </div> -->
     </div>
 </div>
 </div>

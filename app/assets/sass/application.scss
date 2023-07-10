@@ -130,6 +130,13 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+.inactiveLink {
+  color:#505a5f !important;
+  text-decoration:none !important;
+  cursor: default !important;
+  font-weight:400 !important;
+}
+
 .cps-td-width {
 
   width:350px;

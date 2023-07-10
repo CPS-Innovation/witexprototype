@@ -91,9 +91,9 @@ $( document ).ready(function() {
      {% if data.homepageBanner == 'approve' %}
       HD90210 - Robert Edwards's claim has been submitted
     {% elif data.homepageBanner == 'back' %}
-        HD90210 - Robert Edwards's claim has been marked sent back to the witness
-    {% elif data.homepageBanner == 'block' %}
-        HD90210 - Robert Edwards has been marked as under query
+        HD90210 - Robert Edwards's claim has been marked as witness query
+           {% elif data.homepageBanner == 'block' %}
+        HD90210 - Robert Edwards has been marked as area query
     {% elif data.homepageBanner == 'send' %}
         HD90210 - Robert Edwards's claim has been escalated
     {% elif data.homepageBanner == 'reject' %}
@@ -102,9 +102,10 @@ $( document ).ready(function() {
  {% endif %}
 
     </h3>
-{% if data.homepageBanner == 'back' or data.homepageBanner == 'reject' or data.homepageBanner == 'block'  %}
-    <p class="govuk-body" style="max-width:1000px">You need to send an email to rob@cps.gov.uk
- to explain why the claim has been rejected.</p>
+{% if  data.homepageBanner == 'reject'   %}
+    <p class="govuk-body" style="max-width:1000px">You need to send an email to rob@cps.gov.uk to explain why the claim has been rejected.</p>
+  {% elif data.homepageBanner == 'back' %}
+  <p class="govuk-body" style="max-width:1000px">You need to send an email to rob@cps.gov.uk to explain why you are querying the claim.</p>
         {% else %}
  {% endif %}
   </div>
