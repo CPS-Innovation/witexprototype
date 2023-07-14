@@ -72,12 +72,34 @@
 
 </style>
 
- {% if data.homepageBanner %}
+  
  <script>
 $( document ).ready(function() {
-    $("#robEdwards").css("display", "none");
+{% if data.homepageBanner == 'approve' %}
+    $("#robEdwardsNew").css("display", "none");
+    $("#robEdwardsSubmit").removeAttr("style");
+  {% elif data.homepageBanner == 'back' %}
+      $("#robEdwardsNew").css("display", "none");
+    $("#robEdwardsBack").removeAttr("style");
+{% elif data.homepageBanner == 'block' %}
+      $("#robEdwardsNew").css("display", "none");
+    $("#robEdwardsArea").removeAttr("style");
+{% elif data.homepageBanner == 'send' %}
+      $("#robEdwardsNew").css("display", "none");
+    $("#robEdwardsEsc").removeAttr("style");
+{% elif data.homepageBanner == 'reject' %}
+      $("#robEdwardsNew").css("display", "none");
+    $("#robEdwardsReject").removeAttr("style");
+{% else %}
+{% endif %}
  });
  </script>
+
+
+
+
+ {% if data.homepageBanner %}
+
  <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
   aria-labelledby="govuk-notification-banner-title"
   data-module="govuk-notification-banner">
@@ -207,13 +229,10 @@ $( document ).ready(function() {
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
-                                <tr class="govuk-table__row" id="robEdwards">
+                                <tr class="govuk-table__row" id="robEdwardsNew">
                                     <td class="govuk-table__cell">HD90210</td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
-                                    <!-- <td class="govuk-table__cell">New</td> -->
-                                    <!-- <td class="govuk-table__cell"></td> -->
-                                    <!-- <td class="govuk-table__cell">£303.03</td> -->
                                     <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
                                 </tr>
                                 <tr class="govuk-table__row">
@@ -268,6 +287,13 @@ $( document ).ready(function() {
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
+                               <tr class="govuk-table__row" id="robEdwardsBack" style="display:none">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                     <td class="govuk-table__cell">Fred Basset</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                </tr>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">ZF92011</td>
                                     <td class="govuk-table__cell">Mel Hilton</td>
@@ -303,6 +329,13 @@ $( document ).ready(function() {
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row" id="robEdwardsArea" style="display:none">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                </tr>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">AF920221</td>
                                     <td class="govuk-table__cell">Geoff Wurst</td>
@@ -338,6 +371,13 @@ $( document ).ready(function() {
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
+                             <tr class="govuk-table__row" id="robEdwardsEsc" style="display:none">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                          <td class="govuk-table__cell">Fred Basset</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                </tr>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">BN57856</td>
                                     <td class="govuk-table__cell">Bob Hull</td>
@@ -364,6 +404,13 @@ $( document ).ready(function() {
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
+                                 <tr class="govuk-table__row" id="robEdwardsReject" style="display:none">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                    <td class="govuk-table__cell">Fred Basset</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                </tr>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">ZA57829</td>
                                     <td class="govuk-table__cell">BIll Irons</td>
@@ -390,6 +437,13 @@ $( document ).ready(function() {
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
+                               <tr class="govuk-table__row" id="robEdwardsSubmit" style="display:none">
+                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell">Robert Edwards</td>
+                                    <td class="govuk-table__cell">20 April 2022</td>
+                                     <td class="govuk-table__cell">Fred Basset</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                </tr>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">ZA57829</td>
                                     <td class="govuk-table__cell">Claire Postlethwaite</td>
