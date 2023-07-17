@@ -22,11 +22,11 @@ href: "javascript:history.back()"
                              {% if data.homepageBanner == 'approve' %}
       Add a note
     {% elif data.homepageBanner == 'back' %}
-        Why have you returned this claim?
+        Why has this claim been queried?
     {% elif data.homepageBanner == 'block' %}
-        HD90210 - Robert Edwards has been blocked
+        Why has this claim been queried?
     {% elif data.homepageBanner == 'send' %}
-        Why have you sent this for final approval?
+        Why have you escalated this claim?
     {% elif data.homepageBanner == 'reject' %}
       Why have you rejected this claim?
     {% else %}
@@ -36,16 +36,16 @@ href: "javascript:history.back()"
                       </h1>
 
 <div id="more-detail-hint" class="govuk-hint">
-                                 {% if data.homepageBanner == 'approve' %}
+        {% if data.homepageBanner == 'approve' %}
       Add a note
     {% elif data.homepageBanner == 'back' %}
-       Explain why this expenses claim has been returned.
+      
     {% elif data.homepageBanner == 'block' %}
-        HD90210 - Robert Edwards has been blocked
+        
     {% elif data.homepageBanner == 'send' %}
-       Explain why this expenses claim has been sent for final approval.
+     
     {% elif data.homepageBanner == 'reject' %}
-         Explain why this expenses claim has rejected.
+        
     {% else %}
   
  {% endif %}
