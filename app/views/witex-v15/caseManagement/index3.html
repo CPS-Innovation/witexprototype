@@ -92,19 +92,13 @@ $( document ).ready(function() {
     $("#robEdwardsReject").removeAttr("style");
 {% else %}
 {% endif %}
-
-{% if data.homepageBanner4 == 'approve' %}
-    $("#jamesCollyerNew").css("display", "none");
-   
-{% else %}
-{% endif %}
  });
  </script>
 
 
 
 
- {% if (data.homepageBanner) or (data.homepageBanner4) or (data.homepageBanner5) %}
+ {% if data.homepageBanner %}
 
  <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
   aria-labelledby="govuk-notification-banner-title"
@@ -121,37 +115,11 @@ $( document ).ready(function() {
     {% elif data.homepageBanner == 'back' %}
         HD90210 - Robert Edwards's claim has been marked as a witness query
            {% elif data.homepageBanner == 'block' %}
-        HD90210 - Robert Edwards's claim has been marked as an area query
+        HD90210 - Robert Edwards has been marked as an area query
     {% elif data.homepageBanner == 'send' %}
         HD90210 - Robert Edwards's claim has been escalated
     {% elif data.homepageBanner == 'reject' %}
         HD90210 - Robert Edwards has been rejected
-    {% else %}
- {% endif %}
-
-    {% if data.homepageBanner4 == 'approve' %}
-      HD01209 - James Collyer's claim has been submitted for payment
-    {% elif data.homepageBanner4 == 'back' %}
-        HD01209 - James Collyer's claim has been marked as a witness query
-           {% elif data.homepageBanner4 == 'block' %}
-        HD01209 - James Collyer's claim has been marked as an area query
-    {% elif data.homepageBanner4 == 'send' %}
-        HD01209 - James Collyer's claim has been escalated
-    {% elif data.homepageBanner4 == 'reject' %}
-        HD01209 - James Collyer's claim has been rejected
-    {% else %}
- {% endif %}
-
-     {% if data.homepageBanner5 == 'approve' %}
-      HD01209 - Grace James's claim has been submitted for payment
-    {% elif data.homepageBanner5 == 'back' %}
-        HD01209 - Grace James's claim has been marked as a witness query
-           {% elif data.homepageBanner5 == 'block' %}
-        HD01209 - Grace James's claim has been marked as an area query
-    {% elif data.homepageBanner5 == 'send' %}
-        HD01209 - Grace James's claim has been escalated
-    {% elif data.homepageBanner5 == 'reject' %}
-        HD01209 - Grace James's claim has been rejected
     {% else %}
  {% endif %}
 
@@ -212,27 +180,27 @@ $( document ).ready(function() {
 
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#new">
-                            New (2)
+                            New (4)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#progress">
-                            Pending (1)
+                            Pending (5)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" style="min-width:153px" href="#blocked">
-                            Witness query (3)
+                            Witness query (10)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#blockeded">
-                            Area query (2)
+                            Area query (11)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#sentApproval">
-                           Escalated (1)
+                           Escalated (2)
                         </a>
                     </li>
                     <li class="govuk-tabs__list-item">
@@ -257,23 +225,26 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <!-- <th class="govuk-table__header" scope="col">Assigned to</th> -->
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                                 
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row" id="robEdwardsNew">
-                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">HD90210</a></td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
-                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                  
                                 </tr>
-                                <tr class="govuk-table__row" id="jamesCollyerNew">
-                                    <td class="govuk-table__cell">HD01209</td>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell"><a href="claim4Router">HD01209</a></td>
                                     <td class="govuk-table__cell">James Collyer</td>
                                     <td class="govuk-table__cell">21 April 2022</td>
-                                     <td class="govuk-table__cell"><a href="claim4Router">View</a></td>
                                 </tr>
-
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell"><a href="claim5Router">HD39531</a></td>
+                                    <td class="govuk-table__cell">Grace James</td>
+                                    <td class="govuk-table__cell">21 April 2022</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -287,18 +258,18 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                          
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">ZF92011</td>
+                                    <td class="govuk-table__cell"><a href="#">ZF92011</a></td>
                                     <td class="govuk-table__cell">Bal Jackson</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
                                     <!-- <td class="govuk-table__cell">In progress</td> -->
                                     <td class="govuk-table__cell">David Barton</td>
                                     <!-- <td class="govuk-table__cell">£98.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                   
                                 </tr>
                             </tbody>
                         </table>
@@ -313,41 +284,34 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                                  
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                                <tr class="govuk-table__row" id="robEdwardsBack" style="display:none">
-                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">HD90210</a></td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
                                      <td class="govuk-table__cell">Fred Basset</td>
-                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
-                                </tr>
-                                  <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">HD39531</td>
-                                    <td class="govuk-table__cell">Grace James</td>
-                                    <td class="govuk-table__cell">21 April 2022</td>
-                                     <td class="govuk-table__cell">David Barton</td>
-                                     <td class="govuk-table__cell"><a href="claim5Router">View</a></td>
+                                 
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">ZF92011</td>
+                                    <td class="govuk-table__cell"><a href="#">ZF92011</a></td>
                                     <td class="govuk-table__cell">Mel Hilton</td>
-                                    <td class="govuk-table__cell">22 April 2022</td>
+                                    <td class="govuk-table__cell">01 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£598.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                 
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">AB57824</td>
+                                    <td class="govuk-table__cell"><a href="#">AB57824</a></td>
                                     <td class="govuk-table__cell">Colette Phipps</td>
-                                    <td class="govuk-table__cell">23 April 2022</td>
+                                    <td class="govuk-table__cell">05 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£499.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                   
                                 </tr>
                             </tbody>
                         </table>
@@ -362,34 +326,34 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                                   
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row" id="robEdwardsArea" style="display:none">
-                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">HD90210</a></td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
                                     <td class="govuk-table__cell">Fred Basset</td>
-                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                   
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">AF920221</td>
+                                    <td class="govuk-table__cell"><a href="#">AF920221</a></td>
                                     <td class="govuk-table__cell">Geoff Wurst</td>
                                     <td class="govuk-table__cell">01 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£598.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                   
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">BA57843</td>
+                                    <td class="govuk-table__cell"><a href="#">BA57843</a></td>
                                     <td class="govuk-table__cell">Adam Ackbar</td>
                                     <td class="govuk-table__cell">05 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Pending</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£499.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                  
                                 </tr>
                             </tbody>
                         </table>
@@ -404,25 +368,25 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                                  
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                              <tr class="govuk-table__row" id="robEdwardsEsc" style="display:none">
-                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">HD90210</a></td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
                                           <td class="govuk-table__cell">Fred Basset</td>
-                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                 
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">BN57856</td>
+                                    <td class="govuk-table__cell"><a href="#">BN57856</a></td>
                                     <td class="govuk-table__cell">Bob Hull</td>
                                     <td class="govuk-table__cell">02 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Paid</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£499.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                 
                                 </tr>
                             </tbody>
                         </table>
@@ -437,19 +401,19 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                                 
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                                  <tr class="govuk-table__row" id="robEdwardsReject" style="display:none">
-                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">HD90210</a></td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
                                     <td class="govuk-table__cell">Fred Basset</td>
-                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                  
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">ZA57829</td>
+                                    <td class="govuk-table__cell"><a href="#">ZA57829</a></td>
                                     <td class="govuk-table__cell">BIll Irons</td>
                                     <td class="govuk-table__cell">02 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Paid</td> -->
@@ -470,25 +434,25 @@ $( document ).ready(function() {
                                     <!-- <th class="govuk-table__header" scope="col">Status</th> -->
                                     <th class="govuk-table__header" scope="col">Last action</th>
                                     <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
-                                    <th class="govuk-table__header" scope="col"></th>
+                                 
                                 </tr>
                             </thead>
                             <tbody class="govuk-table__body">
                                <tr class="govuk-table__row" id="robEdwardsSubmit" style="display:none">
-                                    <td class="govuk-table__cell">HD90210</td>
+                                    <td class="govuk-table__cell"><a href="claim2Router">HD90210</a></td>
                                     <td class="govuk-table__cell">Robert Edwards</td>
                                     <td class="govuk-table__cell">20 April 2022</td>
                                      <td class="govuk-table__cell">Fred Basset</td>
-                                    <td class="govuk-table__cell"><a href="claim2Router">View</a></td>
+                                  
                                 </tr>
                                 <tr class="govuk-table__row">
-                                    <td class="govuk-table__cell">ZA57829</td>
+                                    <td class="govuk-table__cell"><a href="#">ZA57829</a></td>
                                     <td class="govuk-table__cell">Claire Postlethwaite</td>
                                     <td class="govuk-table__cell">02 April 2022</td>
                                     <!-- <td class="govuk-table__cell">Paid</td> -->
                                     <td class="govuk-table__cell">Fred Basset</td>
                                     <!-- <td class="govuk-table__cell">£499.99</td> -->
-                                    <td class="govuk-table__cell"><a href="#">View</a></td>
+                                   
                                 </tr>
                             </tbody>
                         </table>

@@ -2064,16 +2064,110 @@ router.get('/*/caseManagement/caseActions' , function (req, res) {
         }
 })
 
+// Case management actions
+// http://127.0.0.1:3000/witex-v15/caseManagement/claim4
+router.get('/*/caseManagement/caseActions4' , function (req, res) {
+      var caseActions = req.query.caseActions
+       switch (true) {
+          case  (caseActions == 'Approve'):
+            req.session.data['homepageBanner4'] = 'approve';
+            res.redirect(`index2`)
+           break;
+
+           case  (caseActions == 'Send back to user'):
+            req.session.data['homepageBanner4'] = 'back';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Block'):
+            req.session.data['homepageBanner4'] = 'block';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Send for approval'):
+            req.session.data['homepageBanner4'] = 'send';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Reject'):
+            req.session.data['homepageBanner4'] = 'reject';
+            res.redirect(`addNoteAction`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`bork`)
+            break;
+        }
+})
+
+// Case management actions
+// http://127.0.0.1:3000/witex-v15/caseManagement/claim4
+router.get('/*/caseManagement/caseActions5' , function (req, res) {
+      var caseActions = req.query.caseActions
+       switch (true) {
+          case  (caseActions == 'Approve'):
+            req.session.data['homepageBanner5'] = 'approve';
+            res.redirect(`index2`)
+           break;
+
+           case  (caseActions == 'Send back to user'):
+            req.session.data['homepageBanner5'] = 'back';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Block'):
+            req.session.data['homepageBanner5'] = 'block';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Send for approval'):
+            req.session.data['homepageBanner5'] = 'send';
+            res.redirect(`addNoteAction`)
+            break;
+
+            case  (caseActions == 'Reject'):
+            req.session.data['homepageBanner5'] = 'reject';
+            res.redirect(`addNoteAction`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`bork`)
+            break;
+        }
+})
+
 
 // sent to correct page and reset the variable that control the success banner
 router.get('/*/caseManagement/claim2Router' , function (req, res) {
            delete req.session.data['homepageBanner'] ;
+           delete req.session.data['homepageBanner4'] ;
+           delete req.session.data['homepageBanner5'] ;
               res.redirect(`claim3`)    
+})
+
+// sent to correct page and reset the variable that control the success banner
+router.get('/*/caseManagement/claim4Router' , function (req, res) {
+           delete req.session.data['homepageBanner'] ;
+           delete req.session.data['homepageBanner4'] ;
+           delete req.session.data['homepageBanner5'] ;
+              res.redirect(`claim4`)    
+})
+
+// sent to correct page and reset the variable that control the success banner
+router.get('/*/caseManagement/claim5Router' , function (req, res) {
+             delete req.session.data['homepageBanner'] ;
+           delete req.session.data['homepageBanner4'] ;
+           delete req.session.data['homepageBanner5'] ;
+              res.redirect(`claim5`)    
 })
 
 // reset the successbanner and show rob edwards again
 router.get('/*/caseManagement/resetAll' , function (req, res) {
-           delete req.session.data['homepageBanner'] ;
+             delete req.session.data['homepageBanner'] ;
+           delete req.session.data['homepageBanner4'] ;
+           delete req.session.data['homepageBanner5'] ;
               res.redirect(`index2`)    
 })
 
