@@ -2001,7 +2001,7 @@ router.get('/*/pet/petCostRoute' , function (req, res) {
 router.get('/*/receipts/receiptsDone' , function (req, res) {
 
             req.session.data['receiptDoneShow'] = true;
-              res.redirect(`../tasklist`)
+              res.redirect(`../tasklist`) 
 })
 
 
