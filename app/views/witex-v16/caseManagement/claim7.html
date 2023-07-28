@@ -190,22 +190,18 @@ $(document).ready(function() {
 
 
 </style>
-<div class="govuk-notification-banner" role="region"
-  aria-labelledby="govuk-notification-banner-title"
-  data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Important
-    </h2>
-  </div>
-  <div class="govuk-notification-banner__content">
-    <p class="govuk-notification-banner__heading">
-      {user name} is editing this claim. You can only do the thing.
- 
-    </p>
-  </div>
+<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+        </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+            {user name} is editing this claim. You can only do the thing.
+        </p>
+    </div>
 </div>
-
 <span class="govuk-caption-xl">ZF92011 </span>
 <h1 class="govuk-heading-xl" style="">Bal Jackson</h1>
 <div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
@@ -249,6 +245,10 @@ $(document).ready(function() {
                             </tr>
                         </thead>
                         <tbody class="govuk-table__body">
+                           <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Status</td>
+                                <td class="govuk-table__cell">Pending</td>
+                            </tr>
                             <tr class="govuk-table__row">
                                 <td class="govuk-table__cell">Case ID</td>
                                 <td class="govuk-table__cell">ZF92011</td>
@@ -629,7 +629,7 @@ $(document).ready(function() {
                 </div>
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="audit" style="padding:0">
-                {% include "includes/cps/caseManagement/addNote.html" %}
+                {% include "includes/cps/caseManagement/addNoteReadOnly.html" %}
                 <div style="padding:0px 20px" id="notesArea" class="notesArea">
                     <h2 class="govuk-heading-m" style="margin-top:-16px">Notes and amends</h2>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -645,7 +645,7 @@ $(document).ready(function() {
             </div>
         </div>
     </div>
-    <div class="govuk-grid-column-one-third">
+<!--     <div class="govuk-grid-column-one-third">
         <div class="govuk-form-group" style="margin-bottom:10px; margin-top:55px ">
             <form action="caseActions4" method="get" class="form" style="">
                 <fieldset class="govuk-fieldset">
@@ -690,10 +690,8 @@ $(document).ready(function() {
                 <button class="govuk-button govuk-button--secondary" style="margin-top:10px">Update</button>
             </form>
         </div>
-
-    </div>
+    </div> -->
 </div>
-
 <script>
 if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
     new MOJFrontend.MultiFileUpload({
