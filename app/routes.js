@@ -2163,6 +2163,15 @@ router.get('/*/caseManagement/claim5Router' , function (req, res) {
               res.redirect(`claim5`)    
 })
 
+// sent to correct page and reset the variable that control the success banner
+router.get('/*/caseManagement/claim7Router' , function (req, res) {
+             delete req.session.data['homepageBanner'] ;
+           delete req.session.data['homepageBanner4'] ;
+           delete req.session.data['homepageBanner5'] ;
+              res.redirect(`claim7`)    
+})
+
+
 // reset the successbanner and show rob edwards again
 router.get('/*/caseManagement/resetAll' , function (req, res) {
              delete req.session.data['homepageBanner'] ;
