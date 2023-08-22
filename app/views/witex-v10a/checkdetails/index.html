@@ -11,6 +11,13 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
+
+<style>
+.govuk-summary-list__key {
+    width: 40%;
+}
+    </style>
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
         <h1 class="govuk-heading-xl">Check your answers</h1>
@@ -21,7 +28,7 @@ href: "javascript:history.back()"
                     Name
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    {{ data['first-name-real'] }}  {{ data['last-name-real'] }} 
+                    {{ data['first-name-real'] }} {{ data['last-name-real'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -29,13 +36,11 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
-     
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Email address
+                    Email address
                 </dt>
                 <dd class="govuk-summary-list__value">
-                
                     <p class="govuk-body"> {{ data['email'] }} </p>
                 </dd>
                 <dd class="govuk-summary-list__actions">
@@ -46,10 +51,9 @@ href: "javascript:history.back()"
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Postcode
+                    Postcode
                 </dt>
                 <dd class="govuk-summary-list__value">
-                
                     <p class="govuk-body"> {{ data['postcode'] }} </p>
                 </dd>
                 <dd class="govuk-summary-list__actions">
@@ -58,34 +62,31 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
-
         </dl>
         <h2 class="govuk-heading-m">Food and drink</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     How many hours were you away from home
                 </dt>
                 <dd class="govuk-summary-list__value">
-                        {{ data['away5hours'] }}
+                    {{ data['away5hours'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
                         Change<span class="govuk-visually-hidden"> licence type</span>
                     </a>
                 </dd>
-            </div>           
+            </div>
         </dl>
-
-         <h2 class="govuk-heading-m">Travel</h2>
+        <h2 class="govuk-heading-m">Travel</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Claiming for travel?
+                    Claiming for travel?
                 </dt>
                 <dd class="govuk-summary-list__value">
-                     {{ data['travelclaim'] }}
+                    {{ data['travelclaim'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -98,7 +99,7 @@ href: "javascript:history.back()"
                     How did you travel to court?
                 </dt>
                 <dd class="govuk-summary-list__value">
-                        {{ data['transportChoice'] }}
+                    {{ data['transportChoice'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -111,7 +112,7 @@ href: "javascript:history.back()"
                     Total cost of public transport
                 </dt>
                 <dd class="govuk-summary-list__value">
-                     £{{ data['trainCost'] }}
+                    £{{ data['trainCost'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -119,10 +120,8 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
-
         </dl>
-
-<!--     <h2 class="govuk-heading-m">Overnight stay</h2>
+        <!--     <h2 class="govuk-heading-m">Overnight stay</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -138,8 +137,7 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl> -->
-
-<!--             <h2 class="govuk-heading-m">Unpaid days off work</h2>
+        <!--             <h2 class="govuk-heading-m">Unpaid days off work</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -155,8 +153,7 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl> -->
-
- <!--       <h2 class="govuk-heading-m">Employing someone to do your job</h2>
+        <!--       <h2 class="govuk-heading-m">Employing someone to do your job</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -172,8 +169,7 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl> -->
-
-<!--     <h2 class="govuk-heading-m">Childcare</h2>
+        <!--     <h2 class="govuk-heading-m">Childcare</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -189,8 +185,7 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl> -->
-
-<!--     <h2 class="govuk-heading-m">Pet sitting</h2>
+        <!--     <h2 class="govuk-heading-m">Pet sitting</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -232,8 +227,7 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl> -->
-
-<!--     <h2 class="govuk-heading-m">Other expenses</h2>
+        <!--     <h2 class="govuk-heading-m">Other expenses</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -249,12 +243,11 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl> -->
-
-    <h2 class="govuk-heading-m">Receipts</h2>
+        <h2 class="govuk-heading-m">Receipts</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Receipts
+                    Receipts
                 </dt>
                 <dd class="govuk-summary-list__value">
                     File1.pdf <br />receipt.jpg
@@ -266,15 +259,14 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl>
-
-            <h2 class="govuk-heading-m">Payment</h2>
+        <h2 class="govuk-heading-m">Payment</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   How do you want to be paid?
+                    How do you want to be paid?
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  {{ data['paymetype'] }}
+                    {{ data['paymetype'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -282,12 +274,12 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
-             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                  Name on the account
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name on the account
                 </dt>
                 <dd class="govuk-summary-list__value">
-                        {{ data['name-on-the-account'] }}
+                    {{ data['name-on-the-account'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -296,11 +288,11 @@ href: "javascript:history.back()"
                 </dd>
             </div>
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                 Sort code
+                <dt class="govuk-summary-list__key">
+                    Sort code
                 </dt>
                 <dd class="govuk-summary-list__value">
-                        {{ data['sort-code'] }}
+                    {{ data['sort-code'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -308,12 +300,12 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Account number
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Account number
                 </dt>
                 <dd class="govuk-summary-list__value">
-                        {{ data['account-number'] }}
+                    {{ data['account-number'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -321,12 +313,12 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Building society roll number
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Building society roll number
                 </dt>
                 <dd class="govuk-summary-list__value">
-                        {{ data['roll-number'] }}
+                    {{ data['roll-number'] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
@@ -335,67 +327,76 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl>
-
-                 <h2 class="govuk-heading-m">Amount payable</h2>
-                 <p>We will now review your claim - the amount you receive may change when we have completed our checks. </p>
+        <h2 class="govuk-heading-m">Amount payable</h2>
+        <p>We will now review your claim - the amount you receive may change when we have completed our checks. </p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Food and drink
+                    Food and drink
                 </dt>
-             
                 <dd class="govuk-summary-list__value">
-                  
                 </dd>
-                  <dd class="govuk-summary-list__actions">
-                 £2.25
+                <dd class="govuk-summary-list__actions">
+                    £2.25
                 </dd>
-           
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Travel
+                    Travel
                 </dt>
-             
                 <dd class="govuk-summary-list__value">
-                  
                 </dd>
-                  <dd class="govuk-summary-list__actions">
-                 £30.50
+                <dd class="govuk-summary-list__actions">
+                    £30.50
                 </dd>
-           
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                   Total 
+                    Accommodation
                 </dt>
-             
                 <dd class="govuk-summary-list__value">
-                  
                 </dd>
-                  <dd class="govuk-summary-list__actions" style="font-weight:700">
-                 £32.75
+                <dd class="govuk-summary-list__actions">
+                    £30.50
                 </dd>
-           
+            </div>
+             <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="width:40%">
+                    Overnight food and drink
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £26.00
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions" style="font-weight:700">
+                    £32.75
+                </dd>
             </div>
         </dl>
-
         <h2 class="govuk-heading-m">Send your application</h2>
-       <div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
-    I confirm that the details in this form are true and that I am entitled to claim expenses for attending court.<br /><br />
-    I understand that if I deliberately make a false statement I can be prosecuted.
-  </strong>
-</div>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                I confirm that the details in this form are true and that I am entitled to claim expenses for attending court.<br /><br />
+                I understand that if I deliberately make a false statement I can be prosecuted.
+            </strong>
+        </div>
         <form action="./Finish" method="post" novalidate>
             <input type="hidden" name="answers-checked" value="true">
             <button class="govuk-button" data-module="govuk-button">
                 Accept and send
             </button>
         </form>
-              {% include "includes/cps/v11/help.html" %}
+        {% include "includes/cps/v11/help.html" %}
     </div>
 </div>
 </main>
