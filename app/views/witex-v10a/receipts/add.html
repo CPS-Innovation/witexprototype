@@ -12,242 +12,285 @@ href: "javascript:history.back()"
 {% endblock %}
 {% block content %}
 <!-- Here is the code to show conditional stuff in liquid-->
-
 <!-- end of conditional statement -->
-
 <script src="/public/javascripts/mojall.js"></script>
 <script src="/public/javascripts/multi-file-upload.js"></script>
-
-
 {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
 {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+<style>
+.moj-multi-file-upload__dropzone {
+    outline: none;
+    padding: 20px 15px;
+}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
- 
-    {% if errorSummary.items.length %}
-      {{ govukErrorSummary({
-        titleText: 'There is a problem',
-        errorList: errorSummary.items
-      }) }}
-    {% endif %}
+.moj-multi-file-upload__dropzone p {
+    display: none;
+}
 
-    <h1 class="govuk-heading-xl">Upload your proof</h1>
-
-              <p>You can provide your proof by uploading a:</p>
-          <ul class="govuk-list govuk-list--bullet ">
-
-            <li>
-              photo
-            </li>
-                        <li>
-              screengrab
-            </li>
-                                    <li>
-              scan
-            </li>
-
-                                      <li>
-              PDF
-            </li>
-          </ul>
-
-
-          <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                   Rules for uploading proof
-
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-
-      <p>You must ensure files are:</p>
-          <ul class="govuk-list govuk-list--bullet ">
- 
-            <li>
-              showing the entire document or image
-            </li>
-            <li>
-              legible - words and numbers can be read
-            </li>
-             <li>
-              unaltered by computer software
-            </li>
-            <li>
-             no more than 15MB
-            </li>
-          </ul>
-    
-        <p>We can accept these files:</p>
-          <ul class="govuk-list govuk-list--bullet ">
-            <li>
-              JPG
-            </li>
-            <li>
-              PNG
-            </li>
-             <li>
-              Apple HEIC (iPhone live photos)
-            </li>
-             <li>
-              PDF
-            </li>
-          </ul>
-                </div>
-              </details>
-
-
-             {% if data.haveSomeRecipts %}
-                      <p>Upload your available evidence:</p>
-                      {% else %}
-                        <p>Upload all your evidence of: </p>
-                    {% endif %}
-                      <ul class="govuk-list govuk-list--bullet">
-                 {% if data.trainCost %}  
-                  {% if not data.reasonNoReceipts  %}
-            
-                      <li> £{{ data['trainCost'] }} of train tickets </li>
-                      {% else %}
-               
-                    {% endif %}
-                    {% endif %}
-
-                      {% if data.parkCost %}
-                      {% if not data.reasonNoReceiptsPark %}
-                        <li>£{{ data['parkCost'] }} of parking</li>
-                      {% else %}
-                    
-                    {% endif %}
-                    {% endif %}
-
-                     {% if data.taxiMilesClaimed %}
-                       {% if not data.reasonNoReceiptsTaxi %}
-                        <li>£{{ data['taxiMilesClaimed'] }} of taxi(s)</li>
-                      {% else %}
-                    {% endif %}
-                    {% endif %}
-<!-- overnight stay -->
-                     {% if data.overnightCost %}
-                        <li>£{{ data['overnightCost'] }} of accommodation</li>
-                      {% else %}
-                    {% endif %}
-
-<!-- unpaid day off -->
-                     {% if data.uploadProof == "Upload proof" %}
-                        <li>your payslip</li>
-                      {% else %}
-                    {% endif %}
-
-<!-- self employed-->
-                     {% if data.employmentType == "Yes" %}
-                        <li>your proof of self-employment</li>
-                        <details class="govuk-details" data-module="govuk-details" style="margin-bottom:10px">
-    <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-            What proof can we accept?
-        </span>
-    </summary>
-    <div class="govuk-details__text">
-        <p>We will accept one of the following as proof that you are self-employed:</p>
-        <ul class="govuk-list govuk-list--bullet">
-            <li>a business card or letterhead with full name and business name</li>
-            <li>a copy of your tax return to HMRC</li>
-            <li>a letter from your accountant confirming you're self-employed </li>
-            <li>a copy of your sub-contractors certificate issued by HMRC</li>
-            <li>a copy of your Hackney Carriage Licence </li>
-            <li>a letter from the company for which you are currently subcontracting to confirm that you are self-employed </li>
-        </ul>
-    </div>
-</details>
-                      {% else %}
-                    {% endif %}
-
-<!-- Ofsted registered childcare-->
-                     {% if data.ofstedChildcareCost %}
-                        <li>£{{ data['ofstedChildcareCost'] }} of Ofsted registered childcare</li>
-                      {% else %}
-                    {% endif %}
-
-<!-- Non ofsted registered childcare-->
-                     {% if data.nonRegisteredChildcare %}
-                        <li>£{{ data['nonRegisteredChildcare'] }} of childcare</li>
-                      {% else %}
-                    {% endif %}
-
-<!-- Non ofsted registered adult care-->
-                     {% if data.careCost %}
-                        <li>£{{ data['careCost'] }} of a carer</li>
-                      {% else %}
-                    {% endif %}
-
-<!-- Other expense 1-->
-                     {% if data.other[0][expense] %}
-                        <li>£{{ data['other[0][cost]'] }} of a {{ data['other[0][expense]'] }}</li>
-                      {% else %}
-                    {% endif %}
-
-
-<!-- end of conditional statement -->
-                    </ul>
-
-                                        
-
-    <form action="../payyou" method="post" enctype="multipart/form-data">
-      {% set uploadHtml %}
-        {{ govukFileUpload({
-          id: "documents",
-          name: "documents",
-          classes: 'moj-multi-file-upload__input',
-          label: {
-            text: "Upload file(s)",
-            classes: 'govuk-label--m'
-          },
-          attributes: { multiple: '' },
-          errorMessage: errorMessage
-        }) }}
-
-        {{govukButton({
-          text: 'Upload file',
-          classes: 'govuk-button--secondary moj-multi-file-upload__button'
-        })}}
-      {% endset %}
-
-      {{ mojMultiFileUpload({
-        uploadedFiles: {
-          heading: { text: 'Files added' },
-          items: uploadedFiles
-        },
-        uploadHtml: uploadHtml
-      }) }}
-
-      {{govukButton({
-        text: 'Continue'
-      })}}
-    </form>
-  </div>
-
-
-
-</div>
-      {% include "includes/cps/v11/help.html" %}
-
-      
-    </div>
-    </main>
-</div>
+.moj-multi-file-upload__dropzone label {
+    margin-left: -15px;
+}
+</style>
 
 <script>
 
-    if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
-  new MOJFrontend.MultiFileUpload({
-    container: $(".moj-multi-file-upload"),
-    uploadUrl: "/ajax-upload",
-    deleteUrl: "/ajax-delete",
-  });
-}
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        console.log(mutation)
+        if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+            // element added to DOM
+            var hasClass = [].some.call(mutation.addedNodes, function(el) {
+                return el.classList.contains('moj-multi-file-upload__filename')
+            });
+            if (hasClass) {
+                // element has class `MyClass`
+                console.log('element "moj-multi-file-upload__filename" added');
+            }
+        }
+    });
+});
 
+var config = {
+    attributes: true,
+    childList: true,
+    characterData: true
+};
+
+observer.observe(document.body, config);
+
+  <div>
+    <div class="spinners" style="display:flex;align-items: center;border-bottom: 1px solid #b1b4b6;">
+        <p style="margin-top: 13px;margin-right:10px;/* margin-bottom: 5px; */">4 Files uploading</p>
+        <div class="ccms-loader" style=""><img src="/public/images/spinner.gif" width="30%"></div>
+        </div>
+    <div class="govuk-summary-list__actions moj-multi-file-upload__actions" style="
+    border-bottom: 1px solid #b1b4b6;
+"></div>
+</div>
+
+
+</script>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+        titleText: 'There is a problem',
+        errorList: errorSummary.items
+        }) }}
+        {% endif %}
+        <h1 class="govuk-heading-xl">Upload your proof</h1>
+        <p>You can provide your proof by uploading a:</p>
+        <ul class="govuk-list govuk-list--bullet ">
+            <li>
+                photo
+            </li>
+            <li>
+                screengrab
+            </li>
+            <li>
+                scan
+            </li>
+            <li>
+                PDF
+            </li>
+        </ul>
+        <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Rules for uploading proof
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                <p>You must ensure files are:</p>
+                <ul class="govuk-list govuk-list--bullet ">
+                    <li>
+                        showing the entire document or image
+                    </li>
+                    <li>
+                        legible - words and numbers can be read
+                    </li>
+                    <li>
+                        unaltered by computer software
+                    </li>
+                    <li>
+                        no more than 15MB
+                    </li>
+                </ul>
+                <p>We can accept these files:</p>
+                <ul class="govuk-list govuk-list--bullet ">
+                    <li>
+                        JPG
+                    </li>
+                    <li>
+                        PNG
+                    </li>
+                    <li>
+                        Apple HEIC (iPhone live photos)
+                    </li>
+                    <li>
+                        PDF
+                    </li>
+                </ul>
+            </div>
+        </details>
+        {% if data.haveSomeRecipts %}
+        <p>Upload your available evidence:</p>
+        {% else %}
+        <p>Upload all your evidence of: </p>
+        {% endif %}
+        <ul class="govuk-list govuk-list--bullet">
+            {% if data.trainCost %}
+            {% if not data.reasonNoReceipts %}
+            <li> £{{ data['trainCost'] }} of train tickets </li>
+            {% else %}
+            {% endif %}
+            {% endif %}
+            {% if data.parkCost %}
+            {% if not data.reasonNoReceiptsPark %}
+            <li>£{{ data['parkCost'] }} of parking</li>
+            {% else %}
+            {% endif %}
+            {% endif %}
+            {% if data.taxiMilesClaimed %}
+            {% if not data.reasonNoReceiptsTaxi %}
+            <li>£{{ data['taxiMilesClaimed'] }} of taxi(s)</li>
+            {% else %}
+            {% endif %}
+            {% endif %}
+            <!-- overnight stay -->
+            {% if data.overnightCost %}
+            <li>£{{ data['overnightCost'] }} of accommodation</li>
+            {% else %}
+            {% endif %}
+            <!-- unpaid day off -->
+            {% if data.uploadProof == "Upload proof" %}
+            <li>your payslip</li>
+            {% else %}
+            {% endif %}
+            <!-- self employed-->
+            {% if data.employmentType == "Yes" %}
+            <li>your proof of self-employment</li>
+            <details class="govuk-details" data-module="govuk-details" style="margin-bottom:10px">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        What proof can we accept?
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    <p>We will accept one of the following as proof that you are self-employed:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>a business card or letterhead with full name and business name</li>
+                        <li>a copy of your tax return to HMRC</li>
+                        <li>a letter from your accountant confirming you're self-employed </li>
+                        <li>a copy of your sub-contractors certificate issued by HMRC</li>
+                        <li>a copy of your Hackney Carriage Licence </li>
+                        <li>a letter from the company for which you are currently subcontracting to confirm that you are self-employed </li>
+                    </ul>
+                </div>
+            </details>
+            {% else %}
+            {% endif %}
+            <!-- Ofsted registered childcare-->
+            {% if data.ofstedChildcareCost %}
+            <li>£{{ data['ofstedChildcareCost'] }} of Ofsted registered childcare</li>
+            {% else %}
+            {% endif %}
+            <!-- Non ofsted registered childcare-->
+            {% if data.nonRegisteredChildcare %}
+            <li>£{{ data['nonRegisteredChildcare'] }} of childcare</li>
+            {% else %}
+            {% endif %}
+            <!-- Non ofsted registered adult care-->
+            {% if data.careCost %}
+            <li>£{{ data['careCost'] }} of a carer</li>
+            {% else %}
+            {% endif %}
+            <!-- Other expense 1-->
+            {% if data.other[0][expense] %}
+            <li>£{{ data['other[0][cost]'] }} of a {{ data['other[0][expense]'] }}</li>
+            {% else %}
+            {% endif %}
+            <!-- end of conditional statement -->
+        </ul>
+
+<!-- <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+        <form action="../payyou" method="post" enctype="multipart/form-data">
+            <div class="moj-multi-file-upload">
+                <div class="moj-multi-file__uploaded-files ">
+                    <h2 class="govuk-heading-m">Files added</h2>
+                    <div class="govuk-summary-list moj-multi-file-upload__list">
+                    </div>
+                </div>
+                <div class="moj-multi-file-upload__upload">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="documents">
+                            Upload a file
+                        </label>
+                        <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+                    </div>
+
+                    <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                        Upload file
+                    </button>
+                </div>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div> -->
+
+
+        <form action="../payyou" method="post" enctype="multipart/form-data">
+            {% set uploadHtml %}
+            {{ govukFileUpload({
+            id: "documents",
+            name: "documents",
+            classes: 'moj-multi-file-upload__input',
+            label: {
+            text: "Upload file(s)",
+            classes: 'govuk-label--m'
+            },
+            attributes: { multiple: '' },
+            errorMessage: errorMessage
+            }) }}
+            {{govukButton({
+            text: 'Upload file',
+            classes: 'govuk-button--secondary moj-multi-file-upload__button'
+            })}}
+            {% endset %}
+            {{ mojMultiFileUpload({
+            uploadedFiles: {
+            heading: { text: 'Files added' },
+            items: uploadedFiles
+                         
+            },
+            uploadHtml: uploadHtml
+            }) }}
+            {{govukButton({
+            text: 'Continue'
+            })}}
+        </form>
+    </div>
+
+</div>
+{% include "includes/cps/v11/help.html" %}
+</div>
+</main>
+</div>
+<script>
+if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
+    new MOJFrontend.MultiFileUpload({
+        container: $(".moj-multi-file-upload"),
+        uploadUrl: "/ajax-upload",
+        deleteUrl: "/ajax-delete",
+    });
+}
 </script>
 {% endblock %}
