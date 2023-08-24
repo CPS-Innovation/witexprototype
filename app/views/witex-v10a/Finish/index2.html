@@ -31,8 +31,9 @@
         </p> -->
         <p>An email confirmation has been sent to {{ data['email'] }}.  </p>
          <h2 class="govuk-heading-m">What happens next</h2>
-         <p>We will deal with your claim as quickly as possible and, as long as you have filled the form in correctly, we aim to pay within 10 working days. </p>
-            <p>If you are not paid within 20 working days, call 01924 205 200 or email <a href="">witness.query@cps.gov.uk</a>. </p>
+         <p>We will now review your claim - the amount you receive may change when we have completed our checks.</p>
+         <p>We aim to pay within 10 working days. </p>
+            <p>If you are not paid within 20 working days, call 01924 205 200 or email <a href="">witness.query@cps.gov.uk</a> </p>
 
 <form method="get" action="feedback3">
                  <h2 class="govuk-heading-m" style="margin-top:45px">Help us improve our service</h2>
@@ -86,6 +87,7 @@
                     Continue
                 </button>
             </form>
+               {% include "includes/cps/v11/help.html" %}
         
       
       <!--   <p> <a href="#"> to complete your registration with them</a>  </p> -->
