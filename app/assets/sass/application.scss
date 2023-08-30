@@ -6,6 +6,7 @@
     font-display:block;
   }
 
+
 /*@import url("//hello.myfonts.net/count/413f20");
   
 @font-face {
@@ -67,6 +68,7 @@
   src: url('/public/fonts/TransportNewMedium/font.woff2') format('woff2'), url('/public/fonts/TransportNewMedium/font.woff') format('woff');
 }*/
 
+/*@import "node_modules/govuk-frontend/govuk/all";*/
 
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
@@ -129,6 +131,11 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     right: 0px;
     border-top: 4px solid $govuk-border-colour;
 }*/
+
+
+.adjustNewAcc {
+  margin-top:-35px;
+}
 
 .inactiveLink {
   color:#505a5f !important;
