@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Proof of expenses</h1>
+
+        <p class="govuk-body">
+         You need to post your proof to:<br><br>
+          Witness Expenses Proof<br>
+         Crown Prosecution Service <br>
+         4 South Parade<br>
+         Wakefield<br>
+         WF1 1LR
+        </p>
+
+                <p class="govuk-body">
+        Include the following:
+      
+        </p>
+
+           <ul class="govuk-list govuk-list--bullet">
+              <li>Your name</li>
+        <li>The Unique Reference Number (URN) from the blue witness expense claim form</li>
+
+
+           </ul>
+
+
+        <p>Make sure you include all your evidence of: </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+
+            <li> £200 of train tickets </li>
+      </ul>
+
+                      <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+
+{% include "includes/cps/v11/help.html" %}
+      </div>
+
+    </div>
+
+{% endblock %}

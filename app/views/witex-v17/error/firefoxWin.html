@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">This service does not work with your current browser</h1>
+
+        <p class="govuk-body">
+         You should use a different browser - we recommend Google Chrome or Microsoft Edge.
+        </p>
+                <p class="govuk-body">
+         Or complete and return your blue witness expense claim form.
+        </p>
+        <p class="govuk-body">
+          If you still have problems, call 01924 205 200 or email <a href="">witness.query@cps.gov.uk</a>.
+        </p>
+      </div>
+    </div>
+
+{% endblock %}
