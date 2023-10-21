@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="index2">
+
+                  <div class="govuk-form-group">
+                      <h1 class="govuk-label-wrapper">
+                        <label class="govuk-label govuk-label--l" for="more-detail">
+                             {% if data.homepageBanner == 'approve' %}
+      Add a note
+    {% elif data.homepageBanner == 'back' %}
+        Why has this claim been queried?
+    {% elif data.homepageBanner == 'block' %}
+        Why has this claim been queried?
+    {% elif data.homepageBanner == 'send' %}
+        Why have you escalated this claim?
+    {% elif data.homepageBanner == 'reject' %}
+      Why have you rejected this claim?
+    {% else %}
+    Add a note
+ {% endif %}
+                        </label>
+                      </h1>
+
+<div id="more-detail-hint" class="govuk-hint">
+        {% if data.homepageBanner == 'approve' %}
+      Add a note
+    {% elif data.homepageBanner == 'back' %}
+      
+    {% elif data.homepageBanner == 'block' %}
+        
+    {% elif data.homepageBanner == 'send' %}
+     
+    {% elif data.homepageBanner == 'reject' %}
+        
+    {% else %}
+  
+ {% endif %}
+                      
+                      </div>  
+                      <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="8" aria-describedby="more-detail-hint"></textarea>
+                    </div>
+            <div class="govuk-button-group">
+                <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+                 <a class="govuk-link" href="claim2">Cancel</a>
+             </div>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
