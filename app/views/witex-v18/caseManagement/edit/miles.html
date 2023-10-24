@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/version1/mainNav.html" %}
+{% include "includes/version1/homeNav.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+    .govuk-header__logotype {
+    width: 500px
+}
+
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+
+</style>
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+                <span class="govuk-caption-l">Car</span>
+           How many miles in total are you claiming for?
+        </h1>
+
+  
+        <form action="parking" method="get" class="form">
+            <div class="govuk-form-group">
+     <!--            <label class="govuk-label  bold-label" for="code">
+                   Total miles
+                </label> -->
+     <!--            <span id="email-hint" class="govuk-hint">
+                    This includes travelling to and from court
+                </span> -->
+                <div class="govuk-input__wrapper">
+                    <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false" value="177">
+                    <div class="govuk-input__suffix" aria-hidden="true">miles</div>
+                </div>
+            
+            </div>
+
+
+                           <div class="govuk-button-group">
+                <button type="submit" class="govuk-button">Continue </button>
+                 <a class="govuk-link" href="#">Cancel</a>
+             </div>
+        </form>
+
+    </div>
+    </main>
+</div>
+{% endblock %}

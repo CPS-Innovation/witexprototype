@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/version1/mainNav.html" %}
+{% include "includes/version1/homeNav.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+    .govuk-header__logotype {
+    width: 500px
+}
+
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+
+</style>
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="checkFood" method="get" class="form">
+         <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                                    <div class="govuk-radios" data-module="govuk-radios">
+                                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading"> 
+        How many hours were you away from home or work?
+
+      </h1>
+    </legend>
+                                            <span id="email-hint" class="govuk-hint">
+                                                This includes travelling to and from court
+                                            </span>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="foodTime" name="foodTime" type="radio" value="less than 5 hours" data-aria-controls="conditional-contact" checked>
+                                            <label class="govuk-label govuk-radios__label" for="contact">
+                                             less than 5 hours
+                                            </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="foodTime" name="foodTime" type="radio" value="between 5 and 10 hours" data-aria-controls="conditional-contact-2">
+                                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                            between 5 and 10 hours                                           </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="foodTime" name="foodTime" type="radio" value="more than 10 hours" data-aria-controls="conditional-contact-2">
+                                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                               more than 10 hours
+                                            </label>
+                                        </div>
+     
+                                </fieldset>
+                </div>
+                <div class="govuk-button-group">
+                <button type="submit" class="govuk-button">Continue </button>
+                 <a class="govuk-link" href="#">Cancel</a>
+             </div>
+            </form>
+        
+    </div>
+    </main>
+</div>
+{% endblock %}
