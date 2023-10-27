@@ -11,7 +11,6 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
-
 <!-- Here is the code to show conditional stuff in liquid-->
 {% if data.FAALoggedIn %}
 <div class="do-a-thing"></div>
@@ -26,28 +25,25 @@ href: "javascript:history.back()"
             What did you spend in total on London Transport travel?
         </h1>
         <p>Includes: tube, bus, Docklands Light Railway (DLR), Elizabeth Line and overground train. </p>
-
         <p>You can only claim for standard class tickets. </p>
-
-<p>You don't need receipts for London Transport claims. </p>
+        <p>You don't need receipts for London Transport claims. </p>
         <form action="multiTravelRouterPubTrans" method="get" class="form">
             <div class="govuk-form-group">
-<!--                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
+                <!--                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
                     Enter code
                 </label>
- -->             
-<!--     <span id="email-hint" class="govuk-hint">
+ -->
+                <!--     <span id="email-hint" class="govuk-hint">
               You will need to upload a receipt for all train journeys.
             </span> -->
-               <div class="govuk-input__wrapper">
-    <div class="govuk-input__prefix" aria-hidden="true">£</div>
-    <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false">
-   
-  </div>
+            
+                <div class="govuk-input__wrapper">
+                    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                    <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false">
+                </div>
             </div>
             <button class="govuk-button">Continue</button>
         </form>
-      
     </div>
     </main>
 </div>
