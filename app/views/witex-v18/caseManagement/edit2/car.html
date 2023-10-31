@@ -111,19 +111,26 @@ Array.prototype.forEach.call(radioOtherDriving, function(radio) {
 });
 
 var radioHigherRate = document.querySelectorAll('input[type=radio][name="higherRateOrNot"]');
+var radioHigherRateReason = document.querySelectorAll('input[type=radio][name="higherRate"]');
 const higherRateHidden = document.getElementById('higherRateGroup');
+const higherRateReasonHidden = document.getElementById('higherRateReason');
+
 
 function changeHandlerHigherRate(event) {
    if ( this.value === 'yes' ) {
       $("#higherRateGroup").css("display", "table-row");
+       $("#higherRateReason").css("display", "table-row");
         setTimeout(function () {
                 higherRateHidden.style.opacity = '1';
+                higherRateReasonHidden.style.opacity = '1';
             }, 10);
   
    } else if ( this.value === 'no' ) {
                     higherRateHidden.style.opacity = '0';
+                    higherRateReasonHidden.style.opacity = '0';
             setTimeout(function () {
                 higherRateHidden.style.display = 'none';
+                higherRateReasonHidden.style.display = 'none';
             }, 500);
    }  
 }
@@ -133,7 +140,32 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
 });
 
 
+
+
+function changeHandlerCarRateReason(event) {
+   if ( this.value === 'other' ) { 
+       $("#higherRateReason").css("display", "table-row");
+        setTimeout(function () {
+           higherRateReasonHidden.style.opacity = '1';
+            }, 10);
+  
+   } else if ( this.value != 'other' ) {     
+          higherRateReasonHidden.style.opacity = '0';
+            setTimeout(function () {         
+                higherRateReasonHidden.style.display = 'none';
+            }, 500);
+   }  
+}
+
+Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
+   radio.addEventListener('change', changeHandlerCarRateReason);
+});
+
+
+
  });
+
+
 
 
 </script>
@@ -165,7 +197,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr> -->
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="max-width:180px;">Are you claiming the higher rate?</th>
+                                <td scope="row" class="govuk-table__cell" style="max-width:180px;">Are you claiming the higher rate?</td>
                                 <td class="govuk-table__cell" style="width:515px">
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
@@ -189,31 +221,31 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                             </tr>
                            
                             <tr class="govuk-table__row notHiddenTable" id="higherRateGroup" >
-                                <th scope="row" class="govuk-table__cell" style="">Why are you claiming the higher mileage rate?</th>
+                                <td scope="row" class="govuk-table__cell" style="">Why are you claiming the higher mileage rate?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
                                             <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
                                                 <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="higherRate" name="higherRate" type="radio" value="yes">
+                                                    <input class="govuk-radios__input" id="higherRate" name="higherRate" type="radio" value="public">
                                                     <label class="govuk-label govuk-radios__label" for="higherRate">
                                                         There was no public transport
                                                     </label>
                                                 </div>
                                                 <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="higherRate-2" name="higherRate" type="radio" value="no">
+                                                    <input class="govuk-radios__input" id="higherRate-2" name="higherRate" type="radio" value="faster">
                                                     <label class="govuk-label govuk-radios__label" for="allTrhigherRateain-2">
                                                         Cheaper or faster to drive than take public transport
                                                     </label>
                                                 </div>
                                                 <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="higherRate-3" name="higherRate" type="radio" value="no">
+                                                    <input class="govuk-radios__input" id="higherRate-3" name="higherRate" type="radio" value="disabled">
                                                     <label class="govuk-label govuk-radios__label" for="allTrhigherRateain-3">
                                                         Disability
                                                     </label>
                                                 </div>
                                                 <div class="govuk-radios__item">
-                                                    <input class="govuk-radios__input" id="higherRate-4" name="higherRate" type="radio" value="no" checked>
+                                                    <input class="govuk-radios__input" id="higherRate-4" name="higherRate" type="radio" value="other" checked>
                                                     <label class="govuk-label govuk-radios__label" for="allTrhigherRateain-4">
                                                         No choice but to use own car
                                                     </label>
@@ -223,15 +255,15 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="">Reason you had no choice</th>
+                            <tr class="govuk-table__row notHiddenTable" id="higherRateReason">
+                                <td scope="row" class="govuk-table__cell" style="">Reason you had no choice</td>
                                 <td class="govuk-table__cell">
                                     <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="3" aria-describedby="more-detail-hint">it was raining</textarea>
                                 </td>
                             </tr>
                          
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="">Were you travelling with additional witnesses?</th>
+                                <td scope="row" class="govuk-table__cell" style="">Were you travelling with additional witnesses?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
@@ -254,7 +286,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row hidden" id="numberOfAddWit">
-                                <th scope="row" class="govuk-table__cell" >How many additional witnesses are you claiming for?</th>
+                                <td scope="row" class="govuk-table__cell" >How many additional witnesses are you claiming for?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-input__wrapper">
                                         <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="">
@@ -262,16 +294,16 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="">How many miles in total are you claiming for?</th>
+                                <td scope="row" class="govuk-table__cell" style="">How many miles in total are you claiming for?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-input__wrapper">
-                                        <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="23">
+                                        <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="177">
                                         <div class="govuk-input__suffix" aria-hidden="true">miles</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="">Did you pay for parking?</th>
+                                <td scope="row" class="govuk-table__cell" style="">Did you pay for parking?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
@@ -294,7 +326,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row" style="display:none">
-                                <th scope="row" class="govuk-table__cell" style="">How much did you spend in total on parking?</th>
+                                <td scope="row" class="govuk-table__cell" style="">How much did you spend in total on parking?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-input__wrapper">
                                         <div class="govuk-input__prefix" aria-hidden="true">£</div>
@@ -303,7 +335,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row" style="display:none">
-                                <th scope="row" class="govuk-table__cell">Do you have all your parking receipts?</th>
+                                <td scope="row" class="govuk-table__cell">Do you have all your parking receipts?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
@@ -332,7 +364,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="">Did you have to pay any other driving costs?</th>
+                                <td scope="row" class="govuk-table__cell" style="">Did you have to pay any other driving costs?</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
@@ -367,7 +399,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                         </thead>
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="width:420px;">Expense 1<br /> Type of expense</th>
+                                <td scope="row" class="govuk-table__cell" style="width:420px;">Expense 1<br /> Type of expense</td>
                                 <td class="govuk-table__cell" style="max-width:180px;">
                                     <textarea class="govuk-textarea" id="expenseOneType" name="expenseOneType" rows="2" aria-describedby="expenseOneType-hint">ULEZ</textarea>
                                 </td>
@@ -376,7 +408,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell">Expense 1 <br />Amount</th>
+                                <td scope="row" class="govuk-table__cell">Expense 1 <br />Amount</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-input__wrapper">
                                         <div class="govuk-input__prefix" aria-hidden="true">£</div>
@@ -387,7 +419,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell" style="">Expense 2<br />Type of expense</th>
+                                <td scope="row" class="govuk-table__cell" style="">Expense 2<br />Type of expense</td>
                                 <td class="govuk-table__cell">
                                     <textarea class="govuk-textarea" id="expenseTwoType" name="expenseTwoType" rows="2" aria-describedby="expenseTwoType-hint">Congestion Charge</textarea>
                                 </td>
@@ -396,7 +428,7 @@ Array.prototype.forEach.call(radioHigherRate, function(radio) {
                                 </td>
                             </tr>
                             <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__cell">Expense 2<br />Amount</th>
+                                <td scope="row" class="govuk-table__cell">Expense 2<br />Amount</td>
                                 <td class="govuk-table__cell">
                                     <div class="govuk-input__wrapper">
                                         <div class="govuk-input__prefix" aria-hidden="true">£</div>
