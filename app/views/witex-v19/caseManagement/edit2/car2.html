@@ -40,7 +40,7 @@ href: "javascript:history.back()"
 .notHidden {
         display: block;
     opacity: 1;
-    transition: opacity 1s;
+    transition: opacity 0s;
 }
 
 .notHiddenTable {
@@ -112,50 +112,23 @@ Array.prototype.forEach.call(radioOtherDriving, function(radio) {
    radio.addEventListener('change', changeHandlerOther);
 });
 
-var radioHigherRate = document.querySelectorAll('input[type=radio][name="higherRateOrNot"]');
-var radioHigherRateReason = document.querySelectorAll('input[type=radio][name="higherRate"]');
+var radioHigherRate = document.querySelectorAll('input[type=radio][name="higherMile"]');
+var radioHigherRateReason = document.querySelectorAll('input[type=radio][name="higherMile"]');
 const higherRateHidden = document.getElementById('higherRateGroup');
-const higherRateReasonHidden = document.getElementById('higherRateReason');
-
-
-function changeHandlerHigherRate(event) {
-   if ( this.value === 'yes' ) {
-      $("#higherRateGroup").css("display", "table-row");
-       $("#higherRateReason").css("display", "table-row");
-        setTimeout(function () {
-                higherRateHidden.style.opacity = '1';
-                higherRateReasonHidden.style.opacity = '1';
-            }, 10);
-  
-   } else if ( this.value === 'no' ) {
-                    higherRateHidden.style.opacity = '0';
-                    higherRateReasonHidden.style.opacity = '0';
-            setTimeout(function () {
-                higherRateHidden.style.display = 'none';
-                higherRateReasonHidden.style.display = 'none';
-            }, 500);
-   }  
-}
-
-Array.prototype.forEach.call(radioHigherRate, function(radio) {
-   radio.addEventListener('change', changeHandlerHigherRate);
-});
-
-
-
+const higherRateReasonHidden = document.getElementById('higherRateWhy');
 
 function changeHandlerCarRateReason(event) {
-   if ( this.value === 'other' ) { 
-       $("#higherRateReason").css("display", "table-row");
+   if ( this.value === 'Yes' ) { 
+       $("#higherRateWhy").css("display", "block");
         setTimeout(function () {
            higherRateReasonHidden.style.opacity = '1';
-            }, 10);
+            }, 0);
   
-   } else if ( this.value != 'other' ) {     
+   } else if ( this.value === 'No' ) {     
           higherRateReasonHidden.style.opacity = '0';
             setTimeout(function () {         
                 higherRateReasonHidden.style.display = 'none';
-            }, 500);
+            }, 0);
    }  
 }
 
@@ -164,6 +137,54 @@ Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
 });
 
 
+var drivingCostsOrNot = document.querySelectorAll('input[type=radio][name="drivingCostsOrNot"]');
+const otherDrivingCostsAll = document.getElementById('otherDrivingCostsAll');
+
+
+function changeHandlerOtherDrivingReason(event) {
+   if ( this.value === 'Yes' ) { 
+    console.log('yes');
+       $("#otherDrivingCostsAll").css("display", "block");
+        setTimeout(function () {
+           otherDrivingCostsAll.style.opacity = '1';
+            }, 0);
+  
+   } else if ( this.value === 'No' ) {  
+    console.log('no');   
+          otherDrivingCostsAll.style.opacity = '0';
+            setTimeout(function () {         
+                otherDrivingCostsAll.style.display = 'none';
+            }, 0);
+   }  
+}
+
+Array.prototype.forEach.call(drivingCostsOrNot, function(radio) {
+   radio.addEventListener('change', changeHandlerOtherDrivingReason);
+});
+
+
+// function changeHandlerHigherRate(event) {
+//    if ( this.value === 'yes' ) {
+//       $("#higherRateGroup").css("display", "table-row");
+//        $("#higherRateReason").css("display", "table-row");
+//         setTimeout(function () {
+//                 higherRateHidden.style.opacity = '1';
+//                 higherRateReasonHidden.style.opacity = '1';
+//             }, 10);
+  
+//    } else if ( this.value === 'no' ) {
+//                     higherRateHidden.style.opacity = '0';
+//                     higherRateReasonHidden.style.opacity = '0';
+//             setTimeout(function () {
+//                 higherRateHidden.style.display = 'none';
+//                 higherRateReasonHidden.style.display = 'none';
+//             }, 500);
+//    }  
+// }
+
+// Array.prototype.forEach.call(radioHigherRate, function(radio) {
+//    radio.addEventListener('change', changeHandlerHigherRate);
+// });
 
  });
 
@@ -205,7 +226,7 @@ Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
                     </div>
 
 
-                    <div class="govuk-form-group">
+                    <div class="govuk-form-group notHidden" id="higherRateWhy" >
                         <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                                 <h1 class="govuk-fieldset__heading">
@@ -353,7 +374,7 @@ Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
                 </div>
 
 
-                <div data-module="moj-add-another">
+                <div data-module="moj-add-another notHidden">
                     <div class="govuk-form-group govuk-radios--inline">
                         <fieldset class="govuk-fieldset">
        <!--                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -362,7 +383,8 @@ Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
                                 </h1>
                             </legend> -->
                             <!--    <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Other driving costs</h2> -->
-                            <form method="post">
+                            <form method="post" >
+                                <div id="otherDrivingCostsAll" style="">
                                 <fieldset class="govuk-fieldset moj-add-another__item">
                                     <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--s">
                                         Other driving costs
@@ -389,6 +411,7 @@ Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
                                     </button>
                                 </div>
                             </form>
+                        </div>
                             <form action="../start/overnightStay" method="get" class="form">
                                 <div class="moj-button-action">
                                     <div class="govuk-button-group" style="margin-top:25px">
