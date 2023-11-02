@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block header %}
 {% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
 {% endblock %}
 {% block beforeContent %}
-{% include "includes/version1/mainNav.html" %}
-{% include "includes/version1/homeNav.html" %}
+
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {{ govukBackLink({
 text: "Back",
@@ -188,6 +189,10 @@ $(document).ready(function() {
     margin:0;
 }
 
+.overviewAdmin .govuk-summary-list__key {
+    font-weight:400;
+}
+
 
 </style>
 <span class="govuk-caption-l">HD90210</span>
@@ -225,7 +230,7 @@ $(document).ready(function() {
             <div class="govuk-tabs__panel" id="past-day">
                 <div class="">
                     <h2 class="govuk-heading-m" style="">Overview</h2>
-
+<div class="overviewAdmin ">
                 <dl class="govuk-summary-list">
                       <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
                         <dt class="govuk-summary-list__key">
@@ -338,7 +343,9 @@ $(document).ready(function() {
                             Change<span class="govuk-visually-hidden"> address</span>
                           </a>
                         </dd>
+                       
                       </div>
+                  </div>
    <!--                    <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           Contact details
@@ -419,25 +426,22 @@ $(document).ready(function() {
                     </table>
                 </div>
             </div>
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week" style="padding-top:0">
-                <div class="govuk-summary-card" style="border:none; margin-bottom:0; margin-right:-20px">
-                    <div class="govuk-summary-card__title-wrapper" style="padding:5px 15px; background-color:#fff;">
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week" style="padding:0">
+                
+                <div class="govuk-summary-card" style="border-top:none;border-left:none;border-right:none; margin-bottom:20px border-bottom:1px solid #b1b4b6">
+                    <div class="govuk-summary-card__title-wrapper" style="padding:10px 15px; background-color:#fff;margin-right:20px">
                         <h2 class="govuk-summary-card__title" style="font-size: 1.5rem;"></h2>
                         <ul class="govuk-summary-card__actions">
-                            <!--             <li class="govuk-summary-card__action">
-                <p class="govuk-link looks-like-a-link " id="openMe" style="margin-bottom:0; cursor:pointer">
-                    Add note<span class="govuk-visually-hidden"> to the thing</span>
-                </p>
-            </li> -->
                             <li class="govuk-summary-card__action">
-                                <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0; cursor:pointer">
+                                <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0;  cursor:pointer">
                                     Upload proof<span class="govuk-visually-hidden"> to the thing</span>
                                 </p>
                             </li>
                         </ul>
                     </div>
                 </div>
- <h2 class="govuk-heading-m" style="">Proof</h2>
+                <div style="padding-left:20px; padding-right: 20px">
+ <h2 class="govuk-heading-m" style="">Proof needed</h2>
 <!--                 <div class="govuk-summary-card">
                   <div class="govuk-summary-card__title-wrapper">
                     <h2 class="govuk-summary-card__title">Header</h2>
@@ -476,7 +480,7 @@ $(document).ready(function() {
                   </div>
                 </div> -->
 
-                <dl class="govuk-summary-list">
+<!--                 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Court name    
@@ -504,113 +508,125 @@ $(document).ready(function() {
     </dd>
   </div>
 
-</dl>
+</dl> -->
 
-                <div class="govuk-summary-card">
-                  <div class="govuk-summary-card__title-wrapper">
-                    <h2 class="govuk-summary-card__title">Train</h2>
-                  </div>
-                  <div class="govuk-summary-card__content">
-                    <dl class="govuk-summary-list">
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                         Receipts  
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                         Some receipts <br />
-                        "Machine ate my ticket"
-                        </dd>
-<!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> age</span>
-                          </a>
-                        </dd> -->
-                      </div>
-                     <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                         Amount claimed  
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                         £96
-                        </dd>
-<!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> age</span>
-                          </a>
-                        </dd> -->
-                      </div>
-                    </dl>
-                  </div>
+            <div class="govuk-summary-card">
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">Train</h2>
+                    </div>
+                    <div class="govuk-summary-card__content">
+                        <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Receipts
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Have some receipts
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Reason for some receipts
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Machine ate my ticket
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Amount claimed
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    £96
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                        </dl>
+                    </div>
                 </div>
                 <div class="govuk-summary-card">
-                  <div class="govuk-summary-card__title-wrapper">
-                    <h2 class="govuk-summary-card__title">Car parking</h2>
-                  </div>
-                  <div class="govuk-summary-card__content">
-                    <dl class="govuk-summary-list">
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                         Receipts  
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                         All receipts needed
-                        </dd>
-<!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> age</span>
-                          </a>
-                        </dd> -->
-                      </div>
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                         Amount claimed  
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                         £10
-                        </dd>
-<!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> age</span>
-                          </a>
-                        </dd> -->
-                      </div>
-                    </dl>
-                  </div>
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">Car parking</h2>
+                    </div>
+                    <div class="govuk-summary-card__content">
+                        <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Receipts
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Have all receipts
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Amount claimed
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    £10
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                        </dl>
+                    </div>
                 </div>
                 <div class="govuk-summary-card">
-                  <div class="govuk-summary-card__title-wrapper">
-                    <h2 class="govuk-summary-card__title">Overnight accomodation</h2>
-                  </div>
-                  <div class="govuk-summary-card__content">
-                    <dl class="govuk-summary-list">
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                         Receipts  
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                         Must have receipts
-                        </dd>
-<!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> age</span>
-                          </a>
-                        </dd> -->
-                      </div>
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                         Amount claimed  
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                         £95.00
-                        </dd>
-<!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> age</span>
-                          </a>
-                        </dd> -->
-                      </div>
-                    </dl>
-                  </div>
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">Overnight accomodation</h2>
+                    </div>
+                    <div class="govuk-summary-card__content">
+                        <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Receipts
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Must have receipts
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Amount claimed
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    £95.00
+                                </dd>
+                                <!--                         <dd class="govuk-summary-list__actions">
+                                          <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                          </a>
+                                        </dd> -->
+                            </div>
+                        </dl>
+                    </div>
                 </div>
 
 
@@ -664,6 +680,7 @@ $(document).ready(function() {
                         </tr>
                     </tbody>
                 </table> -->
+                 <h3 class="govuk-heading-m" style="">Uploaded files</h3>
                 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
                     <div class="govuk-accordion__section">
                         <div class="govuk-accordion__section-header">
@@ -751,17 +768,18 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
+        </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="checks">
                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
                             <th scope="col" class="govuk-table__header"></th>
                             <th scope="col" class="govuk-table__header">Witness</th>
-                            <th scope="col" class="govuk-table__header">CMS</th>
+                            <th scope="col" class="govuk-table__header">CMS </th>
                         </tr>
                     </thead>
                     <caption class="govuk-table__caption govuk-table__caption--m">Checks</caption>
-                    <caption class="govuk-table__caption govuk-table__caption--s">CMS</caption>
+                    <caption class="govuk-table__caption govuk-table__caption--s">CMS results</caption>
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <td scope="row" class="govuk-table__cell">First name</td>
@@ -795,7 +813,7 @@ $(document).ready(function() {
                         </tr>
                     </tbody>
                 </table>
-                <table class="govuk-table">
+                <!-- <table class="govuk-table">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
                             <th class="govuk-table__header" scope="col"></th>
@@ -804,7 +822,7 @@ $(document).ready(function() {
                             <td class="govuk-table__cell"><a href="#"></a></td>
                         </tr>
                     </thead>
-                    <!-- <caption class="govuk-table__caption govuk-table__caption--m">Checks</caption> -->
+               
                     <caption class="govuk-table__caption govuk-table__caption--s">Overnight Stay</caption>
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
@@ -840,8 +858,195 @@ $(document).ready(function() {
                             <td class="govuk-table__cell"><a href="https://www.google.com/maps/dir/Bracey+St,+Finsbury+Park,+London+N4+3BJ/London+NW1+5BR/@51.5412468,-0.1687035,13z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x48761ba2eeb7d1cf:0xab0e0856c14c8082!2m2!1d-0.1196079!2d51.5659081!1m5!1m1!1s0x48761ac9e327baf9:0x5c9dee0d1268cba5!2m2!1d-0.1641802!2d51.5207075!2m3!6e0!7e2!8j1690444800!3e3?entry=ttu" target=”_blank”>Journey on Google maps</a></td>
                         </tr>
                     </tbody>
-                </table>
-                <table class="govuk-table">
+                </table> -->
+
+                <div class="govuk-summary-card">
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">Overnight stay</h2>
+                    </div>
+                    <div class="govuk-summary-card__content">
+                        <dl class="govuk-summary-list">
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Type
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Paid overnight stay
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Reason
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                it takes you 90 minutes or more to travel to court
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Accommodation claim
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                £150.00
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Food and drink claim
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                £26.00
+                                </dd>
+                            </div>
+
+                           <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    CPS area    
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                London
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Court name     
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                Westminister Magistrates Court
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Court postcode       
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                NW1 5BR
+                                </dd>
+                            </div>
+
+                             <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Claimants postcode       
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                N4 3BJ
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Check      
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                <a href="https://www.google.com/maps/dir/Bracey+St,+Finsbury+Park,+London+N4+3BJ/London+NW1+5BR/@51.5412468,-0.1687035,13z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x48761ba2eeb7d1cf:0xab0e0856c14c8082!2m2!1d-0.1196079!2d51.5659081!1m5!1m1!1s0x48761ac9e327baf9:0x5c9dee0d1268cba5!2m2!1d-0.1641802!2d51.5207075!2m3!6e0!7e2!8j1690444800!3e3?entry=ttu" target=”_blank”>Journey on Google maps</a>
+                                </dd>
+                            </div>
+
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="govuk-summary-card">
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">Car</h2>
+                    </div>
+                    <div class="govuk-summary-card__content">
+                        <dl class="govuk-summary-list">
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Type
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Claiming higher mileage
+
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Reason
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                              There was no public transport
+
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Accommodation claim
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                £150.00
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Number of miles 
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                177
+                                </dd>
+                            </div>
+
+                           <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Cost   
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                £80
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Court name     
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                Westminister Magistrates Court
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Court postcode       
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                NW1 5BR
+                                </dd>
+                            </div>
+
+                             <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Claimants postcode       
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                N4 3BJ
+                                </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Check      
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                               <a href="https://www.google.com/maps/dir/Bracey+St,+Finsbury+Park,+London+N4+3BJ/London+NW1+5BR/@51.5412468,-0.1687035,13z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x48761ba2eeb7d1cf:0xab0e0856c14c8082!2m2!1d-0.1196079!2d51.5659081!1m5!1m1!1s0x48761ac9e327baf9:0x5c9dee0d1268cba5!2m2!1d-0.1641802!2d51.5207075!2m3!6e0!7e2!8j1690444800!3e3?entry=ttu" target=”_blank”>Journey on Google maps</a>
+                                </dd>
+                            </div>
+
+                        </dl>
+                    </div>
+                </div>
+
+<!--                 <table class="govuk-table">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
                             <th class="govuk-table__header" scope="col"></th>
@@ -885,7 +1090,7 @@ $(document).ready(function() {
                             <td class="govuk-table__cell"><a href="https://www.google.com/maps/dir/Bracey+St,+Finsbury+Park,+London+N4+3BJ/London+NW1+5BR/@51.5412468,-0.1687035,13z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x48761ba2eeb7d1cf:0xab0e0856c14c8082!2m2!1d-0.1196079!2d51.5659081!1m5!1m1!1s0x48761ac9e327baf9:0x5c9dee0d1268cba5!2m2!1d-0.1641802!2d51.5207075!2m3!6e0!7e2!8j1690444800!3e3?entry=ttu" target=”_blank”>Journey on Google maps</a></td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="all-details">
                 <h2 class="govuk-heading-m">Details entered by claimant </h2>
@@ -1299,7 +1504,7 @@ $(document).ready(function() {
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="audit" style="padding:0">
                 {% include "includes/cps/caseManagement/addNote.html" %}
                 <div style="padding:0px 20px" id="notesArea" class="notesArea">
-                    <h2 class="govuk-heading-m" style="margin-top:-16px">Notes and amends</h2>
+                    <h2 class="govuk-heading-m" style="">Notes and amends</h2>
                     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
                     <div id="userNotes">
                         <!-- <p id="noteHere"></p> -->

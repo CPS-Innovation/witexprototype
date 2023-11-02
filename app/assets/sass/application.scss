@@ -132,7 +132,46 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+.cpsAdminMenuWrapper {
+max-width:960px;
+margin:0 auto;
+}
 
+.greedy {
+background-color:#f3f2f1;
+}
+
+.greedy a{
+  font-weight:700;
+  text-decoration:none;
+  color: #1d70b8;
+}
+
+.gem-c-search__item {
+    position: relative;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.gem-c-search--on-white .gem-c-search__submit {
+    background-color: #1d70b8;
+    color: #ffffff;
+}
+
+.gem-c-search__submit {
+      border: 0;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url("/public/images/search-button.png");
+    background-repeat: no-repeat;
+    background-position: 2px 50%;
+    text-indent: -5000px;
+    overflow: hidden;
+}
 .adjustNewAcc {
   margin-top:-35px;
 }
@@ -3946,7 +3985,7 @@ nav.greedy {
     //max-height:57px;
  //   padding: 10px 0 0px 0;
  //   box-shadow: 0 2px 0px #bfc1c3;
- border-bottom: 1px solid #6f777b;
+ //border-bottom: 1px solid #6f777b;
 }
 
 /* Doesn't look like this is targeting anything
