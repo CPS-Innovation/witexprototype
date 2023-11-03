@@ -1,11 +1,10 @@
-{% extends "layoutCPS.html" %}
+{% extends "layoutWitexAdmin.html" %}
 {% block header %}
 {% include "includes/cps/v12/banner.html" %}
 {% include "includes/cps/nav/mainNav.html" %}
 {% include "includes/cps/nav/homeNav.html" %}
 {% endblock %}
 {% block beforeContent %}
-
 {% endblock %}
 {% block content %}
 <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
@@ -64,7 +63,7 @@
 }
 
 .govuk-width-container {
-    max-width: 1400px;
+    max-width: 1000px;
 }
 
 .govuk-tabs__list-item {
@@ -72,7 +71,7 @@
 }
 
 .cpsAdminMenuWrapper {
-max-width:1400px;
+max-width:1000px;
 margin:0 auto;
 }
 
@@ -167,51 +166,44 @@ margin:0 auto;
             <!-- <button type="submit" class="govuk-button" style="margin-left: auto; max-height:38px">Do the thing</button> -->
         </div>
     </div>
-</div>
-<div class="govuk-grid-row" style="margin-right:-85px; margin-top:-5px">
-    <div class="govuk-grid-column-one-quarter" style="">
-        <!-- desktop version of the filters -->
-        <div class="notOnMobile">
-            <div class="filter-form filtering ">
-                <div id="finder-frontend" class="inner-block">
-                    <div class="filter text-filter">
-                        <h2 class="govuk-heading-m" style="padding-top:15px">Filters</h2>
-                        <div class="govuk-form-group" style="margin-bottom:15px">
-                            <!--   <label class="govuk-label   govuk-label--s legend" for="partialCost" style="">
-                                Search
-                            </label>
-                            <input class="govuk-input" style="margin-bottom: 0px" id="partialCost" name="partialCost" type="text" aria-describedby="FirstName-hint" value="" /> -->
-                            <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
-                                <input class="govuk-input" id="search" name="searchQuery" type="text" value="">
-                                <div class="gem-c-search__item gem-c-search__submit-wrapper">
-                                    <button type="submit" class="gem-c-search__submit">Search</button>
-                                </div>
+
+<!-- <div class="govuk-grid-row" style="margin-right:-85px; margin-top:-5px">
+<div class="govuk-grid-column-one-quarter" style="">
+    <div class="notOnMobile">
+        <div class="filter-form filtering ">
+            <div id="finder-frontend" class="inner-block">
+                <div class="filter text-filter">
+                    <h2 class="govuk-heading-m" style="padding-top:15px">Filters</h2>
+                    <div class="govuk-form-group" style="margin-bottom:15px">
+                        <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
+                            <input class="govuk-input" id="search" name="searchQuery" type="text" value="">
+                            <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                                <button type="submit" class="gem-c-search__submit">Search</button>
                             </div>
                         </div>
                     </div>
-                    <div class="filter text-filter">
-                        <div class="govuk-form-group" style="margin-bottom:0">
-                            <label class="govuk-label   govuk-label--s legend" for="partialCost">
-                                Last action
-                            </label>
-                            <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%">
-                                <option value="All" selected>All</option>
-                                <!-- <option value="Employer">Not assigned</option> -->
-                                <option value="Job title">David Barton</option>
-                                <option value="Description">Fred Basset</option>
-                                <option value="Employer">No actions</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- <button type="submit" class="govuk-button" style="margin-left:10px; margin-top:15px">Update results</button> -->
-                    </form>
                 </div>
+                <div class="filter text-filter">
+                    <div class="govuk-form-group" style="margin-bottom:0">
+                        <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                            Last action
+                        </label>
+                        <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%">
+                            <option value="All" selected>All</option>
+                            <option value="Job title">David Barton</option>
+                            <option value="Description">Fred Basset</option>
+                            <option value="Employer">No actions</option>
+                        </select>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-    <div class="govuk-grid-column-three-quarters">
+</div> -->
+
         <div class=" weirdFix1400">
-            <div class="govuk-tabs" data-module="govuk-tabs">
+            <div class="govuk-tabs " data-module="govuk-tabs">
                 <ul class="govuk-tabs__list">
                     <li class="govuk-tabs__list-item">
                         <a class="govuk-tabs__tab" href="#new">
@@ -249,7 +241,25 @@ margin:0 auto;
                         </a>
                     </li>
                 </ul>
-                <div class="govuk-tabs__panel" id="new">
+                <div class="govuk-tabs__panel removeBordersTabs" id="new" style="padding-top:10px">
+                    <div class="filter text-filter" style="width:25%">
+                         <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                            Search
+                        </label>
+                        <!-- <h2 class="govuk-heading-m" style="padding-top:15px">Filters</h2> -->
+                        <div class="govuk-form-group" style="margin-bottom:15px">
+                            <!--   <label class="govuk-label   govuk-label--s legend" for="partialCost" style="">
+                                Search
+                            </label>
+                            <input class="govuk-input" style="margin-bottom: 0px" id="partialCost" name="partialCost" type="text" aria-describedby="FirstName-hint" value="" /> -->
+                            <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
+                                <input class="govuk-input" id="search" name="searchQuery" type="text" value="">
+                                <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                                    <button type="submit" class="gem-c-search__submit">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -278,7 +288,37 @@ margin:0 auto;
                         </tbody>
                     </table>
                 </div>
-                <div class="govuk-tabs__panel" id="progress">
+                <div class="govuk-tabs__panel removeBordersTabs" id="progress" style="padding-top:10px">
+                 <div  style="display:flex">
+                <div class="filter text-filter" style="width:25%; padding-left:0">
+                    <div class="govuk-form-group" style="margin-bottom:15px">
+                                                <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                            Search
+                        </label>
+                        <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
+                            <input class="govuk-input" id="search" name="searchQuery" type="text" value="">
+                            <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                                <button type="submit" class="gem-c-search__submit">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter text-filter" style="width:25%;padding-left:30px">
+                    <div class="govuk-form-group" style="margin-bottom:0">
+                        <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                            Last action
+                        </label>
+                        <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%">
+                            <option value="All" selected>All</option>
+                            <!-- <option value="Employer">Not assigned</option> -->
+                            <option value="Job title">David Barton</option>
+                            <option value="Description">Fred Basset</option>
+                            <option value="Employer">No actions</option>
+                        </select>
+                    </div>
+                </div>
+                </form>
+            </div>
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -304,7 +344,7 @@ margin:0 auto;
                         </tbody>
                     </table>
                 </div>
-                <div class="govuk-tabs__panel" id="blocked">
+                <div class="govuk-tabs__panel removeBordersTabs" id="blocked">
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -353,7 +393,7 @@ margin:0 auto;
                         </tbody>
                     </table>
                 </div>
-                <div class="govuk-tabs__panel" id="blockeded">
+                <div class="govuk-tabs__panel removeBordersTabs" id="blockeded">
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -395,7 +435,7 @@ margin:0 auto;
                         </tbody>
                     </table>
                 </div>
-                <div class="govuk-tabs__panel" id="sentApproval">
+                <div class="govuk-tabs__panel removeBordersTabs" id="sentApproval">
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -428,7 +468,7 @@ margin:0 auto;
                         </tbody>
                     </table>
                 </div>
-                <div class="govuk-tabs__panel" id="rejected">
+                <div class="govuk-tabs__panel removeBordersTabs" id="rejected">
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
@@ -461,7 +501,7 @@ margin:0 auto;
                         </tbody>
                     </table>
                 </div>
-                <div class="govuk-tabs__panel" id="paid">
+                <div class="govuk-tabs__panel removeBordersTabs" id="paid">
                     <table class="govuk-table">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
