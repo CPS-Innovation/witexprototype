@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block header %}
 {% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
 {% endblock %}
 {% block beforeContent %}
-{% include "includes/version1/mainNav.html" %}
-{% include "includes/version1/homeNav.html" %}
+
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {{ govukBackLink({
 text: "Back",
