@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full"></div>
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+                Feedback submitted
+            </h1>
+
+        </div>
+  <!--       <p class="govuk-body">
+           <i class="far fa-envelope" style="margin-right:3px"></i>We've sent you an email confirming your <span style="font-weight:700">Business admin apprentice</span> application
+        </p> -->
+
+         <h2 class="govuk-heading-m">What happens next</h2>
+         <p>We will email you at robert.jenkins@cps.gov.uk to get more feedback about your experience. </p>
+
+
+        
+
+
+    </div>
+    </main>
+</div>
+{% endblock %}
