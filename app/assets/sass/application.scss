@@ -132,6 +132,19 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+
+.record-header .govuk-tag {
+    position: relative;
+    top: -5px;
+}
+
+.app-tag--record-incomplete {
+    background-color: #ffffff;
+    color: #0b0c0c;
+    outline: 1px solid #0b0c0c;
+    outline-offset: -1px;
+}
+
 .fatterLine {
   border-bottom: 3px solid #b1b4b6 ;
 }
@@ -145,7 +158,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 
 .cpsAdminMenuWrapper {
-max-width:960px;
+max-width:1000px;
 margin:0 auto;
 }
 

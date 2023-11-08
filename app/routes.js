@@ -722,12 +722,12 @@ router.get('/*/start/selfemployedornotroute' , function (req, res) {
     var confirmTraining = req.query.employedornot
        switch (true) {
           case  (confirmTraining == 'Employed'):
-              res.redirect(`../lossOfPay`)
+              res.redirect(`../unpaidDay`)
             
            break;
 
            case  (confirmTraining == 'Self employed'):
-            res.redirect(`../selfEmployed`)
+            res.redirect(`../selfEmployed/lostIncome`)
              break;
 
                  case  (confirmTraining == 'Director'):
