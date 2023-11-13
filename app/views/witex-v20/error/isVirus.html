@@ -7,6 +7,7 @@
 
 {% endblock %}
 {% block content %}
+
 <!-- Here is the code to show conditional stuff in liquid-->
 {% if data.FAALoggedIn %}
 <div class="do-a-thing"></div>
@@ -17,7 +18,7 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">You cannot download this file</h1>
+        <h1 class="govuk-heading-xl">You cannot upload this file</h1>
         <!-- <p class="govuk-body">Try again later.</p> -->
         <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -26,9 +27,18 @@
             {filename} is infected with the virus {virus name}.
           </strong>
         </div>
+         <!-- <p class="govuk-body">Do the thing to the file, so you can reupload it.</p> -->
+
+                <p class="govuk-body">
+          If you can, save and upload the proof as a different file.
+        </p>
+
+          <form action="" method="get" class="form">
+<button type="submit" class="govuk-button" style="margin-left: auto; max-height:38px">Continue  </button>
+</form>
 
         <p class="govuk-body">
-              Call to action call 01924 205200 or email <a href="">witness.query@cps.gov.uk</a>.
+              If you are still having problems call 01924 205200 or email <a href="">witness.query@cps.gov.uk</a>.
         </p>
       </div>
     </div>
