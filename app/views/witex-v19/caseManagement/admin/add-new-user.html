@@ -1,0 +1,152 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<style>
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form  {
+    border: 1px solid #b1b4b6;
+    padding:10px;
+
+}
+
+.options-container {
+    border:0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button 
+{
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color:#fff !important;
+}
+
+#finder-frontend .govuk-option-select, #finder-frontend .filter {
+    margin-bottom:0 !important;
+}
+
+#finder-frontend .govuk-form-group {
+
+}
+
+.govuk-width-container {
+    max-width: 1000px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1000px;
+margin:0 auto;
+}
+</style>
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-l" style="" id="company-Name">Add a team member</h1>
+                <!-- <p class="govuk-body">Invite someone to access this account.</p> -->
+               
+
+<form action="team" method="get" class="form">
+            <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+          </legend>
+          <div class="govuk-form-group">
+              <label class="govuk-label govuk-!-width-three-quarters bold-label" for="email">
+                  Name
+              </label>
+<!--               <span id="email-hint" class="govuk-hint">
+              An invitation will be sent to this email address
+            </span> -->
+              <input class="govuk-input govuk-!-width-three-quarters" id="email" name="email" type="text" aria-describedby="">
+          </div>
+<!--           <div class="govuk-form-group">
+              <label class="govuk-label bold-label govuk-!-width-three-quarters" for="name">
+                 Full name
+              </label>
+
+              <input class="govuk-input govuk-!-width-three-quarters" id="password" name="password" type="text" aria-describedby="">
+          </div> -->
+          </fieldset>
+        </div>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h2 class="govuk-fieldset__heading">
+                         Team member access
+                           <span id="email-hint" class="govuk-hint">
+             Choose what this team member can do.
+            </span>
+                </h2>
+            </legend>
+            <div class="govuk-radios ">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="permissionchange-1" name="permissionchange" type="radio" value="true">
+                    <label class="govuk-label govuk-radios__label" for="permissionchange-1">
+                        Do the thing
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="permissionchange-2" name="permissionchange" type="radio" value="false">
+                    <label class="govuk-label govuk-radios__label" for="permissionchange-2">
+                        Do the thing and the other thing
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="permissionchange-3" name="permissionchange" type="radio" value="false" checked="true" >
+                    <label class="govuk-label govuk-radios__label" for="permissionchange-3">
+Do the thing, the other thing and all the things
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <button class="govuk-button">Add team member</button>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
