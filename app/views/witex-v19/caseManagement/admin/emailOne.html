@@ -1,0 +1,169 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back to notifications",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form {
+    border: 1px solid #b1b4b6;
+    padding: 10px;
+
+}
+
+.options-container {
+    border: 0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button {
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color: #fff !important;
+}
+
+#finder-frontend .govuk-option-select,
+#finder-frontend .filter {
+    margin-bottom: 0 !important;
+}
+
+#finder-frontend .govuk-form-group {}
+
+.govuk-width-container {
+    max-width: 1000px;
+}
+
+.govuk-tabs__list-item {
+    font-size: 19px;
+}
+
+.cpsAdminMenuWrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+</style>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l" style="" id="company-Name">rob.edwards@arcturussecurity.com </h1>
+        <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Template
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    Confirmation
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Notification Id
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    e824df52-2ecb-4581-82b1-52147c816316
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Response Requested At
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    2 Nov 2023 10:47
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Status Code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    201
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Delivery Status
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> delivered</p>
+                    <p class="govuk-body"> The message was successfully delivered.</p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Sent At
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    2 Nov 2023 10:48
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Type
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    email
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    From email
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    witness.expenses@notifications.service.gov.uk
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    To Email
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    courtney.evans@arcturussecurity.com
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Subject
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    Claiming your witness expenses
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email/SMS Body
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> This email is from the test environment</p>
+                    <p class="govuk-body">You've received this message as you're using this email address to claim witness expenses with the Crown Prosecution Service (CPS). </p>
+                    <p class="govuk-body"> To confirm this email address, enter the code below when prompted:</p>
+                    <p class="govuk-body">#634440</p>
+                    <p class="govuk-body">Don't recognise this? ignore this email.</p>
+                </dd>
+            </div>
+        </dl>
+        <div class="govuk-button-group" style="margin-top:25px">
+            <button class="govuk-button">Resend email</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
