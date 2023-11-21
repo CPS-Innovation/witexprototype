@@ -6,11 +6,6 @@
 {% endblock %}
 {% block beforeContent %}
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{{ govukBackLink({
-text: "Back",
-href: "./index2"
-}) }}
 {% endblock %}
 {% block content %}
 <script src="/public/javascripts/mojall.js"></script>
@@ -112,7 +107,7 @@ href: "./index2"
     </div>
 </div> -->
 
-<h1 class="govuk-heading-xl" style="">Download submitted payments</h1>
+<h1 class="govuk-heading-l" style="">Download submitted payments</h1>
   <form action="..//caseManagement/finish" method="get" class="form">
 <button type="submit" class="govuk-button" style="margin-left: auto; max-height:38px">Download payments</button>
 </form>

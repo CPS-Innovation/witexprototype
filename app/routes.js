@@ -247,13 +247,47 @@ router.param('employer', function (req, res, next, employer) {
 
 /// Witex nav
 
- router.get('/*/caseManagement/homeNav', function (req, res) {
+ router.get('/*/homeNav', function (req, res) {
   res.redirect(`/${req.version}/caseManagement/index2`)
  })
 
-  router.get('/*/*/caseManagement/homeNav', function (req, res) {
+  router.get('/*/*/homeNav', function (req, res) {
   res.redirect(`/${req.version}/caseManagement/index2`)
  })
+
+ router.get('/*/reportsNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/mi`)
+ })
+
+  router.get('/*/*/reportsNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/mi`)
+ })
+
+   router.get('/*/notifyNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/notifications`)
+ })
+
+  router.get('/*/*/notifyNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/notifications`)
+ })
+
+     router.get('/*/teamNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/team`)
+ })
+
+  router.get('/*/*/teamNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/team`)
+ })
+
+       router.get('/*/paymentsNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/download`)
+ })
+
+  router.get('/*/*/paymentsNav', function (req, res) {
+  res.redirect(`/${req.version}/caseManagement/admin/download`)
+ })
+
+
 
 
 /// registration > used service before?
