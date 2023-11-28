@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layoutWitexAdmin.html" %}
 {% block header %}
 {% include "includes/cps/v12/banner.html" %}
 {% include "includes/cps/nav/mainNav.html" %}
@@ -16,9 +16,7 @@ href: "javascript:history.back()"
 <script src="/public/javascripts/mojall.js"></script>
 <script src="/public/javascripts/add-another.js"></script>
 <style>
-    .govuk-header__logotype {
-    width: 500px
-}
+
 
 .makeBold {
     font-weight: 700;
@@ -49,6 +47,13 @@ href: "javascript:history.back()"
     opacity: 1;
     transition: opacity 1s;
 
+}
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+.govuk-width-container {
+    max-width: 1020px;
 }
 
 
