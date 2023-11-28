@@ -1,5 +1,5 @@
-<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
-    <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
+<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" style="border-bottom:10px solid #1d70b8" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
+    <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}" >
        
             <div class="govuk-header__logo" style="display:flex; width:100% ">
                 <a href="{{ params.homepageUrl | default('/') }}" class="govuk-header__link govuk-header__link--homepage">
