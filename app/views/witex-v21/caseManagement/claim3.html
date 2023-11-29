@@ -441,8 +441,8 @@ margin:0 auto;
                     </table>
                 </div>
             </div>
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="past-week" style="padding:0">
-                <div class="govuk-summary-card" style="border-top:none;border-left:none;border-right:none; border-bottom:1px solid #b1b4b6">
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="past-week" style="">
+<!--                 <div class="govuk-summary-card" style="border-top:none;border-left:none;border-right:none; border-bottom:1px solid #b1b4b6">
                     <div class="govuk-summary-card__title-wrapper" style="padding:10px 15px; background-color:#fff;margin-right:20px">
                         <h2 class="govuk-summary-card__title" style="font-size: 1.5rem;"></h2>
                         <ul class="govuk-summary-card__actions">
@@ -453,9 +453,14 @@ margin:0 auto;
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div>
+                <div style="display:flex">
                     <h2 class="govuk-heading-m" style="">Proof needed</h2>
+                                <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0;  cursor:pointer; margin-left:auto">
+                                    Upload proof<span class="govuk-visually-hidden"> to the thing</span>
+                                </p>
+                </div>
                     <!--                 <div class="govuk-summary-card">
                   <div class="govuk-summary-card__title-wrapper">
                     <h2 class="govuk-summary-card__title">Header</h2>
@@ -1484,10 +1489,30 @@ margin:0 auto;
                     </div>
                 </div>
             </div>
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="audit" style="padding:0">
-                {% include "includes/cps/caseManagement/addNote.html" %}
-                <div style="" id="notesArea" class="notesArea">
-                    <h2 class="govuk-heading-m" style="">Notes and amends</h2>
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="audit" style="">
+                <!-- include file has all the stuff for the opening and using a note -->
+                <!-- include "includes/cps/caseManagement/addNote.html"   -->
+              
+                    
+
+<div style="display:flex">
+    <h2 class="govuk-heading-m" style="">Notes and amends</h2>
+    <ul class="govuk-summary-card__actions" style="margin-left:auto">
+        <li class="govuk-summary-card__action" >
+            <p class="govuk-link looks-like-a-link " id="openMe" style="margin-bottom:0; cursor:pointer; ">
+                Add note<span class="govuk-visually-hidden"> to the thing</span>
+            </p>
+        </li>
+        <li class="govuk-summary-card__action" style="padding-left:0 !important;">
+            <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0;  cursor:pointer">
+                Upload a file<span class="govuk-visually-hidden"> to the thing</span>
+            </p>
+        </li>
+    </ul>
+</div>
+
+  <div style="" id="notesArea" class="notesArea">
+
                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
