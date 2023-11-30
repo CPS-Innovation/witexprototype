@@ -142,9 +142,7 @@ $(document).ready(function() {
 // });
 </script>
 <style>
-
-
-.makeBold {
+    .makeBold {
     font-weight: 700;
 }
 
@@ -207,16 +205,14 @@ margin:0 auto;
 </style>
 <span class="govuk-caption-l">HD90210</span>
 <div style="display:flex; align-items:center">
-<h1 class="govuk-heading-l" style="">Robert Edwards
-
+    <h1 class="govuk-heading-l" style="">Robert Edwards
     </h1>
-        <div style="margin-bottom:30px">
-    <strong class="govuk-tag app-tag--record-incomplete" style="margin-left:10px">
-  Pending
+    <div style="margin-bottom:30px">
+        <strong class="govuk-tag app-tag--record-incomplete" style="margin-left:10px">
+            Pending
         </strong>
-        </div>
     </div>
-
+</div>
 <div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
     <div class="govuk-grid-column-two-thirds">
         <div class="govuk-tabs" data-module="govuk-tabs">
@@ -249,17 +245,122 @@ margin:0 auto;
             </ul>
             <div class="govuk-tabs__panel removeBordersTabs" id="past-day">
                 <div class="">
-                    <h2 class="govuk-heading-m" style="">Overview</h2>
-                    <div class="overviewAdmin ">
+                    <!-- <h2 class="govuk-heading-m" style="">Overview</h2> -->
+                    <div class="govuk-summary-card">
+                        <div class="govuk-summary-card__title-wrapper">
+                            <h2 class="govuk-summary-card__title">Key details</h2>
+                        </div>
+                        <div class="govuk-summary-card__content">
+                            <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Case ID
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        HD90210
+                                    </dd>
+                                    <!--                 <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> age</span>
+                    </a>
+                </dd> -->
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Name
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        Robert Edwards
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Email address
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        rob@cps.gov.uk
+                                    </dd>
+                                    <!--                 <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> age</span>
+                    </a>
+                </dd> -->
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Contact number
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Postcode
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        N4 3BJ
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        URN
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        EE90210555/2
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Court
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        Westminister Magistrates Court
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Hearing date
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        01/10/2023
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="#">
+                                            Change<span class="govuk-visually-hidden"> age</span>
+                                        </a>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- <div class="overviewAdmin ">
                         <dl class="govuk-summary-list">
-<!--                             <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
-                                <dt class="govuk-summary-list__key">
-                                    Status
-                                </dt>
-                                <dd class="govuk-summary-list__value">
-                                    Pending
-                                </dd>
-                            </div> -->
+
                             <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
                                 <dt class="govuk-summary-list__key">
                                     Case ID
@@ -267,11 +368,7 @@ margin:0 auto;
                                 <dd class="govuk-summary-list__value">
                                     HD90210
                                 </dd>
-                                <!--                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="#">
-                            Change<span class="govuk-visually-hidden"> date of birth</span>
-                          </a>
-                        </dd> -->
+
                             </div>
                             <div class="govuk-summary-list__row">
                                 <dt class="govuk-summary-list__key">
@@ -363,7 +460,7 @@ margin:0 auto;
                                     </a>
                                 </dd>
                             </div>
-                    </div>
+                    </div> -->
                     <!--                    <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           Contact details
@@ -383,8 +480,8 @@ margin:0 auto;
                           </ul>
                         </dd>
                       </div> -->
-                    </dl>
-                    <table class="govuk-table">
+                    <!-- </dl> -->
+                    <table class="govuk-table" style="margin-top:35px">
                         <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
                                 <th class="govuk-table__header" scope="col"></th>
@@ -442,7 +539,7 @@ margin:0 auto;
                 </div>
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="past-week" style="">
-<!--                 <div class="govuk-summary-card" style="border-top:none;border-left:none;border-right:none; border-bottom:1px solid #b1b4b6">
+                <!--                 <div class="govuk-summary-card" style="border-top:none;border-left:none;border-right:none; border-bottom:1px solid #b1b4b6">
                     <div class="govuk-summary-card__title-wrapper" style="padding:10px 15px; background-color:#fff;margin-right:20px">
                         <h2 class="govuk-summary-card__title" style="font-size: 1.5rem;"></h2>
                         <ul class="govuk-summary-card__actions">
@@ -455,12 +552,19 @@ margin:0 auto;
                     </div>
                 </div> -->
                 <div>
-                <div style="display:flex">
-                    <h2 class="govuk-heading-m" style="">Proof</h2>
-                                <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0;  cursor:pointer; margin-left:auto; font-weight:400">
-                                    Upload proof<span class="govuk-visually-hidden"> to the thing</span>
+                    <div style="display:flex; margin-top:-15px">
+                        <!-- <h2 class="govuk-heading-m" style="">Proof</h2> -->
+                        <ul class="govuk-summary-card__actions" style="margin-left:auto">
+                            <li class="" style="">
+                                <p class="govuk-link looks-like-a-link " id="openMe" style=" cursor:pointer; font-weight:400 ">
+                                    Upload a file<span class="govuk-visually-hidden"> to the thing</span>
                                 </p>
-                </div>
+                            </li>
+                        </ul>
+                        <!--      <p class="govuk-link looks-like-a-link" id="openMeUpload" style="  cursor:pointer; margin-left:auto; font-weight:400">
+                                    Upload proof<span class="govuk-visually-hidden"> to the thing</span>
+                                </p> -->
+                    </div>
                     <!--                 <div class="govuk-summary-card">
                   <div class="govuk-summary-card__title-wrapper">
                     <h2 class="govuk-summary-card__title">Header</h2>
@@ -647,136 +751,113 @@ margin:0 auto;
                             </div>
                         </div>
                     </div>
-                    <!--                <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th class="govuk-table__header" scope="col"></th>
-                            <th class="govuk-table__header" scope="col"></th>
-                        </tr>
-                    </thead>
-                    <caption class="govuk-table__caption govuk-table__caption--m">Proof</caption>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell" style="min-width:200px">Court name</td>
-                            <td class="govuk-table__cell ">Westminister Magistrates Court</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Court postcode</td>
-                            <td class="govuk-table__cell ">NW1 5BR</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Claimants postcode</td>
-                            <td class="govuk-table__cell ">N4 3BJ</td>
-                        </tr>
-                        </tr>
-                    </tbody>
-                </table> -->
-                    <!--                 <table class="govuk-table">
-                    <thead class="govuk-table__head">
-                        <tr class="govuk-table__row">
-                            <th class="govuk-table__header" scope="col"></th>
-                            <th class="govuk-table__header" scope="col"></th>
-                            <th class="govuk-table__header" scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="govuk-table__body">
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Train</td>
-                            <td class="govuk-table__cell ">Some receipts <br />"Machine ate my ticket"</td>
-                            <td class="govuk-table__cell">£96.00</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Car parking</td>
-                            <td class="govuk-table__cell ">All receipts</td>
-                            <td class="govuk-table__cell">£10.00</td>
-                        </tr>
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">Overnight accommodation</td>
-                            <td class="govuk-table__cell ">Must have receipts</td>
-                            <td class="govuk-table__cell">£95.00</td>
-                        </tr>
-                    </tbody>
-                </table> -->
+
                     <div style="">
                         <h3 class="govuk-heading-m" style="">Uploaded files</h3>
-                        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-                            <div class="govuk-accordion__section">
-                                <div class="govuk-accordion__section-header">
-                                    <h2 class="govuk-accordion__section-heading">
-                                        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                                            jhkjhkjhjkhkhkjhjhjkhkh.jpg
-                                        </span>
-                                    </h2>
-                                </div>
-                                <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                                    <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper" style="background-color: #fff;">
-                                            <h2 class="govuk-summary-card__title"></h2>
-                                            <ul class="govuk-summary-card__actions">
-                                                <!--                    <li class="govuk-summary-card__action" style="border-right:none"> <a class="govuk-link" href="#">
-                                                Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
-                                            </a>
-                                        </li> -->
-                                            </ul>
-                                        </div>
-                                        <div class="govuk-summary-card__content">
-                                            <img src="/public/images/IMG_3983.jpg" style="width:100%">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="govuk-accordion__section">
-                                <div class="govuk-accordion__section-header">
-                                    <h2 class="govuk-accordion__section-heading">
-                                        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                                            khkjhkj h kjh jkhkj hkj .jpg
-                                            .jpg
-                                        </span>
-                                    </h2>
-                                </div>
-                                <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-                                    <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper" style="background-color: #fff;">
-                                            <h2 class="govuk-summary-card__title"></h2>
-                                            <ul class="govuk-summary-card__actions">
-                                            </ul>
-                                        </div>
-                                        <div class="govuk-summary-card__content">
-                                            <img src="/public/images/IMG_8919.jpg" style="width:100%">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="govuk-accordion__section">
-                                <div class="govuk-accordion__section-header">
-                                    <h2 class="govuk-accordion__section-heading">
-                                        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                                            yuyiuyi. nmbnmbnb nbmn bmn b.jpg
-                                        </span>
-                                    </h2>
-                                </div>
-                                <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-                                    <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper" style="background-color: #fff;">
-                                            <h2 class="govuk-summary-card__title"></h2>
-                                            <ul class="govuk-summary-card__actions">
-                                                <!--          <li class="govuk-summary-card__action" style="border-right:none"> <a class="govuk-link" href="#">
-                                                Reject proof<span class="govuk-visually-hidden"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</span>
-                                            </a>
-                                        </li> -->
-                                                <!--                           <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
-                                      Add note<span class="govuk-visually-hidden"> to the thing</span>
-                                    </a>
-                                  </li>  -->
-                                            </ul>
-                                        </div>
-                                        <div class="govuk-summary-card__content">
-                                            <img src="/public/images/IMG_8921.jpg" style="width:100%">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+
+<div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</h2>
+        <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                    Download file<span class="govuk-visually-hidden"> </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+            <div class="app-summary-card__body">
+                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            View proof
+                        </span>
+                    </summary>
+                    <img src="/public/images/IMG_3983.jpg" style="width:100%">
+                </details>
+            </div>
+        </dl>
+    </div>
+</div>
+
+<div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title"> khkjhkj h kjh jkhkj hkj .jpg</h2>
+        <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                    Download file<span class="govuk-visually-hidden"> </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+            <div class="app-summary-card__body">
+                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            View proof
+                        </span>
+                    </summary>
+                    <img src="/public/images/IMG_8919.jpg" style="width:100%">
+                </details>
+            </div>
+        </dl>
+    </div>
+</div>
+
+<div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">  yuyiuyi. nmbnmbnb nbmn bmn b.jpg</h2>
+        <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                    Download file<span class="govuk-visually-hidden"> </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+            <div class="app-summary-card__body">
+                <details class="govuk-details govuk-!-margin-bottom-0" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            View proof
+                        </span>
+                    </summary>
+                    <img src="/public/images/IMG_8921.jpg" style="width:100%">
+                </details>
+            </div>
+        </dl>
+    </div>
+</div>
+
+<div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">  asdf ahjshd ahsss.docx</h2>
+        <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+                    Download file<span class="govuk-visually-hidden"> </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+            <div class="app-summary-card__body">
+                This file cannot be viewed in your browser
+            </div>
+        </dl>
+    </div>
+</div>
+
+
+
+
+              
                     </div>
                 </div>
             </div>
@@ -790,7 +871,7 @@ margin:0 auto;
                                 <th scope="col" class="govuk-table__header">CMS </th>
                             </tr>
                         </thead>
-                        <caption class="govuk-table__caption govuk-table__caption--m">Checks</caption>
+                        <!-- <caption class="govuk-table__caption govuk-table__caption--m">Checks</caption> -->
                         <caption class="govuk-table__caption govuk-table__caption--s">CMS results</caption>
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
@@ -1081,7 +1162,7 @@ margin:0 auto;
                 </table> -->
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="all-details">
-                <h2 class="govuk-heading-m">Details entered by claimant </h2>
+                <!-- <h2 class="govuk-heading-m">Details entered by claimant </h2> -->
                 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
                     <div class="govuk-accordion__section">
                         <div class="govuk-accordion__section-header">
@@ -1492,28 +1573,23 @@ margin:0 auto;
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="audit" style="">
                 <!-- include file has all the stuff for the opening and using a note -->
                 <!-- include "includes/cps/caseManagement/addNote.html"   -->
-              
-                    
-
-<div style="display:flex">
-    <h2 class="govuk-heading-m" style="">Notes and amends</h2>
-    <ul class="govuk-summary-card__actions" style="margin-left:auto">
-        <li class="" style="">
-            <p class="govuk-link looks-like-a-link " id="openMe" style="margin-bottom:0; cursor:pointer; font-weight:400 ">
-                Add note<span class="govuk-visually-hidden"> to the thing</span>
-            </p>
-        </li>
-        <p style="margin-left:10px;margin-right:10px; colour:#000;text-decoration:none">|</p>
-        <li class="" style="padding-left:0 !important;">
-            <p class="govuk-link looks-like-a-link" id="openMeUpload" style="margin-bottom:0;  cursor:pointer; font-weight:400">
-                Upload a file<span class="govuk-visually-hidden"> to the thing</span>
-            </p>
-        </li>
-    </ul>
-</div>
-
-  <div style="" id="notesArea" class="notesArea">
-
+                <div style="display:flex; margin-top:-15px">
+                    <!-- <h2 class="govuk-heading-m" style="">Notes and amends</h2> -->
+                    <ul class="govuk-summary-card__actions" style="margin-left:auto">
+                        <li class="" style="">
+                            <p class="govuk-link looks-like-a-link " id="openMe" style=" cursor:pointer; font-weight:400 ">
+                                Add note<span class="govuk-visually-hidden"> to the thing</span>
+                            </p>
+                        </li>
+                        <p style="margin-left:10px;margin-right:10px; colour:#000;text-decoration:none">|</p>
+                        <li class="" style="padding-left:0 !important;">
+                            <p class="govuk-link looks-like-a-link" id="openMeUpload" style=" cursor:pointer; font-weight:400">
+                                Upload a file<span class="govuk-visually-hidden"> to the thing</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div style="" id="notesArea" class="notesArea">
                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
@@ -1523,7 +1599,7 @@ margin:0 auto;
                             <p>The note or file that the user entered would go here, in date order, newest first.</p>
                         </div>
                     </div>
-<!--                     <div class="govuk-summary-card">
+                    <!--                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 4.42pm</p>
@@ -1535,7 +1611,6 @@ margin:0 auto;
                             </div>
                         </div>
                     </div> -->
-
                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
@@ -1556,14 +1631,10 @@ margin:0 auto;
                                         </a>
                                     </dd>
                                 </div>
-
                             </dl>
                         </div>
                     </div>
-
-
-
-<!--                     <div class="govuk-summary-card">
+                    <!--                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 3.46pm</p>
@@ -1591,9 +1662,6 @@ margin:0 auto;
                             </table>
                         </div>
                     </div> -->
-
-
-
                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
@@ -1633,14 +1701,9 @@ margin:0 auto;
                                         £6.10
                                     </dd>
                                 </div>
-
                             </dl>
                         </div>
                     </div>
-
-
-
-
                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
@@ -1672,53 +1735,53 @@ margin:0 auto;
             </div>
         </div>
     </div>
-        <div class="govuk-grid-column-one-third">
-            <div class="govuk-form-group" style="margin-bottom:10px; margin-left:20px ">
-                <form action="caseActions" method="get" class="form" style="">
-                    <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h1 class="govuk-fieldset__heading">
-                                Actions
-                            </h1>
-                        </legend>
-                        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="caseActions-2" name="caseActions" type="radio" value="Send back to user">
-                                <label class="govuk-label govuk-radios__label" for="caseActions-2">
-                                    Mark as witness query
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="caseActions-3" name="caseActions" type="radio" value="Block">
-                                <label class="govuk-label govuk-radios__label" for="caseActions-3">
-                                    Mark as area query
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Send for approval">
-                                <label class="govuk-label govuk-radios__label" for="caseActions-4">
-                                    Escalate claim
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Reject">
-                                <label class="govuk-label govuk-radios__label" for="caseActions-4">
-                                    Reject claim
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
-                                <label class="govuk-label govuk-radios__label" for="caseActions">
-                                    Submit claim for payment
-                                </label>
-                            </div>
+    <div class="govuk-grid-column-one-third">
+        <div class="govuk-form-group" style="margin-bottom:10px; margin-left:20px ">
+            <form action="caseActions" method="get" class="form" style="">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                        <h1 class="govuk-fieldset__heading">
+                            Actions
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="caseActions-2" name="caseActions" type="radio" value="Send back to user">
+                            <label class="govuk-label govuk-radios__label" for="caseActions-2">
+                                Mark as witness query
+                            </label>
                         </div>
-                    </fieldset>
-                    <button class="govuk-button" style="margin-top:10px">Update</button>
-                </form>
-            </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="caseActions-3" name="caseActions" type="radio" value="Block">
+                            <label class="govuk-label govuk-radios__label" for="caseActions-3">
+                                Mark as area query
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Send for approval">
+                            <label class="govuk-label govuk-radios__label" for="caseActions-4">
+                                Escalate claim
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Reject">
+                            <label class="govuk-label govuk-radios__label" for="caseActions-4">
+                                Reject claim
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
+                            <label class="govuk-label govuk-radios__label" for="caseActions">
+                                Submit claim for payment
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <button class="govuk-button" style="margin-top:10px">Update</button>
+            </form>
         </div>
     </div>
+</div>
 </div>
 </div>
 </div>
