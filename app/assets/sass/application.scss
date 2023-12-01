@@ -221,6 +221,10 @@ background-color:#f3f2f1;
 
 /* DELETE WHEN UPDATED PROTOTYPE KIT */
 
+.govuk-summary-list__key {
+  width:45%;
+}
+
 .govuk-summary-card {
     margin-bottom: 20px;
     border: 1px solid #b1b4b6;
@@ -255,7 +259,7 @@ background-color:#f3f2f1;
 }
 
 .govuk-summary-card__title-wrapper {
-    // padding: 15px;
+    padding: 15px;
     border-bottom: 1px solid rgba(0,0,0,0);
     background-color: #f3f2f1;
 }
