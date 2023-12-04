@@ -234,7 +234,7 @@ Array.prototype.forEach.call(drivingCostsOrNot, function(radio) {
                             </legend>
                             <div class="govuk-radios" data-module="govuk-radios">
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="whyHigher" name="whyHigher" type="radio" value="There was no public transport" data-aria-controls="conditional-contact" checked>
+                                    <input class="govuk-radios__input" id="whyHigher" name="whyHigher" type="radio" value="There was no public transport" data-aria-controls="conditional-contact" >
                                     <label class="govuk-label govuk-radios__label" for="contact">
                                         There was no public transport
                                     </label>
@@ -252,7 +252,7 @@ Array.prototype.forEach.call(drivingCostsOrNot, function(radio) {
                                     </label>
                                 </div>
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="contact-3" name="whyHigher" type="radio" value="text" data-aria-controls="conditional-contact-3">
+                                    <input class="govuk-radios__input" id="contact-3" name="whyHigher" type="radio" value="text" data-aria-controls="conditional-contact-3" checked>
                                     <label class="govuk-label govuk-radios__label" for="contact-3">
                                         No choice but to use own car
                                     </label>
@@ -262,7 +262,7 @@ Array.prototype.forEach.call(drivingCostsOrNot, function(radio) {
                                         <label class="govuk-label bold-label" for="contact-by-text">
                                             Reason you had no choice
                                         </label>
-                                        <input class="govuk-input " id="reasonHigherMileage" name="reasonHigherMileage" type="text" autocomplete="tel">
+                                        <input class="govuk-input  govuk-!-width-one-half " id="reasonHigherMileage" name="reasonHigherMileage" type="text" autocomplete="tel" value="it was raining">
                                     </div>
                                 </div>
                         </fieldset>
@@ -312,7 +312,7 @@ Array.prototype.forEach.call(drivingCostsOrNot, function(radio) {
                                 </h1>
                             </legend>
                             <div class="govuk-input__wrapper">
-                                <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false" value="51">
+                                <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false" value="177">
                                 <div class="govuk-input__suffix" aria-hidden="true">miles</div>
                             </div>
                             <p style="margin-top:15px"> You can use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to calculate your mileage.</p>

@@ -2214,6 +2214,19 @@ router.get('/*/caseManagement/resetAll' , function (req, res) {
               res.redirect(`index2`)    
 })
 
+// http://127.0.0.1:3000/witex-v21/caseManagement/edit2/checkanswers?more-detail-note=
+router.get('/*/caseManagement/changeAnswersCar' , function (req, res) {
+            req.session.data['changeConfirmBanner'] = 'approve';
+            res.redirect(`claim3`);
+         
+})
+
+// reset the successbanner and show rob edwards again
+router.get('/*/caseManagement/resetChangeConfirm' , function (req, res) {
+             delete req.session.data['changeConfirmBanner'] ;
+              res.redirect(`claim3`)    
+})
+
 
 
 module.exports = router

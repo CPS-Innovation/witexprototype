@@ -208,25 +208,6 @@ margin:0 auto;
 
 
 </style>
-
-{% if (data.changeConfirmBanner) %}
-<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-    <div class="govuk-notification-banner__header">
-        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title"><a href="resetChangeConfirm" style="color:#fff; text-decoration:none">
-                Success </a>
-        </h2>
-    </div>
-    <div class="govuk-notification-banner__content">
-        <h3 class="govuk-notification-banner__heading" style="max-width:1000px">
-            {% if data.changeConfirmBanner == 'approve' %}
-            Thing has been done
-            {% else %}
-            {% endif %}
-        </h3>
-    </div>
-</div>
-{% else %}
-{% endif %}
 <span class="govuk-caption-l">HD90210</span>
 <div style="display:flex; align-items:center">
     <h1 class="govuk-heading-l" style="">Robert Edwards
@@ -865,7 +846,7 @@ margin:0 auto;
                             <div class="govuk-summary-card__content">
                                 <dl class="govuk-summary-list">
                                     <div class="app-summary-card__body">
-                                        This file cannot be viewed in your browser
+                                        Download the file to view it
                                     </div>
                                 </dl>
                             </div>
@@ -1083,8 +1064,8 @@ margin:0 auto;
                 </div>
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="all-details">
-                <!-- <h2 class="govuk-heading-m">Details entered by claimant </h2> -->
-                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+              
+                <!--div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
                     <div class="govuk-accordion__section">
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
@@ -1093,32 +1074,31 @@ margin:0 auto;
                                 </span>
                             </h2>
                         </div>
-                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-                            <!--     <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">Food</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <dl class="govuk-summary-list">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        How many hours were you away from home or work?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        less than 5 hours
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--     </div>
-                            </div>  -->
+                        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1"> -->
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">Food</h2>
+                </div>
+                <div class="govuk-summary-card__content">
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                How many hours were you away from home or work?
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                less than 5 hours
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                                <a class="govuk-link" href="#">
+                                    Change<span class="govuk-visually-hidden"> age</span>
+                                </a>
+                            </dd>
                         </div>
-                    </div>
-                    <div class="govuk-accordion__section">
+                    </dl>
+                </div>
+            </div>
+       
+        <!--   <div class="govuk-accordion__section">
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
@@ -1126,702 +1106,698 @@ margin:0 auto;
                                 </span>
                             </h2>
                         </div>
-                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-                            <!--     <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">Choose travel</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <h2 class="govuk-heading-m">Travel to court</h2>
-                            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Do you want to claim for travel to and from the court?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Yes
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        How did you travel to court?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        London transport <br />
-                                        Bus, tram or metro <br />
-                                        Train <br />
-                                        Car
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--       </div>
-                            </div> -->
-                            <!--  <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">London transport</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <h2 class="govuk-heading-m">London transport</h2>
-                            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        What did you spend in total on London Transport travel?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        £9.78
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--    </div>
-                            </div> -->
-                            <!--  <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">Bus, tram or metro</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <h2 class="govuk-heading-m">Bus, tram or metro</h2>
-                            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        What did you spend in total on bus, tram or metro travel?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        £1.00
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--      </div>
-                            </div> -->
-                            <!--      <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">Train</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <h2 class="govuk-heading-m">Train</h2>
-                            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Enter the total cost of your train journey(s)
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        £96.00
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Do you have all your train receipts?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        No, I don't have any of my receipts
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Reason for not having receipts
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Machine ate my tickets
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--      </div>
-                            </div> -->
-                            <!-- <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">Car</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <h2 class="govuk-heading-m">Car</h2>
-                            <dl class="govuk-summary-list ">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Are you claiming the higher rate of mileage for your car?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Yes
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> </span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Why are you claiming the higher mileage rate?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Other
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Reason for other
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        It was raining
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Were you travelling with additional witnesses?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        No
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        How many miles are you claiming for?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        177
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Did you pay for parking?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        No
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Did you have to pay any other driving costs?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Yes
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Other driving costs expense 1
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        ULEZ
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Other driving costs cost 1
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        £12.50
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Other driving costs expense 2
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Congestion charge
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Other driving costs cost 2
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        £22.50
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="edit2/car2">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--      </div>
-                            </div>  -->
-                        </div>
+                        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Travel</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you want to claim for travel to and from the court?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Yes
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
                     </div>
-                    <div class="govuk-accordion__section">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How did you travel to court?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            London transport <br />
+                            Bus, tram or metro <br />
+                            Train <br />
+                            Car
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">London transport</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What did you spend in total on London Transport travel?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £9.78
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Bus, tram or metro</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What did you spend in total on bus, tram or metro travel?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £1.00
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Train</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Enter the total cost of your train journey(s)
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £96.00
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you have all your train receipts?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No, I don't have any of my receipts
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Reason for not having receipts
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Machine ate my tickets
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <!--      </div>
+            </div> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Car</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Are you claiming the higher rate of mileage for your car?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Yes
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> </span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Why are you claiming the higher mileage rate?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Other
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Reason for other
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            It was raining
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Were you travelling with additional witnesses?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How many miles are you claiming for?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            177
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Did you pay for parking?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Did you have to pay any other driving costs?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Yes
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Other driving costs expense 1
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            ULEZ
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Other driving costs cost 1
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £12.50
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Other driving costs expense 2
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Congestion charge
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Other driving costs cost 2
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £22.50
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="edit2/car2">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <!--          </div> 
+                    </div> -->
+        <!--      <div class="govuk-accordion__section">
                         <div class="govuk-accordion__section-header">
                             <h2 class="govuk-accordion__section-heading">
                                 <span class="govuk-accordion__section-button" id="accordion-default-heading-3">Overnight stay
                                 </span>
                             </h2>
                         </div>
-                        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
-                            <!-- <div class="govuk-summary-card">
-                                <div class="govuk-summary-card__title-wrapper">
-                                    <h2 class="govuk-summary-card__title">Overnight stay</h2>
-                                </div>
-                                <div class="govuk-summary-card__content"> -->
-                            <dl class="govuk-summary-list">
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Do you want to claim expenses for an overnight stay?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        No
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Did you pay for your overnight stay?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        Yes
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Why did you have to stay overnight?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        it took me 90 minutes or more to travel to court
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        Where was your accommodation?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        London
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                                <div class="govuk-summary-list__row">
-                                    <dt class="govuk-summary-list__key">
-                                        How much was your accommodation?
-                                    </dt>
-                                    <dd class="govuk-summary-list__value">
-                                        £134.50
-                                    </dd>
-                                    <dd class="govuk-summary-list__actions">
-                                        <a class="govuk-link" href="#">
-                                            Change<span class="govuk-visually-hidden"> age</span>
-                                        </a>
-                                    </dd>
-                                </div>
-                            </dl>
-                            <!--        </div>
-                            </div>  -->
-                        </div>
-                        <div class="govuk-accordion__section">
+                        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Overnight stay</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you want to claim expenses for an overnight stay?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Did you pay for your overnight stay?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Yes
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Why did you have to stay overnight?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            it took me 90 minutes or more to travel to court
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Where was your accommodation?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            London
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How much was your accommodation?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            £134.50
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <!--        </div>
+        </div> -->
+        <!-- <div class="govuk-accordion__section">
                             <div class="govuk-accordion__section-header">
                                 <h2 class="govuk-accordion__section-heading">
                                     <span class="govuk-accordion__section-button" id="accordion-default-heading-4">Work
                                     </span>
                                 </h2>
                             </div>
-                            <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
-                                <!--      <div class="govuk-summary-card">
-                                    <div class="govuk-summary-card__title-wrapper">
-                                        <h2 class="govuk-summary-card__title">Work</h2>
-                                    </div>
-                                    <div class="govuk-summary-card__content"> -->
-                                <dl class="govuk-summary-list">
-                                    <div class="govuk-summary-list__row">
-                                        <dt class="govuk-summary-list__key">
-                                            Are you in paid work?
-                                        </dt>
-                                        <dd class="govuk-summary-list__value">
-                                            Yes
-                                        </dd>
-                                        <dd class="govuk-summary-list__actions">
-                                            <a class="govuk-link" href="#">
-                                                Change<span class="govuk-visually-hidden"> age</span>
-                                            </a>
-                                        </dd>
-                                    </div>
-                                    <div class="govuk-summary-list__row">
-                                        <dt class="govuk-summary-list__key">
-                                            What is your employment status?
-                                        </dt>
-                                        <dd class="govuk-summary-list__value">
-                                            Employed, including director of a limited company
-                                        </dd>
-                                        <dd class="govuk-summary-list__actions">
-                                            <a class="govuk-link" href="#">
-                                                Change<span class="govuk-visually-hidden"> age</span>
-                                            </a>
-                                        </dd>
-                                    </div>
-                                    <div class="govuk-summary-list__row">
-                                        <dt class="govuk-summary-list__key">
-                                            Did you take an unpaid day off work?
-                                        </dt>
-                                        <dd class="govuk-summary-list__value">
-                                            No
-                                        </dd>
-                                        <dd class="govuk-summary-list__actions">
-                                            <a class="govuk-link" href="#">
-                                                Change<span class="govuk-visually-hidden"> age</span>
-                                            </a>
-                                        </dd>
-                                    </div>
-                                </dl>
-                                <!--     </div>
-                                </div>  -->
-                            </div>
-                            <div class="govuk-accordion__section">
+                            <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Work</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Are you in paid work?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Yes
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            What is your employment status?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            Employed, including director of a limited company
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Did you take an unpaid day off work?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <!--       </div>
+    </div> -->
+        <!--  <div class="govuk-accordion__section">
                                 <div class="govuk-accordion__section-header">
                                     <h2 class="govuk-accordion__section-heading">
                                         <span class="govuk-accordion__section-button" id="accordion-default-heading-5">Childcare
                                         </span>
                                     </h2>
                                 </div>
-                                <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
-                                    <!--  <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper">
-                                            <h2 class="govuk-summary-card__title">Childcare</h2>
-                                        </div> -->
-                                    <!-- <div class="govuk-summary-card__content"> -->
-                                    <dl class="govuk-summary-list">
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Did you pay someone to look after your children?
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                No
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <!--     </div>
-                                    </div> -->
-                                </div>
-                            </div>
-                            <div class="govuk-accordion__section">
+                                <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Childcare</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Did you pay someone to look after your children?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <!-- </div>
+</div> -->
+        <!--   <div class="govuk-accordion__section">
                                 <div class="govuk-accordion__section-header">
                                     <h2 class="govuk-accordion__section-heading">
                                         <span class="govuk-accordion__section-button" id="accordion-default-heading-6">Carer
                                         </span>
                                     </h2>
                                 </div>
-                                <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
-                                    <!--   <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper">
-                                            <h2 class="govuk-summary-card__title">Carer</h2>
-                                        </div> -->
-                                    <!-- <div class="govuk-summary-card__content"> -->
-                                    <dl class="govuk-summary-list">
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Did you pay for a carer?
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                No
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <!--       </div>
+                                <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Carer</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Did you pay for a carer?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+                <!--       </div>
                                     </div> -->
-                                </div>
-                            </div>
-                            <div class="govuk-accordion__section">
+            </div>
+        </div>
+        <!--  <div class="govuk-accordion__section">
                                 <div class="govuk-accordion__section-header">
                                     <h2 class="govuk-accordion__section-heading">
                                         <span class="govuk-accordion__section-button" id="accordion-default-heading-7">Other expenses
                                         </span>
                                     </h2>
                                 </div>
-                                <div id="accordion-default-content-7" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-7">
-                                    <!--  <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper">
-                                            <h2 class="govuk-summary-card__title">Other expenses</h2>
-                                        </div> -->
-                                    <!-- <div class="govuk-summary-card__content"> -->
-                                    <dl class="govuk-summary-list">
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Do you want to claim for other expenses?
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                No
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <!--   </div>
+                                <div id="accordion-default-content-7" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-7"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Other expenses</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Do you want to claim for other expenses?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+                <!--   </div>
                                     </div> -->
-                                </div>
-                            </div>
-                            <div class="govuk-accordion__section">
+            </div>
+        </div>
+        <!--   <div class="govuk-accordion__section">
                                 <div class="govuk-accordion__section-header">
                                     <h2 class="govuk-accordion__section-heading">
                                         <span class="govuk-accordion__section-button" id="accordion-default-heading-8">Payment details
                                         </span>
                                     </h2>
                                 </div>
-                                <div id="accordion-default-content-8" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-8">
-                                    <!--    <div class="govuk-summary-card">
-                                        <div class="govuk-summary-card__title-wrapper">
-                                            <h2 class="govuk-summary-card__title">Payment details</h2>
-                                        </div> -->
-                                    <!-- <div class="govuk-summary-card__content"> -->
-                                    <dl class="govuk-summary-list">
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                How do you want to be paid?
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                A UK bank or building society
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Name on the account
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                R Edwards
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Sort code
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                00-00-00
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Account number
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                09867654
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Building society roll number
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                            </dd>
-                                            <dd class="govuk-summary-list__actions">
-                                                <a class="govuk-link" href="#">
-                                                    Change<span class="govuk-visually-hidden"> age</span>
-                                                </a>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <!--      </div>
+                                <div id="accordion-default-content-8" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-8"> -->
+        <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+                <h2 class="govuk-summary-card__title">Payment details</h2>
+            </div>
+            <div class="govuk-summary-card__content">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            How do you want to be paid?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            A UK bank or building society
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name on the account
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            R Edwards
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Sort code
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            00-00-00
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Account number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            09867654
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Building society roll number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                                Change<span class="govuk-visually-hidden"> age</span>
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+                <!--      </div>
                                     </div> -->
-                                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="audit" style="">
+    <!-- include file has all the stuff for the opening and using a note -->
+    <!-- include "includes/cps/caseManagement/addNote.html"   -->
+    <div style="display:flex; margin-top:-15px">
+        <!-- <h2 class="govuk-heading-m" style="">Notes and amends</h2> -->
+        <ul class="govuk-summary-card__actions" style="margin-left:auto">
+            <li class="" style="">
+                <p class="govuk-link looks-like-a-link " id="openMe" style=" cursor:pointer; font-weight:400 ">
+                    Add note<span class="govuk-visually-hidden"> to the thing</span>
+                </p>
+            </li>
+            <p style="margin-left:10px;margin-right:10px; colour:#000;text-decoration:none">|</p>
+            <li class="" style="padding-left:0 !important;">
+                <p class="govuk-link looks-like-a-link" id="openMeUpload" style=" cursor:pointer; font-weight:400">
+                    Upload a file<span class="govuk-visually-hidden"> to the thing</span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div style="" id="notesArea" class="notesArea">
+        <div class="moj-timeline">
+            <div class="moj-timeline__item">
+                <div class="moj-timeline__header">
+                    <h2 class="moj-timeline__title">Note added</h2>
+                    <p class="moj-timeline__byline">by David Barton</p>
+                </div>
+                <p class="moj-timeline__date">
+                    <time datetime="2019-06-14T14:01:00.000Z">30 May 2023 at 4.46pm</time>
+                </p>
+                <div class="moj-timeline__description">
+                    <p>Witness called and asked to change the cost of their bus ticket from £5.00 to £6.10</p>
+                    <!-- <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a> -->
+                </div>
+            </div>
+            <div class="moj-timeline__item">
+                <div class="moj-timeline__header">
+                    <h2 class="moj-timeline__title">Change made</h2>
+                    <p class="moj-timeline__byline">by David Barton</p>
+                </div>
+                <p class="moj-timeline__date">
+                    <time datetime="2019-06-07T12:32:00.000Z">19 May 2023 at 12:32pm</time>
+                </p>
+                <div class="moj-timeline__description">
+                    <div style="width:100%;">
+                        <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key" style="width:30%">
+                                    Section
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    Bus, tram, metro outside London
+                                </dd>
                             </div>
-                        </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Question
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    What did you spend in total on bus, tram or metro travel?
+                                </dd>
+                            </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Original answer
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    £5.00
+                                </dd>
+                            </div>
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                    Changed to
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                    £6.10
+                                </dd>
+                            </div>
+                        </dl>
                     </div>
                 </div>
             </div>
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden removeBordersTabs" id="audit" style="">
-                <!-- include file has all the stuff for the opening and using a note -->
-                <!-- include "includes/cps/caseManagement/addNote.html"   -->
-                <div style="display:flex; margin-top:-15px">
-                    <!-- <h2 class="govuk-heading-m" style="">Notes and amends</h2> -->
-                    <ul class="govuk-summary-card__actions" style="margin-left:auto">
-                        <li class="" style="">
-                            <p class="govuk-link looks-like-a-link " id="openMe" style=" cursor:pointer; font-weight:400 ">
-                                Add note<span class="govuk-visually-hidden"> to the thing</span>
-                            </p>
-                        </li>
-                        <p style="margin-left:10px;margin-right:10px; colour:#000;text-decoration:none">|</p>
-                        <li class="" style="padding-left:0 !important;">
-                            <p class="govuk-link looks-like-a-link" id="openMeUpload" style=" cursor:pointer; font-weight:400">
-                                Upload a file<span class="govuk-visually-hidden"> to the thing</span>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div style="" id="notesArea" class="notesArea">
-                    <div class="moj-timeline">
-                       
-                        <div class="moj-timeline__item">
-                            <div class="moj-timeline__header">
-                                <h2 class="moj-timeline__title">Change made</h2>
-                                <p class="moj-timeline__byline">by David Barton</p>
-                            </div>
-                            <p class="moj-timeline__date">
-                                <time datetime="2019-06-07T12:32:00.000Z">19 May 2023 at 12:32pm</time>
-                            </p>
-                            <div class="moj-timeline__description">
-                                <div style="width:100%;">
-                                    <dl class="govuk-summary-list">
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key" style="width:30%">
-                                                Section
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                Bus, tram, metro outside London
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Question
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                What did you spend in total on bus, tram or metro travel?
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Original answer
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                £5.00
-                                            </dd>
-                                        </div>
-                                        <div class="govuk-summary-list__row">
-                                            <dt class="govuk-summary-list__key">
-                                                Changed to
-                                            </dt>
-                                            <dd class="govuk-summary-list__value">
-                                                £6.10
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="moj-timeline__item">
-                            <div class="moj-timeline__header">
-                                <h2 class="moj-timeline__title">Note added</h2>
-                                <p class="moj-timeline__byline">by David Barton</p>
-                            </div>
-                            <p class="moj-timeline__date">
-                                <time datetime="2019-06-14T14:01:00.000Z">19 May 2023 at 12.30pm</time>
-                            </p>
-                            <div class="moj-timeline__description">
-                                <p>Witness called and asked to change the cost of their bus ticket from £5.00 to £6.10</p>
-                                <!-- <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a> -->
-                            </div>
-                        </div>
-                        <!--   <div class="moj-timeline__item">
+            <!--   <div class="moj-timeline__item">
 
     <div class="moj-timeline__header">
       <h2 class="moj-timeline__title">Application received</h2>
@@ -1837,7 +1813,7 @@ margin:0 auto;
     <div class="moj-timeline__description">Your application has been received – reference MOJ-1234-5678</div>
 
   </div> -->
-                        <!--   <div class="moj-timeline__item">
+            <!--   <div class="moj-timeline__item">
 
     <div class="moj-timeline__header">
       <h2 class="moj-timeline__title">Application submitted</h2>
@@ -1864,52 +1840,52 @@ margin:0 auto;
     </div>
 
   </div> -->
-                        <div class="moj-timeline__item">
-                            <div class="moj-timeline__header">
-                                <h2 class="moj-timeline__title">Files uploaded</h2>
-                                <p class="moj-timeline__byline">by David Barton</p>
-                            </div>
-                            <p class="moj-timeline__date">
-                                <time datetime="2019-05-28T10:15:00.000Z">28 May 2023 at 10:15am</time>
-                            </p>
-                            <div class="moj-timeline__description">
-                                <ul class="moj-timeline__documents">
-                                    <li class="moj-timeline__document-item">
-                                        <a class="govuk-link" href="#">
-                                            <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
-                                                <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
-                                            </svg>
-                                            Document 1
-                                        </a>
-                                    </li>
-                                    <li class="moj-timeline__document-item">
-                                        <a class="govuk-link" href="#">
-                                            <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
-                                                <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
-                                            </svg>
-                                            Document 2
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="moj-timeline__item">
-                            <div class="moj-timeline__header">
-                                <h2 class="moj-timeline__title">Case opened</h2>
-                                <p class="moj-timeline__byline">by David Barton</p>
-                            </div>
-                            <p class="moj-timeline__date">
-                                <time datetime="2019-05-21T13:15:00.000Z">21 May 2023 at 1:15pm</time>
-                            </p>
-                            <!--     <div class="moj-timeline__description">
+            <div class="moj-timeline__item">
+                <div class="moj-timeline__header">
+                    <h2 class="moj-timeline__title">Files uploaded</h2>
+                    <p class="moj-timeline__byline">by David Barton</p>
+                </div>
+                <p class="moj-timeline__date">
+                    <time datetime="2019-05-28T10:15:00.000Z">28 May 2023 at 10:15am</time>
+                </p>
+                <div class="moj-timeline__description">
+                    <ul class="moj-timeline__documents">
+                        <li class="moj-timeline__document-item">
+                            <a class="govuk-link" href="#">
+                                <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                                    <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+                                </svg>
+                                Document 1
+                            </a>
+                        </li>
+                        <li class="moj-timeline__document-item">
+                            <a class="govuk-link" href="#">
+                                <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                                    <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+                                </svg>
+                                Document 2
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="moj-timeline__item">
+                <div class="moj-timeline__header">
+                    <h2 class="moj-timeline__title">Case opened</h2>
+                    <p class="moj-timeline__byline">by David Barton</p>
+                </div>
+                <p class="moj-timeline__date">
+                    <time datetime="2019-05-21T13:15:00.000Z">21 May 2023 at 1:15pm</time>
+                </p>
+                <!--     <div class="moj-timeline__description">
       <ul class="govuk-list govuk-list--bullet">
         <li><a class="govuk-link" href="#">Item 1</a></li>
         <li><a class="govuk-link" href="#">Item 2</a></li>
       </ul>
     </div> -->
-                        </div>
-                    </div>
-                    <!--           <div class="govuk-summary-card">
+            </div>
+        </div>
+        <!--           <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 4.46pm</p>
@@ -1918,7 +1894,7 @@ margin:0 auto;
                             <p>The note or file that the user entered would go here, in date order, newest first.</p>
                         </div>
                     </div> -->
-                    <!--          <div class="govuk-summary-card">
+        <!--          <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 3.46pm</p>
@@ -1941,7 +1917,7 @@ margin:0 auto;
                             </dl>
                         </div>
                     </div> -->
-                    <!--                     <div class="govuk-summary-card">
+        <!--                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 3.46pm</p>
@@ -1983,7 +1959,7 @@ margin:0 auto;
                             </dl>
                         </div>
                     </div> -->
-                    <!--                     <div class="govuk-summary-card">
+        <!--                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 2.44pm</p>
@@ -1992,7 +1968,7 @@ margin:0 auto;
                             <p>Witness called to say their name had been entered wrongly, wanted to change it from Rob to Robert</p>
                         </div>
                     </div> -->
-                    <!--                  <div class="govuk-summary-card">
+        <!--                  <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">David Barton (you) </h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 30 May 2023 at 2.42pm</p>
@@ -2001,7 +1977,7 @@ margin:0 auto;
                             <p>David Barton opened the case</p>
                         </div>
                     </div> -->
-                    <!--                     <div class="govuk-summary-card">
+        <!--                     <div class="govuk-summary-card">
                         <div class="govuk-summary-card__title-wrapper" style="display:flex; align-content:firstbaseline;">
                             <h2 class="govuk-summary-card__title">Rob Edwards</h2>
                             <p style="font-weight:400; font-size:16px; margin-bottom:0px; margin-top:5px"> 29 May 2023 at 9.01am</p>
@@ -2010,56 +1986,56 @@ margin:0 auto;
                             <p>Rob Edwards opened the case</p>
                         </div>
                     </div> -->
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="govuk-grid-column-one-third">
-        <div class="govuk-form-group" style="margin-bottom:10px; margin-left:20px ">
-            <form action="caseActions" method="get" class="form" style="">
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                        <h1 class="govuk-fieldset__heading">
-                            Actions
-                        </h1>
-                    </legend>
-                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="caseActions-2" name="caseActions" type="radio" value="Send back to user">
-                            <label class="govuk-label govuk-radios__label" for="caseActions-2">
-                                Mark as witness query
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="caseActions-3" name="caseActions" type="radio" value="Block">
-                            <label class="govuk-label govuk-radios__label" for="caseActions-3">
-                                Mark as area query
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Send for approval">
-                            <label class="govuk-label govuk-radios__label" for="caseActions-4">
-                                Escalate claim
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Reject">
-                            <label class="govuk-label govuk-radios__label" for="caseActions-4">
-                                Reject claim
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
-                            <label class="govuk-label govuk-radios__label" for="caseActions">
-                                Submit claim for payment
-                            </label>
-                        </div>
+</div>
+</div>
+</div>
+<div class="govuk-grid-column-one-third">
+    <div class="govuk-form-group" style="margin-bottom:10px; margin-left:20px ">
+        <form action="caseActions" method="get" class="form" style="">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h1 class="govuk-fieldset__heading">
+                        Actions
+                    </h1>
+                </legend>
+                <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="caseActions-2" name="caseActions" type="radio" value="Send back to user">
+                        <label class="govuk-label govuk-radios__label" for="caseActions-2">
+                            Mark as witness query
+                        </label>
                     </div>
-                </fieldset>
-                <button class="govuk-button" style="margin-top:10px">Update</button>
-            </form>
-        </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="caseActions-3" name="caseActions" type="radio" value="Block">
+                        <label class="govuk-label govuk-radios__label" for="caseActions-3">
+                            Mark as area query
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Send for approval">
+                        <label class="govuk-label govuk-radios__label" for="caseActions-4">
+                            Escalate claim
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Reject">
+                        <label class="govuk-label govuk-radios__label" for="caseActions-4">
+                            Reject claim
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
+                        <label class="govuk-label govuk-radios__label" for="caseActions">
+                            Submit claim for payment
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <button class="govuk-button" style="margin-top:10px">Update</button>
+        </form>
     </div>
+</div>
 </div>
 </div>
 </div>
