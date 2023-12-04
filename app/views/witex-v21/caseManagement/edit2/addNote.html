@@ -1,0 +1,80 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.notHidden {
+    display: block;
+    opacity: 1;
+    transition: opacity 0s;
+}
+
+.notHiddenTable {
+    display: table-row;
+    opacity: 1;
+    transition: opacity 1s;
+
+}
+
+.cpsAdminMenuWrapper {
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+</style>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="get" action="checkanswers">
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" for="more-detail">
+                        Add a note
+                    </label>
+                </h1>
+                <div id="more-detail-hint" class="govuk-hint">
+                </div>
+                <textarea class="govuk-textarea" id="more-detail-note" name="more-detail-note" rows="8" aria-describedby="more-detail-hint"></textarea>
+            </div>
+            <div class="govuk-button-group">
+                <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+                <a class="govuk-link" href="">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</main>
+</div>
+{% endblock %}
