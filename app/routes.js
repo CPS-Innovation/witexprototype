@@ -2198,6 +2198,14 @@ router.get('/*/caseManagement/claim5Router' , function (req, res) {
 })
 
 // sent to correct page and reset the variable that control the success banner
+router.get('/*/caseManagement/claim6Router' , function (req, res) {
+           delete req.session.data['homepageBanner'] ;
+           delete req.session.data['homepageBanner4'] ;
+           delete req.session.data['homepageBanner5'] ;
+              res.redirect(`claim3n`)    
+})
+
+// sent to correct page and reset the variable that control the success banner
 router.get('/*/caseManagement/claim7Router' , function (req, res) {
              delete req.session.data['homepageBanner'] ;
            delete req.session.data['homepageBanner4'] ;
@@ -2217,14 +2225,14 @@ router.get('/*/caseManagement/resetAll' , function (req, res) {
 // http://127.0.0.1:3000/witex-v21/caseManagement/edit2/checkanswers?more-detail-note=
 router.get('/*/caseManagement/changeAnswersCar' , function (req, res) {
             req.session.data['changeConfirmBanner'] = 'approve';
-            res.redirect(`claim3`);
+            res.redirect(`claim3n3`);
          
 })
 
 // reset the successbanner and show rob edwards again
 router.get('/*/caseManagement/resetChangeConfirm' , function (req, res) {
              delete req.session.data['changeConfirmBanner'] ;
-              res.redirect(`claim3`)    
+              res.redirect(`claim3n`)    
 })
 
 
