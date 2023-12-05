@@ -78,17 +78,33 @@ margin:0 auto;
 </style>
 
 
-  <div class="govuk-grid-row">
+<!--   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
      <h1 class="govuk-heading-l" style="" id="company-Name">Your team</h1>
-     <!-- <p class="govuk-body-l">Invite members, control what they can do and remove members.</p> -->
+     
    </div>
    <form action="add-new-user" style="">
     <div class="govuk-grid-column-one-third weird-floating-button">
          <button type="submit" class="govuk-button" style="" >Invite a new member</button>
     </div>
   </form>
- </div>
+ </div> -->
+<div class="moj-page-header-actions">
+    <div class="moj-page-header-actions__title">
+        <h1 class="govuk-heading-l">Your team</h1>
+    </div>
+    <div class="moj-page-header-actions__actions">
+        <div class="moj-button-menu">
+            <div class="moj-button-menu__wrapper">
+                 <form action="add-new-user" style="">
+                <button class="govuk-button moj-button-menu__item  moj-page-header-actions__action" data-module="govuk-button">
+                    Invite a new member
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
 
       <div style="margin-top:35px">
                       <table class="govuk-table">
