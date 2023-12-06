@@ -1853,6 +1853,18 @@ router.get('/*/travel/transportChoiceRoute3' , function (req, res) {
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`londonTransport`)
                  break;
+
+             case  (confirmTraining == 'Air'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`air`)
+                 break;
+
+            case  (confirmTraining == 'Sea'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`sea`)
+                 break;
             
         default:
             console.log("bork bork bork bork");
@@ -1925,7 +1937,7 @@ router.get('/*/travel/multiTravelRouterPubTrain' , function (req, res) {
             
         default:
             console.log("bork bork bork bork");
-              res.redirect(`../bork`)
+              res.redirect(`../start/overnightStay`)
             break;
         }
     
