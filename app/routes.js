@@ -1238,13 +1238,12 @@ router.get('/*/payyou/paymetypeRoute2' , function (req, res) {
               res.redirect(`ukbank`)
            break;
 
-           case  (confirmTraining == 'Bank outside UK'):
-          // req.session.data['other'] = false;
-           // req.session.data['MG11SheMcRedacted'] = true;
-            res.redirect(`2`)
-
+    
           case  (confirmTraining == 'Cheque'):
             res.redirect(`cheque`)
+
+              case  (confirmTraining == 'Bank outside UK'):
+            res.redirect(`intbank`)
             
         default:
             console.log("bork bork bork bork");
