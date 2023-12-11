@@ -63,9 +63,25 @@ href: "javascript:history.back()"
     margin: 0 auto;
 }
 </style>
+<div class="moj-page-header-actions">
+    <div class="moj-page-header-actions__title">
+        <h1 class="govuk-heading-l">rob.edwards@arcturussecurity.com</h1>
+    </div>
+    <div class="moj-page-header-actions__actions">
+        <div class="moj-button-menu">
+            <div class="moj-button-menu__wrapper">
+                 <form action="add-new-user" style="">
+                <button class="govuk-button moj-button-menu__item  moj-page-header-actions__action" data-module="govuk-button">
+                    Resend email
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l" style="" id="company-Name">rob.edwards@arcturussecurity.com </h1>
+        <!-- <h1 class="govuk-heading-l" style="" id="company-Name">rob.edwards@arcturussecurity.com </h1> -->
         <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -161,9 +177,9 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl>
-        <div class="govuk-button-group" style="margin-top:25px">
+<!--         <div class="govuk-button-group" style="margin-top:25px">
             <button class="govuk-button">Resend email</button>
-        </div>
+        </div> -->
     </div>
 </div>
 {% endblock %}
