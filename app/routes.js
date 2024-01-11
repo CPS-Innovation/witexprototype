@@ -1381,6 +1381,30 @@ router.get('/*/start/travelRoute4' , function (req, res) {
         }
 })
 
+router.get('/*/foodRoute' , function (req, res) {
+  var confirmTraining = req.query.foodclaim
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              // req.session.data['travelShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`foodRadioHowMany`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           // req.session.data['travelShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../start/travel`)
+            
+        default:
+            console.log("bork bork bork bork");
+                // req.session.data['travelShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(``)
+            break;
+        }
+})
+
 router.get('/*/travel/higherMileRoute' , function (req, res) {
   var confirmTraining = req.query.higherMile
        switch (true) {

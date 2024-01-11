@@ -19,6 +19,7 @@ href: "javascript:history.back()"
         <h1 class="govuk-heading-l">  
           Other expenses
         </h1>
+         <!-- <p>You cannot claim for additional food and drink.  </p>  -->
           <div class="govuk-inset-text">
            You must provide a receipt.
         </div>
@@ -33,6 +34,9 @@ href: "javascript:history.back()"
                         <label class="govuk-label govuk-!-font-weight-bold" for="other[0][expense]">
                           Type of expense
                         </label>
+                          <div id="event-name-hint" class="govuk-hint">
+    You cannot claim for additional food and drink
+  </div>
                         <input class="govuk-input" id="other[0][expense]" name="other[0][expense]" type="text" data-name="other[%index%][expense]" data-id="other[%index%][expense]">
                     </div>
    <!--                  <div class="govuk-form-group">
