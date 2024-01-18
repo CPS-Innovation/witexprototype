@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+            What is your daily take home pay?
+        </h1>
+        <p>We need you to tell us how much money you would have taken home had you worked a full day, rather than be in court. </p>
+        <p>Take home pay is the amount of money you are paid after all taxes and deductions are taken out. This will usually be shown on your payslip as a monthly or weekly figure. </p>
+
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{{ govukDetails({
+  summaryText: "How do I work out my daily take home pay?",
+  text: "Your payslip will usually show your take home pay as a weekly or monthly figure. To get your daily take home pay you will need to divide that figure by the number of days worked in that week or month."
+}) }}
+
+        <form action="confirmUnpaid" method="get" class="form">
+            <div class="govuk-form-group">
+<!--                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="code">
+                    Take home pay per day
+                </label> -->
+             
+<!--     <span id="email-hint" class="govuk-hint">
+              For example: 0,2 or 10
+            </span> -->
+                             <div class="govuk-input__wrapper">
+    <div class="govuk-input__prefix" aria-hidden="true">£</div>
+    <input class="govuk-input govuk-input--width-5" id="away5hours" name="away5hours" type="text" spellcheck="false">
+   
+  </div>
+            </div>
+            <button class="govuk-button">Continue</button>
+        </form>
+      
+    </div>
+    </main>
+</div>
+{% endblock %}
