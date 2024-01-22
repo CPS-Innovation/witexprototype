@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+    .govuk-summary-list__key {
+    width: 40%;
+}
+    </style>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">Do the thing</h1>
+        <p>Confirm all the things </p>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    URN
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['URN'] }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Court name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['school-name'] }} </p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['first-name-real'] }} {{ data['last-name-real'] }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['email'] }} </p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Contact number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['contactPhone'] }} </p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Postcode
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['postcode'] }} </p>
+                </dd>
+            </div>
+        </dl>
+        <form method="get" action="anotherDayRouter">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                            Are these things correct?
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="thingsCorrect" name="thingsCorrect" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="thingsCorrect">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="thingsCorrect" name="thingsCorrect" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="thingsCorrect">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <input type="hidden" name="answers-checked" value="true">
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+        {% include "includes/cps/v11/help.html" %}
+    </div>
+</div>
+</main>
+{% endblock %}

@@ -1405,6 +1405,8 @@ router.get('/*/foodRoute' , function (req, res) {
         }
 })
 
+
+
 router.get('/*/travel/higherMileRoute' , function (req, res) {
   var confirmTraining = req.query.higherMile
        switch (true) {
@@ -1678,6 +1680,24 @@ router.get('/*/receipts/receiptsEndDecide' , function (req, res) {
         }
 })
 
+router.get('/*/anotherDayRouter' , function (req, res) {
+  var confirmTraining = req.query.thingsCorrect
+       switch (true) {
+          case  (confirmTraining == 'yes'):
+              res.redirect(`start/courtDetailsMultiDay`)
+           break;
+
+           case  (confirmTraining == 'no'):
+            res.redirect(`start/courtDetails`)
+            break;
+     
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
 
 router.get('/*/receipts/receiptMissingRoute' , function (req, res) {
   
@@ -1696,6 +1716,8 @@ router.get('/*/receipts/receiptMissingRoute' , function (req, res) {
             break;
         }
 })
+
+
 
 // NOT SURE HOW ELSE TO DO THIS, SETS UP ALL THE OTHER req.session stuff before going into task list for first time
 
