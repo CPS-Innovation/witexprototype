@@ -1,0 +1,174 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{% endblock %}
+{% block content %}
+<style>
+.app-task-list__section-number {
+    min-width: 0 !important
+}
+
+.app-task-list__items {
+    padding-left: 0
+}
+</style>
+<script>
+
+
+
+
+$(document).ready(function() {
+    var taskListDay1 = {{ data['dayNumber'] }};
+console.log(taskListDay1)
+
+    var changeStuff = function() {
+        if (taskListDay1 == "1") {
+            $(dayOneNotStarted).addClass("rj-dont-display");
+            $(dayOneCompleted).removeClass("rj-dont-display");
+        } else {
+                $(dayOneNotStarted).addClass("rj-dont-display");
+            $(dayOneCompleted).removeClass("rj-dont-display");
+             $(dayTwoNotStarted).addClass("rj-dont-display");
+            $(dayTwoCompleted).removeClass("rj-dont-display");
+        };
+    }
+
+    changeStuff();
+});
+</script>
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            Your expenses claim
+        </h1>
+        <!-- <p class="govuk-body-l">Do the things</p> -->
+        <!-- <p class="govuk-body-l">Only complete the sections you want to claim for.</p> -->
+        <ol class="app-task-list">
+            <li>
+                <h2 class="app-task-list__section">
+                    <span class="app-task-list__section-number"> </span> Before you start
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="./start/courtDetails" aria-describedby="eligibility-completed">
+                                Your case number
+
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="./start/whichCourt" aria-describedby="read-declaration-completed">
+                                Court you attended
+
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="read-declaration-completed">Completed</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="./start/days" aria-describedby="company-information-completed">
+                    Days claimed for
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="company-information-completed">Completed</strong>
+                    </li>
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="./start/details" aria-describedby="company-information-completed">
+                                Your details
+                            </a>
+                        </span>
+                        <strong class="govuk-tag app-task-list__task-completed" id="company-information-completed">Completed</strong>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section" style="margin-bottom:5px">
+                    <span class="app-task-list__section-number"> </span>  Day 1 claim
+                </h2>
+                <!-- <p>Blah blah </p> -->
+                <ul class="app-task-list__items">
+<!--                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="foodanddrink" aria-describedby="contact-details-completed">
+                                Which date are you claiming for?
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="foodanddrinkNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="foodanddrinkCompleted" style="float:right">Completed</strong>
+                    </li> -->
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="day1Router" aria-describedby="contact-details-completed">
+                               Claim details
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="dayOneNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="dayOneCompleted" style="float:right">Completed</strong>
+                    </li>
+<!--                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="foodanddrink" aria-describedby="contact-details-completed">
+                                Check your answers
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="foodanddrinkNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="foodanddrinkCompleted" style="float:right">Completed</strong>
+                    </li> -->
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section" style="margin-bottom:5px">
+                    <span class="app-task-list__section-number"> </span> Day 2 claim
+                </h2>
+                <!-- <p>Blah blah </p> -->
+                <ul class="app-task-list__items">
+<!--                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="foodanddrink" aria-describedby="contact-details-completed">
+                                Which date are you claiming for?
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="foodanddrinkNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="foodanddrinkCompleted" style="float:right">Completed</strong>
+                    </li> -->
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="day2Router" aria-describedby="contact-details-completed">
+                                Claim details
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="dayTwoNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="dayTwoCompleted" style="float:right">Completed</strong>
+                    </li>
+<!--                     <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <a href="foodanddrink" aria-describedby="contact-details-completed">
+                                Check your answers
+                            </a>
+                        </span>
+                        <strong class="app-task-list__tag govuk-tag govuk-tag--grey " id="foodanddrinkNotStarted" style="float:right">Not started</strong>
+                        <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="foodanddrinkCompleted" style="float:right">Completed</strong>
+                    </li> -->
+                </ul>
+            </li>
+        </ol>
+
+    <form action="./Finish/index3" method="get" class="form">
+
+            <button class="govuk-button">Submit claim</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

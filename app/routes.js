@@ -1718,6 +1718,98 @@ router.get('/*/receipts/receiptMissingRoute' , function (req, res) {
 })
 
 
+router.get('/*/changeDay' , function (req, res) {
+   var confirmTraining = req.query.keepDetailsDay2
+       switch (true) {
+
+          case  (confirmTraining == 'Yes'):
+        req.session.data['dayNumber'] = "2";
+
+         res.redirect(`../anotherDay`)
+          break;
+
+case  (confirmTraining == 'No'):
+     req.session.data['dayNumber'] = "1";
+         res.redirect(`notDone`)
+          break;
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+router.get('/*/otherDayCheckDetails', function(req, res) {
+
+    switch (true) {
+
+        case (req.session.data['dayNumber'] == "2"):
+            req.session.data['dayNumber'] = "1";
+            res.redirect(`./Finish/index3`)
+            break;
+
+        case (req.session.data['dayNumber'] == "1"):
+            res.redirect(`./Finish/index2`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+            res.redirect(`../bork`)
+            break;
+    }
+})
+
+
+
+router.get('/*/startItUp', function(req, res) {
+
+req.session.data['dayNumber'] = "1";
+res.redirect(`./start/screener`)
+
+})
+
+
+
+router.get('/*/day1Router', function(req, res) {
+
+req.session.data['dayNumber'] = "1";
+res.redirect(`./start/courtDetailsMultiDay`)
+
+})
+
+router.get('/*/day2Router', function(req, res) {
+
+req.session.data['dayNumber'] = "2";
+res.redirect(`./start/courtDetailsMultiDay2`)
+
+})
+
+
+router.get('/*/taskListCheckDetails', function(req, res) {
+
+var dayNumberA = req.session.data['dayNumber']
+if(dayNumberA == "1") {
+   // req.session.data['taskListDay1'] = "true";
+   //   req.session.data['taskListDay2'] = "false";
+    res.redirect(`./tasklist`)
+} else {
+    // req.session.data['taskListDay2'] = "true";
+    res.redirect(`./tasklist`)
+}
+
+})
+
+
+router.get('/*/manage-apprenticeships/signinFEB' , function (req, res) {
+  var usedService = req.query.usedService
+  if (usedService === 'false') {
+    res.redirect(`/${req.version}/newregister/employerStarted/feb/need`)
+  } else {
+    res.render(`${req.version}/manage-apprenticeships/signin`)
+  }
+})
+
 
 // NOT SURE HOW ELSE TO DO THIS, SETS UP ALL THE OTHER req.session stuff before going into task list for first time
 

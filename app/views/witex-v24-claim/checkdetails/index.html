@@ -12,6 +12,10 @@ href: "javascript:history.back()"
 {% endblock %}
 {% block content %}
 
+<script>
+         console.log({{ data['dayNumber'] }} + " this is the day number")
+        </script>
+
 <style>
 .govuk-summary-list__key {
     width: 40%;
@@ -20,7 +24,7 @@ href: "javascript:history.back()"
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-        <h1 class="govuk-heading-l">Check your answers</h1>
+        <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Check your answers </h1>
         <h2 class="govuk-heading-m">Personal details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
@@ -410,7 +414,8 @@ href: "javascript:history.back()"
                 I understand that if I deliberately make a false statement I can be prosecuted.
             </strong>
         </div>
-        <form action="./Finish/index2" method="post" novalidate>
+
+               <form method="get" action="otherDayCheckDetails">
             <input type="hidden" name="answers-checked" value="true">
             <button class="govuk-button" data-module="govuk-button">
                 Accept and send
