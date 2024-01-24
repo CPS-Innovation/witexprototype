@@ -132,11 +132,43 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
-/* .govuk-tag {
+ .govuk-tag {
     text-transform: none !important;
     font-weight:400 !important;
+        font-size: 1.1875rem !important;
+    line-height: 1.3157894737 !important;
+        -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: inline-block;
+    max-width: 160px;
+    margin-top: -2px;
+    margin-bottom: -3px;
+    padding: 2px 8px 3px;
+    color: #0c2d4a;
+    text-decoration: none;
+    overflow-wrap: break-word;
+
+
 }
-*/
+
+.tag-active {
+ background-color:#bbd4ea;
+/* float: right;*/
+}
+
+.govuk-tag--grey {
+ background-color:#e5e6e7;;
+/* float: right;*/
+}
+
+.newBetaBannerHack {
+  font-size: 1rem !important;
+    line-height: 1.25  !important;
+
+}
 
 
 
