@@ -132,6 +132,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+.bannerWidth {
+  width:68%;
+}
+
  .govuk-tag {
     text-transform: none !important;
     font-weight:400 !important;

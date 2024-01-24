@@ -2388,6 +2388,7 @@ router.get('/*/caseManagement/changeAnswersCar' , function (req, res) {
 // reset the successbanner and show rob edwards again
 router.get('/*/caseManagement/resetChangeConfirm' , function (req, res) {
              delete req.session.data['changeConfirmBanner'] ;
+             delete req.session.data['cmsChosen'] ;
               res.redirect(`claim3n`)    
 })
 
