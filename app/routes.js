@@ -1684,6 +1684,7 @@ router.get('/*/anotherDayRouter' , function (req, res) {
   var confirmTraining = req.query.thingsCorrect
        switch (true) {
           case  (confirmTraining == 'yes'):
+             req.session.data['dayNumber'] = "2";
               res.redirect(`start/courtDetailsMultiDay`)
            break;
 
@@ -1788,16 +1789,22 @@ res.redirect(`./start/courtDetailsMultiDay2`)
 
 router.get('/*/taskListCheckDetails', function(req, res) {
 
-var dayNumberA = req.session.data['dayNumber']
-if(dayNumberA == "1") {
-   // req.session.data['taskListDay1'] = "true";
-   //   req.session.data['taskListDay2'] = "false";
-    res.redirect(`./tasklist`)
-} else {
-    // req.session.data['taskListDay2'] = "true";
-    res.redirect(`./tasklist`)
-}
+    var dayNumberA = req.session.data['dayNumber']
+    if (dayNumberA == "1") {
+        // req.session.data['taskListDay1'] = "true";
+        //   req.session.data['taskListDay2'] = "false";
+        res.redirect(`./tasklist`)
+    } else {
+        // req.session.data['taskListDay2'] = "true";
+        res.redirect(`./tasklist`)
+    }
+})
 
+
+
+router.get('/*/eligibilityNoteRouter', function(req, res) {
+    req.session.data['cmsChosen'] = true;
+    res.redirect(`cmsCheck`)
 })
 
 

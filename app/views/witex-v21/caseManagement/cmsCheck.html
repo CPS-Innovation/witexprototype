@@ -12,135 +12,30 @@ href: "./index2"
 }) }}
 {% endblock %}
 {% block content %}
-<script src="/public/javascripts/mojall.js"></script>
-<script src="/public/javascripts/multi-file-upload.js"></script>
-{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
-{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
-<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
-<!-- <script src="/public/javascripts/accordion.js"></script> -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- <script>
-    if (
-    'addEventListener' in document &&
-    document.querySelectorAll
-) {
-    document.addEventListener('DOMContentLoaded', function() {
-        var accordions = document.querySelectorAll('.accordion')
-        for (var i = accordions.length - 1; i >= 0; i--) {
-            new Accordion(accordions[i])
-        };
-    })
+
+<script>
+$(document).ready(function() {
+var cmsChosen = {{ data['cmsChosen'] }};
+console.log(cmsChosen)
+var changeStuff = function() {
+if (cmsChosen = "Yes") {
+$(el1).addClass("rj-dont-display");
+$(el2).addClass("rj-dont-display");
+$(el3).addClass("rj-dont-display");
+$(result2).addClass("rj-dont-display");
+$(result3).addClass("rj-dont-display");
+$(cmsResultTitle1).addClass("rj-dont-display");
+$(cmsResultTitle2).removeClass("rj-dont-display");
+
+} else {};
 }
-</script> -->
-<script type="text/javascript">
-//     function revealNote() { 
-// $(revealTheNote).removeClass("rj-dont-display");
-//     $(revealTheNote).switchClass( "rj-dont-display", "nothing", 1000, "linear" );
-// }
-
-
-$(document).ready(function() {
-    $("#openMe").click(function() {
-        $(".revealTheNote").slideDown(0);
-        $(".revealTheUpload").slideUp(0)
-        $("#openMeUpload").addClass("inactiveLink");
-        $("#openMe").removeClass("inactiveLink");
-
-    });
+changeStuff();
 });
-
-$(document).ready(function() {
-    $("#openMeUpload").click(function() {
-        $(".revealTheUpload").slideDown(0);
-        $(".revealTheNote").slideUp(0)
-        $("#openMe").addClass("inactiveLink");
-        $("#openMeUpload").removeClass("inactiveLink");
-
-    });
-});
-
-$(document).ready(function() {
-    $("#shutMe").click(function() {
-        $(".revealTheUpload").slideUp(0);
-        $("#openMeUpload").removeClass("inactiveLink");
-        $("#openMe").removeClass("inactiveLink");
-
-    });
-});
-
-$(document).ready(function() {
-    $("#shutMeNote").click(function() {
-        $(".revealTheNote").slideUp(0);
-        $("#openMeUpload").removeClass("inactiveLink");
-        $("#openMe").removeClass("inactiveLink");
-
-    });
-});
-
-$(document).ready(function() {
-    $("#submitNote").click(function() {
-
-        var myDate = new Date();
-
-        let daysList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        let monthsList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Aug', 'Oct', 'Nov', 'Dec'];
-
-
-        let date = myDate.getDate();
-        let month = monthsList[myDate.getMonth()];
-        let year = myDate.getFullYear();
-        let day = daysList[myDate.getDay()];
-
-        let today = ` ${day}, ${date} ${month} ${year}`;
-
-        let amOrPm;
-        let twelveHours = function() {
-            if (myDate.getHours() > 12) {
-                amOrPm = 'PM';
-                let twentyFourHourTime = myDate.getHours();
-                let conversion = twentyFourHourTime - 12;
-                return `${conversion}`
-
-            } else {
-                amOrPm = 'AM';
-                return `${myDate.getHours()}`
-            }
-        };
-        let hours = twelveHours();
-        let minutes = myDate.getMinutes();
-
-        let currentTime = `${hours}:${minutes} ${amOrPm}`;
-
-
-        var textarea = document.getElementById("more-detail")
-
-        var text = textarea.value;
-        document.getElementById('userNotes').innerHTML = '<p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;' + today + " at " + currentTime + ' </span></p><p id="noteHere"></p><hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">';
-        var p = document.getElementById("noteHere");
-
-        p.textContent = text;
-
-        $(".revealTheNote").slideUp(0);
-        $("#openMeUpload").removeClass("inactiveLink");
-        $("#openMe").removeClass("inactiveLink");
-
-    });
-});
-
-
-
-// $(document).ready(function(){
-// var box = $('.revealTheNote');
-
-// $('p#openMe').on('click', function () { 
-//   box.toggleClass('hidden');
-// });
-// });
 </script>
+
+
 <style>
     .js-enabled .govuk-accordion__section--expanded .govuk-accordion__section-button {
 padding-bottom:0;
@@ -244,7 +139,7 @@ margin:0 auto;
                     <a class="moj-sub-navigation__link" href="claim3n">Overview</a>
                 </li>
                 <li class="moj-sub-navigation__item">
-                    <a class="moj-sub-navigation__link" aria-current="page" href="cmsCheck">CMS</a>
+                    <a class="moj-sub-navigation__link" aria-current="page" href="cmsCheck">Eligibility</a>
                 </li>
                 <li class="moj-sub-navigation__item">
                     <a class="moj-sub-navigation__link" href="claim3n1">Proof</a>
@@ -260,54 +155,23 @@ margin:0 auto;
                 </li>
             </ul>
         </nav>
-        <!--         <div style="">
-            <table class="govuk-table">
-                <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th scope="col" class="govuk-table__header"></th>
-                        <th scope="col" class="govuk-table__header">Witness</th>
-                        <th scope="col" class="govuk-table__header">CMS </th>
-                    </tr>
-                </thead>
-    
-             
-                <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                        <td scope="row" class="govuk-table__cell">First name</td>
-                        <td class="govuk-table__cell" style="font-weight:700">Rob</td>
-                        <td class="govuk-table__cell">Robert <br />David<br />Jack</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td scope="row" class="govuk-table__cell">Last name </td>
-                        <td class="govuk-table__cell" >Jenkins</td>
-                        <td class="govuk-table__cell">Jenkins </td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td scope="row" class="govuk-table__cell">URN</td>
-                        <td class="govuk-table__cell" style="font-weight:700">EE12345678</td>
-                        <td class="govuk-table__cell">EE12345666 <br/>EE12345677 <br/> EE12345555</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td scope="row" class="govuk-table__cell">Court</td>
-                        <td class="govuk-table__cell" >Croydon</td>
-                        <td class="govuk-table__cell">Croydon</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td scope="row" class="govuk-table__cell">Hearing date</td>
-                        <td class="govuk-table__cell">1/11/22</td>
-                        <td class="govuk-table__cell">1/11/22</td>
-                    </tr>
-                    <tr class="govuk-table__row">
-                        <td scope="row" class="govuk-table__cell">Date of birth</td>
-                        <td class="govuk-table__cell">No info</td>
-                        <td class="govuk-table__cell">1/11/02 <br/> 1/10/00 <br />31/01/99 </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>  -->
+
         <div class="govuk-summary-card" style="">
             <div class="govuk-summary-card__title-wrapper">
-                <h2 class="govuk-summary-card__title">CMS result 1</h2>
+                <h2 class="govuk-summary-card__title" id="cmsResultTitle1">CMS result 1</h2>
+                <h2 class="govuk-summary-card__title rj-dont-display" id="cmsResultTitle2">Approved CMS result</h2>
+                <ul class="govuk-summary-card__actions" id="el1">
+                    <li class="govuk-summary-card__action" > <a class="govuk-link" href="eligibilityNote">
+                            Do the thing<span class="govuk-visually-hidden"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="govuk-summary-card__actions" id="">
+                    <li class="govuk-summary-card__action" > <a class="govuk-link" href="eligibilityNote">
+                          <strong class="govuk-tag govuk-tag--green"> Approved</strong>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="govuk-summary-card__content">
                 <div style="">
@@ -322,8 +186,16 @@ margin:0 auto;
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">First name</td>
-                                <td class="govuk-table__cell" style="font-weight:700">Rob</td>
-                                <td class="govuk-table__cell">Robert</td>
+                                <td class="govuk-table__cell " style="">
+                                    <mark class="hods-highlight">
+                                        <strong>Rob</strong>
+                                    </mark>
+                                </td>
+                                <td class="govuk-table__cell">
+                                    <mark class="hods-highlight">
+                                        <strong>Robert</strong>
+                                    </mark>
+                                </td>
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">Last name </td>
@@ -332,8 +204,15 @@ margin:0 auto;
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">URN</td>
-                                <td class="govuk-table__cell" style="font-weight:700">EE12345667</td>
-                                <td class="govuk-table__cell">EE12345666 </td>
+                                <td class="govuk-table__cell" style="">
+                                    <mark class="hods-highlight">
+                                        <strong>EE12345667</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell">
+                                    <mark class="hods-highlight">
+                                        <strong>EE12345666</strong>
+                                    </mark>
+                                </td>
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">Court</td>
@@ -347,17 +226,31 @@ margin:0 auto;
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700; border-bottom:none">Date of birth</td>
-                                <td class="govuk-table__cell" style="border-bottom:none;font-weight:700">No info</td>
-                                <td class="govuk-table__cell" style="border-bottom:none">1/11/02 </td>
+                                <td class="govuk-table__cell" style="border-bottom:none;">
+                                    <mark class="hods-highlight">
+                                        <strong>No info</strong>
+                                    </mark></td>
+                                </td>
+                                <td class="govuk-table__cell" style="border-bottom:none">
+                                    <mark class="hods-highlight">
+                                        <strong>1/11/02 </strong>
+                                    </mark>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-                <div class="govuk-summary-card" style="">
+        <div class="govuk-summary-card" style="" id="result2">
             <div class="govuk-summary-card__title-wrapper">
                 <h2 class="govuk-summary-card__title">CMS result 2</h2>
+                <ul class="govuk-summary-card__actions" id="el2">
+                    <li class="govuk-summary-card__action" > <a class="govuk-link" href="eligibilityNote">
+                            Do the thing<span class="govuk-visually-hidden"></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="govuk-summary-card__content">
                 <div style="">
@@ -372,8 +265,14 @@ margin:0 auto;
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">First name</td>
-                                <td class="govuk-table__cell" style="font-weight:700">Rob</td>
-                                <td class="govuk-table__cell">David</td>
+                                <td class="govuk-table__cell" style="font-weight:700">
+                                    <mark class="hods-highlight">
+                                        <strong>Rob</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell">
+                                    <mark class="hods-highlight">
+                                        <strong>David</strong>
+                                    </mark></td>
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">Last name </td>
@@ -382,8 +281,14 @@ margin:0 auto;
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">URN</td>
-                                <td class="govuk-table__cell" style="font-weight:700">EE12345678</td>
-                                <td class="govuk-table__cell">EE12345677</td>
+                                <td class="govuk-table__cell" style="">
+                                    <mark class="hods-highlight">
+                                        <strong>EE12345678</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell">
+                                    <mark class="hods-highlight">
+                                        <strong>EE12345677</strong>
+                                    </mark></td>
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">Court</td>
@@ -397,17 +302,29 @@ margin:0 auto;
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700; border-bottom:none">Date of birth</td>
-                                <td class="govuk-table__cell" style="border-bottom:none;font-weight:700">No info</td>
-                                <td class="govuk-table__cell" style="border-bottom:none"> 1/10/00  </td>
+                                <td class="govuk-table__cell" style="border-bottom:none;">
+                                    <mark class="hods-highlight">
+                                        <strong>No info</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell" style="border-bottom:none">
+                                    <mark class="hods-highlight">
+                                        <strong>1/10/00</strong>
+                                    </mark></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-                <div class="govuk-summary-card" style="">
+        <div class="govuk-summary-card" style="" id="result3">
             <div class="govuk-summary-card__title-wrapper">
                 <h2 class="govuk-summary-card__title">CMS result 3</h2>
+                <ul class="govuk-summary-card__actions" id="el3">
+                    <li class="govuk-summary-card__action"> <a class="govuk-link" href="eligibilityNote">
+                            Do the thing<span class="govuk-visually-hidden"></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="govuk-summary-card__content">
                 <div style="">
@@ -422,8 +339,14 @@ margin:0 auto;
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">First name</td>
-                                <td class="govuk-table__cell" style="font-weight:700">Rob</td>
-                                <td class="govuk-table__cell">Jack</td>
+                                <td class="govuk-table__cell" style="">
+                                    <mark class="hods-highlight">
+                                        <strong>Rob</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell">
+                                    <mark class="hods-highlight">
+                                        <strong>Jack</strong>
+                                    </mark></td>
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">Last name </td>
@@ -432,8 +355,13 @@ margin:0 auto;
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">URN</td>
-                                <td class="govuk-table__cell" style="font-weight:700">EE12345678</td>
-                                <td class="govuk-table__cell"> EE12345555</td>
+                                <td class="govuk-table__cell" style="font-weight:700">
+                                    <mark class="hods-highlight">
+                                        <strong>EE12345678</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell"> <mark class="hods-highlight">
+                                        <strong>EE12345555</strong>
+                                    </mark></td>
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700">Court</td>
@@ -447,8 +375,14 @@ margin:0 auto;
                             </tr>
                             <tr class="govuk-table__row">
                                 <td scope="row" class="govuk-table__cell" style="font-weight:700; border-bottom:none">Date of birth</td>
-                                <td class="govuk-table__cell" style="border-bottom:none;font-weight:700">No info</td>
-                                <td class="govuk-table__cell" style="border-bottom:none">31/01/99 </td>
+                                <td class="govuk-table__cell" style="border-bottom:none;">
+                                    <mark class="hods-highlight">
+                                        <strong>No info</strong>
+                                    </mark></td>
+                                <td class="govuk-table__cell" style="border-bottom:none">
+                                    <mark class="hods-highlight">
+                                        <strong>31/01/99</strong>
+                                    </mark></td>
                             </tr>
                         </tbody>
                     </table>
@@ -508,13 +442,4 @@ margin:0 auto;
 </div>
 </div>
 </div>
-<script>
-if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
-    new MOJFrontend.MultiFileUpload({
-        container: $(".moj-multi-file-upload"),
-        uploadUrl: "/ajax-upload",
-        deleteUrl: "/ajax-delete",
-    });
-}
-</script>
 {% endblock %}

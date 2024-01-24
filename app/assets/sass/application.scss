@@ -132,6 +132,18 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+/* .govuk-tag {
+    text-transform: none !important;
+    font-weight:400 !important;
+}
+*/
+
+
+
+.hods-highlight {
+    background-color: #ffe5cc;
+    border-bottom: 2px solid #ffb266;
+}
 
 .record-header .govuk-tag {
     position: relative;
