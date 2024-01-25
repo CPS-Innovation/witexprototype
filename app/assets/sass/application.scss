@@ -27,18 +27,17 @@
   font-display: swap;
   size-adjust: 86.5%;
   src: url('/public/fonts/TransportNewHeavy/font.woff2') format('woff2'), url('/public/fonts/TransportNewHeavy/font.woff') format('woff');
-}*/
+}
 
-/*$govuk-font-family: "TransportNew", "Arial", sans-serif; */
+$govuk-font-family: "TransportNew" ; */
 
 
-/*@font-face {
+@font-face {
   font-family: "TransportNewKtype";
     font-style: normal;
   font-weight: 400;
   font-display: swap;
-
-  src:  url('/public/fonts/kypeTransport/transport-new-medium.woff2') format('woff');
+  src:  url('/public/fonts/kypeTransport/transport-new-light.woff') format('woff');
 }
 
 
@@ -48,11 +47,11 @@
     font-style: normal;
   font-weight: 700;
   font-display: swap;
-  size-adjust: 86.5%;
+  size-adjust: 90%;
   src: url('/public/fonts/kypeTransport/transport-new-heavy.woff') format('woff');
-}*/
+}
 
-/*$govuk-font-family: "TransportNewKtype", "Arial", sans-serif; */
+$govuk-font-family: "TransportNewKtype"; 
 
 /* latin */
 /*@font-face {
@@ -98,9 +97,9 @@
   src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');
 }
 
-$govuk-font-family: "Roboto", "Arial", sans-serif; */
+$govuk-font-family: "Roboto", ; */
 
-@font-face {
+/*@font-face {
   font-family: 'Fruitiger';
   font-style: normal;
   font-weight: 400;
@@ -118,7 +117,7 @@ $govuk-font-family: "Roboto", "Arial", sans-serif; */
     src: url('/public/fonts/afruitiger/Frutiger65Bold.otf') format('opentype');
 }
 
-$govuk-font-family: "Fruitiger"; 
+$govuk-font-family: "Fruitiger"; */
 
 
 
