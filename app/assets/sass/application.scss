@@ -14,7 +14,7 @@
     font-style: normal;
   font-weight: 400;
   font-display: swap;
-  size-adjust: 90%;
+/*  size-adjust: 90%;*/
   src: url('/public/fonts/TransportNewLight/font.woff2') format('woff2'), url('/public/fonts/TransportNewLight/font.woff') format('woff');
 }
 
@@ -25,11 +25,11 @@
     font-style: normal;
   font-weight: 700;
   font-display: swap;
-  size-adjust: 86.5%;
+/*  size-adjust: 86.5%;*/
   src: url('/public/fonts/TransportNewHeavy/font.woff2') format('woff2'), url('/public/fonts/TransportNewHeavy/font.woff') format('woff');
 }
 
-/*$govuk-font-family: "TransportNew", "Arial", sans-serif; */
+$govuk-font-family: "TransportNew", "Arial", sans-serif; 
 
 
 
@@ -55,7 +55,7 @@
   src: url(https://fonts.gstatic.com/s/notosans/v21/o-0NIpQlx3QUlC5A4PNjXhFVZNyBx2pqPA.woff2) format('woff2')
 }
 
-$govuk-font-family: "Noto-Sans", "Arial", sans-serif; 
+/*$govuk-font-family: "Noto-Sans", "Arial", sans-serif; */
  
 /* Do not bother with this font below:*/
 
