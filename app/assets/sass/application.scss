@@ -81,27 +81,25 @@ $govuk-font-family: "TransportNewKtype"; */
 
 
 /* latin */
-@font-face {
+/*@font-face {
   font-family: 'HN';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-/*     size-adjust: 92%;*/
   src: url(https://fonts.cdnfonts.com/s/14188/HelveticaNeueItalic.woff) format('woff')
-  }
+  }*/
 
 
 /* latin */
-@font-face {
+/*@font-face {
   font-family: 'HN';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-/*   size-adjust: 92%;*/
   src: url(https://fonts.cdnfonts.com/s/14188/HelveticaNeue-Heavy.woff) format('woff')
 }
 
-$govuk-font-family: "HN", ; 
+$govuk-font-family: "HN", ; */
 
 
 
@@ -126,6 +124,19 @@ $govuk-font-family: "HN", ;
 }
 
 $govuk-font-family: "Roboto", ; */
+
+
+
+@font-face {
+  font-family: 'Open-Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+
+  src: url(https://fonts.gstatic.com/s/opensans/v40/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+}
+
+$govuk-font-family: "Open-Sans", ; 
 
 /*@font-face {
   font-family: 'Fruitiger';
