@@ -52,7 +52,7 @@
   src: url('/public/fonts/kypeTransport/transport-new-heavy.woff') format('woff');
 }
 
-$govuk-font-family: "TransportNewKtype", "Arial", sans-serif; 
+/*$govuk-font-family: "TransportNewKtype", "Arial", sans-serif; */
 
 /* latin */
 /*@font-face {
@@ -76,6 +76,33 @@ $govuk-font-family: "TransportNewKtype", "Arial", sans-serif;
 }*/
 
 /*$govuk-font-family: "Noto-Sans", "Arial", sans-serif; */
+
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+/*     size-adjust: 92%;*/
+   src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
+  }
+
+
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+/*   size-adjust: 92%;*/
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');
+}
+
+$govuk-font-family: "Roboto", "Arial", sans-serif; 
+
+
+
+
  
 /* Do not bother with this font below:*/
 
