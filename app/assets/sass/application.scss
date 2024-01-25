@@ -53,6 +53,9 @@ $govuk-font-family: "TransportNew" ; */
 
 $govuk-font-family: "TransportNewKtype"; */
 
+
+
+
 /* latin */
 /*@font-face {
   font-family: 'Noto-Sans';
@@ -77,7 +80,30 @@ $govuk-font-family: "TransportNewKtype"; */
 /*$govuk-font-family: "Noto-Sans", "Arial", sans-serif; */
 
 
-$govuk-font-family:  "Helvetica",; 
+/* latin */
+@font-face {
+  font-family: 'HN';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+/*     size-adjust: 92%;*/
+  src: url(https://fonts.cdnfonts.com/s/14188/HelveticaNeueItalic.woff) format('woff')
+  }
+
+
+/* latin */
+@font-face {
+  font-family: 'HN';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+/*   size-adjust: 92%;*/
+  src: url(https://fonts.cdnfonts.com/s/14188/HelveticaNeue-Heavy.woff) format('woff')
+}
+
+$govuk-font-family: "HN", ; 
+
+
 
 /*@font-face {
   font-family: 'Roboto';
