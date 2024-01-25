@@ -7,7 +7,7 @@
   }
 
 
-@import url("//hello.myfonts.net/count/413f20");
+/*@import url("//hello.myfonts.net/count/413f20");
   
 @font-face {
   font-family: "TransportNew";
@@ -27,33 +27,53 @@
   font-display: swap;
   size-adjust: 86.5%;
   src: url('/public/fonts/TransportNewHeavy/font.woff2') format('woff2'), url('/public/fonts/TransportNewHeavy/font.woff') format('woff');
+}*/
+
+/*$govuk-font-family: "TransportNew", "Arial", sans-serif; */
+
+
+@font-face {
+  font-family: "TransportNewKtype";
+    font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+/*  size-adjust: 90%;*/
+  src:  url('/public/fonts/kypeTransport/transport-new-medium.woff2') format('woff');
 }
 
-$govuk-font-family: "TransportNew", "Arial", sans-serif; 
 
 
+@font-face {
+  font-family: "TransportNewKtype";
+    font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  size-adjust: 86.5%;
+  src: url('/public/fonts/kypeTransport/transport-new-heavy.woff') format('woff');
+}
 
+$govuk-font-family: "TransportNewKtype", "Arial", sans-serif; 
 
 /* latin */
-@font-face {
+/*@font-face {
   font-family: 'Noto-Sans';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
      size-adjust: 92%;
   src: url(https://fonts.gstatic.com/s/notosans/v21/o-0IIpQlx3QUlC5A4PNr5TRASf6M7Q.woff2) format('woff2')
-  }
+  }*/
 
 
 /* latin */
-@font-face {
+/*@font-face {
   font-family: 'Noto-Sans';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
    size-adjust: 92%;
   src: url(https://fonts.gstatic.com/s/notosans/v21/o-0NIpQlx3QUlC5A4PNjXhFVZNyBx2pqPA.woff2) format('woff2')
-}
+}*/
 
 /*$govuk-font-family: "Noto-Sans", "Arial", sans-serif; */
  
