@@ -31,8 +31,8 @@
 
 $govuk-font-family: "TransportNew" ; */
 
-/*
-@font-face {
+
+/*@font-face {
   font-family: "TransportNewKtype";
     font-style: normal;
   font-weight: 400;
@@ -49,9 +49,30 @@ $govuk-font-family: "TransportNew" ; */
   font-display: swap;
   size-adjust: 90%;
   src: url('/public/fonts/kypeTransport/transport-new-heavy.woff') format('woff');
+}*/
+
+/*$govuk-font-family: "TransportNewKtype"; */
+
+@font-face {
+  font-family: "hyperLegible";
+    font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:  url('/public/fonts/hyperLegible/Hyperlegible-Regular.woff2') format('woff2');
 }
 
-$govuk-font-family: "TransportNewKtype"; */
+
+
+@font-face {
+  font-family: "hyperLegible";
+    font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+
+  src: url('/public/fonts/hyperLegible/Hyperlegible-Bold.woff2') format('woff2');
+}
+
+$govuk-font-family: "hyperLegible"; 
 
 
 
@@ -79,7 +100,7 @@ $govuk-font-family: "TransportNewKtype"; */
 
 /*$govuk-font-family: "Noto-Sans", "Arial", sans-serif; */
 
-$govuk-font-family: "Helvetica", ; 
+/*$govuk-font-family: "Helvetica", ; */
 
 /* latin */
 /*@font-face {
@@ -87,7 +108,7 @@ $govuk-font-family: "Helvetica", ;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.cdnfonts.com/s/14188/HelveticaNeueItalic.woff) format('woff')
+  src: url(https://fonts.cdnfonts.com/s/14188/HelveticaNeue-Medium.woff) format('woff')
   }*/
 
 
