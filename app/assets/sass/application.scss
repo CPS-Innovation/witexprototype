@@ -53,7 +53,7 @@ $govuk-font-family: "TransportNew" ; */
 
 /*$govuk-font-family: "TransportNewKtype"; */
 
-@font-face {
+/*@font-face {
   font-family: "hyperLegible";
     font-style: normal;
   font-weight: 400;
@@ -72,7 +72,7 @@ $govuk-font-family: "TransportNew" ; */
   src: url('/public/fonts/hyperLegible/Hyperlegible-Bold.woff2') format('woff2');
 }
 
-$govuk-font-family: "hyperLegible"; 
+$govuk-font-family: "hyperLegible";*/ 
 
 
 
@@ -180,7 +180,7 @@ $govuk-font-family: "Open-Sans", ; */
 
 $govuk-font-family: "Fruitiger"; */
 
-
+$govuk-font-family: "HelveticaNeue", “Helvetica Neue”;
 
  
 /* Do not bother with this font below:*/
