@@ -2217,6 +2217,25 @@ router.get('/*/foodChooseRouter' , function (req, res) {
         }
 })
 
+// route the food or not
+router.get('/*/canceledRouter' , function (req, res) {
+  var confirmTraining = req.query.cancelledorNot
+       switch (true) {
+        case  (confirmTraining == "Yes"):
+         res.redirect(`travel`)
+          break;
+
+        case  (confirmTraining == "No"):
+         res.redirect(`../foodanddrink/foodRadio`)
+          break;
+
+            
+        default:
+            res.redirect(`bork bork bork`)
+        break;
+        }
+})
+
 // Case management actions
 // http://127.0.0.1:3000/witex-v15/caseManagement/claim2
 router.get('/*/caseManagement/caseActions' , function (req, res) {
