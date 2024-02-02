@@ -16,20 +16,17 @@ href: "javascript:history.back()"
         <h1 class="govuk-heading-l">Claiming expenses online</h1>
         <p>You can claim expenses online if you:</p>
         <ul class="govuk-list govuk-list--bullet">
-
             <li>are over 18</li>
-                        <li>are claiming for one day or less</li>
+            <li>are claiming for one day or less</li>
             <li>are claiming only for yourself</li>
             <!-- <li>did not travel to court by air or sea</li> -->
         </ul>
-        <form method="get" action="screenerRoute">
+        <form method="get" action="screenerRoute2">
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
-
-<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-               Are you able to claim expenses online?
-</legend>
-
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        Are you able to claim expenses online?
+                    </legend>
                     <div class="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="screener" name="screener" type="radio" value="Yes">
@@ -47,9 +44,8 @@ href: "javascript:history.back()"
             </div>
             <button type="submit" class="govuk-button">Continue </button>
         </form>
-             {% include "includes/cps/v11/help.html" %}
+        {% include "includes/cps/v11/help.html" %}
     </div>
-
 </div>
 </main>
 </div>

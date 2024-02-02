@@ -2060,6 +2060,71 @@ router.get('/*/travel/transportChoiceRoute4' , function (req, res) {
         }
 })
 
+// travel in the tasklist route v3
+router.get('/*/transportChoiceRoute5' , function (req, res) {
+  var confirmTraining = req.query.transportChoice
+       switch (true) {
+
+             case  (confirmTraining == 'Public transport'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../publicQuestion`)
+                 break;
+
+           case  (confirmTraining == 'Car'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../car`)
+                 break;
+
+        case  (confirmTraining == 'Motorbike/scooter'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../motorbike/otherWitnesses`)
+                 break;
+
+        case  (confirmTraining == 'Bicycle'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../bicycle`)
+                 break;
+
+        case  (confirmTraining == 'Taxi'):
+           // req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../taxi`)
+                 break;
+            
+        default:
+            console.log("bork bork bork bork");
+                // req.session.data['petSittingShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`trainCost`)
+            break;
+        }
+})
+
+
+// travel 
+router.get('/*/publicTransportCostRouter' , function (req, res) {
+  var confirmTraining = req.query.publicTransportCost
+       switch (true) {
+
+             case  (confirmTraining == 'Yes'):
+            res.redirect(`publicTransport/recieptsNeeded`)
+                 break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`publicTransport/noRecieptsNeeded`)
+                 break;
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`trainCost`)
+            break;
+        }
+})
+
 
 // travel in the tasklist route v3 - setting to show pub transport after
 router.get('/*/travel/multiTravelRouterPubTrain' , function (req, res) {
@@ -2093,6 +2158,28 @@ router.get('/*/screenerRoute' , function (req, res) {
        switch (true) {
           case  (confirmTraining == 'Yes'):
               res.redirect(`courtDetails`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`blueForm`)
+            break;
+
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        }
+        
+
+})
+
+// screener at the beginning
+router.get('/*/screenerRoute2' , function (req, res) {
+      var confirmTraining = req.query.screener
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`dob`)
            break;
 
            case  (confirmTraining == 'No'):
