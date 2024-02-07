@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="travel/transportChoiceRoute3">
+ <!--                <h1 class="govuk-heading-xl">Travel costs </h1>
+                      <p>You can claim if you travelled to and from court by train, tube, coach, bus, air, ferry, car, motorbike or bicycle. </P><p>You will need receipts to claim for train, coach, air or ferry trips. </p> -->
+                <div class="govuk-form-group">
+                    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+                            {{ govukCheckboxes({
+                              idPrefix: "transportChoice",
+                              name: "transportChoice",
+                              fieldset: {
+                                legend: {
+                                  text: "How did you travel to court?",
+                                  isPageHeading: true,
+                                  classes: "govuk-fieldset__legend--l"
+                                }
+                              },
+                              hint: {
+                                text: "Select all that apply."
+                              },
+                              items: [
+                                {
+                                  value: "London transport",
+                                  text: "Public transport within London (Zone 1 -9)",
+                                  hint: { text: "Includes: tube, bus, river bus, Docklands Light Railway (DLR), London Trams, Elizabeth Line and overground train"}
+
+                                },
+                                {
+                                  value: "Bus/Tram/Metro outside London",
+                                  text: "Bus/tram/metro outside London"
+                                },
+                                {
+                                  value: "Train",
+                                  text: "Train"
+                                },
+                                {
+                                  value: "Coach",
+                                  text: "Coach"
+                                },
+                                {
+                                  value: "Air",
+                                  text: "Plane"
+                                },
+                                {
+                                  value: "Sea",
+                                  text: "Ferry"
+                                },
+                                {
+                                  value: "Car",
+                                  text: "Car"
+                                },
+                                {
+                                  value: "Motorbike/scooter",
+                                  text: "Motorbike/scooter"
+                                },
+                                {
+                                  value: "Bicycle",
+                                  text: "Bicycle"
+                                },
+                                {
+                                  value: "Taxi",
+                                  text: "Taxi"
+                                }
+                                
+                                 
+                              ]
+                            }) }}
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
