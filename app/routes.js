@@ -2191,9 +2191,50 @@ router.get('/*/screenerRoute2' , function (req, res) {
             console.log("bork bork bork bork");
               res.redirect(`blueForm`)
             break;
-        }
-        
+        } 
+})
 
+// screener at the beginning
+router.get('/*/screenerRoute3' , function (req, res) {
+      var confirmTraining = req.query.screener
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`areYou`)
+           break;
+
+           case  (confirmTraining == 'No'):
+            res.redirect(`blueForm`)
+            break;
+
+            
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
+// witness type beginning
+router.get('/*/areYouRouter' , function (req, res) {
+      var confirmTraining = req.query.claimerType
+       switch (true) {
+          case  (confirmTraining == 'The witness'):
+              res.redirect(`dob`)
+           break;
+
+           case  (confirmTraining == 'Helping a witness with their claim'):
+            res.redirect(`helping/details`)
+            break;
+
+            case  (confirmTraining == 'Claiming but not a witness'):
+            res.redirect(`notWitness/why`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
 })
 
 // travel in the tasklist route v3 - setting to show pub transport after
