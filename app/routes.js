@@ -2237,6 +2237,96 @@ router.get('/*/areYouRouter' , function (req, res) {
         } 
 })
 
+// witness type beginning
+router.get('/*/areYouRouter2' , function (req, res) {
+      var confirmTraining = req.query.claimerType
+       switch (true) {
+          case  (confirmTraining == 'The witness'):
+              res.redirect(`witName`)
+           break;
+
+           case  (confirmTraining == 'Helping a witness with their claim'):
+            res.redirect(`helping/details`)
+            break;
+
+            case  (confirmTraining == 'Claiming but not a witness'):
+            res.redirect(`notWitness/why`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
+// witness type beginning
+router.get('/*/nonWitRouter2' , function (req, res) {
+      var confirmTraining = req.query.whyNoWitness
+       switch (true) {
+          case  (confirmTraining == "I'm a parent or guardian of a witness under 18"):
+            req.session.data['showDB'] = true;
+              res.redirect(`details`)
+           break;
+
+           case  (confirmTraining == "I'm the carer of a witness"):
+            req.session.data['showDB'] = false;
+            res.redirect(`details`)
+            break;
+
+            case  (confirmTraining == 'Other'):
+                req.session.data['showDB'] = false;
+            res.redirect(`details`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
+
+// route the multi travel things
+router.get('/*/nonWitRouterDetails' , function (req, res) {
+console.log("req.session.data['showDB'" + "arse")
+       switch (true) {
+        case  (req.session.data['showDB'] == true):
+         res.redirect(`dob`)
+          break;
+
+        case  (req.session.data['showDB'] == false):
+         res.redirect(`whichCourt`)
+          break;
+  
+        default:
+            res.redirect(`bork`)
+        break;
+        }
+})
+
+
+// witness type beginning
+router.get('/*/helperRouter' , function (req, res) {
+      var confirmTraining = req.query.fillerType
+       switch (true) {
+          case  (confirmTraining == 'one'):
+             req.session.data['witHelper'] = false;
+              res.redirect(`details`)
+           break;
+
+           case  (confirmTraining == 'two'):
+            req.session.data['witHelper'] = true;
+            res.redirect(`details`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
 // travel in the tasklist route v3 - setting to show pub transport after
 router.get('/*/travel/multiTravelRouterPubTrans' , function (req, res) {
          req.session.data['showReceipt'] = true;

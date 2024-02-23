@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="travelRoute4">
+                <h1 class="govuk-heading-l">Claiming for your travel</h1>
+                      <p>You can claim travel costs to and from court.</P>
+                                <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text" style="margin-top:-11px">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You could be prosecuted if you claim for costs already paid for by the Crown Prosecution Service (CPS) or the court.
+  </strong>
+</div>
+<!--                         <p>If you used a car, motorbike or bicycle you can claim a fixed amount per mile.</P>
+ -->                        <p>You need to show receipts or a satisfactory reason for not providing evidence of your payment for:</P>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>train</li>
+                      <li>coach</li>
+                      <li>parking</li>
+                      <li>taxi</li>
+                       <li>plane</li>
+                        <li>ferry</li>
+                    </ul>
+
+                  <p>You won't need to show receipts for:</P>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>Public transport within London (Zone 1 -9) (including tube, bus, river bus, Docklands Light Railway (DLR), London Trams, Elizabeth Line and overground train)</li>
+                      <li>bus, metro, or tram outside London</li>
+                      <li>other driving costs such as Congestion Charge or tolls</li>
+                    </ul>
+ 
+
+                <p>You can claim a fixed amount per mile for:</P>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>car</li>
+                      <li>motorbike</li>
+                      <li>bicycle</li>
+                    </ul>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+<!--                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                         
+                            <label class="govuk-label  bold-label" for="firstName">
+                                    Do you want to claim for travel to and from the court?</label>
+                        </legend> -->
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you want to claim for travel to and from the court?
+</legend>
+                  
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="travelclaim" name="travelclaim" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="travelclaim" name="travelclaim" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    No
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+                  {% include "includes/cps/v11/help.html" %}
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+            <!-- use the below to set up the notify emailing thing -->
+            <!-- <form class="form" method="post"> -->
+                <form action="confirmEmail" method="get" class="form">
+            <h1 class="govuk-heading-l">
+                Contact details
+            </h1>
+            {% if data.witHelper %}
+            <div class="govuk-inset-text">
+                You must have the witness's permission to be the contact for this claim
+            </div>
+            
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-width-three-quarters bold-label" for="first-name-real">
+                    First name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="first-name-real" name="first-name-real" type="text" aria-describedby="first-name-real">
+            </div>
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-width-three-quarters bold-label" for="last-name-real">
+                    Last name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="last-name-real" name="last-name-real" type="text" aria-describedby="last-name-real">
+            </div>
+            {% else %}
+            {% endif %}
+
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-width-three-quarters bold-label" for="email">
+                    Email address
+                </label>
+                <!--span id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a receipt
+            </span-->
+                <input class="govuk-input govuk-!-width-three-quarters" id="email" name="email" type="text" aria-describedby="email">
+            </div>
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-!-width-three-quarters bold-label" for="contactPhone">
+                    Contact phone number (optional)
+                </label>
+                <span id="email-hint" class="govuk-hint">
+                    We’ll only use this to contact you if we have a question about your claim
+                </span>
+                <input class="govuk-input govuk-!-width-three-quarters" id="contactPhone" name="contactPhone" type="text" aria-describedby="contactPhone">
+            </div>
+
+            </fieldset>
+   
+
+    <button class="govuk-button">Continue</button>
+    <!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
+    </form>
+    {% include "includes/cps/v11/help.html" %}
+</div>
+</div>
+{% endblock %}
