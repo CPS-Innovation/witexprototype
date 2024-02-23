@@ -2286,6 +2286,30 @@ router.get('/*/nonWitRouter2' , function (req, res) {
         } 
 })
 
+// witness type beginning
+router.get('/*/whoFillingRouter' , function (req, res) {
+      var confirmTraining = req.query.fillerType
+       switch (true) {
+          case  (confirmTraining == "one"):
+              res.redirect(`something`)
+           break;
+
+           case  (confirmTraining == "two"):
+            res.redirect(`areYou`)
+            break;
+
+            // case  (confirmTraining == 'Other'):
+            //     req.session.data['showDB'] = false;
+            // res.redirect(`details`)
+            // break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
 
 // route the multi travel things
 router.get('/*/nonWitRouterDetails' , function (req, res) {
