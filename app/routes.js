@@ -2245,12 +2245,17 @@ router.get('/*/areYouRouter2' , function (req, res) {
               res.redirect(`witName`)
            break;
 
-           case  (confirmTraining == 'Helping a witness with their claim'):
-            res.redirect(`helping/details`)
-            break;
-
+    
             case  (confirmTraining == 'Claiming but not a witness'):
             res.redirect(`notWitness/why`)
+            break;
+
+        case  (confirmTraining == 'claiming for a child or dependent'):
+            res.redirect(`witName`)
+            break;
+
+                   case  (confirmTraining == 'helping someone else with their claim'):
+            res.redirect(`witName`)
             break;
 
         default:
