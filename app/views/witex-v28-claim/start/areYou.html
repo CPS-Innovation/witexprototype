@@ -33,21 +33,26 @@ href: "javascript:history.back()"
                              <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="claimerType" name="claimerType" type="radio" value="Claiming but not a witness">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    accompanying a witness to court and able to claim for yourself
+                                    <!-- supporting a witness in court and claiming for yourself -->
+                                    <!-- not a witness, but eligible to claim because you supported a witness in court  -->
+                                    claiming because you supported a witness in court
                                 </label>
+                                 <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                            Something about eligibility to claim here?
+                                </div>
                             </div>
 
                                <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="claimerType" name="claimerType" type="radio" value="claiming for a child or dependent">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    claiming for a child or dependent
+                                    claiming for a child or dependent witness
                                 </label>
                             </div>
 
                                                         <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="claimerType" name="claimerType" type="radio" value="helping someone else with their claim">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    helping someone else with their claim
+                                    helping a witness with their claim
                                 </label>
                             </div>
 <!--                           <div class="govuk-radios__item">
