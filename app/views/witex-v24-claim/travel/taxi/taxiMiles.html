@@ -20,7 +20,9 @@ href: "javascript:history.back()"
 <!-- end of conditional statement -->
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">    <span class="govuk-caption-l">Taxi</span>
+        <h1 class="govuk-heading-l">                                        <div style="display:flex">
+              {% include "includes/cps/whatDay.html" %} <span class="govuk-caption-l">- Taxi</span>
+          </div>
            Total cost of taxi(s)?
         </h1>
                    <p>We will not pay for waiting time.</p>
@@ -31,7 +33,7 @@ href: "javascript:history.back()"
         <form action="../../start/overnightStay" method="get" class="form">
             <div class="govuk-form-group">
                 <label class="govuk-label bold-label" for="more-detail">
-                   What is the total cost of taxi(s), in pounds?
+                   What was the total cost of the taxi(s), in pounds?
                 </label>
                 <div class="govuk-input__wrapper">
                     <div class="govuk-input__prefix" aria-hidden="true">£</div>

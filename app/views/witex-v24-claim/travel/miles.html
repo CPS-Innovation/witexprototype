@@ -26,7 +26,7 @@ href: "javascript:history.back()"
               {% include "includes/cps/whatDay.html" %} <span class="govuk-caption-l">- Car</span>
           </div> 
           </div>
-           How many miles in total are you claiming for?
+          Your car journey(s)
         </h1>
                    <p>You can claim  {% if data.higherMile == "Yes" %} 45p {% else %} 25p {% endif %} per mile.</p>
 
@@ -34,6 +34,10 @@ href: "javascript:history.back()"
   
         <form action="parking" method="get" class="form">
             <div class="govuk-form-group">
+              
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+               How many miles in total are you claiming for?
+</legend>
      <!--            <label class="govuk-label  bold-label" for="code">
                    Total miles
                 </label> -->
