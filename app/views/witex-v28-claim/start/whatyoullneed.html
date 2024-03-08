@@ -22,8 +22,8 @@ href: "javascript:history.back()"
                 break;
 
         case  (status == 'false'):
-                  $(gatewayError).removeClass("rj-dont-display");
-            $(addTheError).addClass("govuk-form-group--error");
+          window.location.href='dontHave';
+    
             break
         default:
              console.log('gyahhhhhhhh, bork bork bork')
@@ -109,7 +109,7 @@ payment if you are claiming for:</li>
           <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h2 class="govuk-fieldset__heading" style="margin-top:25px">
-            Do you have everything you need to claim?
+           Are you able to upload everything you need to claim?
             </h2>
           </legend>
 

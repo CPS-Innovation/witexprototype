@@ -287,6 +287,17 @@ router.param('employer', function (req, res, next, employer) {
   res.redirect(`/${req.version}/caseManagement/admin/download`)
  })
 
+router.get('/*/newClaimNav', function (req, res) {
+  req.session.data['wakefieldJourney'] = true;
+  res.redirect(`/witex-v28-claim/start/witName`)
+
+ })
+
+  router.get('/*/*/newClaimNav', function (req, res) {
+  req.session.data['wakefieldJourney'] = true;
+  res.redirect(`/witex-v28-claim/start/witName`)
+ })
+
 
 
 
@@ -1685,7 +1696,7 @@ router.get('/*/anotherDayRouter' , function (req, res) {
        switch (true) {
           case  (confirmTraining == 'yes'):
              req.session.data['dayNumber'] = "2";
-              res.redirect(`start/courtDetailsMultiDay`)
+              res.redirect(`anotherDay/anotherBank`)
            break;
 
            case  (confirmTraining == 'no'):
@@ -1699,6 +1710,25 @@ router.get('/*/anotherDayRouter' , function (req, res) {
         }
 })
 
+router.get('/*/anotherBankRouter' , function (req, res) {
+  var confirmTraining = req.query.thingsCorrect
+       switch (true) {
+          case  (confirmTraining == 'yes'):
+             req.session.data['dayNumber'] = "2";
+             req.session.data['bankOrNot'] = "noBank";
+              res.redirect(`../start/courtDetailsMultiDay`)
+           break;
+
+           case  (confirmTraining == 'no'):
+             res.redirect(`../start/courtDetailsMultiDay`)
+            break;
+     
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
 
 router.get('/*/receipts/receiptMissingRoute' , function (req, res) {
   
@@ -1731,7 +1761,7 @@ router.get('/*/changeDay' , function (req, res) {
 
 case  (confirmTraining == 'No'):
      req.session.data['dayNumber'] = "1";
-         res.redirect(`notDone`)
+         res.redirect(`index3`)
           break;
             
         default:
@@ -2313,6 +2343,29 @@ router.get('/*/whoFillingRouter' , function (req, res) {
               res.redirect(`blueForm`)
             break;
         } 
+})
+
+
+// finish router
+router.get('/*/finishRouter' , function (req, res) {
+      var confirmTraining = req.session.data['dayNumber']
+
+       switch (true) {
+          case  (confirmTraining == "2"):
+              res.redirect(`./Finish/index3`)
+           break;
+
+            // case  (confirmTraining == 'Other'):
+            //     req.session.data['showDB'] = false;
+            // res.redirect(`details`)
+            // break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`./Finish/index2`)
+            break;
+        }
+
 })
 
 

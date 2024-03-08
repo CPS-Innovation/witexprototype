@@ -405,7 +405,7 @@ href: "javascript:history.back()"
                 </dd>
             </div>
         </dl>
-          <h2 class="govuk-heading-m">Submit your claim for Day 1</h2>
+          <h2 class="govuk-heading-m">Submit your claim for {% include "includes/cps/whatDay3.html" %}</h2>
         <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
@@ -421,7 +421,7 @@ href: "javascript:history.back()"
                   <p style="font-weight:700; margin-bottom:0; padding-bottom:0">  We will send a confirmation email with a copy of these answers to email@email.com</p>
             </strong>
         </div>
-        <form action="./Finish/index2" method="post" novalidate>
+        <form action="finishRouter" method="get" novalidate>
             <input type="hidden" name="answers-checked" value="true">
             <button class="govuk-button" data-module="govuk-button">
                 Agree and submit
