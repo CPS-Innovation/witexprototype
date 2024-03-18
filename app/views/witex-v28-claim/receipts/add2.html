@@ -291,16 +291,15 @@ $( document ).ready(function() {
             text: 'Continue'
             })}}
         </form>
+        {% include "includes/cps/v11/help.html" %}
     </div>
 
-</div>
-{% include "includes/cps/v11/help.html" %}
-</div>
-<div class="govuk-width-container">
+   <div class="govuk-grid-column-one-third">
+
     <div class="gem-c-feedback govuk-!-display-none-print" data-module="feedback ga4-event-tracker" data-feedback-module-started="true" data-ga4-event-tracker-module-started="true" >
-        <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1" id="feedbackBanner" style="background-color:#fff">
-            <div class="gem-c-feedback__prompt-content">
-                <div class="gem-c-feedback__prompt-questions js-prompt-questions">
+        <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1" id="feedbackBanner" style="background-color:#fff; border-top:none">
+            <div class="gem-c-feedback__prompt-content" style="padding:0; justify-content: normal;">
+                <div class="gem-c-feedback__prompt-questions js-prompt-questions" style="margin:0">
 <!--                     <div class="gem-c-feedback__prompt-question-answer">
                         <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
                         <ul class="gem-c-feedback__option-list">
@@ -322,15 +321,15 @@ $( document ).ready(function() {
                 <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden="">
                     Thank you for your feedback
                 </div>
-                <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions">
+                <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" style="margin:0;padding:0; width:100%">
                     <button id="reportProblem" class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" aria-expanded="false" aria-controls="something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" data-ga4-event="{&quot;event_name&quot;:&quot;form_submit&quot;,&quot;type&quot;:&quot;feedback&quot;,&quot;text&quot;:&quot;Report a problem with this page&quot;,&quot;section&quot;:&quot;Is this page useful?&quot;}">
                         Report a problem with this page
                     </button> </div>
             </div>
         </div>
-        <form action="https://www.gov.uk/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form" method="post" hidden="">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
+        <form action="https://www.gov.uk/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form" method="post" hidden="" style="padding-left:0;padding-right:0">
+    <!--         <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds"> -->
                     <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-errors" tabindex="-1" hidden=""></div>
                     <input type="hidden" name="url" value="https://www.gov.uk/bring-pet-to-great-britain">
                     <h3 class="gem-c-feedback__form-heading">Help us improve this service</h3>
