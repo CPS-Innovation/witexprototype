@@ -2301,7 +2301,7 @@ router.get('/*/nonWitRouter2' , function (req, res) {
        switch (true) {
           case  (confirmTraining == "I'm a parent or guardian of a witness under 18"):
             req.session.data['showDB'] = true;
-              res.redirect(`details`)
+              res.redirect(`child`)
            break;
 
            case  (confirmTraining == "I'm the carer of a witness"):
@@ -2313,6 +2313,29 @@ router.get('/*/nonWitRouter2' , function (req, res) {
                 req.session.data['showDB'] = false;
             res.redirect(`details`)
             break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
+// witness type beginning
+router.get('/*/childRouterA' , function (req, res) {
+      var confirmTraining = req.query.claimChild
+       switch (true) {
+          case  (confirmTraining == "yes"):
+            req.session.data['childOrNot'] = true;
+              res.redirect(`details`)
+           break;
+
+           case  (confirmTraining == "no"):
+            req.session.data['childOrNot'] = false;
+            res.redirect(`details`)
+            break;
+
+
 
         default:
             console.log("bork bork bork bork");
@@ -2382,7 +2405,8 @@ console.log("req.session.data['showDB'" + "arse")
           break;
   
         default:
-            res.redirect(`bork`)
+ 
+               res.redirect(`dob`)
         break;
         }
 })

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="thanksFeedback">
+                <h1 class="govuk-heading-l">Can we email you at robert.jenkins@cps.gov.uk to get more feedback about your experience of using the Claim Witness Expenses service?</h1>
+                <!-- <p>Tell us the name of the person the cheque should be made out to. -->
+
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset">
+<!--                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                          <h1 class="govuk-fieldset__heading">
+                   
+                          </h1>
+                        </legend> -->
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact2" name="contact" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="contact2">
+                              No
+                            </label>
+                          </div>
+
+                        </div>
+                      </fieldset>
+                    </div>
+
+                <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
