@@ -263,6 +263,33 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+.govuk-back-link {margin-top:0 !important}
+
+.dwp-language-toggle {
+      font-family: "GDS Transport", arial, sans-serif;
+  font-size: 1.1875rem;
+}
+
+.dwp-language-toggle__list {
+  margin-top: 1em;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.dwp-language-toggle__list-item {
+  display: inline-block;
+}
+
+.dwp-language-toggle__list-item:first-child:after {
+  content: "";
+  display: inline-block;
+  border-right: 1px solid #0b0c0c;
+  position: relative;
+  top: 0.1875em;
+  height: 1em;
+}
+
+
 .font15 {
   font-size:1.5rem;
 }
