@@ -267,7 +267,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 .dwp-language-toggle {
       font-family: "GDS Transport", arial, sans-serif;
-  font-size: 1.1875rem;
+  font-size: 1rem;
 }
 
 .dwp-language-toggle__list {
@@ -278,6 +278,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 .dwp-language-toggle__list-item {
   display: inline-block;
+
 }
 
 .dwp-language-toggle__list-item:first-child:after {
@@ -287,6 +288,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   position: relative;
   top: 0.1875em;
   height: 1em;
+  margin:0 2px;
 }
 
 
