@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="courtDetails2" method="get" class="form">
+            <h1 class="govuk-heading-l">
+                How many days are you claiming expenses for?
+            </h1>
+            <!-- <p>You must enter one days expenses at a time. </p> -->
+      
+
+                        <div class="govuk-form-group">
+         <!--           <label class="govuk-label govuk-!-font-weight-bold" for="person[0][cost]">
+                           Amount, in pounds
+                        </label> -->
+                    <div class="govuk-input__wrapper">
+                  
+                    <input class="govuk-input govuk-input--width-5" id="person[0][cost]" name="person[0][cost]" type="text" spellcheck="false" data-name="person[0][cost]" data-id="person[0][cost]">
+                      <!-- <div class="govuk-input__suffix" aria-hidden="true">days</div> -->
+                </div>
+            </div>
+
+
+
+
+    </div>
+</div>
+<button class="govuk-button">Continue</button>
+<!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
+</form>
+{% include "includes/cps/v11/help.html" %}
+</div>
+</div>
+{% endblock %}

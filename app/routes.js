@@ -289,13 +289,13 @@ router.param('employer', function (req, res, next, employer) {
 
 router.get('/*/newClaimNav', function (req, res) {
   req.session.data['wakefieldJourney'] = true;
-  res.redirect(`/witex-v28-claim/start/witName`)
+  res.redirect(`/witex-v29-claim/start/areYou`)
 
  })
 
   router.get('/*/*/newClaimNav', function (req, res) {
   req.session.data['wakefieldJourney'] = true;
-  res.redirect(`/witex-v28-claim/start/witName`)
+  res.redirect(`/witex-v29-claim/start/areYou`)
  })
 
 
@@ -1696,7 +1696,7 @@ router.get('/*/anotherDayRouter' , function (req, res) {
        switch (true) {
           case  (confirmTraining == 'yes'):
              req.session.data['dayNumber'] = "2";
-              res.redirect(`anotherDay/anotherBank`)
+              res.redirect(`./start/courtDetailsMultiDay`)
            break;
 
            case  (confirmTraining == 'no'):
@@ -1716,11 +1716,11 @@ router.get('/*/anotherBankRouter' , function (req, res) {
           case  (confirmTraining == 'yes'):
              req.session.data['dayNumber'] = "2";
              req.session.data['bankOrNot'] = "noBank";
-              res.redirect(`../start/courtDetailsMultiDay`)
+              res.redirect(`../checkdetails`)
            break;
 
            case  (confirmTraining == 'no'):
-             res.redirect(`../start/courtDetailsMultiDay`)
+             res.redirect(`../payyou`)
             break;
      
         default:
@@ -2244,6 +2244,24 @@ router.get('/*/screenerRoute3' , function (req, res) {
         } 
 })
 
+
+
+
+// 
+router.get('/*/moreContact' , function (req, res) {
+
+       switch (true) {
+        case  (req.session.data['areWitness'] == true):
+         res.redirect(`details`)
+          break;
+  
+        default:
+ 
+            res.redirect(`whoFillingIn`)
+        break;
+        }
+})
+
 // witness type beginning
 router.get('/*/areYouRouter' , function (req, res) {
       var confirmTraining = req.query.claimerType
@@ -2272,24 +2290,29 @@ router.get('/*/areYouRouter2' , function (req, res) {
       var confirmTraining = req.query.claimerType
        switch (true) {
           case  (confirmTraining == 'The witness'):
+                req.session.data['areWitness'] = true;
               res.redirect(`witName`)
            break;
 
     
             case  (confirmTraining == 'Claiming but not a witness'):
+                 req.session.data['areWitness'] = false;
             res.redirect(`notWitness/why`)
             break;
 
         case  (confirmTraining == 'claiming for a child or dependent'):
+            req.session.data['areWitness'] = false;
             res.redirect(`witName`)
             break;
 
                    case  (confirmTraining == 'helping someone else with their claim'):
+                    req.session.data['areWitness'] = false;
             res.redirect(`witName`)
             break;
 
         default:
             console.log("bork bork bork bork");
+            req.session.data['areWitness'] = false;
               res.redirect(`blueForm`)
             break;
         } 
@@ -2391,10 +2414,32 @@ router.get('/*/finishRouter' , function (req, res) {
 
 })
 
+// finish router
+router.get('/*/payRouter2Day' , function (req, res) {
+      var confirmTraining = req.session.data['dayNumber']
+
+       switch (true) {
+          case  (confirmTraining == "2"):
+              res.redirect(`../anotherDay/anotherBank`)
+           break;
+
+            // case  (confirmTraining == 'Other'):
+            //     req.session.data['showDB'] = false;
+            // res.redirect(`details`)
+            // break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../payyou`)
+            break;
+        }
+
+})
+
 
 // route the multi travel things
 router.get('/*/nonWitRouterDetails' , function (req, res) {
-console.log("req.session.data['showDB'" + "arse")
+
        switch (true) {
         case  (req.session.data['showDB'] == true):
          res.redirect(`dob`)

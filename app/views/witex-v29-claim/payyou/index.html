@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
-
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
 {% block beforeContent %}
 {% include "includes/cps/universal-header-tweak.html" %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}

@@ -16,9 +16,10 @@ href: "javascript:history.back()"
 
             <!-- use the below to set up the notify emailing thing -->
             <!-- <form class="form" method="post"> -->
-                <form action="confirmEmail" method="get" class="form">
+         
+                    {% if data.wakefieldJourney  == true %} <form action="gotoCourt" method="get" class="form">{% else %} <form action="confirmEmail" method="get" class="form"> {% endif %}
             <h1 class="govuk-heading-l">
-                Contact details
+               {% if data.wakefieldJourney  == true %} Witness's contact details{% else %}Contact details{% endif %}
             </h1>
             {% if data.witHelper %}
             <div class="govuk-inset-text">
@@ -42,7 +43,7 @@ href: "javascript:history.back()"
 
             <div class="govuk-form-group">
                 <label class="govuk-label govuk-!-width-three-quarters bold-label" for="email">
-                    Email address
+                    Email address {% if data.wakefieldJourney  == true %}(optional){% else %} {% endif %}
                 </label>
                 <!--span id="email-hint" class="govuk-hint">
               We’ll only use this to send you a receipt

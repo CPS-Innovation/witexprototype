@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<script>
+console.log("{{ data['dayNumber'] }}" + "arse")
+</script>
+
+<style>
+    .govuk-summary-list__key {
+    width: 40%;
+}
+    </style>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Your payment details</h1>
+        <p>These are the payment details you entered for Day 1. </p>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name on the account
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['name-on-the-account'] }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Sort code
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['sort-code'] }} </p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Account number
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['first-name-real'] }} {{ data['account-number'] }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Building society roll number (if you have one)
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['roll-number'] }} </p>
+                </dd>
+            </div>
+            
+        </dl>
+        <form method="get" action="anotherBankRouter">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                           Are these payment details the same for Day 2?
+                        </h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="thingsCorrect" name="thingsCorrect" type="radio" value="yes">
+                            <label class="govuk-label govuk-radios__label" for="thingsCorrect">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="thingsCorrect" name="thingsCorrect" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="thingsCorrect">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <input type="hidden" name="answers-checked" value="true">
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+        {% include "includes/cps/v11/help.html" %}
+    </div>
+</div>
+</main>
+{% endblock %}
