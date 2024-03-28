@@ -263,6 +263,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     border-top: 4px solid $govuk-border-colour;
 }*/
 
+.govuk-tag--light-blue {
+    color: #0c2d4a;
+    background-color: #e8f1f8;}
+
 .govuk-back-link {margin-top:0 !important}
 
 .dwp-language-toggle {
