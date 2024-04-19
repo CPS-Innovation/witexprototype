@@ -1,0 +1,135 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+        .govuk-back-link{margin-top:10px !important}
+    .js-enabled .govuk-accordion__section--expanded .govuk-accordion__section-button {
+padding-bottom:0;
+}
+
+
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form {
+    border: 1px solid lightgrey;
+    padding: 10px;
+
+}
+
+.options-container {
+    border: 0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button {
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color: #fff !important;
+}
+
+#finder-frontend .govuk-option-select,
+#finder-frontend .filter {
+    margin-bottom: 0 !important;
+}
+
+#finder-frontend .govuk-form-group {}
+
+.moj-multi-file__uploaded-files .govuk-heading-m,
+.moj-multi-file__uploaded-files .govuk-summary-list  {
+    margin:0;
+}
+
+.overviewAdmin .govuk-summary-list__key {
+    font-weight:400;
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+
+
+</style>
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <form method="get" action="addOrRemoveRouter">
+                <!-- <h1 class="govuk-heading-xl">How do you want to be paid?</h1> -->
+                    <!--      <p>You will need to provide receipts to claim for pet sitting expenses up to a maximum of £67 per day. </p> -->
+             <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Which method of travel do you want <br />to remove?
+      </h1>
+    </legend>
+    <div id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          Train
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+          Car
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+</div>
+
+<div style="border-bottom:3px dashed #b1b4b6; margin:40px 0 25px 0" > </div>
+                    <div class="govuk-form-group">
+                        <h1 class="govuk-label-wrapper">
+                            <label class="govuk-label govuk-label--s" for="more-detail">
+                                Add a note
+                            </label>
+                        </h1>
+                        <div id="more-detail-hint" class="govuk-hint">
+                        </div>
+                        <textarea class="govuk-textarea govuk-!-width-two-thirds" id="more-detail-note" name="more-detail-note" rows="8" aria-describedby="more-detail-hint"></textarea>
+                    </div>
+
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

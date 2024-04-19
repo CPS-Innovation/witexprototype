@@ -1730,6 +1730,34 @@ router.get('/*/anotherBankRouter' , function (req, res) {
         }
 })
 
+
+
+
+
+router.get('/*/addOrRemoveRouter' , function (req, res) {
+  var confirmTraining = req.query.addorremove
+       switch (true) {
+          case  (confirmTraining == 'add'):
+              res.redirect(`addThing`)
+           break;
+
+           case  (confirmTraining == 'remove'):
+             res.redirect(`removeThing`)
+            break;
+     
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
+
+
+
+
+
+
+
 router.get('/*/receipts/receiptMissingRoute' , function (req, res) {
   
        switch (true) {
