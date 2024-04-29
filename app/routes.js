@@ -638,7 +638,7 @@ router.get('/*/start/overNightStayRoute4' , function (req, res) {
            case  (confirmTraining == 'No'):
            req.session.data['overNightStayShow'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
-            res.redirect(`childCare`)
+            res.redirect(`../receipts/add`)
             
         default:
             console.log("bork bork bork bork");
