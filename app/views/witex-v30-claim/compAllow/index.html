@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="compAllowRoute">
+                <h1 class="govuk-heading-l">"Compensatory allowance"</h1>
+                <p>We will pay a fixed amount, depending on how long you were away from home or work:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>£83.50 for less than 2 hours </li>
+                    <li>£117.00 for between 2 and 4 hours</li>
+                    <li>£174.00 for between 4 and 6 hours</li>
+                    <li>£234.00 for over 6 hours</li>
+                </ul>
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            Do you want to claim expenses for "Compensatory allowance"?
+                        </legend>
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="compAllow" name="compAllow" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="compAllow" name="compAllow" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    No
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

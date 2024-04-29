@@ -624,6 +624,31 @@ router.get('/*/start/overNightStayRoute3' , function (req, res) {
         }
 })
 
+
+router.get('/*/start/overNightStayRoute4' , function (req, res) {
+  var confirmTraining = req.query.overnightStay
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['overNightStayShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../overnightstay/whyPay`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['overNightStayShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`childCare`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['overNightStayShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`lossOfPay`)
+            break;
+        }
+})
+
 router.get('/*/overnightstay/paidAlready' , function (req, res) {
   var confirmTraining = req.query.overnightPaid
        switch (true) {
@@ -1191,6 +1216,30 @@ router.get('/*/start/carerRoute3' , function (req, res) {
         }
 })
 
+router.get('/*/start/carerRoute4' , function (req, res) {
+  var confirmTraining = req.query.carer
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['petSittingShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../carer/careCost`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['petSittingShow'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`../receipts/add`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`petSitting`)
+            break;
+        }
+})
+
 router.get('/*/start/otherRoute2' , function (req, res) {
   var confirmTraining = req.query.otherexpenses
        switch (true) {
@@ -1731,9 +1780,6 @@ router.get('/*/anotherBankRouter' , function (req, res) {
 })
 
 
-
-
-
 router.get('/*/addOrRemoveRouter' , function (req, res) {
   var confirmTraining = req.query.addorremove
        switch (true) {
@@ -1752,10 +1798,23 @@ router.get('/*/addOrRemoveRouter' , function (req, res) {
         }
 })
 
+router.get('/*/compAllowRoute' , function (req, res) {
+  var confirmTraining = req.query.compAllow
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              res.redirect(`compAllow/chooseComp`)
+           break;
 
-
-
-
+           case  (confirmTraining == 'No'):
+             res.redirect(`./start//travel`)
+            break;
+     
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`../bork`)
+            break;
+        }
+})
 
 
 router.get('/*/receipts/receiptMissingRoute' , function (req, res) {

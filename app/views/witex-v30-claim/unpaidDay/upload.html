@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+           Upload proof of loss of pay
+        </h1>
+      <!--   <p class="govuk-body-l">Do the thing with witness expenses</p> -->
+        <p>
+            We will ask you to upload proof that you are employed.
+        </p>
+        <p>
+            We will accept the following as proof:
+        </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>payslips with your name and your employers name</li>
+            
+        </ul>
+       
+            <div style="margin-top:35px"></div>
+            <form action="../start/childcare">
+                     <button class="govuk-button">Continue</button>
+            </form>
+        </p>
+    </div>
+</div>
+{% endblock %}

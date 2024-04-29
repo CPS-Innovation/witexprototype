@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            “Compensatory allowance”
+        </h1>
+        <p>We will pay a fixed amount, depending on how long you were away from home or work:</p>
+        <ul class="govuk-list govuk-list--bullet">
+                    <li>£83.50 for less than 2 hours </li>
+                    <li>£117.00 for between 2 and 4 hours</li>
+                    <li>£174.00 for between 4 and 6 hours</li>
+                    <li>£234.00 for over 6 hours</li>
+        </ul>
+        <div class="govuk-inset-text">
+            We will not pay more than these amounts.
+        </div>
+        <form action="../start/travel" method="get" class="form">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            How many hours were you away from home or work?
+                        </legend>
+                        <span id="email-hint" class="govuk-hint">
+                            This includes travelling to and from court
+                        </span>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="compTime" name="compTime" type="radio" value="less than 2 hours" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                                less than 2 hours
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="compTime" name="foodcompTimeTime" type="radio" value="between 2 and 4 hours" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                between 2 and 4 hours </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="compTime" name="compTime" type="radio" value="between 4 and 6 hours" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                              between 4 and 6 hours 
+                            </label>
+                        </div>
+                         <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="compTime" name="foodTicompTimeme" type="radio" value="more than 6 hours" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                              more than 6 hours
+                            </label>
+                        </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button">Continue </button>
+        </form>
+        {% include "includes/cps/v11/help.html" %}
+    </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="../checkdetails/">
+                <h1 class="govuk-heading-l">Non-UK bank account details</h1>
+                    <div class="govuk-form-group">
+                    <label class="govuk-label bold-label" for="name-on-the-account">
+                        Name of bank
+                    </label>
+                    <input class="govuk-input bold-label" id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label bold-label" for="name-on-the-account">
+                        Name on the account
+                    </label>
+                    <input class="govuk-input bold-label" id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label bold-label" for="sort-code">
+                        International bank account number (IBAN)
+                    </label>
+                    <input class="govuk-input " id="sort-code" name="sort-code" type="text" spellcheck="false" aria-describedby="sort-code-hint" pattern="[0-9]*" inputmode="numeric">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label bold-label" for="account-number">
+                        SWIFT, BIC or routing code
+                    </label>
+  <!--                   <div id="account-number-hint" class="govuk-hint">
+                        Must be between 6 and 8 digits long
+                    </div> -->
+                    <input class="govuk-input govuk-input--width-10" id="account-number" name="account-number" type="text" spellcheck="false" aria-describedby="account-number-hint" pattern="[0-9]*" inputmode="numeric">
+                </div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label bold-label" for="roll-number">
+                        Currency of account
+                    </label>
+                    <div id="roll-number-hint" class="govuk-hint">
+                        For example, US dollar or euro
+                    </div>
+                    <input class="govuk-input govuk-input--width-10" id="roll-number" name="roll-number" type="text" spellcheck="false" aria-describedby="roll-number-hint">
+                </div>
+                <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
