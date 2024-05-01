@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+// uncomment this to turn on the accordions
+
+if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<!-- include "includes/webchat/chatjsuser.html" 
+ -->
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Claim witness expenses</h1>
+            <p class="linksAtTop">Contents</p>
+            <p class="linksAtTop">&#8212 <a href="./"> Start a claim</a></p>
+            <p class="linksAtTop">&#8212 <a href="pay"> Food and drink</a></p>
+            <p class="linksAtTop">&#8212 <a href="study">Travel </a></p>
+            <p class="linksAtTop">&#8212 <a href="courses"> Overnight stays</a></p>
+            <p class="linksAtTop">&#8212 <a href="provider"> Loss of earnings</a></p>
+            <p class="linksAtTop">&#8212 <a href="apply">Childcare </a></p>
+            <p class="linksAtTop">&#8212 <a href="adult"> Adult care </a></p>
+            <p class="linksAtTop">&#8212 <a href="other"> Other expenses </a></p>
+            <p class="linksAtTop">&#8212 Professional witnesses </a></p>
+            <h2 class="govuk-heading-m">Professional witnesses</h2>
+            <p>A professional witness is an expert, like a doctor or lawyer, who goes to court to share their expertise about a topic.</p>
+            <p>You can claim: </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>a fixed amount for time spent away from home or work</li>
+                <li>travel and parking costs</li>
+                <li>an overnight stay </li>
+            </ul>
+            <h3 class="govuk-heading-m">A fixed amount for time spent away from home or work </h3>
+            <p>Depending on how long you were away from home or work, we will pay you a fixed amount to cover your time: </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>£83.50 for less than 2 hours</li>
+                <li>£117.00 for between 2 and 4 hours</li>
+                <li>£174.00 for between 4 and 6 hours</li>
+                <li>£234.00 for over 6 hours</li>
+            </ul>
+            <h2 class="govuk-heading-m">Travel and parking costs
+            </h2>
+            <p>You can claim for different methods of travelling to and from court. </p>
+            <p>You need to show receipts or a satisfactory reason for not providing evidence of your payment for: </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>train </li>
+                <li> coach</li>
+                <li> parking</li>
+                <li>taxi </li>
+                <li>plane </li>
+                <li>ferry </li>
+            </ul>
+            <p>You won't need to show receipts for: </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li> Public transport within London (Zone 1 -9) (including tube, bus, river bus, Docklands Light Railway (DLR), London Trams, Elizabeth Line and overground train)</li>
+                <li> bus, metro, or tram outside London</li>
+                <li> other driving costs such as Congestion Charge or tolls</li>
+            </ul>
+            <p>You can claim a fixed amount per mile for: </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li> car</li>
+                <li> motorbike</li>
+                <li> bicycle</li>
+            </ul>
+            <div class="fiddleStyle">
+                {% from "govuk/components/table/macro.njk" import govukTable %}
+                {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: false,
+                head: [
+                {
+                text: "How you travelled "
+                },
+                {
+                text: "We will pay
+                "
+                }
+                ],
+                rows: [
+                [
+                {
+                text: "Using a bicycle "
+                },
+                {
+                text: "20p per mile"
+                }
+                ],
+                [
+                {
+                text: "Using a motorcycle"
+                },
+                {
+                text: "24p per mile"
+                }
+                ],
+                [
+                {
+                text: "Using your own car"
+                },
+                {
+                text: "25p per mile"
+                }
+                ],
+                [
+                {
+                text: "taking another witness or authorised person on the same journey to/from court"
+                },
+                {
+                text: "2p extra per mile"
+                }
+                ],
+                [
+                {
+                text: "As above for each additional passenger"
+                },
+                {
+                text: "1p extra per mile"
+                }
+                ],
+                [
+                {
+                text: "Using your own car instead of public transport with good reason such as no public transport or disabled"
+                },
+                {
+                text: "45p per mile "
+                }
+                ]
+                ]
+                }) }}
+            </div>
+            <h3 class="govuk-heading-m">Overnight stay</h3>
+            <p>You can claim expenses for an overnight stay if: </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>it takes you 90 minutes or more to travel to court</li>
+                <li>you are disabled</li>
+                <li>you have another good reason for staying overnight</li>
+            </ul>
+            <h3 class="govuk-heading-s">If you paid for your accommodation </h3>
+            <p> A paid stay in London, Birmingham, Manchester, Leeds, Liverpool and Newcastle upon Tyne - up to £85.25 per night for accomodation</p>
+            <p> A paid stay elsewhere - up to £55.25 per night for accomodation</p>
+            {% include "includes/cps/v11/help.html" %}
+            <!-- <nav class="gem-c-pagination" role="navigation" aria-label="Pagination">
+  <ul class="gem-c-pagination__list" data-module="track-click">
+      <li class="gem-c-pagination__item gem-c-pagination__item--next">
+        <a href="apply" class="gem-c-pagination__link" rel="next" data-track-category="contentsClicked" data-track-action="next" data-track-label="guidance/pay" data-track-dimension="next" data-track-dimension-index="29">
+          <span class="gem-c-pagination__link-title">
+            <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+              <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+            <span class="gem-c-pagination__link-text">
+              Next
+            </span>
+          </span>
+            <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+            <span class="gem-c-pagination__link-label" style="margin-left:27px">How do I apply</span>
+        </a>
+      </li>
+  </ul>
+</nav> -->
+        </div>
+        <div class="column-one-third">
+            <!--       <h3 class="govuk-heading-s"  >Related content</h3> -->
+        </div>
+    </div>
+    <!--  include "includes/webchat/chatbox.html" 
+ -->
+    </main>
+    {% endblock %}
