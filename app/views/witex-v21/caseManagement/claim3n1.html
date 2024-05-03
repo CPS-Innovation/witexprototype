@@ -142,6 +142,9 @@ $(document).ready(function() {
 // });
 </script>
 <style>
+
+       .govuk-back-link{margin-top:10px !important}
+
     .js-enabled .govuk-accordion__section--expanded .govuk-accordion__section-button {
 padding-bottom:0;
 }
@@ -226,6 +229,28 @@ margin:0 auto;
 </div>
 {% else %}
 {% endif %}
+
+{% if (data.deleteConfirmBanner) %}
+<div class="govuk-notification-banner govuk-notification-banner--success bannerWidth" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner " >
+    <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title"><a href="resetChangeConfirm" style="color:#fff; text-decoration:none">
+                Success </a>
+        </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading" style="max-width:1000px">
+            {% if data.deleteConfirmBanner == 'approve' %}
+           jhkjhkjhjkhkhkjhjhjkhkh.jpg has been deleted
+
+            {% else %}
+            {% endif %}
+        </h3>
+    </div>
+</div>
+{% else %}
+{% endif %}
+
+
 <span class="govuk-caption-l">HD90210</span>
 <div style="display:flex; align-items:center">
     <h1 class="govuk-heading-l" style="">Robert Edwards
@@ -265,6 +290,7 @@ margin:0 auto;
                 <!-- <h2 class="govuk-heading-m" style="">Proof</h2> -->
                 <ul class="govuk-summary-card__actions" style="margin-left:auto">
                     <li class="" style="">
+
                         <p class="govuk-link looks-like-a-link " id="openMe" style=" cursor:pointer; font-weight:400 ">
                             Upload a file<span class="govuk-visually-hidden"> to the thing</span>
                         </p>
@@ -398,6 +424,10 @@ margin:0 auto;
                     <div class="govuk-summary-card__title-wrapper">
                         <h2 class="govuk-summary-card__title"> jhkjhkjhjkhkhkjhjhjkhkh.jpg</h2>
                         <ul class="govuk-summary-card__actions">
+                            <li class="govuk-summary-card__action" style="margin-right:0"> <a class="govuk-link" href="./delete" style="font-weight:400;">
+                                    Delete file<span class="govuk-visually-hidden"> </span>
+                                </a>
+                            </li>
                             <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                                     Download file<span class="govuk-visually-hidden"> </span>
                                 </a>
@@ -423,6 +453,10 @@ margin:0 auto;
                     <div class="govuk-summary-card__title-wrapper">
                         <h2 class="govuk-summary-card__title"> khkjhkj h kjh jkhkj hkj .jpg</h2>
                         <ul class="govuk-summary-card__actions">
+                                                        <li class="govuk-summary-card__action" style="margin-right:0"> <a class="govuk-link" href="#" style="font-weight:400;">
+                                    Delete file<span class="govuk-visually-hidden"> </span>
+                                </a>
+                            </li>
                             <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                                     Download file<span class="govuk-visually-hidden"> </span>
                                 </a>
@@ -448,6 +482,10 @@ margin:0 auto;
                     <div class="govuk-summary-card__title-wrapper">
                         <h2 class="govuk-summary-card__title"> yuyiuyi. nmbnmbnb nbmn bmn b.jpg</h2>
                         <ul class="govuk-summary-card__actions">
+                                                        <li class="govuk-summary-card__action" style="margin-right:0"> <a class="govuk-link" href="#" style="font-weight:400;">
+                                    Delete file<span class="govuk-visually-hidden"> </span>
+                                </a>
+                            </li>
                             <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                                     Download file<span class="govuk-visually-hidden"> </span>
                                 </a>
@@ -473,6 +511,10 @@ margin:0 auto;
                     <div class="govuk-summary-card__title-wrapper">
                         <h2 class="govuk-summary-card__title"> asdf ahjshd ahsss.docx</h2>
                         <ul class="govuk-summary-card__actions">
+                                                        <li class="govuk-summary-card__action" style="margin-right:0"> <a class="govuk-link" href="#" style="font-weight:400;">
+                                    Delete file<span class="govuk-visually-hidden"> </span>
+                                </a>
+                            </li>
                             <li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
                                     Download file<span class="govuk-visually-hidden"> </span>
                                 </a>
