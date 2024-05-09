@@ -2492,7 +2492,7 @@ router.get('/*/childRouterB' , function (req, res) {
 
            case  (confirmTraining == "no"):
             req.session.data['childOrNot'] = false;
-            res.redirect(`../areyou`)
+            res.redirect(`../areYou`)
             break;
 
 
