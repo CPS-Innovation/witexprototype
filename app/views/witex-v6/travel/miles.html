@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">
+                <span class="govuk-caption-xl">Car</span>
+           How many miles are you claiming for?
+        </h1>
+                   <p>You can claim 25p per mile.</p>
+
+<p>You do not need receipts for mileage claims.</p>
+  
+        <form action="parking" method="get" class="form">
+            <div class="govuk-form-group">
+                <label class="govuk-label  bold-label" for="code">
+                   Total miles
+                </label>
+     <!--            <span id="email-hint" class="govuk-hint">
+                    This includes travelling to and from court
+                </span> -->
+                <div class="govuk-input__wrapper">
+                    <input class="govuk-input govuk-input--width-5" id="milesClaimed" name="milesClaimed" type="text" spellcheck="false">
+                </div>
+                <p style="margin-top:10px"> You can use <a href="https://www.google.com/maps" target="_blank">Google Maps</a> to calculate your mileage.</p>
+            </div>
+
+
+            <button class="govuk-button">Continue</button>
+        </form>
+
+    </div>
+    </main>
+</div>
+{% endblock %}

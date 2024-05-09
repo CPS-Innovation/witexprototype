@@ -33,6 +33,7 @@ href: "javascript:history.back()"
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     I supported an adult or child witness in court and can also claim expenses
                                 </label>
+
      
                             </div>
  {% if data.wakefieldJourney  == true %}
@@ -42,6 +43,9 @@ href: "javascript:history.back()"
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     I am helping a witness complete their claim
                                 </label>
+                                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+          If you're helping someone else, answer the questions as if you are them.
+        </div>
                             </div>
     {% endif %}
 
