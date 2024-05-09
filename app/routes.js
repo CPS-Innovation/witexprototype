@@ -2432,6 +2432,32 @@ router.get('/*/nonWitRouter2' , function (req, res) {
 })
 
 // witness type beginning
+router.get('/*/nonWitRouter3' , function (req, res) {
+      var confirmTraining = req.query.whyNoWitness
+       switch (true) {
+          case  (confirmTraining == "I'm a parent or guardian of a witness under 18"):
+            req.session.data['showDB'] = true;
+              res.redirect(`details`)
+           break;
+
+           case  (confirmTraining == "I'm the carer of a witness"):
+            req.session.data['showDB'] = false;
+            res.redirect(`details`)
+            break;
+
+            case  (confirmTraining == 'Other'):
+                req.session.data['showDB'] = false;
+            res.redirect(`details`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
+// witness type beginning
 router.get('/*/childRouterA' , function (req, res) {
       var confirmTraining = req.query.claimChild
        switch (true) {
@@ -2443,6 +2469,30 @@ router.get('/*/childRouterA' , function (req, res) {
            case  (confirmTraining == "no"):
             req.session.data['childOrNot'] = false;
             res.redirect(`details`)
+            break;
+
+
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`blueForm`)
+            break;
+        } 
+})
+
+// witness type beginning
+router.get('/*/childRouterB' , function (req, res) {
+      var confirmTraining = req.query.claimChild
+       switch (true) {
+          case  (confirmTraining == "yes"):
+            req.session.data['childOrNot'] = true;
+             req.session.data['areWitness'] = false;
+              res.redirect(`../witName`)
+           break;
+
+           case  (confirmTraining == "no"):
+            req.session.data['childOrNot'] = false;
+            res.redirect(`../areyou`)
             break;
 
 
