@@ -2932,7 +2932,7 @@ router.get('/*/caseManagement/changeAnswersCar' , function (req, res) {
 // http://127.0.0.1:3000/witex-v21/caseManagement/edit2/checkanswers?more-detail-note=
 router.get('/*/deleteFileRoute' , function (req, res) {
             req.session.data['deleteConfirmBanner'] = 'approve';
-            res.redirect(`../claim3n1`);
+            res.redirect(`claim3n1`);
          
 })
 

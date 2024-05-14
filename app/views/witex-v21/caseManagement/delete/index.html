@@ -70,7 +70,7 @@ margin:0 auto;
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-        <form action="delete/note" method="get" class="form">
+        <form action="deleteFileRoute" method="get" class="form">
          <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                                     <div class="govuk-radios" data-module="govuk-radios">
@@ -82,17 +82,28 @@ margin:0 auto;
       </h1>
     </legend>
                        
-                                        <div class="govuk-radios__item">
-                                            <input class="govuk-radios__input" id="foodTime" name="foodTime" type="radio" value="less than 5 hours" data-aria-controls="conditional-contact" checked>
-                                            <label class="govuk-label govuk-radios__label" for="contact">
-                                             Yes
-                                            </label>
-                                        </div>
-                                        <div class="govuk-radios__item">
-                                            <input class="govuk-radios__input" id="foodTime" name="foodTime" type="radio" value="between 5 and 10 hours" data-aria-controls="conditional-contact-2">
-                                            <label class="govuk-label govuk-radios__label" for="contact-2">
-                                            No                                          </label>
-                                        </div>
+                                                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-2" name="haveReceiptsPark" type="radio" value="No, I have some of my receipt(s)" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label bold-label" for="contact-by-phone">
+                                    Why do you you want to delete this file?
+                                </label>
+                                 <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="3" aria-describedby="more-detail-hint"></textarea>
+
+                            </div>
+                        </div>
+                                                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact" name="haveReceiptsPark" type="radio" value="yes" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                                No
+                            </label>
+                        </div>
+
 
      
                                 </fieldset>
