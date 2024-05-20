@@ -1887,6 +1887,13 @@ res.redirect(`./start/screener`)
 
 })
 
+router.get('/*/startItUp2', function(req, res) {
+
+req.session.data['dayNumber'] = "1";
+res.redirect(`./start/whatyoullneed`)
+
+})
+
 
 
 router.get('/*/day1Router', function(req, res) {
