@@ -2,7 +2,6 @@
 {% block header %}
 {% include "includes/cps/v11/banner.html" %}
 {% endblock %}
-
 {% block beforeContent %}
 {% include "includes/cps/universal-header-tweak.html" %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
@@ -12,40 +11,31 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
-
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <form action="whichCourt" method="get" class="form">
-                <h1 class="govuk-heading-l">
-                    Witness's case number
-                </h1>
-                <p>The witness's  court case was given a unique reference number (URN).</p><p> This can be found on the bottom left of the front page of the blue witness expense claim form.</p>
-    
-                <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-
-                        <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--s" for="passport-number">
-              URN
-            </label>
-    <!--                        <span id="email-hint" class="govuk-hint">
-              What is this and how do I get it
-            </span> -->
-                            <input class="govuk-input govuk-input--width-20" id="URN" name="URN" type="text" aria-describedby="first-name-real">
-                        </div>
-                        </fieldset>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="whichCourt" method="get" class="form">
+            <h1 class="govuk-heading-l">
+                Witness's case number
+            </h1>
+            <p>The witness's court case was given a unique reference number (URN).</p>
+            <p> This can be found on the bottom left of the front page of the paperwork given to witnesses when they attend court.</p>
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="passport-number">
+                            URN
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="URN" name="URN" type="text" aria-describedby="first-name-real">
                     </div>
-  
-                         
-                        </div>
-                       
-                    </fieldset>
-                </div>
-                <button class="govuk-button">Continue</button>
-                <!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
-            </form>
-
-                  {% include "includes/cps/v11/help.html" %}
-        </div>
+                </fieldset>
+            </div>
     </div>
-    {% endblock %}
+    </fieldset>
+</div>
+<button class="govuk-button">Continue</button>
+<!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
+</form>
+{% include "includes/cps/v11/help.html" %}
+</div>
+</div>
+{% endblock %}

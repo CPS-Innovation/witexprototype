@@ -25,11 +25,11 @@ href: "javascript:history.back()"
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
         <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Check your answers </h1>
-        <h2 class="govuk-heading-m">Personal details</h2>
+        <h2 class="govuk-heading-m">Witness details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Name
+                    First name
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{ data['first-name-real'] }} {{ data['last-name-real'] }}
@@ -40,6 +40,102 @@ href: "javascript:history.back()"
                     </a>
                 </dd>
             </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Last name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['first-name-real'] }} {{ data['last-name-real'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+<!--             <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['email'] }} </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> contact details</span>
+                    </a>
+                </dd>
+            </div> -->
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Postcode
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['postcode'] }} </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> contact details</span>
+                    </a>
+                </dd>
+            </div>
+                        <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Date of birth
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body">  </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> contact details</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+    <h2 class="govuk-heading-m">Case details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Witness's case number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Which court did the witness attend?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    What is the first date of the witness's claim?
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+
+            <h2 class="govuk-heading-m">Contact details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Email address
@@ -55,18 +151,21 @@ href: "javascript:history.back()"
             </div>
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                    Postcode
+                    Contact phone number (optional)
                 </dt>
                 <dd class="govuk-summary-list__value">
-                    <p class="govuk-body"> {{ data['postcode'] }} </p>
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="#">
-                        Change<span class="govuk-visually-hidden"> contact details</span>
+                        Change<span class="govuk-visually-hidden"> licence type</span>
                     </a>
                 </dd>
             </div>
-        </dl>
+             </dl>
+
+
+
+
         <h2 class="govuk-heading-m">Food and drink</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
