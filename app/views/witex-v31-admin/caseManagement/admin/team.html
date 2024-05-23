@@ -1,0 +1,149 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/teamNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+
+{% endblock %}
+{% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<style>
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form  {
+    border: 1px solid #b1b4b6;
+    padding:10px;
+
+}
+
+.options-container {
+    border:0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button 
+{
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color:#fff !important;
+}
+
+#finder-frontend .govuk-option-select, #finder-frontend .filter {
+    margin-bottom:0 !important;
+}
+
+#finder-frontend .govuk-form-group {
+
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+</style>
+
+
+<!--   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+     <h1 class="govuk-heading-l" style="" id="company-Name">Your team</h1>
+     
+   </div>
+   <form action="add-new-user" style="">
+    <div class="govuk-grid-column-one-third weird-floating-button">
+         <button type="submit" class="govuk-button" style="" >Invite a new member</button>
+    </div>
+  </form>
+ </div> -->
+<div class="moj-page-header-actions">
+    <div class="moj-page-header-actions__title">
+        <h1 class="govuk-heading-l">Your team</h1>
+    </div>
+    <div class="moj-page-header-actions__actions">
+        <div class="moj-button-menu">
+            <div class="moj-button-menu__wrapper">
+                 <form action="add-new-user" style="">
+                <button class="govuk-button moj-button-menu__item  moj-page-header-actions__action" data-module="govuk-button">
+                    Invite a new member
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div style="margin-top:35px">
+                      <table class="govuk-table">
+                          <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                              <th class="govuk-table__header" scope="col"style="padding-top:0">Name</th>
+                              <!--th scope="col" style="padding-top:0">Email address</th-->
+                              <th class="govuk-table__header" scope="col" class="" style="padding-top:0; min-width:250px">What they can do</th>
+                               <th class="govuk-table__header" scope="col" class="" style="padding-top:0; width:100px">Authorisation limit</th>
+                               <th class="govuk-table__header" scope="col"" style="padding-top:0"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="govuk-table__row">
+                              <!--quick hack, will fix -->
+                              <td class="govuk-table__cell " >Rob Edwards <span class="teamEmail"><br/>rob@cps.gov.uk</span> </td>
+                              <td class="govuk-table__cell ">View information, process claims, make payments, add team members</td>
+                              <!--td class="align-center-columns"><i class="fa fa-check fa-2x"></i></td>
+                              <td class="align-center-columns"><i class="fa fa-check fa-2x"></i></td>
+                              <td class="align-center-columns"><i class="fa fa-check fa-2x"></i></td-->
+                              <td class="govuk-table__cell ">£2,000</td>
+                              <td class="govuk-table__cell "><a href="change-role">Change</a></td>
+                            </tr>
+
+                             <tr class="govuk-table__row">
+                              <td class="govuk-table__cell">Susan Hamazaki <span class="teamEmail">susan.hamazaki@cps.gov.uk</span></td>
+                              <td class="govuk-table__cell ">View information but can’t make changes</td>
+                              <!--td class="align-center-columns"><i class="fa fa-check fa-2x"></i></td>
+                              <td class="align-center-columns"><i class="fa fa-check fa-2x"></i></td>
+                              <td class="align-center-columns"><i class="fa fa-check fa-2x"></i></td-->
+                               <td class="govuk-table__cell ">£5,000</td>
+                              <td class="govuk-table__cell "><a href="#">Change</a></td>
+                            </tr>
+                          </tbody>
+                     </table>
+             </div>
+         </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

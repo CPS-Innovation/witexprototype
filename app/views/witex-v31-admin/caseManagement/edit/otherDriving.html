@@ -14,34 +14,32 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="otherRoute4">
-                <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Other expenses</h1>
-                <p>You can claim for other expenses such as items needed for an unexpected overnight stay. </p>
-                <p>You cannot claim for additional food and drink. </p>
-                <div class="govuk-inset-text">
-                    You must provide a receipt.
-                </div>
+            <form method="get" action="checkTravel">
+                <h1 class="govuk-heading-l"> <span class="govuk-caption-l">Car</span>
+                    Did you have to pay any other driving costs?</h1>
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            Do you want to claim for other expenses on {% include "includes/cps/whatDay3.html" %}?
                         </legend>
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="otherexpenses" name="otherexpenses" type="radio" value="Yes">
+                                <input class="govuk-radios__input" id="drivingCostsOrNot" name="drivingCostsOrNot" type="radio" value="Yes">
                                 <label class="govuk-label govuk-radios__label" for="TRN-yes">
                                     Yes
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="otherexpenses" name="otherexpenses" type="radio" value="No">
+                                <input class="govuk-radios__input" id="drivingCostsOrNot" name="drivingCostsOrNot" type="radio" value="No" checked>
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     No
                                 </label>
                             </div>
                     </fieldset>
                 </div>
-                <button type="submit" class="govuk-button">Continue </button>
+                <div class="govuk-button-group">
+                    <button type="submit" class="govuk-button">Continue </button>
+                    <a class="govuk-link" href="#">Cancel</a>
+                </div>
             </form>
         </div>
     </div>

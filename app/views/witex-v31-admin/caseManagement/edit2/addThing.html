@@ -1,0 +1,162 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+        .govuk-back-link{margin-top:15px !important}
+    .js-enabled .govuk-accordion__section--expanded .govuk-accordion__section-button {
+padding-bottom:0;
+}
+
+
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form {
+    border: 1px solid lightgrey;
+    padding: 10px;
+
+}
+
+.options-container {
+    border: 0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button {
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color: #fff !important;
+}
+
+#finder-frontend .govuk-option-select,
+#finder-frontend .filter {
+    margin-bottom: 0 !important;
+}
+
+#finder-frontend .govuk-form-group {}
+
+.moj-multi-file__uploaded-files .govuk-heading-m,
+.moj-multi-file__uploaded-files .govuk-summary-list  {
+    margin:0;
+}
+
+.overviewAdmin .govuk-summary-list__key {
+    font-weight:400;
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+
+
+</style>
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="">
+                <!-- <h1 class="govuk-heading-xl">How do you want to be paid?</h1> -->
+                    <!--      <p>You will need to provide receipts to claim for pet sitting expenses up to a maximum of £67 per day. </p> -->
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                           
+                            <h1 class="govuk-fieldset__heading">
+                                Which method of travel do you want to add?
+                            </h1>
+                        </legend>
+
+               
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="add">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                     Public transport within London (Zone 1 -9)
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Bus, tram, or metro outside London
+                                </label>
+                            </div> 
+                                                        <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Coach
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Plane
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Ferry
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Motorbike or scooter
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Bicycle
+                                </label>
+                            </div>
+                             <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="addorremove" name="addorremove" type="radio" value="remove">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Taxi
+                                </label>
+                            </div>
+
+                    </fieldset>
+                </div>
+                               <div class="moj-button-action">
+                            <div class="govuk-button-group" style="margin-top:25px">
+                                <button type="submit" class="govuk-button">Continue </button>
+                                <a class="govuk-link" href="#">Cancel</a>
+                            </div>
+                        </div>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block header %}
-{% include "includes/cps/v11/banner.html" %}
+{% include "includes/cps/v12/banner.html" %}
 {% endblock %}
 {% block beforeContent %}
-{% include "includes/cps/universal-header-tweak.html" %}
+{% include "includes/version1/mainNav.html" %}
+{% include "includes/version1/homeNav.html" %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {{ govukBackLink({
 text: "Back",
@@ -11,37 +12,60 @@ href: "javascript:history.back()"
 }) }}
 {% endblock %}
 {% block content %}
+<style>
+    .govuk-header__logotype {
+    width: 500px
+}
+
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+</style>
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="otherRoute4">
-                <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Other expenses</h1>
-                <p>You can claim for other expenses such as items needed for an unexpected overnight stay. </p>
-                <p>You cannot claim for additional food and drink. </p>
-                <div class="govuk-inset-text">
-                    You must provide a receipt.
-                </div>
+            <form method="get" action="whyHigher">
+  
+ 
+
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                            Do you want to claim for other expenses on {% include "includes/cps/whatDay3.html" %}?
-                        </legend>
+
+                                                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading"> <span class="govuk-caption-l">Car</span>
+              Are you claiming the higher rate?
+
+      </h1>
+    </legend>
+     
+                  
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="otherexpenses" name="otherexpenses" type="radio" value="Yes">
-                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                <input class="govuk-radios__input" id="higherMile" name="higherMile" type="radio" value="Yes" checked>
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes" >
                                     Yes
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="otherexpenses" name="otherexpenses" type="radio" value="No">
+                                <input class="govuk-radios__input" id="higherMile" name="higherMile" type="radio" value="No">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     No
                                 </label>
                             </div>
                     </fieldset>
                 </div>
+                                <div class="govuk-button-group">
                 <button type="submit" class="govuk-button">Continue </button>
+                 <a class="govuk-link" href="#">Cancel</a>
+             </div>
             </form>
         </div>
     </div>

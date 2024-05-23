@@ -289,13 +289,13 @@ router.param('employer', function (req, res, next, employer) {
 
 router.get('/*/newClaimNav', function (req, res) {
   req.session.data['wakefieldJourney'] = true;
-  res.redirect(`/witex-v29-claim/start/areYou`)
+  res.redirect(`/witex-v29-claim/start/notWitness/child`)
 
  })
 
   router.get('/*/*/newClaimNav', function (req, res) {
   req.session.data['wakefieldJourney'] = true;
-  res.redirect(`/witex-v29-claim/start/areYou`)
+  res.redirect(`/witex-v29-claim/start/notWitness/child`)
  })
 
 
@@ -1278,6 +1278,31 @@ router.get('/*/start/otherRoute3' , function (req, res) {
            req.session.data['other'] = false;
            // req.session.data['MG11SheMcRedacted'] = true;
             res.redirect(`../receipts/add`)
+            
+        default:
+            console.log("bork bork bork bork");
+                req.session.data['childcareShow'] = 'goneWrong';
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`./receipts/add`)
+            break;
+        }
+})
+
+
+router.get('/*/start/otherRoute4' , function (req, res) {
+  var confirmTraining = req.query.otherexpenses
+       switch (true) {
+          case  (confirmTraining == 'Yes'):
+              req.session.data['otherShow'] = true;
+              // req.session.data['MG11SheMcNotRedacted'] = false;
+              res.redirect(`../otherExpenses`)
+            
+           break;
+
+           case  (confirmTraining == 'No'):
+           req.session.data['other'] = false;
+           // req.session.data['MG11SheMcRedacted'] = true;
+            res.redirect(`somethingToAdd`)
             
         default:
             console.log("bork bork bork bork");

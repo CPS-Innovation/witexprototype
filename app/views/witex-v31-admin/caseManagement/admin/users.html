@@ -1,0 +1,163 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<style>
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form  {
+    border: 1px solid #b1b4b6;
+    padding:10px;
+
+}
+
+.options-container {
+    border:0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button 
+{
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color:#fff !important;
+}
+
+#finder-frontend .govuk-option-select, #finder-frontend .filter {
+    margin-bottom:0 !important;
+}
+
+#finder-frontend .govuk-form-group {
+
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1000px;
+margin:0 auto;
+}
+
+</style>
+<div class="govuk-grid-row" style="margin-right:-65px;margin-left:0; margin-bottom:150px">
+    <div class="govuk-grid-column-full-width" style="">
+        <div style="display:flex">
+            <h1 class="govuk-heading-l">Witness expense claims</h1>
+            <!-- <button type="submit" class="govuk-button" style="margin-left: auto; max-height:38px">Do the thing</button> -->
+        </div>
+    </div>
+<!--     <div style="display:flex">
+                <div style="margin-left:auto;  margin-top:0px; margin-right:15px">
+                 <button style="" class="govuk-button">Add new user</button>
+            </div>
+        </div> -->
+    <div style="margin-bottom:25px; width:96.5%;background-color:#f3f2f1; padding:15px 15px 0px 20px ">
+        <div style="display:flex; align-items: ">
+            <div class="filter text-filter" style="width:30%; padding-left:0">
+                <div class="govuk-form-group" style="margin-bottom:15px">
+                    <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                        Search
+                    </label>
+                    <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
+                        <input class="govuk-input" id="search" name="searchQuery" type="text" value="">
+                        <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                            <button type="submit" class="gem-c-search__submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter text-filter" style="width:30%;padding-left:30px">
+                <div class="govuk-form-group" style="margin-bottom:0">
+                    <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                        All roles
+                    </label>
+                    <select class="govuk-select" id="sort" name="sort" style="margin-bottom: 10px; width:100%">
+                        <option value="All" selected>All</option>
+                        <!-- <option value="Employer">Not assigned</option> -->
+                        <option value="Job title">Processor</option>
+                        <option value="Description">Super user</option>
+                        <option value="Employer">Administrator</option>
+                        <option value="Employer">Reporter</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-left:auto; margin-bottom:0; margin-top:30px; margin-right:15px">
+                 <button style="" class="govuk-button">Add new user</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class=" ">
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">Name</th>
+                    <th class="govuk-table__header" scope="col" >Email</th>
+                    <!-- <th class="govuk-table__header" scope="col" style="max-width:100px">Financial delegation level</th> -->
+                     <th class="govuk-table__header" scope="col" style="max-width:100px">Authorisation limit</th> 
+                    <th class="govuk-table__header" scope="col">What they can do</th> 
+                    <!-- <th class="govuk-table__header" scope="col">Claim amount</th> -->
+                    <th class="govuk-table__header" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row" id="robEdwardsNew">
+                    <td class="govuk-table__cell">Abdirahman Hassan</td>
+                    <td class="govuk-table__cell" style="word-wrap: break-word;">abdirahman@cps.gov.uk</td>
+                    <!-- <td class="govuk-table__cell">Level 40</td> -->
+                    <td class="govuk-table__cell">£2,000</td>
+                    <td class="govuk-table__cell">Do the thing, do another thing, some other things they can do</td>
+                     <td class="govuk-table__cell"><a href="userOne">Edit</a></td>
+
+                </tr>
+                <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">James Collyer</td>
+                    <td class="govuk-table__cell">jim@cps.gov.uk</td>
+                      <!-- <td class="govuk-table__cell">None</td> -->
+                       <td class="govuk-table__cell">£5,000</td>
+                   <td class="govuk-table__cell">Do the thing</td>
+                    <td class="govuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        {% endblock %}

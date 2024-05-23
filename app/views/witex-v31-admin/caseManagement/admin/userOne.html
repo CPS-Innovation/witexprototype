@@ -1,0 +1,89 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<style>
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form  {
+    border: 1px solid #b1b4b6;
+    padding:10px;
+
+}
+
+.options-container {
+    border:0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button 
+{
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color:#fff !important;
+}
+
+#finder-frontend .govuk-option-select, #finder-frontend .filter {
+    margin-bottom:0 !important;
+}
+
+#finder-frontend .govuk-form-group {
+
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1000px;
+margin:0 auto;
+}
+
+</style>
+<div class="govuk-grid-row" style="margin-right:-65px;margin-left:0; margin-bottom:150px">
+    <div class="govuk-grid-column-full-width" style="">
+        <div style="display:flex">
+            <h1 class="govuk-heading-l">Abdirahman Hassan</h1>
+            <!-- <button type="submit" class="govuk-button" style="margin-left: auto; max-height:38px">Do the thing</button> -->
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

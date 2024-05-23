@@ -1,0 +1,462 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<style>
+
+
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.hidden {
+      display: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.notHidden {
+        display: block;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.notHiddenTable {
+        display: table-row;
+    opacity: 1;
+    transition: opacity 1s;
+
+}
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+
+
+
+</style>
+<script>
+    $("#robEdwardsNew").css("display", "none");
+    $("#robEdwardsSubmit").removeAttr("style");
+ </script>
+<script>
+$( document ).ready(function() {
+var radios = document.querySelectorAll('input[type=radio][name="addWitAA"]');
+const hiddenElement = document.getElementById('numberOfAddWit');
+
+
+function changeHandler(event) {
+   if ( this.value === 'yes' ) {
+      $("#numberOfAddWit").css("display", "table-row");
+        setTimeout(function () {
+                hiddenElement.style.opacity = '1';
+            }, 10);
+  
+   } else if ( this.value === 'no' ) {
+                    hiddenElement.style.opacity = '0';
+            setTimeout(function () {
+                hiddenElement.style.display = 'none';
+            }, 500);
+       // $("#numberOfAddWit").css("display", "none");
+   }  
+}
+
+Array.prototype.forEach.call(radios, function(radio) {
+   radio.addEventListener('change', changeHandler);
+});
+
+ });
+</script>
+<script>
+$( document ).ready(function() {
+  var radioOtherDriving = document.querySelectorAll('input[type=radio][name="OtherDrive"]');
+const otherDrivingHidden = document.getElementById('otherDrivingDetail');
+
+function changeHandlerOther(event) {
+   if ( this.value === 'yes' ) {
+    console.log("yes");
+      $("#otherDrivingDetail").css("display", "block");
+        setTimeout(function () {
+                otherDrivingHidden.style.opacity = '1';
+            }, 10);
+  
+   } else if ( this.value === 'no' ) {
+    console.log("no");
+                    otherDrivingHidden.style.opacity = '0';
+            setTimeout(function () {
+                otherDrivingHidden.style.display = 'none';
+            }, 500);
+       // $("#numberOfAddWit").css("display", "none");
+   }  
+}
+
+Array.prototype.forEach.call(radioOtherDriving, function(radio) {
+   radio.addEventListener('change', changeHandlerOther);
+});
+
+var radioHigherRate = document.querySelectorAll('input[type=radio][name="higherRateOrNot"]');
+var radioHigherRateReason = document.querySelectorAll('input[type=radio][name="higherRate"]');
+const higherRateHidden = document.getElementById('higherRateGroup');
+const higherRateReasonHidden = document.getElementById('higherRateReason');
+
+
+function changeHandlerHigherRate(event) {
+   if ( this.value === 'yes' ) {
+      $("#higherRateGroup").css("display", "table-row");
+       $("#higherRateReason").css("display", "table-row");
+        setTimeout(function () {
+                higherRateHidden.style.opacity = '1';
+                higherRateReasonHidden.style.opacity = '1';
+            }, 10);
+  
+   } else if ( this.value === 'no' ) {
+                    higherRateHidden.style.opacity = '0';
+                    higherRateReasonHidden.style.opacity = '0';
+            setTimeout(function () {
+                higherRateHidden.style.display = 'none';
+                higherRateReasonHidden.style.display = 'none';
+            }, 500);
+   }  
+}
+
+Array.prototype.forEach.call(radioHigherRate, function(radio) {
+   radio.addEventListener('change', changeHandlerHigherRate);
+});
+
+
+
+
+function changeHandlerCarRateReason(event) {
+   if ( this.value === 'other' ) { 
+       $("#higherRateReason").css("display", "table-row");
+        setTimeout(function () {
+           higherRateReasonHidden.style.opacity = '1';
+            }, 10);
+  
+   } else if ( this.value != 'other' ) {     
+          higherRateReasonHidden.style.opacity = '0';
+            setTimeout(function () {         
+                higherRateReasonHidden.style.display = 'none';
+            }, 500);
+   }  
+}
+
+Array.prototype.forEach.call(radioHigherRateReason, function(radio) {
+   radio.addEventListener('change', changeHandlerCarRateReason);
+});
+
+
+
+ });
+
+
+
+
+</script>
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <form method="get" action="car">
+                <div class="govuk-form-group">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Car
+                        </h1>
+                    </legend>
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <!--                             <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__cell" style="">Enter the total cost of your train journey(s)</th>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-input__wrapper">
+                                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                                        <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="55.00">
+                                    </div>
+                                </td>
+                            </tr> -->
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="max-width:180px;">Are you claiming the higher rate?</td>
+                                <td class="govuk-table__cell" style="width:515px">
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="higherRateOrNot" name="higherRateOrNot" type="radio" value="yes" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="higherRateOrNot">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="higherRateOrNot-2" name="higherRateOrNot" type="radio" value="no">
+                                                    <label class="govuk-label govuk-radios__label" for="higherRateOrNot-2">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </td>
+                            </tr>
+                           
+                            <tr class="govuk-table__row notHiddenTable" id="higherRateGroup" >
+                                <td scope="row" class="govuk-table__cell" style="">Why are you claiming the higher mileage rate?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="higherRate" name="higherRate" type="radio" value="public">
+                                                    <label class="govuk-label govuk-radios__label" for="higherRate">
+                                                        There was no public transport
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="higherRate-2" name="higherRate" type="radio" value="faster">
+                                                    <label class="govuk-label govuk-radios__label" for="allTrhigherRateain-2">
+                                                        Cheaper or faster to drive than take public transport
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="higherRate-3" name="higherRate" type="radio" value="disabled">
+                                                    <label class="govuk-label govuk-radios__label" for="allTrhigherRateain-3">
+                                                        Disability
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="higherRate-4" name="higherRate" type="radio" value="other" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="allTrhigherRateain-4">
+                                                        No choice but to use own car
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row notHiddenTable" id="higherRateReason">
+                                <td scope="row" class="govuk-table__cell" style="">Reason you had no choice</td>
+                                <td class="govuk-table__cell">
+                                    <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="3" aria-describedby="more-detail-hint">it was raining</textarea>
+                                </td>
+                            </tr>
+                         
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="">Were you travelling with additional witnesses?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="addWitAA" name="addWitAA" type="radio" value="yes" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="addWitAA">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="addWitAA-2" name="addWitAA" type="radio" value="no" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="addWitAA-2">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row hidden" id="numberOfAddWit">
+                                <td scope="row" class="govuk-table__cell" >How many additional witnesses are you claiming for?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-input__wrapper">
+                                        <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="">How many miles in total are you claiming for?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-input__wrapper">
+                                        <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="177">
+                                        <div class="govuk-input__suffix" aria-hidden="true">miles</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="">Did you pay for parking?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="parkOrNot" name="parkOrNot" type="radio" value="yes" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="parkOrNot">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="parkOrNot-2" name="parkOrNot" type="radio" value="no" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="parkOrNot-2">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row" style="display:none">
+                                <td scope="row" class="govuk-table__cell" style="">How much did you spend in total on parking?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-input__wrapper">
+                                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                                        <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false" value="">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row" style="display:none">
+                                <td scope="row" class="govuk-table__cell">Do you have all your parking receipts?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="parkReceipts" name="parkReceipts" type="radio" value="yes">
+                                                    <label class="govuk-label govuk-radios__label" for="parkReceipts">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="parkReceipts-2" name="parkReceipts" type="radio" value="no" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="parkReceipts-2">
+                                                        No, I have some of my receipts
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="parkReceipts-3" name="parkReceipts" type="radio" value="no">
+                                                    <label class="govuk-label govuk-radios__label" for="parkReceipts-3">
+                                                        No, I don't have any of my receipts
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="">Did you have to pay any other driving costs?</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="OtherDrive" name="OtherDrive" type="radio" value="yes" checked>
+                                                    <label class="govuk-label govuk-radios__label" for="OtherDrive">
+                                                        Yes
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-radios__item">
+                                                    <input class="govuk-radios__input" id="OtherDrive-2" name="OtherDrive" type="radio" value="no">
+                                                    <label class="govuk-label govuk-radios__label" for="OtherDrive-2">
+                                                        No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="otherDrivingDetail" class="notHidden" style="">
+                    <table class="govuk-table"  style="margin-top:-51px">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                                <th scope="col" class="govuk-table__header"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="width:438px;">Expense 1<br /> Type of expense</td>
+                                <td class="govuk-table__cell" style="max-width:180px;">
+                                    <textarea class="govuk-textarea" id="expenseOneType" name="expenseOneType" rows="2" aria-describedby="expenseOneType-hint">ULEZ</textarea>
+                                </td>
+                                <td class="govuk-table__cell">
+                                    <a href="#">Delete</a>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell">Expense 1 <br />Amount</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-input__wrapper">
+                                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                                        <input class="govuk-input govuk-input--width-5" id="expenseOneCost" name="expenseOneCost" type="text" spellcheck="false" value="12.50">
+                                    </div>
+                                </td>
+                                <td class="govuk-table__cell">
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell" style="">Expense 2<br />Type of expense</td>
+                                <td class="govuk-table__cell">
+                                    <textarea class="govuk-textarea" id="expenseTwoType" name="expenseTwoType" rows="2" aria-describedby="expenseTwoType-hint">Congestion Charge</textarea>
+                                </td>
+                                <td class="govuk-table__cell">
+                                    <a href="#">Delete</a>
+                                </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td scope="row" class="govuk-table__cell">Expense 2<br />Amount</td>
+                                <td class="govuk-table__cell">
+                                    <div class="govuk-input__wrapper">
+                                        <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                                        <input class="govuk-input govuk-input--width-5" id="expenseTwoCost" name="expenseTwoCost" type="text" spellcheck="false" value="22.50">
+                                    </div>
+                                </td>
+                                <td class="govuk-table__cell">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button"> Add another driving cost</button>
+                  </div>
+
+                    <div class="govuk-button-group" style="margin-top:25px">
+                        <button type="submit" class="govuk-button">Continue </button>
+                        <a class="govuk-link" href="#">Cancel</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

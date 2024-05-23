@@ -1,0 +1,168 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/reportsNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+
+{% endblock %}
+{% block content %}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<style>
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form  {
+    border: 1px solid #b1b4b6;
+    padding:10px;
+
+}
+
+.options-container {
+    border:0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button 
+{
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color:#fff !important;
+}
+
+#finder-frontend .govuk-option-select, #finder-frontend .filter {
+    margin-bottom:0 !important;
+}
+
+#finder-frontend .govuk-form-group {
+
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+
+</style>
+<div class="govuk-grid-row" style="">
+  <div class="govuk-grid-column-two-thirds" style="">
+        <div style="display:flex">
+            <h1 class="govuk-heading-l">Reports</h1>
+        </div>
+  
+       
+    <div style="margin-bottom:25px">
+        <div style="display:flex; align-items: ">
+            <div class="filter text-filter" style="width:30%; padding-left:0">
+                <div class="govuk-form-group" style="margin-bottom:15px">
+                    <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                        Start date
+                    </label>
+                    <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
+                        <input class="govuk-input" id="search" name="searchQuery" type="text" value="01/10/2023">
+                        <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                            <!-- <button type="submit" class="gem-c-search__submit">Search</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter text-filter" style="width:30%;padding-left:30px">
+                <div class="govuk-form-group" style="margin-bottom:15px">
+                    <label class="govuk-label   govuk-label--s legend" for="partialCost">
+                        End date
+                    </label>
+                    <div class="gem-c-search__item-wrapper gem-c-search--on-white" style="display:flex">
+                        <input class="govuk-input" id="search" name="searchQuery" type="text" value="31/11/2023">
+                        <div class="gem-c-search__item gem-c-search__submit-wrapper">
+                            <!-- <button type="submit" class="gem-c-search__submit">Search</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--             <div style="margin-left:auto; margin-bottom:0; margin-top:30px; margin-right:15px">
+                 <button style="" class="govuk-button">Add new user</button>
+            </div> -->
+            </form>
+        </div>
+    </div>
+
+
+    <div class=" ">
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col">Report name</th>
+                
+                    <th class="govuk-table__header" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row" id="robEdwardsNew">
+                    <td class="govuk-table__cell">Claims by category</td>
+
+                     <td class="govuk-table__cell"><a href="userOne">Download</a></td>
+
+                </tr>
+                <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">Paid claims</td>
+                    <td class="govuk-table__cell"><a href="">Download</a></td>
+                </tr>
+                <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">Claim status</td>
+                    <td class="govuk-table__cell"><a href="">Download</a></td>
+                </tr>
+                <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">Travel receipts</td>
+                    <td class="govuk-table__cell"><a href="">Download</a></td>
+                </tr>
+                <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">Feedback</td>
+                    <td class="govuk-table__cell"><a href="">Download</a></td>
+                </tr>
+                <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">Loss of earnings</td>
+                    <td class="govuk-table__cell"><a href="">Download</a></td>
+                </tr>
+                 <tr class="govuk-table__row" id="jamesCollyerNew">
+                    <td class="govuk-table__cell">Claimant dropout</td>
+                    <td class="govuk-table__cell"><a href="">Download</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        {% endblock %}

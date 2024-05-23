@@ -1,0 +1,536 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "./index2"
+}) }}
+{% endblock %}
+{% block content %}
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/multi-file-upload.js"></script>
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- <script src="/public/javascripts/accordion.js"></script> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- <script>
+    if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script> -->
+<script type="text/javascript">
+//     function revealNote() { 
+// $(revealTheNote).removeClass("rj-dont-display");
+//     $(revealTheNote).switchClass( "rj-dont-display", "nothing", 1000, "linear" );
+// }
+
+
+$(document).ready(function() {
+    $("#openMe").click(function() {
+        $(".revealTheNote").slideDown(0);
+        $(".revealTheUpload").slideUp(0)
+        $("#openMeUpload").addClass("inactiveLink");
+        $("#openMe").removeClass("inactiveLink");
+
+    });
+});
+
+$(document).ready(function() {
+    $("#openMeUpload").click(function() {
+        $(".revealTheUpload").slideDown(0);
+        $(".revealTheNote").slideUp(0)
+        $("#openMe").addClass("inactiveLink");
+        $("#openMeUpload").removeClass("inactiveLink");
+
+    });
+});
+
+$(document).ready(function() {
+    $("#shutMe").click(function() {
+        $(".revealTheUpload").slideUp(0);
+        $("#openMeUpload").removeClass("inactiveLink");
+        $("#openMe").removeClass("inactiveLink");
+
+    });
+});
+
+$(document).ready(function() {
+    $("#shutMeNote").click(function() {
+        $(".revealTheNote").slideUp(0);
+        $("#openMeUpload").removeClass("inactiveLink");
+        $("#openMe").removeClass("inactiveLink");
+
+    });
+});
+
+$(document).ready(function() {
+    $("#submitNote").click(function() {
+
+        var myDate = new Date();
+
+        let daysList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        let monthsList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Aug', 'Oct', 'Nov', 'Dec'];
+
+
+        let date = myDate.getDate();
+        let month = monthsList[myDate.getMonth()];
+        let year = myDate.getFullYear();
+        let day = daysList[myDate.getDay()];
+
+        let today = ` ${day}, ${date} ${month} ${year}`;
+
+        let amOrPm;
+        let twelveHours = function() {
+            if (myDate.getHours() > 12) {
+                amOrPm = 'PM';
+                let twentyFourHourTime = myDate.getHours();
+                let conversion = twentyFourHourTime - 12;
+                return `${conversion}`
+
+            } else {
+                amOrPm = 'AM';
+                return `${myDate.getHours()}`
+            }
+        };
+        let hours = twelveHours();
+        let minutes = myDate.getMinutes();
+
+        let currentTime = `${hours}:${minutes} ${amOrPm}`;
+
+
+        var textarea = document.getElementById("more-detail")
+
+        var text = textarea.value;
+        document.getElementById('userNotes').innerHTML = '<p style="font-size:16px"><span style="font-weight:700">David Barton (you)</span><span style="color:#505a5f  ">&nbsp;&nbsp;&nbsp;' + today + " at " + currentTime + ' </span></p><p id="noteHere"></p><hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">';
+        var p = document.getElementById("noteHere");
+
+        p.textContent = text;
+
+        $(".revealTheNote").slideUp(0);
+        $("#openMeUpload").removeClass("inactiveLink");
+        $("#openMe").removeClass("inactiveLink");
+
+    });
+});
+
+
+
+// $(document).ready(function(){
+// var box = $('.revealTheNote');
+
+// $('p#openMe').on('click', function () { 
+//   box.toggleClass('hidden');
+// });
+// });
+</script>
+<style>
+    .js-enabled .govuk-accordion__section--expanded .govuk-accordion__section-button {
+padding-bottom:0;
+}
+
+
+    .makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.filter-form {
+    border: 1px solid lightgrey;
+    padding: 10px;
+
+}
+
+.options-container {
+    border: 0 !important;
+}
+
+.js-enabled .govuk-option-select.js-collapsible button {
+    background-color: #fff !important;
+}
+
+#finder-frontend .filter {
+    background-color: #fff !important;
+}
+
+#finder-frontend .govuk-option-select,
+#finder-frontend .filter {
+    margin-bottom: 0 !important;
+}
+
+#finder-frontend .govuk-form-group {}
+
+.moj-multi-file__uploaded-files .govuk-heading-m,
+.moj-multi-file__uploaded-files .govuk-summary-list  {
+    margin:0;
+}
+
+.overviewAdmin .govuk-summary-list__key {
+    font-weight:400;
+}
+
+.govuk-width-container {
+    max-width: 1020px;
+}
+
+.govuk-tabs__list-item {
+    font-size:19px;
+}
+
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+
+
+</style>
+{% if (data.changeConfirmBanner) %}
+<div class="govuk-notification-banner govuk-notification-banner--success bannerWidth" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner ">
+    <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title"><a href="resetChangeConfirm" style="color:#fff; text-decoration:none">
+                Success </a>
+        </h2>
+    </div>
+    <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading" style="max-width:1000px">
+            {% if data.changeConfirmBanner == 'approve' %}
+            The change(s) have been saved
+            {% else %}
+            {% endif %}
+        </h3>
+    </div>
+</div>
+{% else %}
+{% endif %}
+<span class="govuk-caption-l">HD90210</span>
+<div style="display:flex; align-items:center">
+    <h1 class="govuk-heading-l" style="">Robert Edwards
+    </h1>
+    <div style="margin-bottom:30px">
+        <strong class="govuk-tag app-tag--record-incomplete" style="margin-left:10px">
+            Pending
+        </strong>
+    </div>
+</div>
+<div class="govuk-grid-row" style="margin-right:-65px; margin-top:-5px">
+    <div class="govuk-grid-column-two-thirds">
+        <nav class="moj-sub-navigation" aria-label="Sub navigation">
+            <ul class="moj-sub-navigation__list">
+                <li class="moj-sub-navigation__item">
+                    <a class="moj-sub-navigation__link" href="claim3n">Overview</a>
+                </li>
+                <li class="moj-sub-navigation__item">
+                    <a class="moj-sub-navigation__link" href="cmsCheck">Eligibility</a>
+                </li>
+                <li class="moj-sub-navigation__item">
+                    <a class="moj-sub-navigation__link" href="claim3n1">Proof</a>
+                </li>
+                <li class="moj-sub-navigation__item">
+                    <a class="moj-sub-navigation__link" href="claim3n2">Checks</a>
+                </li>
+                <li class="moj-sub-navigation__item">
+                    <a class="moj-sub-navigation__link" href="claim3n3">Claim details</a>
+                </li>
+                <li class="moj-sub-navigation__item">
+                    <a class="moj-sub-navigation__link" aria-current="page" href="claim3n4">Notes/Amends</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- include file has all the stuff for the opening and using a note -->
+        <!-- include "includes/cps/caseManagement/addNote.html"   -->
+        <div style="display:flex; margin-top:-30px">
+            <!-- <h2 class="govuk-heading-m" style="">Notes and amends</h2> -->
+            <ul class="govuk-summary-card__actions" style="margin-left:auto">
+                <li class="" style="">
+                    <p class="govuk-link looks-like-a-link " id="openMe" style=" cursor:pointer; font-weight:400 ">
+                        Add note<span class="govuk-visually-hidden"> to the thing</span>
+                    </p>
+                </li>
+                <p style="margin-left:10px;margin-right:10px; colour:#000;text-decoration:none">|</p>
+                <li class="" style="padding-left:0 !important;">
+                    <p class="govuk-link looks-like-a-link" id="openMeUpload" style=" cursor:pointer; font-weight:400">
+                        Upload a file<span class="govuk-visually-hidden"> to the thing</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div style="" id="notesArea" class="notesArea">
+                            <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+                        <div class="moj-timeline__header">
+                            <h2 class="moj-timeline__title">Change made</h2>
+                            <p class="moj-timeline__byline">by David Barton</p>
+                        </div>
+                        <p class="moj-timeline__date">
+                            <time datetime="2019-06-07T12:32:00.000Z">19 May 2023 at 12:32pm</time>
+                        </p>
+                        <div class="moj-timeline__description">
+                            <div style="width:100%;">
+                                <table class="govuk-table" style="">
+                                    <thead class="govuk-table__head">
+                                        <tr class="govuk-table__row">
+                                            <th scope="col" class="govuk-table__header"></th>
+                                            <th scope="col" class="govuk-table__header"></th>
+                                            <th scope="col" class="govuk-table__header">Original</th>
+                                            <th scope="col" class="govuk-table__header">Changed to </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="govuk-table__body">
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell " style="">Claim</td>
+                                            <td scope="row" class="govuk-table__cell" style="">Total to be paid</td>
+                                            <td class="govuk-table__cell " style="">£12.25</td>
+                                            <td class="govuk-table__cell">£22.25</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell " style="">Train</td>
+                                            <td scope="row" class="govuk-table__cell" style="">Enter the total amount of your train journey(s) </td>
+                                            <td class="govuk-table__cell">£10.00</td>
+                                            <td class="govuk-table__cell">£20.00 </td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell " style="">Travel</td>
+                                            <td scope="row" class="govuk-table__cell" style="">Total to be paid</td>
+                                            <td class="govuk-table__cell" style="">£10.00</td>
+                                            <td class="govuk-table__cell">£20.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+         
+         <div class="moj-timeline__item">
+                        <div class="moj-timeline__header">
+                            <h2 class="moj-timeline__title">Change made</h2>
+                            <p class="moj-timeline__byline">by David Barton</p>
+                        </div>
+                        <p class="moj-timeline__date">
+                            <time datetime="2019-06-07T12:32:00.000Z">19 May 2023 at 12:32pm</time>
+                        </p>
+                        <div class="moj-timeline__description">
+                            <div style="width:100%;">
+                                <table class="govuk-table" style="">
+                                    <thead class="govuk-table__head">
+                                        <tr class="govuk-table__row">
+                                            <th scope="col" class="govuk-table__header"></th>
+                                            <th scope="col" class="govuk-table__header"></th>
+                                            <th scope="col" class="govuk-table__header">Original</th>
+                                            <th scope="col" class="govuk-table__header">Changed to </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="govuk-table__body">
+                                                                             <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell " style="">Claim</td>
+                                            <td scope="row" class="govuk-table__cell" style="">Total to be paid</td>
+                                            <td class="govuk-table__cell" style="">£10.00</td>
+                                            <td class="govuk-table__cell">£20.00</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell " style="">Other expenses</td>
+                                            <td scope="row" class="govuk-table__cell" style="">Type of expense 1</td>
+                                            <td class="govuk-table__cell " style="">rain</td>
+                                            <td class="govuk-table__cell">Umbrella</td>
+                                        </tr>
+                                        <tr class="govuk-table__row">
+                                            <td class="govuk-table__cell " style="">Other expenses</td>
+                                            <td scope="row" class="govuk-table__cell" style="">Amount of expense 1 </td>
+                                            <td class="govuk-table__cell">£10.00</td>
+                                            <td class="govuk-table__cell">£20.00 </td>
+                                        </tr>
+   
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="moj-timeline__item">
+                    <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Change made</h2>
+                        <p class="moj-timeline__byline">by David Barton</p>
+                    </div>
+                    <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">19 May 2023 at 12:32pm</time>
+                    </p>
+                    <div class="moj-timeline__description">
+                        <div style="width:100%;">
+                            <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key" style="width:30%">
+                                        Section
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        Bus, tram, metro outside London
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Question
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        What did you spend in total on bus, tram or metro travel?
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Original answer
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        £5.00
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                        Changed to
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        £6.10
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="moj-timeline__item">
+                        <div class="moj-timeline__header">
+                            <h2 class="moj-timeline__title">Note added</h2>
+                            <p class="moj-timeline__byline">by David Barton</p>
+                        </div>
+                        <p class="moj-timeline__date">
+                            <time datetime="2019-06-14T14:01:00.000Z">19 May 2023 at 12.30pm</time>
+                        </p>
+                        <div class="moj-timeline__description">
+                            <p>Witness called and asked to change the cost of their bus ticket from £5.00 to £6.10</p>
+                            <!-- <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a> -->
+                        </div>
+                    </div>
+                    <div class="moj-timeline__item">
+                        <div class="moj-timeline__header">
+                            <h2 class="moj-timeline__title">Files uploaded</h2>
+                            <p class="moj-timeline__byline">by David Barton</p>
+                        </div>
+                        <p class="moj-timeline__date">
+                            <time datetime="2019-05-28T10:15:00.000Z">28 May 2023 at 10:15am</time>
+                        </p>
+                        <div class="moj-timeline__description">
+                            <ul class="moj-timeline__documents">
+                                <li class="moj-timeline__document-item">
+                                    <a class="govuk-link" href="#">
+                                        <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                                            <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+                                        </svg>
+                                        Document 1
+                                    </a>
+                                </li>
+                                <li class="moj-timeline__document-item">
+                                    <a class="govuk-link" href="#">
+                                        <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                                            <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+                                        </svg>
+                                        Document 2
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="moj-timeline__item">
+                        <div class="moj-timeline__header">
+                            <h2 class="moj-timeline__title">Case opened</h2>
+                            <p class="moj-timeline__byline">by David Barton</p>
+                        </div>
+                        <p class="moj-timeline__date">
+                            <time datetime="2019-05-21T13:15:00.000Z">21 May 2023 at 1:15pm</time>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <div class="govuk-form-group" style="margin-bottom:10px; margin-left:20px ">
+                <form action="caseActions" method="get" class="form" style="">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h1 class="govuk-fieldset__heading">
+                                Actions
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="caseActions-2" name="caseActions" type="radio" value="Send back to user">
+                                <label class="govuk-label govuk-radios__label" for="caseActions-2">
+                                    Mark as witness query
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="caseActions-3" name="caseActions" type="radio" value="Block">
+                                <label class="govuk-label govuk-radios__label" for="caseActions-3">
+                                    Mark as area query
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Send for approval">
+                                <label class="govuk-label govuk-radios__label" for="caseActions-4">
+                                    Escalate claim
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="caseActions-4" name="caseActions" type="radio" value="Reject">
+                                <label class="govuk-label govuk-radios__label" for="caseActions-4">
+                                    Reject claim
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="caseActions" name="caseActions" type="radio" value="Approve">
+                                <label class="govuk-label govuk-radios__label" for="caseActions">
+                                    Submit claim for payment
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button class="govuk-button" style="margin-top:10px">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
+    new MOJFrontend.MultiFileUpload({
+        container: $(".moj-multi-file-upload"),
+        uploadUrl: "/ajax-upload",
+        deleteUrl: "/ajax-delete",
+    });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "layoutWitexAdmin.html" %}
+{% block header %}
+{% include "includes/cps/v12/banner.html" %}
+{% include "includes/cps/nav/mainNav.html" %}
+{% include "includes/cps/nav/homeNav.html" %}
+{% endblock %}
+{% block beforeContent %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+<style>
+
+.govuk-back-link{margin-top:15px !important}
+
+
+.govuk-summary-list__key {
+    width: 40%;
+}
+.makeBold {
+    font-weight: 700;
+}
+
+.makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.hidden {
+      display: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.notHidden {
+        display: block;
+    opacity: 1;
+    transition: opacity 0s;
+}
+
+.notHiddenTable {
+        display: table-row;
+    opacity: 1;
+    transition: opacity 1s;
+
+}
+.cpsAdminMenuWrapper {
+max-width:1020px;
+margin:0 auto;
+}
+.govuk-width-container {
+    max-width: 1020px;
+}
+    </style>
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="deleteFileRoute" method="get" class="form">
+         <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                                    <div class="govuk-radios" data-module="govuk-radios">
+                                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading"> 
+        Are you sure you want to delete jhkjhkjhjkhkhkjhjhjkhkh.jpg?
+
+
+      </h1>
+    </legend>
+                       
+                                                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-2" name="haveReceiptsPark" type="radio" value="No, I have some of my receipt(s)" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label bold-label" for="contact-by-phone">
+                                    Why do you you want to delete this file?
+                                </label>
+                                 <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="3" aria-describedby="more-detail-hint"></textarea>
+
+                            </div>
+                        </div>
+                                                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact" name="haveReceiptsPark" type="radio" value="yes" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                                No
+                            </label>
+                        </div>
+
+
+     
+                                </fieldset>
+                </div>
+                <div class="govuk-button-group">
+                <button type="submit" class="govuk-button">Continue </button>
+                 <a class="govuk-link" href="#">Cancel</a>
+             </div>
+            </form>
+        
+    </div>
+    </main>
+</div>
+{% endblock %}
