@@ -1,0 +1,405 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+<!-- end of conditional statement -->
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/multi-file-upload.js"></script>
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+<style>
+.moj-multi-file-upload__dropzone {
+    outline: none;
+    padding: 20px 15px;
+}
+
+.moj-multi-file-upload__dropzone p {
+    display: none;
+}
+
+.moj-multi-file-upload__dropzone label {
+    margin-left: -15px;
+}
+</style>
+
+<script>
+    // A $( document ).ready() block.
+$( document ).ready(function() {
+// Select the button and the element to toggle
+    const toggleButton = document.getElementById('reportProblem');
+    const exampleElement = document.getElementById('something-is-wrong');
+    const otherElement = document.getElementById('feedbackBanner');
+
+    // Add a click event listener to the button
+    toggleButton.addEventListener('click', function() {
+     // Check if the element is currently visible
+      const isHidden = exampleElement.hidden;
+      const isHiddenOther = otherElement.hidden;
+      
+      // Toggle the visibility
+      exampleElement.hidden = !isHidden;
+       otherElement.hidden = isHidden;
+      
+    });
+});
+
+</script>
+
+<!-- <script>
+
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      console.log(mutation);
+      if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+        // element added to DOM
+        var hasClass = [].some.call(mutation.addedNodes, function(el) {
+          return el.nodeType === 1 && el.classList.contains('moj-multi-file-upload__filename');
+        });
+        if (hasClass) {
+          // element has class `moj-multi-file-upload__filename`
+          console.log('element "moj-multi-file-upload__filename" added');
+        }
+      }
+    });
+  });
+
+  var config = {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true // Added to observe changes in descendants
+  };
+
+  observer.observe(document.body, config);
+
+</script> -->
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+        titleText: 'There is a problem',
+        errorList: errorSummary.items
+        }) }}
+        {% endif %}
+        <h1 class="govuk-heading-l">Upload your proof</h1>
+        <p>You can provide your proof by uploading a:</p>
+        <ul class="govuk-list govuk-list--bullet ">
+            <li>
+                photo
+            </li>
+            <li>
+                screengrab
+            </li>
+            <li>
+                scan
+            </li>
+            <li>
+                PDF
+            </li>
+        </ul>
+<!--         <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                    Rules for uploading proof
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                <p>You must ensure files are:</p>
+                <ul class="govuk-list govuk-list--bullet ">
+                    <li>
+                        showing the entire document or image
+                    </li>
+                    <li>
+                        legible - words and numbers can be read
+                    </li>
+                    <li>
+                        unaltered by computer software
+                    </li>
+                    <li>
+                        no more than 15MB
+                    </li>
+                </ul>
+                <p>We can accept these files:</p>
+                <ul class="govuk-list govuk-list--bullet ">
+                    <li>
+                        JPG
+                    </li>
+                    <li>
+                        PNG
+                    </li>
+                    <li>
+                        Apple HEIC (iPhone live photos)
+                    </li>
+                    <li>
+                        PDF
+                    </li>
+                </ul>
+            </div>
+        </details> -->
+        {% if data.haveSomeRecipts %}
+        <p>Upload your available evidence:</p>
+        {% else %}
+        <p>Upload all your evidence of: </p>
+        {% endif %}
+        <ul class="govuk-list govuk-list--bullet">
+            {% if data.trainCost %}
+            {% if not data.reasonNoReceipts %}
+            <li> £{{ data['trainCost'] }} of train tickets </li>
+            {% else %}
+            {% endif %}
+            {% endif %}
+            {% if data.parkCost %}
+            {% if not data.reasonNoReceiptsPark %}
+            <li>£{{ data['parkCost'] }} of parking</li>
+            {% else %}
+            {% endif %}
+            {% endif %}
+            {% if data.taxiMilesClaimed %}
+            {% if not data.reasonNoReceiptsTaxi %}
+            <li>£{{ data['taxiMilesClaimed'] }} of taxi(s)</li>
+            {% else %}
+            {% endif %}
+            {% endif %}
+            <!-- overnight stay -->
+            {% if data.overnightCost %}
+            <li>£{{ data['overnightCost'] }} of accommodation</li>
+            {% else %}
+            {% endif %}
+            <!-- unpaid day off -->
+            {% if data.uploadProof == "Upload proof" %}
+            <li>your payslip</li>
+            {% else %}
+            {% endif %}
+            <!-- self employed-->
+            {% if data.employmentType == "Yes" %}
+            <li>your proof of self-employment</li>
+            <details class="govuk-details" data-module="govuk-details" style="margin-bottom:10px">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        What proof can we accept?
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    <p>We will accept one of the following as proof that you are self-employed:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>a business card or letterhead with full name and business name</li>
+                        <li>a copy of your tax return to HMRC</li>
+                        <li>a letter from your accountant confirming you're self-employed </li>
+                        <li>a copy of your sub-contractors certificate issued by HMRC</li>
+                        <li>a copy of your Hackney Carriage Licence </li>
+                        <li>a letter from the company for which you are currently subcontracting to confirm that you are self-employed </li>
+                    </ul>
+                </div>
+            </details>
+            {% else %}
+            {% endif %}
+            <!-- Ofsted registered childcare-->
+            {% if data.ofstedChildcareCost %}
+            <li>£{{ data['ofstedChildcareCost'] }} of Ofsted registered childcare</li>
+            {% else %}
+            {% endif %}
+            <!-- Non ofsted registered childcare-->
+            {% if data.nonRegisteredChildcare %}
+            <li>£{{ data['nonRegisteredChildcare'] }} of childcare</li>
+            {% else %}
+            {% endif %}
+            <!-- Non ofsted registered adult care-->
+            {% if data.careCost %}
+            <li>£{{ data['careCost'] }} of a carer</li>
+            {% else %}
+            {% endif %}
+            <!-- Other expense 1-->
+            {% if data.other[0][expense] %}
+            <li>£{{ data['other[0][cost]'] }} of a {{ data['other[0][expense]'] }}</li>
+            {% else %}
+            {% endif %}
+            <!-- end of conditional statement -->
+        </ul>
+
+<!-- <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+   
+        <form action="../payyou" method="post" enctype="multipart/form-data">
+            <div class="moj-multi-file-upload">
+                <div class="moj-multi-file__uploaded-files ">
+                    <h2 class="govuk-heading-m">Files added</h2>
+                    <div class="govuk-summary-list moj-multi-file-upload__list">
+                    </div>
+                </div>
+                <div class="moj-multi-file-upload__upload">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="documents">
+                            Upload a file
+                        </label>
+                        <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+                    </div>
+
+                    <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                        Upload file
+                    </button>
+                </div>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">
+                Continue
+            </button>
+        </form>
+    </div>
+</div> -->
+
+
+        <form action="../payyou" method="post" enctype="multipart/form-data">
+            {% set uploadHtml %}
+            {{ govukFileUpload({
+            id: "documents",
+            name: "documents",
+            classes: 'moj-multi-file-upload__input',
+            label: {
+            text: "Upload file(s)",
+            classes: 'govuk-label--m'
+            },
+            attributes: { multiple: '' },
+            errorMessage: errorMessage
+            }) }}
+            {{govukButton({
+            text: 'Upload file',
+            classes: 'govuk-button--secondary moj-multi-file-upload__button'
+            })}}
+            {% endset %}
+            {{ mojMultiFileUpload({
+            uploadedFiles: {
+            heading: { text: 'Files added' },
+            items: uploadedFiles
+                         
+            },
+            uploadHtml: uploadHtml
+            }) }}
+            {{govukButton({
+            text: 'Continue'
+            })}}
+        </form>
+        {% include "includes/cps/v11/help.html" %}
+    </div>
+
+   <div class="govuk-grid-column-one-third">
+
+    <div class="gem-c-feedback govuk-!-display-none-print" data-module="feedback ga4-event-tracker" data-feedback-module-started="true" data-ga4-event-tracker-module-started="true" >
+        <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1" id="feedbackBanner" style="background-color:#fff; border-top:none">
+            <div class="gem-c-feedback__prompt-content" style="padding:0; justify-content: normal;">
+                <div class="gem-c-feedback__prompt-questions js-prompt-questions" style="margin:0">
+<!--                     <div class="gem-c-feedback__prompt-question-answer">
+                        <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
+                        <ul class="gem-c-feedback__option-list">
+                            <li class="gem-c-feedback__option-list-item govuk-visually-hidden" hidden="">
+                                <a class="gem-c-feedback__prompt-link" data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" role="button" hidden="hidden" aria-hidden="true" href="/contact/govuk">
+                                    Maybe
+                                </a> </li>
+                            <li class="gem-c-feedback__option-list-item">
+                                <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" data-ga4-event="{&quot;event_name&quot;:&quot;form_submit&quot;,&quot;type&quot;:&quot;feedback&quot;,&quot;text&quot;:&quot;Yes&quot;,&quot;section&quot;:&quot;Is this page useful?&quot;}">
+                                    Yes <span class="govuk-visually-hidden">this page is useful</span>
+                                </button> </li>
+                            <li class="gem-c-feedback__option-list-item">
+                                <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" aria-controls="page-is-not-useful" aria-expanded="false" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" data-ga4-event="{&quot;event_name&quot;:&quot;form_submit&quot;,&quot;type&quot;:&quot;feedback&quot;,&quot;text&quot;:&quot;No&quot;,&quot;section&quot;:&quot;Is this page useful?&quot;}">
+                                    No <span class="govuk-visually-hidden">this page is not useful</span>
+                                </button> </li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden="">
+                    Thank you for your feedback
+                </div>
+                <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" style="margin:0;padding:0; width:100%">
+                    <button id="reportProblem" class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" aria-expanded="false" aria-controls="something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" data-ga4-event="{&quot;event_name&quot;:&quot;form_submit&quot;,&quot;type&quot;:&quot;feedback&quot;,&quot;text&quot;:&quot;Report a problem with this page&quot;,&quot;section&quot;:&quot;Is this page useful?&quot;}">
+                        Report a problem with this page
+                    </button> </div>
+            </div>
+        </div>
+        <form action="https://www.gov.uk/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form" method="post" hidden="" style="padding-left:0;padding-right:0">
+    <!--         <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds"> -->
+                    <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-errors" tabindex="-1" hidden=""></div>
+                    <input type="hidden" name="url" value="https://www.gov.uk/bring-pet-to-great-britain">
+                    <h3 class="gem-c-feedback__form-heading">Help us improve this service</h3>
+                    <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or financial information like your National Insurance number or credit card details.</p>
+                    <div class="govuk-visually-hidden" aria-hidden="true">
+                        <label for="giraffe">This field is for robots only. Please leave blank</label>
+                        <input id="giraffe" name="giraffe" type="text" pattern=".{0}" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="gem-c-textarea govuk-form-group govuk-!-margin-bottom-6">
+                        <label for="textarea-283c8cd0" class="gem-c-label govuk-label">What were you doing?</label>
+                        <textarea name="what_doing" class="govuk-textarea" id="textarea-283c8cd0" rows="3" spellcheck="true" aria-describedby="feedback_explanation"></textarea>
+                    </div>
+                    <div class="gem-c-textarea govuk-form-group govuk-!-margin-bottom-6">
+                        <label for="textarea-4281567a" class="gem-c-label govuk-label">What went wrong?</label>
+                        <textarea name="what_wrong" class="govuk-textarea" id="textarea-4281567a" rows="3" spellcheck="true"></textarea>
+                    </div>
+                    <button class="gem-c-button govuk-button" type="submit" data-ga4-event="{&quot;event_name&quot;:&quot;form_submit&quot;,&quot;type&quot;:&quot;feedback&quot;,&quot;text&quot;:&quot;Send&quot;,&quot;section&quot;:&quot;Help us improve GOV.UK&quot;}">Send</button>
+                    <button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form" aria-controls="something-is-wrong" aria-expanded="true">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <input type="hidden" name="javascript_enabled" value="true"><input type="hidden" name="referrer" value="https://github.com/alphagov/govuk-design-system-backlog/issues/117"><input type="hidden" name="timer" value="0">
+        </form>
+        <script nonce="">
+            //<![CDATA[
+  document.addEventListener("DOMContentLoaded", function () {
+    var input = document.querySelector("#giraffe"),
+      form = document.querySelector("#something-is-wrong")
+
+    form.addEventListener("submit", spamCapture);
+
+    function spamCapture(e) {
+      if (input.value.length !== 0) return;
+      e.preventDefault();
+    }
+  });
+
+//]]>
+</script>
+        <form action="https://www.gov.uk/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form" data-track-category="yesNoFeedbackForm" data-track-action="Send Form" method="post" hidden="">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
+                    <div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden="" id="topBar"></div>
+                    <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
+                    <input name="email_survey_signup[survey_source]" type="hidden" value="/bring-pet-to-great-britain">
+                    <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
+                    <p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.</p>
+                    <div class="govuk-form-group">
+                        <label for="input-abc7ec9a" class="gem-c-label govuk-label">Email address</label>
+                        <input aria-describedby="survey_explanation" autocomplete="email" class="gem-c-input govuk-input" id="input-abc7ec9a" name="email_survey_signup[email_address]" spellcheck="false" type="email">
+                    </div>
+                    <button class="gem-c-button govuk-button" type="submit" data-ga4-event="{&quot;event_name&quot;:&quot;form_submit&quot;,&quot;type&quot;:&quot;feedback&quot;,&quot;text&quot;:&quot;Send me the survey&quot;,&quot;section&quot;:&quot;Help us improve GOV.UK&quot;}">Send me the survey</button>
+                    <button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose" aria-controls="page-is-not-useful" aria-expanded="true">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</main>
+</div>
+<script>
+if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
+    new MOJFrontend.MultiFileUpload({
+        container: $(".moj-multi-file-upload"),
+        uploadUrl: "/ajax-upload",
+        deleteUrl: "/ajax-delete",
+    });
+}
+</script>
+{% endblock %}

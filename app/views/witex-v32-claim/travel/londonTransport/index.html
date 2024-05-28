@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<script src="/public/javascripts/mojall.js"></script>
+<script src="/public/javascripts/add-another.js"></script>
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">Public transport within London (Zone 1 -9)</span>
+            Your London Transport journey(s)
+        </h1>
+        <p>Includes: tube, bus, river bus, Docklands Light Railway (DLR), London Trams, Elizabeth Line and overground train.</p>
+        <p>You can only claim for standard class tickets. </p>
+        <p>You don't need receipts for London Transport claims. </p>
+        <!-- <form action="multiTravelRouterPubTrans" method="get" class="form"> -->
+        <div data-module="moj-add-another">
+            <form action="multiTravelRouterPubTrans" method="get" class="form">
+                <fieldset class="govuk-fieldset moj-add-another__item">
+                    <!--                     <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
+                        Expense
+                    </legend> -->
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-!-font-weight-bold govuk-fieldset__legend--m font15" for="trainCost[0][cost]">
+                            How much did your ticket cost, in pounds?
+                        </label>
+                        <div class="govuk-input__wrapper">
+                            <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                            <input class="govuk-input govuk-input--width-5" id="trainCost[0][cost]" name="trainCost[0][cost]" type="text" spellcheck="false" data-name="trainCost[0][cost]" data-id="trainCost[0][cost]">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="moj-button-action">
+                    <button class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
+                        Add another ticket
+                    </button>
+                </div>
+                <div class="moj-button-action">
+                    <button class="govuk-button" data-module="govuk-button">
+                        Continue
+                    </button>
+                </div>
+            </form>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+    MOJFrontend.initAll();
+    </script>
+    {% endblock %}
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                How much did your journey cost, in pounds?
+            </legend>
+            <div class="govuk-input__wrapper">
+                <div class="govuk-input__prefix" aria-hidden="true">£</div>
+                <input class="govuk-input govuk-input--width-5" id="trainCost" name="trainCost" type="text" spellcheck="false">
+            </div>
+    </div>
+    <button class="govuk-button">Continue</button>
+    </form>
+</div>
