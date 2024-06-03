@@ -22,47 +22,15 @@ console.log("{{ data['dayNumber'] }}" + "arse")
     </style>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-        <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Your details</h1>
-        <p>These are the details you entered for Day 1. </p>
+        <h1 class="govuk-heading-l">{% include "includes/cps/whatDay.html" %}Witness details</h1>
+        <p>These are the witness details you entered for Day 1. </p>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    URN
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    {{ data['URN'] }}
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Court name
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <p class="govuk-body"> {{ data['school-name'] }} </p>
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
+                        <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                     Name
                 </dt>
                 <dd class="govuk-summary-list__value">
                     {{ data['first-name-real'] }} {{ data['last-name-real'] }}
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Email address
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <p class="govuk-body"> {{ data['email'] }} </p>
-                </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Contact number
-                </dt>
-                <dd class="govuk-summary-list__value">
-                    <p class="govuk-body"> {{ data['contactPhone'] }} </p>
                 </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -73,6 +41,48 @@ console.log("{{ data['dayNumber'] }}" + "arse")
                     <p class="govuk-body"> {{ data['postcode'] }} </p>
                 </dd>
             </div>
+             <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Date of birth
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['postcode'] }} </p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Case number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['URN'] }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Court attended 
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['school-name'] }} </p>
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Contact email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['email'] }} </p>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Contact phone number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['contactPhone'] }} </p>
+                </dd>
+            </div>
+
         </dl>
         <form method="get" action="anotherDayRouter">
             <div class="govuk-form-group">
