@@ -1,0 +1,55 @@
+<div aria-label="cookie banner" class="das-cookie-banner__wrap das-cookie-banner__modal rj-dont-display" id="openRenameModal">
+
+    <div class="das-cookie-banner small" id="openMe">
+        <div class="das-cookie-banner__wrapper">
+
+            <div class="govuk-modal-dialogue__header">
+                <button aria-label="Close modal dialogue" class="govuk-button govuk-modal-dialogue__close" data-module="govuk-button" type="button" onClick="closeRenameModal()">×</button>
+            </div>
+
+            <!-- //////////////////////////////// NOTES - START //////////////////////////////// -->
+            <div class="govuk-grid-row" id="rename">
+
+                <div class="innerPanel simpleModelTwo">
+
+                    <div class="header-wrapper">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+                                <h1 class="govuk-heading-s">
+                                    Rename - <span id="" class="document-title-10">Document title</span></span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="" action="">
+
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+
+                                <div class="govuk-form-group">
+                                    <h1 class="govuk-label-wrapper">
+                                        <label class="govuk-label govuk-label--m" for="rename-Document">What is the new name of your document?</label>
+                                    </h1>
+                                    <div id="rename-Document-hint" class="govuk-hint">
+                                        You're changing the document name from <mark class="hods-highlight"><strong class="document-title-10">Stmt Shelagh</strong></mark>
+                                    </div>
+                                    <input class="govuk-input" id="rename-Document" name="rename-Document" type="text" aria-describedby="rename-Document-hint">
+                                </div>
+
+                                <button id="document-renamed" class="govuk-button" data-module="govuk-button" type="button" onClick="return closeRenameModal(), renameDocument();">Confirm</button>
+                                <button class="non-button" data-module="govuk-button" type="button" onClick="closeRenameModal()">Cancel</button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- //////////////////////////////// REDACTION LOG - END //////////////////////////////// -->
+        </div>
+    </div>
+</div>

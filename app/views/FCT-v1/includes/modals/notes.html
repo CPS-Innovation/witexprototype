@@ -1,0 +1,113 @@
+<div aria-label="cookie banner" class="das-cookie-banner__wrap das-cookie-banner__modal rj-dont-display" id="openNotesModal">
+
+    <div class="das-cookie-banner small" id="openMe">
+        <div class="das-cookie-banner__wrapper">
+
+            <div class="govuk-modal-dialogue__header">
+                <button aria-label="Close modal dialogue" class="govuk-button govuk-modal-dialogue__close" data-module="govuk-button" type="button" onClick="closeNotesModal()">×</button>
+            </div>
+
+            <!-- //////////////////////////////// NOTES - START //////////////////////////////// -->
+            <div class="govuk-grid-row" id="notes">
+
+                <div class="innerPanel simpleModelTwo">
+
+                    <div class="header-wrapper">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+                                <h1 class="govuk-heading-s">
+                                    Notes - <span id="document-title-notes" class="document-title-5">Document title</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="redaction-wrapper">
+                        <form method="" action="">
+
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+
+                                    <div class="notes-wrapper">
+
+                                        <!-- ////// NOTES ITEM 1 - START ////// -->
+                                        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+                                            <div class="govuk-form-group">
+                                                <h1 class="govuk-label-wrapper">
+                                                    <label class="govuk-label govuk-label--s" for="notes-Comments">Add a note to the document</label>
+                                                </h1>
+                                                <!-- <div id="notes-Comment-hint" class="govuk-hint">Don't include personal or sensitive information about the case.</div> -->
+                                                <textarea class="govuk-textarea govuk-js-character-count" id="notes-Comments" name="notes-Comments" rows="5" aria-describedby="notes-Comments-info notes-Comments-hint"></textarea>
+                                            </div>
+                                            <div id="notes-Comments-info" class="govuk-hint govuk-character-count__message">You can enter up to 500 characters</div>
+                                        </div>
+                                        <!-- ////// NOTES ITEM 1 - END ////// -->
+
+                                        <button id="notes-button" class="govuk-button" data-module="govuk-button" type="button" onClick="return closeNotesModal()">Save and close</button>
+                                        <button class="non-button" data-module="govuk-button" type="button" onClick="closeNotesModal()">Cancel</button>
+                                        <hr class="dotted">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="govuk-grid-column-full">
+                                    <!-- ////// NOTES TIMELINE - START ////// -->
+                                    <div class="hods-timeline">
+
+                                        <div class="hods-timeline__item" id="note-added">
+                                            <!-- <strong class="govuk-tag govuk-tag--blue">Casework App</strong> -->
+                                            <h2 class="hods-timeline__title">user_name_1983</h2>
+                                            <!-- <p class="hods-timeline__by"></p> -->
+                                            <p class="hods-timeline__date">
+                                                <time class="hods-date-time" datetime="2021-03-15" id="note-timestamp"></time>
+                                            </p>
+                                            <p class="hods-timeline__description"></p>
+                                        </div>
+
+                                        <div class="hods-timeline__item">
+                                            <!-- <strong class="govuk-tag govuk-tag--grey">CMS CLASSIC</strong> -->
+                                            <h2 class="hods-timeline__title">user_name_1983</h2>
+                                            <p class="hods-timeline__date">
+                                                <time class="hods-date-time" datetime="2023-11-20">20 November 2023</time>
+                                            </p>
+                                            <p class="hods-timeline__description">
+                                                redacted, reviewed, do not serve
+                                            </p>
+                                        </div>
+                                        <div class="hods-timeline__item">
+                                            <!-- <strong class="govuk-tag govuk-tag--grey">CMS CLASSIC</strong> -->
+                                            <h2 class="hods-timeline__title">Douglas Pollock</h2>
+                                            <!-- <p class="hods-timeline__by">by </p> -->
+                                            <p class="hods-timeline__date">
+                                                <time class="hods-date-time" datetime="2023-11-19">19 November 2023</time>
+                                            </p>
+                                            <p class="hods-timeline__description">
+                                                This is a description of the event. This field accepts unformatted text only.
+                                            </p>
+                                        </div>
+                                        <div class="hods-timeline__item">
+                                            <!-- <strong class="govuk-tag govuk-tag--blue">Casework App</strong> -->
+                                            <h2 class="hods-timeline__title">Karypun</h2>
+                                            <!-- <p class="hods-timeline__by">by </p> -->
+                                            <p class="hods-timeline__date">
+                                                <time class="hods-date-time" datetime="2023-11-19">19 November 2023</time>
+                                            </p>
+                                            <p class="hods-timeline__description">This is a description of the event.</p>
+                                        </div>
+                                    </div>
+                                    <!-- ////// NOTES TIMELINE - END ////// -->
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- //////////////////////////////// REDACTION LOG - END //////////////////////////////// -->
+        </div>
+    </div>
+</div>
