@@ -13,9 +13,18 @@
 <style>
 
 .fa-triangle-exclamation {
-    color:#d4351c; font-size:19px
-
+    color:#d4351c; 
 }
+
+ .fa-chevron-down, .fa-triangle-exclamation {
+    font-size:19px
+}
+
+.fa-comment, .fa-star,  {
+    font-size:19px
+}
+
+             
 .govuk-tag--red {
 
     background: #f4cdc6;
@@ -62,6 +71,17 @@ margin-bottom:25px
 }
 
 .filterSetBox:after {
+             content: '';
+            position: absolute;
+            right: 0;
+            top: 20%; /* (100% - 75%) / 2 to center the line vertically */
+            width: 1px; /* Adjust width of the line */
+            height: 60%; /* 75% of the height of the parent box */
+            background-color: #505a5f   ; /* Adjust color as needed */
+}
+
+.addRightLine {position:relative}
+.addRightLine:after {
              content: '';
             position: absolute;
             right: 0;
@@ -311,10 +331,10 @@ margin-bottom:25px
                             <td class="govuk-table__cell">Retrieve core details</td>
                             <td class="govuk-table__cell">First hearing</td>
                             <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold">21/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
-                            <td class="govuk-table__cell  ">Open</td>
-                            <td class="govuk-table__cell bold"></td>
-                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down"></i></td>
+                            <td class="govuk-table__cell bold addRightLine" >21/05/24 <i class="fa-solid fa-triangle-exclamation"></i></td>
+                            <td class="govuk-table__cell  " style=""><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <tr class="expandable-panel">
                             <td colspan="11">
@@ -344,10 +364,10 @@ margin-bottom:25px
                             <td class="govuk-table__cell">28 Day PCD Review</td>
                             <td class="govuk-table__cell">First hearing</td>
                             <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold">14/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
-                            <td class="govuk-table__cell ">Open</td>
-                            <td class="govuk-table__cell bold"></td>
-                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down"></i></td>
+                            <td class="govuk-table__cell bold addRightLine">14/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
+                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <!-- dropdown panel include goes here -->
                                {% include "../includes/panels/panel2.html" %}
@@ -372,10 +392,10 @@ margin-bottom:25px
                             <td class="govuk-table__cell">Retrieve core details</td>
                             <td class="govuk-table__cell">First hearing</td>
                             <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold">21/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
-                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="font-size:19px"></i></td>
-                            <td class="govuk-table__cell bold"><i class="fa-regular fa-star" style="font-size:19px"></i></td>
-                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="font-size:19px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine">21/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <tr class="expandable-panel">
                             <td colspan="11">
