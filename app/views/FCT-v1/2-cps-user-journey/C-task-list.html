@@ -11,8 +11,7 @@
 <!-- remove if you get rid of the gov width container -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <style>
-
-.fa-triangle-exclamation {
+    .fa-triangle-exclamation {
     color:#d4351c; 
 }
 
@@ -139,13 +138,31 @@ margin-bottom:25px
 });
 </script>
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third" id="">
-        <h1 class="govuk-heading-l">McLove, Eoin</h1>
-    </div>
-    <div class="govuk-grid-column-two-thirds-quarters" style="display:flex;  align-items: center;
+    <div style="margin-top:25px">
+        <div class="govuk-grid-column-one-third" id="">
+            <h1 class="govuk-heading-m">McLove, Eoin</h1>
+        </div>
+        <div class="govuk-grid-column-two-thirds-quarters" style="display:flex;  align-items: center;
 " id="">
-        <div class="taskCountBar">
-            <p style="font-size:16px">Task count</p>
+            <div class="taskCountBar" style="margin-left:90px">
+                <p style="font-size:16px;margin-bottom:0">Task count</p>
+            </div>
+            <div class="taskOverViewContent" style="display:flex;margin-left:auto; width:80%">
+                <div class="govuk-grid-column-one-quarter taskCountItems" style="border: 2px solid black; display:flex;   align-items: center;
+  justify-content: center;">
+                    <i class="fa-solid fa-triangle-exclamation" style=""></i> <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p><p style="font-size:16px; font-weight:700; margin-left:auto; margin-bottom:0"> 22</p>
+                </div>
+                <div class="govuk-grid-column-one-quarter taskCountItems">
+                    <p>Operation:
+                </p>
+                </div>
+                <div class="govuk-grid-column-one-quarter taskCountItems">
+                    <p>Reviewing lawyer:</p>
+                </div>
+                <div class="govuk-grid-column-one-quartertaskCountItems ">
+                    <p>Casework assistant:</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -173,7 +190,6 @@ margin-bottom:25px
                 </li>
             </ul>
             <div class="govuk-tabs__panel" id="past-day">
-        
                 <div>
                     <div class="govuk-grid-column-one-quarter" style="padding-left:0" id="">
                         <div class="govuk-form-group mb15 ">
@@ -182,7 +198,6 @@ margin-bottom:25px
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="">
                         <div class="govuk-form-group mb15">
-       
                             <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                 <option value="published" selected>Area</option>
                                 <option value="updated">1</option>
@@ -193,7 +208,6 @@ margin-bottom:25px
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="">
                         <div class="govuk-form-group mb15">
-           
                             <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                 <option value="published" selected>Unit</option>
                                 <option value="updated">1</option>
@@ -204,7 +218,6 @@ margin-bottom:25px
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="">
                         <div class="govuk-form-group mb15">
-            
                             <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                 <option value="published" selected>Court</option>
                                 <option value="updated">1</option>
@@ -217,7 +230,6 @@ margin-bottom:25px
                 <div>
                     <div class="govuk-grid-column-one-quarter" style="padding-left: 0;" id="">
                         <div class="govuk-form-group mb15">
-            
                             <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                 <option value="published" selected>Task</option>
                                 <option value="updated">1</option>
@@ -331,10 +343,10 @@ margin-bottom:25px
                             <td class="govuk-table__cell">Retrieve core details</td>
                             <td class="govuk-table__cell">First hearing</td>
                             <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold addRightLine" >21/05/24 <i class="fa-solid fa-triangle-exclamation"></i></td>
+                            <td class="govuk-table__cell bold addRightLine">21/05/24 <i class="fa-solid fa-triangle-exclamation"></i></td>
                             <td class="govuk-table__cell  " style=""><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
-                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <tr class="expandable-panel">
                             <td colspan="11">
@@ -359,18 +371,18 @@ margin-bottom:25px
                             </td>
                             <td class="govuk-table__cell">45AA209820/1</td>
                             <td class="govuk-table__cell bold">McLove, Eoin</td>
-                              <td class="govuk-table__cell "> <strong class="govuk-tag govuk-tag--red" style="">2 Active</strong></td>
+                            <td class="govuk-table__cell "> <strong class="govuk-tag govuk-tag--red" style="">2 Active</strong></td>
                             <td class="govuk-table__cell bold">01/06/24</td>
                             <td class="govuk-table__cell">28 Day PCD Review</td>
                             <td class="govuk-table__cell">First hearing</td>
                             <td class="govuk-table__cell">Hull MC / ELE</td>
                             <td class="govuk-table__cell bold addRightLine">14/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
-                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
-                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <!-- dropdown panel include goes here -->
-                               {% include "../includes/panels/panel2.html" %}
+                        {% include "../includes/panels/panel2.html" %}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
                                 <!-- <div class="govuk-form-group"> -->
@@ -395,7 +407,7 @@ margin-bottom:25px
                             <td class="govuk-table__cell bold addRightLine">21/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
-                          <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <tr class="expandable-panel">
                             <td colspan="11">
