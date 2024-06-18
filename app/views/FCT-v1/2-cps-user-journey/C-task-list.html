@@ -14,17 +14,21 @@
 
 <style>
 
-.taskCountBar {margin-left:90px
+.taskCountBar {margin-left:110px
 }
 
 .taskOverViewContent {
     display:flex;margin-left:auto; width:80%
 }
 
+.taskOverViewContentPanel {
+    display:flex;margin-left:auto; 
+}
+
 .taskCountItems {
     border: 2px solid black; display:flex;   align-items: center;
   justify-content: center;
-  height:40px;
+  height:50px;
   margin-right:15px;
 }
 
@@ -160,11 +164,11 @@ margin-bottom:25px
 });
 </script>
 <div class="govuk-grid-row">
-    <div style="margin-top:25px">
-        <div class="govuk-grid-column-one-third" id="">
-            <h1 class="govuk-heading-m">McLove, Eoin</h1>
+    <div style="margin-top:15px; display:flex; align-items: center" >
+        <div class="govuk-grid-column-one-third" style="" id="" >
+            <h1 class="govuk-heading-m" style="margin-bottom:0">McLove, Eoin</h1>
         </div>
-        <div class="govuk-grid-column-two-thirds-quarters" style="display:flex;  align-items: center;
+        <div class="govuk-grid-column-two-thirds-quarters" style="display:flex;  align-items: center; width:100%
 " id="">
             <div class="taskCountBar" style="">
                 <p style="font-size:16px;margin-bottom:0">Task count</p>
@@ -201,7 +205,7 @@ margin-bottom:25px
 </div>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-        <div class="govuk-tabs" data-module="govuk-tabs">
+        <div class="govuk-tabs" data-module="govuk-tabs" style="margin-top:25px">
             <h2 class="govuk-tabs__title">
                 Contents
             </h2>
