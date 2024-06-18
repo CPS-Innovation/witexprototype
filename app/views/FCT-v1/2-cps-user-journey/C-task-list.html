@@ -10,8 +10,30 @@
 <!-- <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" /> -->
 <!-- remove if you get rid of the gov width container -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+
 <style>
-    .fa-triangle-exclamation {
+
+.taskCountBar {margin-left:90px
+}
+
+.taskOverViewContent {
+    display:flex;margin-left:auto; width:80%
+}
+
+.taskCountItems {
+    border: 2px solid black; display:flex;   align-items: center;
+  justify-content: center;
+  height:40px;
+  margin-right:15px;
+}
+
+.taskcCountItemNumber {
+    font-size:16px; font-weight:700; margin-left:auto; margin-bottom:0
+}
+
+
+.fa-triangle-exclamation {
     color:#d4351c; 
 }
 
@@ -19,7 +41,7 @@
     font-size:19px
 }
 
-.fa-comment, .fa-star,  {
+.fa-comment, .fa-star, .fa-circle-exclamation {
     font-size:19px
 }
 
@@ -144,24 +166,35 @@ margin-bottom:25px
         </div>
         <div class="govuk-grid-column-two-thirds-quarters" style="display:flex;  align-items: center;
 " id="">
-            <div class="taskCountBar" style="margin-left:90px">
+            <div class="taskCountBar" style="">
                 <p style="font-size:16px;margin-bottom:0">Task count</p>
             </div>
-            <div class="taskOverViewContent" style="display:flex;margin-left:auto; width:80%">
-                <div class="govuk-grid-column-one-quarter taskCountItems" style="border: 2px solid black; display:flex;   align-items: center;
-  justify-content: center;">
-                    <i class="fa-solid fa-triangle-exclamation" style=""></i> <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p><p style="font-size:16px; font-weight:700; margin-left:auto; margin-bottom:0"> 22</p>
+            <div class="taskOverViewContent" style="">
+                <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+                    <i class="fa-solid fa-triangle-exclamation" style=""></i>
+                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p>
+                    <p class="taskcCountItemNumber "> 22</p>
                 </div>
-                <div class="govuk-grid-column-one-quarter taskCountItems">
-                    <p>Operation:
-                </p>
+
+                  <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+                    
+                    <i class="fa-solid fa-circle-exclamation" style="color:#ffdd00"></i>
+                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Overdue</p>
+                    <p class="taskcCountItemNumber "> 2</p>
                 </div>
-                <div class="govuk-grid-column-one-quarter taskCountItems">
-                    <p>Reviewing lawyer:</p>
+
+                  <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+                     <i class="fa-solid fa-circle-exclamation" style="color:#1d70b8; "></i>
+                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due</p>
+                    <p class="taskcCountItemNumber "> 3</p>
                 </div>
-                <div class="govuk-grid-column-one-quartertaskCountItems ">
-                    <p>Casework assistant:</p>
+
+                  <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+                    <!-- <i class="fa-solid fa-triangle-exclamation" style=""></i> -->
+                    <p class="" style="font-size:16px;  margin-bottom:0">Due soon</p>
+                    <p class="taskcCountItemNumber "> 14</p>
                 </div>
+
             </div>
         </div>
     </div>
