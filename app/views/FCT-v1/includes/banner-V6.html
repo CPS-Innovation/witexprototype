@@ -1,4 +1,12 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
 <style>
+
+header.govuk-header .govuk-header__container {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
  main.case-files {padding-top:0 !important}
  #secondary-navigation ul li a {
     color: #1d70b8;
@@ -138,18 +146,18 @@
 
 
 
-<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %} style=" border-bottom:10px solid #1d70b8">
     <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
         <div style="display:flex">
             <div class="govuk-header__logo">
                 <a href="../2-cps-user-journey/A-dashboard" class="govuk-header__link govuk-header__link--homepage">
-                    <span class="govuk-header__logotype">
-                        <span class="govuk-header__logotype-text caseReviewHeader">CPS</span>
-                        <span class="govuk-header__logotype-text caseReviewHeaderSub">Casey McCase Face</span>
+                    <span class="govuk-header__logotype" style="height:30px">
+                        <span class="moj-header__link moj-header__link--organisation-name" style="font-size:30px">CPS</span> 
+                        <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span>
                     </span>
                 </a>
             </div>
-            <div class="govuk-header__logo right">
+<!--             <div class="govuk-header__logo right">
                 <a href="" class="username">user_name_1983</a>
                 <div class="user-settings">
                     <div class="govuk-form-group">
@@ -224,7 +232,7 @@
                         <button type="button" class="govuk-button govuk-!-margin-bottom-3" onclick="location.href='../../prototype-admin/clear-data';">Clear data</button>
                     </div>                
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </header>

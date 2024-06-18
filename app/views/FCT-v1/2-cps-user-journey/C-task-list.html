@@ -1,8 +1,7 @@
 {% extends "layoutCPS-NEW-CASEFILE.html" %}
 {% block header %}
-{% include "includes/cps/v12/banner.html" %}
-{% include "includes/cps/nav/mainNav.html" %}
-{% include "includes/cps/nav/homeNav.html" %}
+{% include "../includes/banner-V6.html" %}
+
 {% endblock %}
 {% block beforeContent %}
 {% endblock %}
@@ -136,6 +135,8 @@ margin-bottom:25px
 
 .bold {font-weight: 700}
 
+nav {padding:0 !important}
+
 
 </style>
 <script>
@@ -160,6 +161,7 @@ margin-bottom:25px
 
     $(document).ready(function() {
     $('#global-navigation').show();
+     $('.my-tasks').addClass('current');
 
 });
 </script>
@@ -449,7 +451,7 @@ margin-bottom:25px
                             </td>
                             <td class="govuk-table__cell">45AA209820/1</td>
                             <td class="govuk-table__cell bold">Doe, J. McGregor,C</td>
-                            <td class="govuk-table__cell">Expired</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Expired</strong></td>
                             <td class="govuk-table__cell bold">22/05/24</td>
                             <td class="govuk-table__cell">Retrieve core details</td>
                             <td class="govuk-table__cell">First hearing</td>
