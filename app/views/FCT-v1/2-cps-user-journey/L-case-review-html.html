@@ -28,7 +28,7 @@
                 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
                 {{ govukBackLink({
                 text: "Back",
-                href: "./index2"
+                href: "javascript:history.back()"
                 }) }}
             </div>
         </div>
@@ -74,45 +74,44 @@
     </div>
     <div class="govuk-grid-column-two-thirds" style="">
         <div style="margin-left:30px">
-        <div class="govuk-form-group">
-            <form action="L-case-review-html-2" method="get" class="form" style="">
-            <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        Select code test or early advice
-                    </h1>
-                </legend>
-                <div class="govuk-radios" data-module="govuk-radios">
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="codeTest" name="codeTestEarly" type="radio" value="Full code test">
-                        <label class="govuk-label govuk-radios__label" for="codeTest">
-                            Full code test
-                        </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="codeTest-2" name="codeTestEarly" type="radio" value="Threshold test">
-                        <label class="govuk-label govuk-radios__label" for="codeTest-2">
-                            Threshold test
-                        </label>
-                    </div>
-                    <div class="govuk-radios__divider">or</div>
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="codeTest-6" name="codeTestEarly" type="radio" value="Early advice">
-                        <label class="govuk-label govuk-radios__label" for="codeTest-6">
-                            Early advice
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-        <div class="govuk-button-group">
-    <button type="submit" class="govuk-button" data-module="govuk-button">
-        Continue
-    </button>
-    <a class="govuk-link" href="#">Save and exit</a>
-</div>
-    </form>
-
+            <div class="govuk-form-group">
+                <form action="L-case-review-html-2" method="get" class="form" style="">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h1 class="govuk-fieldset__heading">
+                                Select code test or early advice
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="codeTest" name="codeTestEarly" type="radio" value="Full code test">
+                                <label class="govuk-label govuk-radios__label" for="codeTest">
+                                    Full code test
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="codeTest-2" name="codeTestEarly" type="radio" value="Threshold test">
+                                <label class="govuk-label govuk-radios__label" for="codeTest-2">
+                                    Threshold test
+                                </label>
+                            </div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="codeTest-6" name="codeTestEarly" type="radio" value="Early advice">
+                                <label class="govuk-label govuk-radios__label" for="codeTest-6">
+                                    Early advice
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+            </div>
+            <div class="govuk-button-group">
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+                <a class="govuk-link" href="#">Save and exit</a>
+            </div>
+            </form>
         </div>
     </div>
 </div>

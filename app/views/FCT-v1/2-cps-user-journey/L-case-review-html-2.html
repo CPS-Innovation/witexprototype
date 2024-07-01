@@ -139,7 +139,7 @@ document.getElementById('editor').addEventListener('input', function() {
                 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
                 {{ govukBackLink({
                 text: "Back",
-                href: "./index2"
+                href: "javascript:history.back()"
                 }) }}
             </div>
         </div>
