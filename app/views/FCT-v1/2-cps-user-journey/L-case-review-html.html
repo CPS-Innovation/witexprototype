@@ -20,6 +20,19 @@
 
 });
 
+// sets the time in the last saved bit
+     $(document).ready(function() {
+function updateTime() {
+            const now = new Date();
+            now.setSeconds(now.getSeconds() - 10); // Subtract 10 seconds
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('time-display').textContent = timeString;
+        }
+
+        updateTime(); // Initial call to display time immediately
+        setInterval(updateTime, 15000); // Update every 15 seconds
+        });
+
 </script>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-third" style="" id="">
@@ -58,7 +71,9 @@
         <div style="display: flex; align-items: center; margin-left: auto; ">
             <p><a href="">Case action plans</a></p>
             <p style="margin-left: 20px;"><a href="">Case materials</a></p>
-            <p style="margin-left: 20px;">Autosave is on. Last saved 15:23.06</p>
+            <p style="margin-left: 20px;">Autosave is on.</p>
+            <p style="padding-left:5px"> Last saved</p>
+            <p style="padding-left:5px" id="time-display"></p>
         </div>
     </div>
 </div>
