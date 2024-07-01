@@ -1,0 +1,195 @@
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+    {% include "../includes/banner-V2.html" %}
+{% endblock %}
+{% block beforeContent %}
+    {% include "../includes/modals/redaction-log.html" %}
+    {% include "../includes/modals/redaction-history.html" %}
+    {% include "../includes/modals/redaction-over.html" %}
+    {% include "../includes/modals/report-a-problem.html" %}
+    {% include "../includes/modals/search.html" %}
+    {% include "../includes/modals/view-redactions.html" %}
+    {% include "../includes/modals/feedback.html" %}
+    {% include "../includes/modals/feedback-survey.html" %}
+    {% include "../includes/modals/notes.html" %}
+    {% include "../includes/modals/notes-new.html" %}
+    {% include "../includes/modals/case-action-plan.html" %}
+    {% include "../includes/modals/case-action-plan-2.html" %}
+    {% include "../includes/modals/case-action-plan-builder.html" %}
+    {% include "../includes/modals/confirmation.html" %}
+    {% include "../includes/modals/redact-all.html" %}
+    {% include "../includes/modals/discarded.html" %}
+    {% include "../includes/modals/search-redaction.html" %}
+    {% include "../includes/modals/search-suggestions.html" %}
+    {% include "../includes/modals/document-history.html" %}
+    {% include "../includes/modals/confirmation-Document.html" %}
+    {% include "../includes/modals/confirmation-Suggested.html" %}
+    {% include "../includes/modals/redaction-log-Dummy.html" %}
+    {% include "../includes/modals/rename.html" %}
+    {% include "../includes/modals/move-document.html" %}
+    {% include "../includes/modals/move-multiple-documents.html" %}
+    {% include "../includes/modals/confirmation-Reorder.html" %}
+    {% include "../includes/modals/remove-Pages.html" %}
+    {% include "../includes/modals/confirmation-Remove.html" %}
+    {% include "../includes/modals/warning-Notes.html" %}
+{% endblock %}
+{% block content %}
+
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- remove if you get rid of the gov width container -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% include "../includes/new-script.html" %}
+
+<script>
+
+    $(".success-banner").hide();
+
+    function showHideRedaction() {
+        setTimeout(function () {
+            redactionSummary()
+        }, 0)
+        setTimeout(function () {
+            redactionSummary()
+            $("#saving-panel").hide();
+            $(".success-banner").show();
+            $("#redaction-log-button").removeClass('govuk-button--disabled').removeAttr('aria-disabled');
+            document.getElementById("redaction-log-button").disabled = false;
+            // $("#redaction-log").show()
+            // addRedactionLogRows()
+        }, 5000)
+        setTimeout(function () {
+            $(".success-banner").slideUp();
+        }, 10000)
+        setTimeout(function () {
+            $(".success-banner").slideUp();
+        }, 15000)
+    }
+
+    function topFunction() {
+        $("html, body").animate({ scrollTop: 0 }, {
+            duration: 500,
+            easing: "easeInOutExpo"
+        });
+    }
+
+</script>
+
+<div class="search-bar-wrapper case-file-page">
+    <div class="govuk-width-container">
+        <div class="govuk-phase-banner header new-V3">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-quarter">
+                    <div id="searchFormTest" class="searchForm" method="get">
+                        <label class="govuk-label--s govuk-label" for="searchURNModal" style="">Search case</label>
+                        <div class="searchForm-inner">
+                            <input class="govuk-input" id="searchURNModal" name="searchURNModal" type="text" aria-describedby="FirstName-hint" value="" placeholder="Search case..." />
+                            <div class="bba"><button class="search searchModal modalButton" type="submit" id="openSearch" onClick="openModal(); searchTerm();"></button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-three-quarters">
+
+                    {% include "../includes/notifications.html" %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+
+    <!-- ////////////////////////////////////////////// STICKY BAR - PART 1 - START ////////////////////////////////////////////// -->
+    <div class="govuk-grid-column-one-quarter" id="left-column-top">
+
+        <div class="govuk-phase-banner header new-V2">
+
+        </div>
+
+        <div id="navbar" class="navbar">
+            <div class="govuk-width-container">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-quarter">
+                        <div class="case-info">
+                            <h1 class="govuk-heading-m">McLove, Eoin</h1>
+                            <table class="govuk-table">
+                                <tbody>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell govuk-body-s wrapLongFilenamesCPS openMe" scope="row">
+                                            {% if data['searchURN'] %}
+                                                <a href="" class="show-case" data-doc="PRE_CONS_D.pdf" data-count="2" onclick="return pageCounter()" data-page="9">{{ data['searchURN'] }}/1</a>
+                                            {% else %}
+                                                <a href="" class="show-case" data-doc="PRE_CONS_D.pdf" data-count="2" onclick="return pageCounter()" data-page="9">45AA209820/1</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cap-wrapper">
+                            <button id="case-action-plan" class="govuk-button" data-module="govuk-button" type="button" onClick="openCaseActionBuilderModal()">
+                                <span>Case action plan</span>
+                            </button>
+                        </div>
+                        <div class="alert tooltip">
+                            {% include "../includes/notifications-sticky.html" %}
+                        </div>
+                        <div id="searchFormTest2" class="searchForm" method="get">
+                            <div class="search-button">Search case</div>
+                            <label class="govuk-label--s govuk-label" for="searchURNModal2" style="">Search case</label>
+                            <div class="searchForm-inner">
+                                <input class="govuk-input" id="searchURNModal2" name="searchURNModal2" type="text" aria-describedby="FirstName-hint" value="" placeholder="" />
+                                <div class="bba v2"><button class="search searchModal modalButton" type="submit" id="openSearch" onClick="openModal(); searchTerm2();">Search</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////// STICKY BAR - PART 1 - END ////////////////////////////////////////////// -->
+
+    <!-- ////////////////////////////////////////////// DOCUMENT COLUMN - START ////////////////////////////////////////////// -->
+    <div class="govuk-grid-column-three-quarters document-holder" id="right-column">
+
+        <div id="document-top"></div>
+
+        <div class="file1 weirdFix1400">
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <!-- ====== STICKY BAR - PART 2 - START ====== -->
+                <div id="navbar2" class="">
+                    <div class="page-counter"><p>Page: <span>1/<strong>2</strong></span></p></div>
+                    <div class="govuk-width-container">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+                                {% include "../includes/banners/search-banner-tab-heading.html" %}
+                                <ul class="govuk-tabs__list navbar sticky-tabs" id="tab-list">
+                                    <li class="arrow left"><a href="#">tab left</a></li>
+                                    <li class="arrow right"><a href="#">tab right</a></li>
+                                    {% include "../includes/banners/search-banner-tab-scroll.html" %}
+                                    <li class="arrow down"><a href="#">tab down</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== STICKY BAR - PART 2 - END ====== -->
+
+                <div id="docCopy" class="docCopy old-verison">
+                    <h2 class="govuk-heading-m">View your documents</h2>
+                    <p>Search or choose a file to start reviewing documents</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////// DOCUMENT COLUMN - END ////////////////////////////////////////////// -->
+
+</div>
+
+<div class="govuk-grid-row">
+    {% include "../includes/documents/case-1.html" %}
+</div>
+
+{% endblock %}

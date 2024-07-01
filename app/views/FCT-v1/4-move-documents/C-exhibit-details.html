@@ -1,0 +1,104 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+{% block header %}
+    {% include "../includes/banner-V1.html" %}
+{% endblock %}
+{% block beforeContent %}
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <div class="wrapper gov-pages">
+            <h1 class="govuk-heading-l" style="">
+                Enter the exhibit details
+            </h1>
+            <div id="changeCategory-hint" class="govuk-hint">
+                <p class="govuk-body">You're entering exhibit details for <mark class="hods-highlight"><strong>Exhibit - 1</strong></mark></p>
+            </div>
+
+            <form method="get" action="D-document-name">            
+                <fieldset>
+<!--                     <div class="govuk-form-group">
+                        <label class="govuk-label" for="documentExhibit-Name">Item name</label>
+                        <input class="govuk-input govuk-!-width-one-half" id="documentExhibit-Name" name="documentExhibit-Name" type="text">
+                    </div> 
+ -->                     
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="documentExhibit-Reference">Exhibit reference</label>
+                        <input class="govuk-input govuk-!-width-one-half" id="documentExhibit-Reference" name="documentExhibit-Reference" type="text">
+                    </div>  
+
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <label class="govuk-label" for="documentExhibit-Witness">Select existing producer or witness</label>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="documentExhibit-Witness-1" name="documentExhibit-Witness" type="radio" value="PC Blaynee">
+                                    <label class="govuk-label govuk-radios__label" for="documentExhibit-Witness-1">PC Blaynee</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="documentExhibit-Witness-2" name="documentExhibit-Witness" type="radio" value="PC Jones">
+                                    <label class="govuk-label govuk-radios__label" for="documentExhibit-Witness-2">PC Jones</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="documentExhibit-Witness-3" name="documentExhibit-Witness" type="radio" value="Lucy Doyle">
+                                    <label class="govuk-label govuk-radios__label" for="documentExhibit-Witness-3">Lucy Doyle</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="documentExhibit-Witness-4" name="documentExhibit-Witness" type="radio" value="Shelagh Mclove">
+                                    <label class="govuk-label govuk-radios__label" for="documentExhibit-Witness-4">Shelagh Mclove</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="documentExhibit-Witness-5" name="documentExhibit-Witness" type="radio" value="Geoff McLove">
+                                    <label class="govuk-label govuk-radios__label" for="documentExhibit-Witness-5">Geoff McLove</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="documentExhibit-Witness-Other" name="documentExhibit-Witness" type="radio" value="Other" data-aria-controls="conditional-Statements">
+                                    <label class="govuk-label govuk-radios__label" for="documentExhibit-Witness-Other">Other producer or witness</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Statements">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="documentExhibit-Witness-Other-Name"><span class="govuk-hint">Enter name</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="documentExhibit-Witness-Other-Name" name="documentExhibit-Witness-Other-Name" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+<!--                     <div class="govuk-form-group">
+                        <label class="govuk-label" for="documentExhibit-Witness">Select existing producer or witness</label>
+                        <select class="govuk-select" id="documentExhibit-Witness" name="documentExhibit-Witness">
+                            <option value="PC Blaynee">PC Blaynee</option>
+                            <option value="PC Jones">PC Jones</option>
+                            <option value="Lucy Doyle">Lucy Doyle</option>
+                            <option value="Shelagh Mclove">Shelagh Mclove</option>
+                            <option value="Geoff McLove">Geoff McLove</option>
+                        </select>
+                    </div>                    
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="documentExhibit-Produced">Produced by</label>
+                        <input class="govuk-input govuk-!-width-one-half" id="documentExhibit-Produced" name="documentExhibit-Produced" type="text">
+                    </div>  
+ -->                        
+                </fieldset>
+                <button type="submit" class="govuk-button" style="">Continue</button>
+                <button type="button" onclick="location.href='../1-new-designs/C-casefile-1.html';" class="non-button margin-left" id="cancelPageLoad">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+        <div class="image-holder">
+            {% if data['scenario'] == 'one' %}
+                <img src="../../../public/files/Asset-Rec-PREVIEW.png" alt="MG11 - 1 - Preview" class="">
+            {% elseif data['scenario'] == 'two' %}
+                <img src="../../../public/files/MG11_1-PREVIEW.png" alt="MG11 - 1 - Preview" class="">
+            {% elseif data['scenario'] == 'three' %}
+                <img src="../../../public/files/MG12_1-PREVIEW.png" alt="Exhibit - 1 - Preview" class="">
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

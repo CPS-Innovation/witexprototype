@@ -1,0 +1,840 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+
+{% block pageTitle %}
+  Case materials – {{ serviceName }} – Prototype
+{% endblock %}
+
+{% block header %}
+    {% include "../../includes/banner-V6.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div id="mySidenav" class="govuk-width-container sidenav">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds" style="padding-left:50px;">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <form method="" novalidate>
+                {{ govukInput({
+                    label: {
+                    text: "What is the new name of your document?",
+                    isPageHeading: true,
+                    classes: "govuk-label--m"
+                    },
+                    hint: {
+                      html: "<p class='govuk-body'>You're changing the document name from <mark class='hods-highlight'><strong>Stmt Shelagh</strong></mark></p>"
+                    },     
+                    id: "renamedMaterial",
+                    name: "renamedMaterial",
+                    value: data.renameMaterial
+                }) }}
+
+                {{ govukButton({
+                    text: "Confirm",
+                    href: "G-case-materials-renamed"
+                }) }}
+            </form> 
+        </div>
+    </div>   
+</div>
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Case URN: 45AA209820/1</h1>
+      <p class="govuk-body-m">
+        Defendant name: McLove, E
+        <br>
+        <a href="#" class="govuk-link govuk-link--no-visited-state">View case history</a>
+      </p>  
+    </div>    
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">  
+      <form novalidate method="post">
+        <article class="moj-ticket-panel" aria-label="Sub navigation 1">
+          <section class="moj-ticket-panel__content moj-ticket-panel__content--blue" aria-label="Section 1">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Summary</h2>              
+              <p class="govuk-body govuk-!-margin-bottom-2 govuk-!-font-weight-bold">
+                MG6D cannot be found
+              </p>           
+              <p class="govuk-body govuk-!-margin-bottom-1">
+                <a class="govuk-link govuk-link--no-visited-state" href="#">Create action plan</a>
+              </p>
+            </section>
+        </article>
+
+        <div class="govuk-button-group govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+          {{ govukButton({
+            text: "Change category",
+            classes: "govuk-button--secondary",
+            href: "E-change-category"
+          }) }}
+
+          {{ govukButton({
+            text: "Change status",
+            classes: "govuk-button--secondary",
+            href: "C-change-status"
+          }) }}
+        </div>
+
+         <table class="govuk-table" data-module="moj-multi-select moj-sortable-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">4 documents need to be reviewed</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col"></th>
+              <th class="govuk-table__header" scope="col" aria-sort="none">Document</th>
+              <th class="govuk-table__header" scope="col" aria-sort="none">Category</th>
+              <th class="govuk-table__header" scope="col" aria-sort="none">Status</th>
+              <th class="govuk-table__header" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <!--Issue with EM2-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doca">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialdoca" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialdoca">
+                    <span class="govuk-visually-hidden">Select EM2 Photo Image</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocumenta"></span>
+                <a onclick="getImga()" href="#" class="govuk-link govuk-link--no-visited-state">EM2 Photo Image</a>
+              </td>
+              <td class="govuk-table__cell">Exhibits</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--Issue with EM3-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="docb">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialdocb" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialdocb">
+                    <span class="govuk-visually-hidden">Select EM3 photograph of defendant</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocumentb"></span>
+                <a onclick="getImgb()" href="#" class="govuk-link govuk-link--no-visited-state">EM3 photograph of defendant</a>
+              </td>
+              <td class="govuk-table__cell">Exhibits</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--Issue with MG0-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="docc">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialdocc" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialdocc">
+                    <span class="govuk-visually-hidden">Select MG0 multimedia link (MCLOVE)</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocumentc"></span>
+                <a onclick="getImgc()" href="#" class="govuk-link govuk-link--no-visited-state">MG0 multimedia link (MCLOVE)</a>
+              </td>
+              <td class="govuk-table__cell">Exhibits</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a><!--<br><br><a onclick="getImgc()" href="#">Check link</a>--></td>
+            </tr>
+            <!--Issue with MG4D-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="docd">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialdocd" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialdocd">
+                    <span class="govuk-visually-hidden">Select MG4D</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocumentd"></span>
+                <a onclick="getImgd()" href="#" class="govuk-link govuk-link--no-visited-state">MG4D</a>
+              </td>
+              <td class="govuk-table__cell">Exhibits</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        {{ govukButton({
+          text: "Create action plan",
+          classes: "govuk-button",
+          href: "#"
+        }) }}
+        
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <table class="govuk-table" data-module="moj-multi-select moj-sortable-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col"></th>
+              <th class="govuk-table__header" scope="col" aria-sort="none">Document</th>
+              <th class="govuk-table__header" scope="col" aria-sort="none">Category</th>
+              <th class="govuk-table__header" scope="col" aria-sort="none">Status</th>
+              <th class="govuk-table__header" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <!--Ex SM1 photo of Knife-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc1">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialSM1" value="Ex SM1 photo of Knife">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialSM1">
+                    <span class="govuk-visually-hidden">Select Ex SM1 photo of Knife</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument1"></span>
+                <a onclick="getImg1()" href="#" class="govuk-link govuk-link--no-visited-state">Ex SM1 photo of Knife</a>
+              </td>
+              <td class="govuk-table__cell">Unknown</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a href="rename?id=Ex SM1 photo of Knife">Rename</a></td>
+            </tr>
+            <!--MG0-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc2">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG0" value="MG0">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG0">
+                    <span class="govuk-visually-hidden">Select MG0</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument2"></span>
+                <a onclick="getImg2()" href="#" class="govuk-link govuk-link--no-visited-state">MG0</a>
+              </td>
+              <td class="govuk-table__cell">Exhibits</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG11 Lucy Doyle 01 June 2020-->
+            <tr class="govuk-table__row govuk-table__row--selected">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc3">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG11" value="MG11 Lucy Doyle 01 June 2020">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG11">
+                    <span class="govuk-visually-hidden">Select MG11 Lucy Doyle 01 June 2020</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument3"></span>
+                <a onclick="getImg3()" href="#" class="govuk-link govuk-link--no-visited-state">MG11 Lucy Doyle 01 June 2020</a>
+              </td>   
+              <td class="govuk-table__cell">Statements</td>  
+              <td class="govuk-table__cell">Evidential</td>    
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG11 Shelagh McLove 01 June 2020-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc4">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG11b" value="MG11 Shelagh McLove 01 June 2020">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG11b">
+                    <span class="govuk-visually-hidden">Select Stmt Shelagh</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument4"></span>
+                <a onclick="getImg4()" href="#" class="govuk-link govuk-link--no-visited-state">Stmt Shelagh</a>                
+              </td>
+              <td class="govuk-table__cell">Statements</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>      
+            <!--MG12-->
+            <tr class="govuk-table__row govuk-table__row--selected">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc5">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG12" value="MG12">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG12">
+                    <span class="govuk-visually-hidden">Select MG12</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument5"></span>
+                <a onclick="getImg5()" href="#" class="govuk-link govuk-link--no-visited-state">MG12</a>
+              </td>   
+              <td class="govuk-table__cell">Exhibits</td>   
+              <td class="govuk-table__cell">Evidential</td>                 
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG3-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc6">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG3" value="MG3">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG3">
+                    <span class="govuk-visually-hidden">Select MG3</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument6"></span>
+                <a onclick="getImg6()" href="#" class="govuk-link govuk-link--no-visited-state">MG3</a>
+              </td>
+              <td class="govuk-table__cell">Reviews</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG4-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc7">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG4" value="MG4">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG4">
+                    <span class="govuk-visually-hidden">Select MG4</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument7"></span>
+                <a onclick="getImg7()" href="#" class="govuk-link govuk-link--no-visited-state">MG4</a>
+              </td>
+              <td class="govuk-table__cell">Reviews</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG4A-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc8">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG4A" value="MG4A">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG4A">
+                    <span class="govuk-visually-hidden">Select MG4A</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument8"></span>
+                <a onclick="getImg8()" href="#" class="govuk-link govuk-link--no-visited-state">MG4A</a>
+              </td>
+              <td class="govuk-table__cell">Reviews</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG5-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc7">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG5" value="MG5">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG5">
+                    <span class="govuk-visually-hidden">MG5</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument9"></span>
+                <a onclick="getImg9()" href="#" class="govuk-link govuk-link--no-visited-state">MG5</a>
+              </td>
+              <td class="govuk-table__cell">Case overview</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG6-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc8">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG6" value="MG6">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG6">
+                    <span class="govuk-visually-hidden">Select MG6</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument10"></span>
+                <a onclick="getImg10()" href="#" class="govuk-link govuk-link--no-visited-state">MG6</a>
+              </td>
+              <td class="govuk-table__cell">Other material</td>  
+              <td class="govuk-table__cell">Evidential</td>    
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--MG6C UM1 Shelagh-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc9">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialMG6C" value="MG6C UM1 Shelagh">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialMG6C">
+                    <span class="govuk-visually-hidden">MG6C UM1 Shelagh</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument11"></span>
+                <a onclick="getImg11()" href="#" class="govuk-link govuk-link--no-visited-state">MG6C UM1 Shelagh</a>
+              </td>
+              <td class="govuk-table__cell">Other material</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>
+            <!--Previous convictions-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox" name="doc10">
+                  <input type="checkbox" class="govuk-checkboxes__input" id="materialPC" value="Previous convictions">
+                  <label class="govuk-label govuk-checkboxes__label" for="materialPC">
+                    <span class="govuk-visually-hidden">Previous convictions</span>
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell">
+                <span id="activeDocument12"></span>
+                <a onclick="getImg12()" href="#" class="govuk-link govuk-link--no-visited-state">Previous convictions</a>
+              </td>
+              <td class="govuk-table__cell">Defendant</td>
+              <td class="govuk-table__cell">Evidential</td>
+              <td class="govuk-table__cell"><a onclick="openNav()" href="#">Rename</a></td>
+            </tr>                  
+          </tbody>
+        </table>        
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Change category",
+            classes: "govuk-button--secondary",
+            href: "E-change-category"
+          }) }}
+
+          {{ govukButton({
+            text: "Change status",
+            classes: "govuk-button--secondary",
+            href: "C-change-status"
+          }) }}
+        </div>
+
+        <!-- Experimental button, "Save and return to CMS"
+        {{ govukButton({
+            text: "Save case", 
+            classes: "govuk-button",
+            href: "#"
+          }) }} -->
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <h2 class="govuk-heading-m" style="text-align:center;">View your documents</h2>
+      <!-- Documents with issues -->
+      <p id="myPa" style="display:none;"><img src='../../../public/images/files/EM2 Photo Image.png' style='width:100%;' /></p>
+      
+      <p id="myPb" style="display:none;"><img src='../../../public/images/files/EM3 photograph of defendant.png' style='width:100%;' /></p>
+
+      <p id="myPc" style="display:none;"><a href="https://www.youtube.com/watch?v=9NE7I-pjvAk" target="_blank"><img src='../../../public/images/files/MG0 multimedia link (MCLOVE).png' style='width:100%;' /></a></p>
+
+      <p id="myPd" style="display:none;">
+        <object data="../../../public/images/files/MG4D.pdf" type="application/pdf" width="100%" height="600px">
+          <p>Unable to display PDF file. <a href="../../../public/images/files/MG4D.pdf">Download</a> instead.</p>
+        </object>
+      </p>
+
+      <!-- Other documents -->
+      <p id="myP1" style="display:none;"><img src='../../../public/images/files/Ex SM1 photo of Knife.png' style='width:100%;' /></p>
+      
+      <p id="myP2" style="display:none;"><img src='../../../public/images/files/MG0 (MCLOVE).png' style='width:100%;' /></p>
+      
+      <p id="myP3" style="display:none;"><img src='../../../public/images/files/MG11 Lucy Doyle 01 June 2020.png' style='width:100%;' /></p>      
+      
+      <p id="myP4" style="display:none;">
+        <object data="../../../public/images/files/MG11 Shelagh McLove 01 June 2020.pdf" type="application/pdf" width="100%" height="600px">
+          <p>Unable to display PDF file. <a href="../../../public/images/files/MG11 Shelagh McLove 01 June 2020.pdf">Download</a> instead.</p>
+        </object>
+      </p>            
+      
+      <p id="myP5" style="display:none;"><img src='../../../public/images/files/MG12 (MCLOVE).png' style='width:100%;' /></p>
+      
+      <p id="myP6" style="display:none;">
+        <object data="../../../public/images/files/MG3.pdf" type="application/pdf" width="100%" height="600px">
+          <p>Unable to display PDF file. <a href="../../../public/images/files/MG3.pdf">Download</a> instead.</p>
+        </object>
+      </p>    
+
+      <p id="myP7" style="display:none;"><img src='../../../public/images/files/MG4.png' style='width:100%;' /></p>
+
+      <p id="myP8" style="display:none;"><img src='../../../public/images/files/MG4A.png' style='width:100%;' /></p>
+      
+      <p id="myP9" style="display:none;"><img src='../../../public/images/files/MG5 (MCLOVE).png' style='width:100%;' /></p>
+      
+      <p id="myP10" style="display:none;"><img src='../../../public/images/files/MG6 (MCLOVE).png' style='width:100%;' /></p>
+      
+      <p id="myP11" style="display:none;"><img src='../../../public/images/files/MG6C UM1 Shelagh.png' style='width:100%;' /></p>
+      
+      <p id="myP12" style="display:none;"><img src='../../../public/images/files/Previous convictions (MCLOVE).png' style='width:100%;' /></p>
+      
+      <pre id="showFiles"></pre>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts%}
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "25%";
+  //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  //document.body.style.backgroundColor = "white";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+function getImga() {
+  let text = document.getElementById("myPa").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocumenta").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImgb() {
+  let text = document.getElementById("myPb").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocumentb").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImgc() {
+  let text = document.getElementById("myPc").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocumentc").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImgd() {
+  let text = document.getElementById("myPd").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocumentd").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg1() {
+  let text = document.getElementById("myP1").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument1").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg2() {
+  let text = document.getElementById("myP2").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument2").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg3() {
+  let text = document.getElementById("myP3").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument3").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg4() {
+  let text = document.getElementById("myP4").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument4").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg5() {
+  let text = document.getElementById("myP5").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument5").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg6() {
+  let text = document.getElementById("myP6").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument6").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg7() {
+  let text = document.getElementById("myP7").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument7").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg8() {
+  let text = document.getElementById("myP8").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument8").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg9() {
+  let text = document.getElementById("myP9").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument9").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg10() {
+  let text = document.getElementById("myP10").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument10").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg11() {
+  let text = document.getElementById("myP11").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument11").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument12").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+function getImg12() {
+  let text = document.getElementById("myP12").innerHTML;
+  document.getElementById("showFiles").innerHTML = text;
+  document.getElementById("activeDocument12").innerHTML = "<span class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumenta").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentb").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentc").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocumentd").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument1").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument2").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument4").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument5").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument6").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument7").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument8").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument3").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument9").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument10").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+  document.getElementById("activeDocument11").innerHTML = "<span style='display:none;' class='moj-badge moj-badge--green'>Active</span>"
+}
+
+
+</script>
+{% endblock %}

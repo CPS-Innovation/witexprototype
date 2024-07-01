@@ -1,0 +1,905 @@
+// Header pattern
+
+html.govuk-template {
+    position: relative;
+}
+
+.username {
+    position: relative;
+    padding: 0.5em 2em 0.5em 0.5em;
+    border-radius: 5px 5px 0 0;
+    z-index: 99999;
+    &:hover, &:active, &:focus {
+        cursor: pointer;
+    }
+    &:after {
+        content: '';
+        width: 0px;
+        height: 0px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid white;
+        position: absolute;
+        right: 8px;
+        top: 13px;
+    }
+    &.open {
+        background: $govuk-link-colour;
+        &:after {
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: none;
+            border-bottom: 8px solid white;
+        }
+    }
+}
+
+.notifications-panel-wrapper, .notifications-panel-wrapper-STICKY, .tasks-panel-wrapper, .tasks-panel-wrapper-STICKY {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.tasks-panel-wrapper-STICKY {
+    position: absolute;
+    right: 5.2em;
+}
+
+.notifications, .notifications-STICKY, .tasks, .tasks-STICKY {
+    float: right;
+    padding: 0.5em 0.5em 0 0.5em;
+    &.open {
+        border-radius: 5px 5px 0 0;
+        background: $govuk-link-colour;
+        color: white;
+        .alert-button {
+            background: url("../images/alert-empty-white.svg") no-repeat 50% 50%;
+            background-size: 1.5em;
+            &.alert {
+                background: url("../images/alert-alert-white.svg") no-repeat 50% 50%;
+                background-size: 1.5em;
+            }
+        }
+        .tasks-button {
+            background: url("../images/tasks-alert-white.svg") no-repeat 50% 50%;
+            background-size: 1.5em;
+            &.alert {
+                background: url("../images/tasks-alert-white.svg") no-repeat 50% 50%;
+                background-size: 1.5em;
+            }
+        }
+    }
+    // &.non {
+    //     color: $govuk-secondary-text-colour;
+    //     text-decoration: none;
+    // }
+    .alert-button, .tasks-button {
+        display: inline-block;
+        background: green;
+        float: left;
+        position: relative;
+        // right: 2.5em;
+        top: -0.4em;
+        text-indent: -1000em;
+        width: 2em;
+        height: 2em;
+        margin-right: 0.75em;
+        background: url("../images/alert-empty.svg") no-repeat 50% 50%;
+        background-size: 1.5em;
+        &:hover, &:focus, &:active {
+            cursor: pointer;
+        }
+        &.alert {
+            background: url("../images/alert-alert.svg") no-repeat 50% 50%;
+            background-size: 1.5em;
+            // animation: jump-shaking 0.83s infinite;
+            // &:after {
+            //     content: ' ';
+            //     display: inline-block;
+            //     width: 0.5em;
+            //     height: 0.5em;
+            //     border-radius: 50%;
+            //     background: govuk-colour("red");
+            //     position: absolute;
+            // }
+        }
+    }
+    .tasks-button {
+        background: url("../images/tasks-empty.svg") no-repeat 50% 50%;
+        background-size: 1.5em;
+        &.alert {
+            background: url("../images/tasks-alert.svg") no-repeat 50% 50%;
+            background-size: 1.5em;
+        }
+    }
+    .notifications-number, .tasks-number, .notifications-number-STICKY, .tasks-number-STICKY {
+        position: absolute;
+        left: 2.5em;
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        color: white;
+        bottom: 0.5em;
+        background-color: $govuk-text-colour;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+        text-decoration: none;
+        &.alert {
+            color: white;
+            background-color: $govuk-error-colour;
+        }
+    }
+}
+
+.tasks-STICKY { 
+    padding: 0;
+    width: 2.3em;
+    top: 0.25em;
+    &:hover, &:active, &:focus {
+        .tooltiptext {
+            display: inline-block;
+            top: 3.1em;
+            width: 5em;
+            left: 0;
+            &:after {
+                bottom: inherit;
+                top: -8px;
+                border-top: none;
+                border-bottom: 8px solid rgba(0, 0, 0, 0.7);
+            }
+        }
+    }
+    .tasks-button {
+        top: 0.25em;
+    }
+    .tasks-number-STICKY {
+        left: 1.875em !important;
+        bottom: -0.65em !important;
+        right: inherit !important;
+        &.alert {
+            left: 0.25em !important;
+            bottom: 0.85em !important;
+        }
+    }
+}
+
+.notifications-panel-wrapper-STICKY {
+    position: absolute;
+    display: inline-block;
+    float: right;
+    right: 2.5em;
+    top: 0.1em;
+    .alert-button .alert {
+        top: 0.15em;
+        .alert-button {
+            top: 0.25em;
+        }
+        .notifications-number, .notifications-number-STICKY {
+            top: -2.75em;
+            left: 0.1em;
+        }
+    }
+}
+
+.tasks-alert {
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+
+.notifications-STICKY {
+    padding: 0;
+    top: 0.25em;
+    .alert-button {
+        top: 0.15em;
+        margin: 0 0.15em 0 0;
+    }
+    &.open {
+        padding: 1.25em 0.1em 1em 0.25em;
+        top: -0.05em;
+        position: relative;
+        .notifications-number-STICKY {
+            top: -2.65em;
+        }
+        .alert-button {
+            top: -0.85em;
+        }
+    }
+    .text {
+        text-indent: -1000em;
+        display: inline-block;
+    }
+    .notifications-number-STICKY {
+        bottom: -0.5em;
+        left: 1.75em;
+        &.alert {
+            bottom: 1em;
+            left: 0.35em;
+        }
+    }
+    .tooltiptext {
+        width: 120px !important;
+        margin-left: -68px !important;
+        &:after {
+            border-top: none;
+        }
+    }
+}
+
+.notifications-panel, .notifications-panel-STICKY, .tasks-panel, .tasks-panel-STICKY {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
+    z-index: 999999;
+    // border-top: 5px solid $govuk-link-colour;
+    padding: 0;
+    // padding-bottom: 3em;
+    border-radius: 5px 0 5px 5px;
+    top: 2.45em;
+    right: 0;
+    min-width: 450px;
+    .wrapper {
+        width: 350px;
+        float: left;
+        &.clear {
+            width: 60px;
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a.govuk-button--secondary {
+                font-size: 1rem;
+                margin: 0;
+            }
+        }
+    }
+    .clear-all {
+        position: sticky;
+        bottom: 0;
+        padding: 0.5em 2.5% 0.75em 2.5%;
+        text-align: right;
+        background: white;
+        width: 95%;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+        border-radius: 0px 0 5px 5px;
+    }
+    h2 {
+        padding: 0 0 0.25em 0;
+        width: 93.5%;
+        margin: 1em 0.75em 0.5em 0.75em;
+        border-bottom: 1px solid $govuk-border-colour;
+        &:first-of-type {
+            margin-top: 0.5em;
+        }
+    }
+    p.no-tasks {
+        width: 93.5%;
+        margin: 1em 0.75em 0.5em 0.75em;
+        font-size: 1rem;
+        font-style: italic;
+        color: $govuk-secondary-text-colour;
+    }
+    &.scroll {
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+    &.alerts-working {
+        .updates {
+            // background-color: govuk-colour("light-grey");
+            border-bottom: 1px dashed $govuk-border-colour;
+        }
+    }
+    .updates {
+        padding: 0.5em 1em;
+        text-align: left;
+        background-color: govuk-colour("light-grey");
+        color: $govuk-secondary-text-colour;
+    }
+    .case-alert, .task-alert {
+        display: none;
+        padding: 0.5em 2.5% 0.5em 4%;
+        // border-bottom: 1px solid $govuk-border-colour;
+        position: relative;
+        // border-left: 5px solid $govuk-link-colour;
+        border-bottom: 3px solid white;
+        // background: rgba($govuk-link-colour,0.075);
+        width: 93.5%;
+        &:hover, &:active, &:focus {
+            background: govuk-colour("light-grey");
+        }
+        &.show {
+            display: flex;
+        }
+        &.one {
+            border-radius: 0 0 5px 5px;
+        }
+        &.completed {
+            .wrapper {
+                width: 400px;
+            }
+            &:before {
+                display: none;
+            }
+        }
+        &.read {
+            // border-left: none;
+            // background: none;
+            // width: 92.5%;
+            // padding: 0.5em 2.5% 0.5em 5%;
+            // border-left: none;
+            p {
+                a {
+                    font-weight: normal;
+                    color: $govuk-link-visited-colour;
+                }
+            }
+            &:before {
+                display: none;
+            }
+        }
+        &:last-of-type {
+            border-bottom: none;
+            border-radius: 0 0 5px 5px;
+        }
+        &:before {
+            display: inline-block;
+            content: '';
+            // border-radius: 50%;
+            position: absolute;
+            left: 0em;
+            top: 0%;
+            bottom: 0;
+            // height: 0.5em;
+            width: 5px;
+            margin-top: 0;
+            background: $govuk-brand-colour;
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            a {
+                display: inline-block;
+                margin-top: 0.25em;
+                font-weight: bold;
+                color: $govuk-link-colour;
+                &.disabled {
+                    color: $govuk-secondary-text-colour;
+                    font-weight: normal;
+                    text-decoration: none;
+                }
+            }
+            span {
+                color: $govuk-secondary-text-colour;
+                strong {
+                    color: $govuk-text-colour;
+                }
+            }
+        }
+        span {
+            font-size: 0.875rem;
+            &.govuk-tag {
+                margin-bottom: 0.25em;
+            }
+        }
+    }
+    .task-alert {
+        display: inline-block;
+    }
+}
+
+.tasks-panel-STICKY { 
+    right: inherit;
+    top: 50px;
+    left: 0;
+}
+
+.tasks-panel, .tasks-panel-STICKY {
+    .task-alert {
+        display: flex;
+        .wrapper {
+            width: 320px;
+            &.clear {
+                width: 100px;
+            }
+        }
+    }
+}
+
+.notifications-panel-STICKY {
+    left: 0;
+    right: inherit;
+    top: 3em;
+}
+
+
+.user-settings {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 42px;
+    width: 300px;
+    background: white;
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
+    z-index: 99999;
+    border-top: 5px solid $govuk-link-colour;
+    padding: 0.5em 1em;
+    border-radius: 5px 0 5px 5px;
+    hr {
+        margin: 0.5em 0 0.25em 0;
+        display: inline-block;
+        padding: 0;
+        border: none;
+        border-top: 1px dashed $govuk-border-colour;
+        width: 100%;
+        height: 0;
+        background: none;
+        &.bigger-margin {
+            margin: 1em 0 0.5em 0;
+        }
+    }
+    .govuk-form-group {
+        margin-bottom: 0;
+        margin-top: 1em;
+        &:first-of-type {
+            margin-top: 0;
+        }
+        fieldset {
+            legend {
+                font-size: 1.25rem;
+                margin-bottom: 0.5em;
+            }
+            .govuk-radios__input {
+                width: 34px;
+                height: 34px;
+            }
+            .govuk-radios--small, .govuk-checkboxes--small {
+                .govuk-radios__item, .govuk-checkboxes__item {
+                    padding-left: 30px;
+                    &:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label:before {
+                        box-shadow: 0 0 0 6px #b1b4b6;
+                    }
+                    &:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label:before {
+                        box-shadow: 0 0 0 6px #b1b4b6;
+                    } 
+                }
+                .govuk-radios__label, .govuk-checkboxes__label {
+                    padding-top: 6px;
+                    padding-bottom: 5px;
+                    font-size: 1rem;
+                    &:before {
+                        width: 20px;
+                        height: 20px;
+                        top: 4px;
+                    }
+                    &:after {
+                        top: 9px;
+                        left: 5px;
+                    }
+                }
+                .govuk-checkboxes__label {
+                    &:after {
+                        width: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+html {
+    &.govuk-template.case-files {
+        &.White {
+            background-color: white !important;
+            body, main {
+                background-color: white !important;
+            }
+        }
+        // ================== SOFT GREY ==================
+        &.SoftGrey {
+            background-color: #f5f5f5 !important;
+            body, main {
+                background-color: #f5f5f5 !important;
+                #left-column .accordion .accordion-section .accordion-section-header {
+                    background-color: #e9e9e9 !important;
+                }
+            }
+        }
+        // ================== GREY ==================
+        &.Grey {
+            background-color: govuk-colour("mid-grey") !important;
+            body, main {
+                background-color: govuk-colour("mid-grey") !important;
+                #navbar.sticky {
+                    background-color: darken(govuk-colour("mid-grey"),10%) !important;
+                }
+                .search-bar-wrapper {
+                    background-color: darken(govuk-colour("mid-grey"),10%) !important;
+                    border-bottom: 1px solid black;
+                    .govuk-phase-banner__text {
+                        color: black !important;
+                    }
+                    .govuk-input {
+                        border: 2px solid white;
+                    }
+                    a {
+                        color: white !important;
+                    }
+                    .refresh-button {
+                        background: url("../images/refresh-white.svg") no-repeat 0% 50%;
+                    }
+                }
+                .das-cookie-banner__modal {
+                    background-color: rgba(0,0,0,0.6);
+                }
+                .govuk-notification-banner__content {
+                    background-color: govuk-colour("mid-grey");
+                    .files {
+                        color: white !important;
+                    }
+                }
+                a, button, .govuk-details__summary {
+                    color: white !important;
+                }
+                .govuk-heading-m, .govuk-heading-s, .govuk-fieldset__heading, .govuk-radios__label, .govuk-fieldset__legend, .govuk-checkboxes__label, .govuk-label {
+                    color: black !important;
+                }
+                #saving-panel, .success-banner {
+                    .govuk-heading-m {
+                        color: white !important;
+                    }
+                }
+                .blueBoxCPS {
+                    .govuk-heading-s {
+                        color: white !important;
+                    }
+                }
+                &.case-files .info span.govuk-heading-s {
+                    color: black;
+                }
+                .govuk-details__text {
+                    border-left: 5px solid darken(govuk-colour("mid-grey"),10%);
+                }
+                #left-column .accordion {
+                    &.with-js .accordion-section {
+                        border-top: 1px solid black;
+                    }
+                    .accordion-section {
+                        .accordion-section-header {
+                            background-color: darken(govuk-colour("mid-grey"),10%) !important;
+                            .govuk-heading-s {
+                                color: white !important;
+                            }
+                        }
+                        .accordion-section-body table tbody tr {
+                            &:first-of-type {
+                                border-top: 1px solid darken(govuk-colour("mid-grey"),10%);
+                            }
+                            .govuk-table__header, .govuk-table__cell {
+                                border-bottom: 1px solid darken(govuk-colour("mid-grey"),10%);
+                            }
+                            td p.date-added {
+                                color: black;
+                            }
+                        }
+                    }
+                }
+                &.case-files #pdf-root .PdfHighlighter {
+                    border: 5px solid darken(govuk-colour("mid-grey"),10%);
+                    background-color: govuk-colour("mid-grey");
+                    // .page .canvasWrapper {
+                    //     mix-blend-mode: difference;
+                    // }
+                }
+                #openMe.das-cookie-banner {
+                    background-color: govuk-colour("mid-grey");
+                    .search-bar-wrapper, .header-wrapper, .sub-header-wrapper {
+                        background-color: darken(govuk-colour("mid-grey"),10%);
+                        border-bottom: 1px solid black;
+                        h1 span {
+                            color: white;
+                        }
+                    }
+                    .tooltip button.open-tooltip {
+                        background: url("../images/help-white.svg") no-repeat 0% 50%;
+                    }
+                    .hods-timeline .hods-timeline__item:last-of-type:after {
+                        background-color: govuk-colour("mid-grey");
+                    }
+                    .govuk-form-group.redaction-type-wrapper .govuk-checkboxes__item.full-width, .govuk-form-group.redaction-type-wrapper .govuk-checkboxes__item.full-width {
+                        border-top: 3px dashed darken(govuk-colour("mid-grey"),10%) !important;
+                    }
+                }
+                .govuk-checkboxes__conditional {
+                    border-left: 4px solid darken(govuk-colour("mid-grey"),10%);
+                }
+                .govuk-inset-text {
+                    border-left: 10px solid darken(govuk-colour("mid-grey"),10%);
+                }
+                #pdf-root .redaction-footer {
+                    background-color: govuk-colour("mid-grey");
+                    .looks-like-a-link-underline {
+                        color: white;
+                    }
+                    .govuk-button.saveDraftButton.govuk-button--secondary {
+                        color: black !important;
+                    }
+                }
+            }
+        }    
+        // ================== DARK ==================
+        &.Dark {
+            background-color: #313338 !important;
+            body, main {
+                background-color: #313338 !important;
+                .search-bar-wrapper {
+                    background-color: #2b2d31 !important;
+                    border-bottom: 1px solid black;
+                    .govuk-phase-banner__text {
+                        color: govuk-colour("mid-grey") !important;
+                    }
+                    .govuk-input {
+                        border: 2px solid white;
+                    }
+                    a {
+                        color: govuk-colour("light-blue") !important;
+                    }
+                }
+                .user-settings {
+                    background-color: #313338;
+                }
+                .das-cookie-banner__modal {
+                    background-color: rgba(0,0,0,0.6);
+                }
+                #openMe.das-cookie-banner {
+                    background-color: #313338;
+                    .header-wrapper {
+                        background-color: #2b2d31 !important;
+                        border-bottom: 1px solid black;
+                        h1 {
+                            color: white;
+                            &.govuk-heading-l {
+                                border-bottom: 3px dashed black !important;
+                            }
+                            span {
+                                color: govuk-colour("mid-grey");
+                            }
+                        }
+                    }
+                    .tabs .panel {
+                        border-top: 1px solid black !important;
+                    }
+                    p {
+                        color: govuk-colour("mid-grey");
+                    }
+                    .innerPanel .redaction-wrapper .govuk-grid-column-full h2 strong {          
+                        color: govuk-colour("mid-grey") !important;        
+                        span {
+                            color: govuk-colour("light-grey");
+                            &#document-title-2 {
+                                color: white;
+                            }
+                        }                
+                    }
+                    #search-results-list .search-item .search-redact-wrapper, #openMe #search-suggestions-list .search-item .search-redact-wrapper {
+                        background-color: #2b2d31;
+                        border-bottom: 1px solid black;
+                    }
+                    #saving-panel, .success-banner {
+                        .govuk-heading-m {
+                            color: white !important;
+                        }
+                    }
+                    .cta-group {
+                        border-top: 3px dashed black !important;
+                    }
+                }
+                .icon-new.document {
+                    background: url("../images/doc-type-white.svg") no-repeat 50% 50%;
+                }
+                .govuk-error-message {
+                    color: govuk-colour("red") !important;
+                }
+                .hods-timeline__title, .govuk-warning-text__text {
+                    color: white !important;
+                }
+                .govuk-warning-text__icon {
+                    border: 3px solid white;
+                    background-color: white;
+                    color: #313338;
+                }
+                .hods-timeline .hods-timeline__item:last-of-type:after {
+                    background-color: #313338;
+                }
+                .govuk-heading-m, .govuk-heading-s, .govuk-fieldset__heading, .govuk-radios__label, .govuk-fieldset__legend, .govuk-checkboxes__label, .govuk-label, .govuk-error-summary__title {
+                    color: govuk-colour("mid-grey") !important;
+                }
+                .govuk-hint {
+                    color: govuk-colour("light-grey");
+                }
+                .govuk-inset-text {
+                    border-left: 5px solid #2b2d31;
+                }
+                textarea, select, input {
+                    background-color: #2b2d31 !important;
+                    color: govuk-colour("mid-grey") !important;
+                }
+                .govuk-list {
+                    color: govuk-colour("mid-grey") !important;
+                }
+                a {
+                    color: govuk-colour("light-blue") !important;
+                }
+                .govuk-notification-banner__content {
+                    background-color: #313338;
+                    p {
+                        color: govuk-colour("mid-grey") !important;
+                    }
+                    .files {
+                        color: white !important;
+                    }
+                }
+                &.case-files #pdf-root .PdfHighlighter {
+                    background-color: #313338;
+                    border: 5px solid #2b2d31;
+                    .page {
+                        box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 10px 0px;
+                    }
+                    .page .canvasWrapper {
+                        mix-blend-mode: difference;
+                        &::selection {
+                            background: #ffb7b7; /* WebKit/Blink Browsers */
+                        }
+                        &::-moz-selection {
+                            background: #ffb7b7; /* Gecko Browsers */
+                        }
+                    }
+                }
+                #navbar.sticky {
+                    background-color: #2b2d31;
+                }
+                #navbar2 ul.govuk-tabs__list li.govuk-tabs__list-item--selected a {
+                    color: white !important;
+                }
+                #left-column {
+                    .govuk-tag--grey {
+                        background-color: #2b2d31;
+                        color: govuk-colour("mid-grey");
+                    }
+                    .blueBoxCPS {
+                        .govuk-heading-s {
+                            color: rgba(white,0.7) !important;
+                        }
+                    }
+                    a, button {
+                        color: govuk-colour("light-blue") !important;
+                    }
+                    .govuk-details__summary-text {
+                        color: govuk-colour("light-blue") !important;
+                    }
+                    .govuk-details__text {
+                        border-left: 5px solid #2b2d31;
+                        .govuk-label {
+                            color: govuk-colour("mid-grey") !important;
+                        }
+                    }
+                    .accordion {
+                        &.with-js {
+                            border-bottom-color: black !important; 
+                            .icon {
+                                background: url("../images/icon-plus-minus-white.svg") no-repeat 50% 50%;
+                                background-size: 1em;
+                                background-position: 0 -16px;
+                            }
+                            .accordion-section[aria-expanded=true] .icon {
+                                background-position: 0 0;
+                            }
+                        }
+                        .accordion-section {
+                            border-top-color: black !important;
+                            .govuk-body-s {
+                                color: govuk-colour("mid-grey") !important;
+                            }
+                            .accordion-section-header {
+                                background-color: #2b2d31 !important;
+                                .govuk-heading-s {
+                                    color: govuk-colour("light-blue") !important;
+                                }
+                                &.no-documents h2.govuk-heading-s {
+                                    color: govuk-colour("mid-grey") !important;
+                                }
+                            }
+                            .accordion-section-body {
+                                border-top: 1px solid black;
+                                table tbody tr, table tbody tr:first-of-type {
+                                    border-top: 1px solid black;
+                                    .govuk-table__header, .govuk-table__cell {
+                                        border-bottom: 1px solid black;
+                                    }
+                                    .date-added {
+                                        color: govuk-colour("mid-grey") !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .icon-new {
+                        &.time-added {
+                            background: url("../images/time-grey.svg") no-repeat 50% 50%;
+                        }
+                        &.date-added {
+                            background: url("../images/calendar-grey.svg") no-repeat 50% 50%;
+                        }
+                    }
+                    button.notes-link {
+                        background: url("../images/notes-grey.svg") no-repeat 50% 50% !important;
+                        background-size: 1.5em;                        
+                    }
+                }
+                .PdfHighlighter__tip-container .Tip #redact-modal {
+                    background-color: #2b2d31 !important;
+                    &:after {
+                        border-top: 15px solid #2b2d31;
+                    }
+                }
+                .MouseSelection {
+                    background: $govuk-error-colour;
+                    border: 1px dashed white;
+                    mix-blend-mode: hard-light;
+                }
+                #pdf-root .redaction-footer {
+                    background-color: #2b2d31 !important;
+                    .looks-like-a-link-underline {
+                        color: govuk-colour("light-blue") !important;
+                    }
+                    #data-count {
+                        color: white !important; 
+                    }
+                    .govuk-button.saveDraftButton.govuk-button--secondary {
+                        color: black !important;
+                    }
+                }
+            }
+        }    
+    }
+}
+
+.pinkOverlay, .greenOverlay, .blueOverlay, .yellowOverlay {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    &.changeHue {
+        mix-blend-mode: hue;
+    }
+}
+
+.pinkOverlay {
+    background-color: pink;
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+}
+
+.greenOverlay {
+    background-color: #61d2ae;
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+}
+
+.blueOverlay {
+    background-color: #62cce3;
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+}
+
+.yellowOverlay {
+    background-color: #e6e063;
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+}
+

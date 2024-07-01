@@ -1,0 +1,473 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+{% block header %}
+    {% include "../includes/banner-V1.html" %}
+{% endblock %}
+{% block beforeContent %}
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <div class="wrapper gov-pages">
+            <h1 class="govuk-heading-l" style="">
+                Select your document type
+            </h1>
+            <div id="changeCategory-hint" class="govuk-hint">
+                {% if data['scenario'] == 'one' %}
+                    <p class="govuk-body">You're changing the document type for <mark class="hods-highlight"><strong>Asset Rec 1</strong></mark></p>
+                {% elseif data['scenario'] == 'two' %}
+                    <p class="govuk-body">You're changing the document type for <mark class="hods-highlight"><strong>MG11 - 1</strong></mark></p>
+                {% elseif data['scenario'] == 'three' %}
+                    <p class="govuk-body">You're changing the document type for <mark class="hods-highlight"><strong>Exhibit - 1</strong></mark></p>
+                {% endif %}
+
+            </div>
+
+            {% if data['scenario'] == 'one' %}
+                <form method="get" action="D-document-name">  
+            {% elseif data['scenario'] == 'two' %}
+                <form method="get" action="D-document-name">  
+            {% elseif data['scenario'] == 'three' %}
+                <form method="get" action="C-exhibit-details">  
+            {% endif %}
+
+                {% if data['move-single-Document'] == 'Reviews' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Reviews-MG3" name="docType-Radio-Reviews" type="radio" value="MG3">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Reviews-MG3">MG3</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Reviews-MG3A" name="docType-Radio-Reviews" type="radio" value="MG3A">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Reviews-MG3A">MG3A</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Reviews-PET" name="docType-Radio-Reviews" type="radio" value="PET">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Reviews-PET">PET</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Reviews-BCM" name="docType-Radio-Reviews" type="radio" value="BCM">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Reviews-BCM">BCM</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Reviews-Other" name="docType-Radio-Reviews" type="radio" value="Other" data-aria-controls="conditional-Reviews">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Reviews-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Reviews">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Reviews"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Reviews" name="docType-Reviews" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Case overview' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4" name="docType-Radio-CaseOverview" type="radio" value="MG4">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4">MG4</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG5" name="docType-Radio-CaseOverview" type="radio" value="MG5">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG5">MG5</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4A" name="docType-Radio-CaseOverview" type="radio" value="MG4A">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4A">MG4A</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4D" name="docType-Radio-CaseOverview" type="radio" value="MG4D">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4D">MG4D</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4-POST" name="docType-Radio-CaseOverview" type="radio" value="MG4 (POST)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4-POST">MG4 (POST)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4E" name="docType-Radio-CaseOverview" type="radio" value="MG4E">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4E">MG4E</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG18" name="docType-Radio-CaseOverview" type="radio" value="MG18">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG18">MG18</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG5-SP" name="docType-Radio-CaseOverview" type="radio" value="MG5 (SP)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG5-SP">MG5 (SP)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4C" name="docType-Radio-CaseOverview" type="radio" value="MG4C">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4C">MG4C</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4F" name="docType-Radio-CaseOverview" type="radio" value="MG4F">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4F">MG4F</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG4B" name="docType-Radio-CaseOverview" type="radio" value="MG4B">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG4B">MG4B</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-MG17" name="docType-Radio-CaseOverview" type="radio" value="MG17">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-MG17">MG17</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-CaseOverview-Other" name="docType-Radio-CaseOverview" type="radio" value="Other" data-aria-controls="conditional-CaseOverview">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-CaseOverview-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-CaseOverview">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-CaseOverview"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-CaseOverview" name="docType-CaseOverview" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                 {% elseif data['move-single-Document'] == 'Statements' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Statements-MG9" name="docType-Radio-Statements" type="radio" value="MG9">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Statements-MG9">MG9</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Statements-MG11" name="docType-Radio-Statements" type="radio" value="MG11">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Statements-MG11">MG11</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Statements-PE1" name="docType-Radio-Statements" type="radio" value="PE1">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Statements-PE1">PE1</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Statements-Other" name="docType-Radio-Statements" type="radio" value="Other" data-aria-controls="conditional-Statements">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Statements-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Statements">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Statements"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Statements" name="docType-Statements" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Exhibits' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG12" name="docType-Radio-Exhibits" type="radio" value="MG12">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG12">MG12</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG15-ROTI" name="docType-Radio-Exhibits" type="radio" value="MG15 (ROTI)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG15-ROTI">MG15 (ROTI)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG-FFS-A" name="docType-Radio-Exhibits" type="radio" value="MG/FFS A">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG-FFS-A">MG/FFS A</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG-FFS-B" name="docType-Radio-Exhibits" type="radio" value="MG/FFS B">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG-FFS-B">MG/FFS B</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-Other-Exhibit" name="docType-Radio-Exhibits" type="radio" value="Other Exhibit">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-Other-Exhibit">Other Exhibit</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG15-SDN" name="docType-Radio-Exhibits" type="radio" value="MG15 (SDN)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG15-SDN">MG15 (SDN)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG15-ROVI" name="docType-Radio-Exhibits" type="radio" value="MG15 (ROVI)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG15-ROVI">MG15 (ROVI)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MGDD" name="docType-Radio-Exhibits" type="radio" value="MGDD">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MGDD">MGDD</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-MG15-CNOI" name="docType-Radio-Exhibits" type="radio" value="MG15 CNOI">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-MG15-CNOI">MG15 CNOI</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Exhibits-Other" name="docType-Radio-Exhibits" type="radio" value="Other" data-aria-controls="conditional-Exhibits">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Exhibits-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Exhibits">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Exhibits"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Exhibits" name="docType-Exhibits" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Forensics' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Forensics-MG22-SFR" name="docType-Radio-Forensics" type="radio" value="MG22 SFR">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Forensics-MG22-SFR">MG22 SFR</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Forensics-MG21" name="docType-Radio-Forensics" type="radio" value="MG21">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Forensics-MG21">MG21</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Forensics-MG21A" name="docType-Radio-Forensics" type="radio" value="MG21A">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Forensics-MG21A">MG21A</label>
+                                </div>
+<!--                                 <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Forensics-Other" name="docType-Radio-Forensics" type="radio" value="Other" data-aria-controls="conditional-Forensics">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Forensics-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Forensics">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Forensics"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Forensics" name="docType-Forensics" type="text">
+                                    </div>
+                                </div> 
+ -->                                                           
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Unused materials' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-MG6C" name="docType-Radio-Unused" type="radio" value="MG6C">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-MG6C">MG6C</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-MG6D" name="docType-Radio-Unused" type="radio" value="MG6D">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-MG6D">MG6D</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-MG6E" name="docType-Radio-Unused" type="radio" value="MG6E">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-MG6E">MG6E</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-MG6B" name="docType-Radio-Unused" type="radio" value="MG6B">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-MG6B">MG6B</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-MG6A" name="docType-Radio-Unused" type="radio" value="MG6A">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-MG6A">MG6A</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-MG1" name="docType-Radio-Unused" type="radio" value="MG1">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-MG1">MG1</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-PCN3" name="docType-Radio-Unused" type="radio" value="PCN3">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-PCN3">PCN3</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Unused-Other" name="docType-Radio-Unused" type="radio" value="Other" data-aria-controls="conditional-Unused">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Unused-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Unused">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Unused"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Unused" name="docType-Unused" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Defendant' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-PCN1" name="docType-Radio-Defendant" type="radio" value="PCN1">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-PCN1">PCN1</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-PCN2" name="docType-Radio-Defendant" type="radio" value="PCN2">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-PCN2">PCN2</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-MG16" name="docType-Radio-Defendant" type="radio" value="MG16">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-MG16">MG16</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-DREP" name="docType-Radio-Defendant" type="radio" value="DREP">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-DREP">DREP</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-MG16-DDOI" name="docType-Radio-Defendant" type="radio" value="MG16 (DDOI)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-MG16-DDOI">MG16 (DDOI)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-MG16-DBCI" name="docType-Radio-Defendant" type="radio" value="MG16 (DBCI)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-MG16-DBCI">MG16 (DBCI)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-PE2" name="docType-Radio-Defendant" type="radio" value="PE2">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-PE2">PE2</label>
+                                </div>
+<!--                                 <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Defendant-Other" name="docType-Radio-Defendant" type="radio" value="Other" data-aria-controls="conditional-Defendant">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Defendant-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Defendant">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Defendant"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Defendant" name="docType-Defendant" type="text">
+                                    </div>
+                                </div>      
+ -->                                                      
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Court preparation' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG10" name="docType-Radio-Court" type="radio" value="MG10">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG10">MG10</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG8" name="docType-Radio-Court" type="radio" value="MG8">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG8">MG8</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG19" name="docType-Radio-Court" type="radio" value="MG19">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG19">MG19</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG7" name="docType-Radio-Court" type="radio" value="MG7">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG7">MG7</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG2" name="docType-Radio-Court" type="radio" value="MG2">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG2">MG2</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG13" name="docType-Radio-Court" type="radio" value="MG13">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG13">MG13</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-MG14" name="docType-Radio-Court" type="radio" value="MG14">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-MG14">MG14</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Court-Other" name="docType-Radio-Court" type="radio" value="Other" data-aria-controls="conditional-Court">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Court-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Court">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Court"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Court" name="docType-Court" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Communications' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Communications-Other-Comm" name="docType-Radio-Communications" type="radio" value="Other Comm (In)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Communications-Other-Comm">Other Comm (In)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Communications-MG6" name="docType-Radio-Communications" type="radio" value="MG6">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Communications-MG6">MG6</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Communications-MG20" name="docType-Radio-Communications" type="radio" value="MG20">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Communications-MG20">MG20</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Communications-Other" name="docType-Radio-Communications" type="radio" value="Other" data-aria-controls="conditional-Communications">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Communications-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Communications">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Communications"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Communications" name="docType-Communications" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% elseif data['move-single-Document'] == 'Uncategorised' %}
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Uncategorised-MG11-R" name="docType-Radio-Uncategorised" type="radio" value="MG11 (R)">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Uncategorised-MG11-R">MG11 (R)</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Uncategorised-ABE" name="docType-Radio-Uncategorised" type="radio" value="ABE">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Uncategorised-ABE">ABE</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Uncategorised-PE3" name="docType-Radio-Uncategorised" type="radio" value="PE3">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Uncategorised-PE3">PE3</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Uncategorised-PE4" name="docType-Radio-Uncategorised" type="radio" value="PE4">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Uncategorised-PE4">PE4</label>
+                                </div>
+                                <div class="govuk-radios__divider">or</div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="docType-Radio-Uncategorised-Other" name="docType-Radio-Uncategorised" type="radio" value="Other" data-aria-controls="conditional-Uncategorised">
+                                    <label class="govuk-label govuk-radios__label" for="docType-Radio-Uncategorised-Other">Other type</label>
+                                </div>
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Uncategorised">
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label" for="docType-Uncategorised"><span class="govuk-hint">Search for document type</span></label>
+                                        <input class="govuk-input govuk-!-width-one-half" id="docType-Uncategorised" name="docType-Uncategorised" type="text">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </fieldset>
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="govuk-button" style="">Continue</button>
+                <button type="button" onclick="location.href='../1-new-designs/C-casefile-1.html';" class="non-button margin-left" id="cancelPageLoad">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+        <div class="image-holder">
+            {% if data['scenario'] == 'one' %}
+                <img src="../../../public/files/Asset-Rec-PREVIEW.png" alt="MG11 - 1 - Preview" class="">
+            {% elseif data['scenario'] == 'two' %}
+                <img src="../../../public/files/MG11_1-PREVIEW.png" alt="MG11 - 1 - Preview" class="">
+            {% elseif data['scenario'] == 'three' %}
+                <img src="../../../public/files/MG12_1-PREVIEW.png" alt="Exhibit - 1 - Preview" class="">
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

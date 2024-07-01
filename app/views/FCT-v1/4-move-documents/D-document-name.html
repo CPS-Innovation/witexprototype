@@ -1,0 +1,80 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+{% block header %}
+    {% include "../includes/banner-V1.html" %}
+{% endblock %}
+{% block beforeContent %}
+    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <div class="wrapper gov-pages">
+            <h1 class="govuk-heading-l" style="">
+                Do you want to change the document name?
+            </h1>
+            <div id="changeCategory-hint" class="govuk-hint">
+                {% if data['scenario'] == 'one' %}
+                    <p class="govuk-body">You're changing the name of <mark class="hods-highlight"><strong>Asset Rec 1</strong></mark></p>
+                {% elseif data['scenario'] == 'two' %}
+                    <p class="govuk-body">You're changing the name of <mark class="hods-highlight"><strong>MG11 - 1</strong></mark></p>
+                {% elseif data['scenario'] == 'three' %}
+                    <p class="govuk-body">You're changing the name of <mark class="hods-highlight"><strong>Exhibit - 1</strong></mark></p>
+                {% endif %}
+
+            </div>
+
+            <form method="get" action="E-check-answers">  
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="docType-document-name-Yes" name="docType-document-name" type="radio" value="Yes" data-aria-controls="conditional-Name">
+                                <label class="govuk-label govuk-radios__label" for="docType-document-name-Yes">Yes</label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-Name">
+                                <div class="govuk-form-group">
+                                    {% if data['scenario'] == 'one' %}
+                                        <label class="govuk-label" for="docType-Scenario-1-NAME">Enter new document name</label>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="docType-Scenario-1-NAME" name="docType-Scenario-1-NAME" type="text" value="Asset Rec 1">
+                                    {% elseif data['scenario'] == 'two' %}
+                                        <label class="govuk-label" for="docType-Scenario-2-NAME">Enter new document name</label>
+                                        <span class="govuk-hint">Example: Doc Name, witness SURNAME First Name, date of statement</span>
+                                        <span class="govuk-hint">For example, MG11 SMITH John 25/06/2024</span>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="docType-Scenario-2-NAME" name="docType-Scenario-2-NAME" type="text" value="MG11 - 1">
+                                    {% elseif data['scenario'] == 'three' %}
+                                        <label class="govuk-label" for="docType-Scenario-3-NAME">Enter new document name</label>
+                                        <span class="govuk-hint">Example: Doc Name</span>
+                                        <span class="govuk-hint">For example, MG12</span>
+                                        <input class="govuk-input govuk-!-width-two-thirds" id="docType-Scenario-3-NAME" name="docType-Scenario-3-NAME" type="text" value="Exhibit - 1">
+                                    {% endif %}
+                                </div>
+                            </div>                            
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="docType-document-name-No" name="docType-document-name" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="docType-document-name-No">No</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <button type="submit" class="govuk-button" style="">Continue</button>
+                <button type="button" onclick="location.href='../1-new-designs/C-casefile-1.html';" class="non-button margin-left" id="cancelPageLoad">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+        <div class="image-holder">
+            {% if data['scenario'] == 'one' %}
+                <img src="../../../public/files/Asset-Rec-PREVIEW.png" alt="MG11 - 1 - Preview" class="">
+            {% elseif data['scenario'] == 'two' %}
+                <img src="../../../public/files/MG11_1-PREVIEW.png" alt="MG11 - 1 - Preview" class="">
+            {% elseif data['scenario'] == 'three' %}
+                <img src="../../../public/files/MG12_1-PREVIEW.png" alt="Exhibit - 1 - Preview" class="">
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

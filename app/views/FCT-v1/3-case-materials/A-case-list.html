@@ -1,0 +1,516 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+
+{% block pageTitle %}
+  Cases – {{ serviceName }} – Prototype
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %} 
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-width">
+
+      {{ govukTable({
+        caption: "Cases",
+        captionClasses: "govuk-table__caption--l",
+        firstCellIsHeader: false,
+        attributes: {
+          'data-module': 'moj-sortable-table'
+        },
+        head: [
+          {
+            text: "Case URN",
+            attributes: {
+              "aria-sort": "none"
+            }
+          },
+          {
+            text: "Defendant",
+            attributes: {
+              "aria-sort": "none"
+            }
+          },
+          {
+            text: "Hearing date",
+            attributes: {
+              "aria-sort": "none"
+            }
+          },
+          {
+            text: "Due date",
+            attributes: {
+            "aria-sort": "none"
+            }
+          },
+          {
+            text: "Task",
+            attributes: {
+              "aria-sort": "none"
+            }
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a href='#'>34AV10101075</a>"
+            },
+            {
+              text: "Bloggs, J"
+            },
+            {
+              text: "1 Mar 24"
+            },
+            {
+              text: "11 Mar 24"
+            },
+            {
+              html: "<strong class='govuk-tag govuk-tag--green'>Check new correspondence</strong>"
+            }
+          ],
+          [
+          {
+            html: "<a href='#'>16AE10101074</a>"
+          },
+          {
+            text: "Bottomley, L"
+          },
+          {
+            text: "12 Mar 24"
+          },
+          {
+            text: "22 Mar 24"
+          },
+          {
+            html: "<strong class='govuk-tag govuk-tag--green'>Check new correspondence</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='B-case-materials'>45AA209820/1</a>"
+          },
+          {
+            text: "McLove, E"
+          },
+          {
+            text: "17 Mar 24"
+          },
+          {
+            text: "24 Mar 24"
+          },
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45BQ0258913</a>"
+          },
+          {
+            text: "Doe, J"
+          },
+          {
+            text: "21 Mar 24"
+          },
+          {
+            text: "24 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1310623</a>"
+          },
+          {
+            text: "Strummer, J"
+          },          
+          {
+            text: "22 Mar 24"
+          },
+          {
+            text: "29 Mar 24"
+          },        
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1310523</a>"
+          },
+          {
+            text: "Smith, E"
+          },          
+          {
+            text: "23 Mar 24"
+          },
+          {
+            text: "30 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1310423</a>"
+          },
+          {
+            text: "Jones, D"
+          },          
+          {
+            text: "23 Mar 24"
+          },
+          {
+            text: "30 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1310323</a>"
+          },
+          {
+            text: "Davis, A"
+          },          
+          {
+            text: "24 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1310223</a>"
+          },
+          {
+            text: "Collins, J"
+          },          
+          {
+            text: "25 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--purple'>Retrieve core details</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1310123</a>"
+          },
+          {
+            text: "McGregor, C"
+          },          
+          {
+            text: "25 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--purple'>Retrieve core details</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1010123</a>"
+          },
+          {
+            text: "McGregor, C"
+          },          
+          {
+            text: "25 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1020423</a>"
+          },
+          {
+            text: "Turner, F"
+          },     
+          {
+            text: "26 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1030423</a>"
+          },
+          {
+            text: "Matthews, D"
+          },          
+          {
+            text: "26 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1040423</a>"
+          },
+          {
+            text: "Stevens, G"
+          },          
+          {
+            text: "26 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1050423</a>"
+          },
+          {
+            text: "Mills, M"
+          },          
+          {
+            text: "26 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1060423</a>"
+          },
+          {
+            text: "Cooper, P"
+          },          
+          {
+            text: "26 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1060423</a>"
+          },
+          {
+            text: "Cooper, P"
+          },          
+          {
+            text: "26 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--purple'>Retrieve core details</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD180423</a>"
+          },
+          {
+            text: "Gibson, S"
+          },               
+          {
+            text: "28 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1090423</a>"
+          },
+          {
+            text: "Gonzalez, E"
+          },               
+          {
+            text: "29 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--light-blue'>Check new case</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1100423</a>"
+          },
+          {
+            text: "Smith, W"
+          },               
+          {
+            text: "29 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1110423</a>"
+          },
+          {
+            text: "Townsend, A"
+          },               
+          {
+            text: "30 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1120423</a>"
+          },
+          {
+            text: "Simonsen, P"
+          },               
+          {
+            text: "30 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--green'>Check new correspondence</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1130423</a>"
+          },
+          {
+            text: "Matlock, G"
+          },               
+          {
+            text: "30 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--green'>Check new correspondence</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1130423</a>"
+          },
+          {
+            text: "Matlock, G"
+          },     
+          {
+            text: "30 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ],
+          [
+          {
+            html: "<a href='#'>45GD1150423</a>"
+          },
+          {
+            text: "Beggs, N"
+          },         
+          {
+            text: "31 Mar 24"
+          },
+          {
+            text: "31 Mar 24"
+          },          
+          {
+            html: "<strong class='govuk-tag govuk-tag--yellow'>Prepare PTPH</strong>"
+          }
+          ]
+        ]
+      }) }}
+
+                            <nav class="govuk-pagination" role="navigation" aria-label="Pagination">
+                                <div class="govuk-pagination__prev">
+                                    <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+                                        <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                            <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                                        </svg>
+                                        <span class="govuk-pagination__link-title">Previous<span class="govuk-visually-hidden"> page</span></span>
+                                    </a>
+                                </div>
+                                <ul class="govuk-pagination__list">
+                                    <li class="govuk-pagination__item govuk-pagination__item--current">
+                                        <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1" aria-current="page">1</a>
+                                    </li>
+                                    <li class="govuk-pagination__item">
+                                        <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2">2</a>
+                                    </li>
+                                    <li class="govuk-pagination__item">
+                                        <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">3</a>
+                                    </li>
+                                </ul>
+                                <div class="govuk-pagination__next">
+                                    <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+                                        <span class="govuk-pagination__link-title">Next<span class="govuk-visually-hidden"> page</span></span> 
+                                        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                            <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </nav>
+    </div>
+  </div>
+</div>
+{% endblock %}

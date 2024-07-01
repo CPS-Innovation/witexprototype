@@ -1,0 +1,25 @@
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+{% include "../includes/banner-V5.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+
+<script>
+        $(document).ready(function() {
+    $('#global-navigation').show();
+      $('.my-cases').addClass('current');
+         $('.sub-review').addClass('current');
+
+});
+
+</script>
+
+<div id="image-wrapper" class="">
+    <div class="wrapper">
+        <img src="../../../public/images/cps-concept/caseReview.jpg" alt="case review image" class="cps-concept-image">
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+
+{% block pageTitle %}
+  Recategorise documents – {{ serviceName }} – Prototype
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form novalidate method="post" action="F-case-materials-recategorised">
+
+        {{ govukRadios({
+          name: "changeCategory",
+          fieldset: {
+            legend: {
+              text: "Select the category which applies to your document",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-6"
+            }
+          },
+          hint: {
+            html: "<p class='govuk-body'>You're changing the category for <mark class='hods-highlight'><strong>Ex SM1 photo of Knife</strong></mark></p>"
+          },
+          value: data.category,
+          items: [
+            {
+              value: "Case Overview",
+              text: "Case Overview"
+            },
+            {
+              value: "Communications",
+              text: "Communications"
+            },
+            {
+              value: "Court Preparation",
+              text: "Court Preparation"
+            },
+            {
+              value: "Defendant",
+              text: "Defendant"
+            },
+            {
+              value: "Exhibits",
+              text: "Exhibits"
+            },
+            {
+              value: "Statements",
+              text: "Statements"
+            }
+          ]
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Confirm"
+          }) }}
+        
+          <a class="govuk-link" href="B-case-materials">Cancel</a>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+{% block header %}
+    {% include "../includes/banner-V5.html" %}
+{% endblock %}
+{% block beforeContent %}
+
+{% endblock %}
+{% block content %}
+<script>
+    $( document ).ready(function() {
+        $('#global-navigation').show();
+        $('#secondary-navigation').show();
+        $('.my-cases').addClass('current');
+          $('.my-cases').addClass('current');
+  $('.my-tasks').removeClass('current');
+
+        $('.sub-review').addClass('current');
+
+    });
+
+</script>
+
+<div id="image-wrapper" class="C-my-tasks">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+            <!-- <h1 class="govuk-heading-l">Case URN: 45AA209820/1</h1> -->
+            <div class="wrapper">
+                <a href="https://www.figma.com/proto/DaTT38fhdtqoGXduKi2Igd/Demo-Screens?page-id=1380%3A16551&type=design&node-id=8714-4320&viewport=-7624%2C-6040%2C0.15&t=AiMdCBFUKK76zNhN-1&scaling=min-zoom&starting-point-node-id=8714%3A4320">
+                    <img src="../../../public/images/cps-concept/H-review-case.png" alt="Case materials" class="cps-concept-image">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

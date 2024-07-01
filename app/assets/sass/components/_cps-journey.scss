@@ -1,0 +1,105 @@
+// CPS journey 
+
+.A-Dashboard {
+     padding: 0 15px;
+}
+
+#cps-casework-concept {
+    margin-bottom: 0 !important;
+}
+
+.govuk-width-container {
+     &.over-ride {
+          margin: 0 !important;
+     }
+}
+
+main {
+     &.over-ride {
+          padding: 0 !important;
+     }
+}
+
+
+#dashboard {
+     float: none;
+     margin: 0 auto;
+     .wrapper {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          a {
+               &:nth-of-type(3n), &:nth-of-type(6n) {
+                    margin-right: 0; 
+               }
+               position: relative;
+               width: 25.75%;
+               margin: 0 2.5% 2em 0;
+               border-left: 10px solid;
+               border-right: 10px solid;
+               border-bottom: 10px solid;
+               padding: 4em 1.5em 1.5em 1.5em;
+               text-decoration: none;
+               &:hover, &:active, &:focus {
+                    background-color: govuk-colour("light-grey");
+                    p {
+                         text-decoration: none;
+                    }
+               }
+               &.one {
+                    border-color: govuk-colour("light-blue");
+                    h2 {
+                         background-color: govuk-colour("light-blue");
+                    }
+               }
+               &.two {
+                    border-color: govuk-colour("turquoise");
+                    h2 {
+                         background-color: govuk-colour("turquoise");
+                    }
+               }
+               &.three {
+                    border-color: govuk-colour("pink");
+                    h2 {
+                         background-color: govuk-colour("pink");
+                    }
+               }
+               &.four {
+                    border-color: govuk-colour("purple");
+                    h2 {
+                         background-color: govuk-colour("purple");
+                    }
+               }
+               &.five {
+                    border-color: govuk-colour("orange");
+                    h2 {
+                         background-color: govuk-colour("orange");
+                    }
+               }
+               &.six {
+                    border-color: govuk-colour("red");
+                    h2 {
+                         background-color: govuk-colour("red");
+                    }
+               }
+               h2 {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    padding: 0.5em 0;
+                    width: 100%;
+                    color: white;
+                    text-align: center;
+               }
+               p {
+                    text-decoration: none;
+                    &.link {
+                         margin-bottom: 0;
+                         color: $govuk-link-colour;
+                         text-decoration: underline;
+                    }
+               }
+          }
+     }
+}

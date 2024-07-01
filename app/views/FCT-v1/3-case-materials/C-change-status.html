@@ -1,0 +1,51 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+
+{% block pageTitle %}
+  Change document status – {{ serviceName }} – Prototype
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form novalidate method="post" action="D-case-materials-status">
+      {{ govukRadios({
+        name: "changeStatus",
+        fieldset: {
+          legend: {
+            text: "Change document status",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          html: "<p class='govuk-body'>You're changing the status for <mark class='hods-highlight'><strong>MG6C UM1 Shelagh</strong></mark></p>"
+        },
+        value: data.changeStatus,
+        items: [
+          {
+            value: "Evidential",
+            text: "Evidential"
+          },
+          {
+            value: "Unused",
+            text: "Unused"
+          }
+        ]
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      
+        <a class="govuk-link" href="B-case-materials">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

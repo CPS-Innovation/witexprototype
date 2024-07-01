@@ -1,0 +1,91 @@
+{% extends "layoutCPS-NEW-SEARCH.html" %}
+{% block header %}
+    {% include "../includes/banner-V1.html" %}
+    <div class="search-bar-wrapper">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <form method="get" action="searchResults">
+                        <fieldset>
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-label--s" for="searchURN">Search for a case's Unique Reference Number (URN)</label>
+                                {% if data['searchURN'] %}
+                                    <input class="govuk-input govuk-!-width-one-half" id="searchURN" name="searchURN" type="text" value="{{ data['searchURN'] }}" />
+                                {% else %}
+                                    <input class="govuk-input govuk-!-width-one-half" id="searchURN" name="searchURN" type="text" value="45AA209820/1" />
+                                {% endif %}
+                                <button type="submit" class="govuk-button" style="">Search</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <span span class="govuk-caption-m">We've found <strong>2</strong> cases that match {{ data['searchURN'] }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block beforeContent %}
+
+{% endblock %}
+{% block content %}
+
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div id="caseOne" class="result-item">
+            <div class="heading">
+                <h2 class="govuk-heading-l">
+                    <a href="C-casefile-1" id="pageLoad">McLove, Eoin</a>
+                    {% if data['searchURN'] %}
+                        <span id="" class="govuk-hint">{{ data['searchURN'] }}/1</span>
+                    {% else %}
+                        <span id="" class="govuk-hint">45AA209820/1</span>
+                    {% endif %}
+                    <span id="" class="govuk-hint">Date of birth: 10 October 1985</span>
+                </h2>
+            </div>
+            <div class="contents">
+                <p class="title">Status:</p> <p class="description"><strong class="govuk-tag govuk-tag--yellow">Not yet charged</strong></p>
+                <p class="title">Date of offence:</p> <p class="description">1 June 2020</p>
+                <p class="title">Next hearing date:</p> <p class="description">1 June 2024</p>
+                <p class="title">Proposed charges:</p> <p class="description"><strong>Section 39 Common assault</strong> Contrary to the Criminal Justice Act 1988</p>
+            </div>
+        </div>
+
+        <div id="caseTwo" class="result-item">
+            <div class="heading">
+                <h2 class="govuk-heading-l">
+                    <a href="D-casefile-2" id="pageLoad">McLove, Eoin; Crilly, Ted; McGuire, Dougal; Hackett, Jack</a>
+                    {% if data['searchURN'] %}
+                        <span id="" class="govuk-hint">{{ data['searchURN'] }}/2</span>
+                    {% else %}
+                        <span id="" class="govuk-hint">45AA209820/2</span>
+                    {% endif %}
+                    <span id="" class="govuk-hint">Date of birth: 10 October 1985</span>
+                </h2>
+            </div>
+            <span class="govuk-tag case-indicator">
+                <strong>Liam Davies</strong> and <strong>Michael Scott</strong> are also working on this case
+                <br>
+                Last active: <strong>5 minutes ago</strong>
+            </span>
+            <div class="contents">
+                <p class="title">Status:</p> <p class="description"><strong class="govuk-tag">Charged</strong></p>
+                <p class="title">Date of offence:</p> <p class="description">1 June 2020 until 3 June 2020</p>
+                <p class="title">Next hearing date:</p> <p class="description">25 June 2024</p>
+                <!-- <p class="title">Court hearing:</p> <p class="description">5 July 2020</p> -->
+                <p class="title">Charges:</p> 
+                <span class="description">
+                    <ol class="govuk-list govuk-list--number">
+                        <li><strong>Section 39 Common assault</strong> Contrary to the Criminal Justice Act 1988</li>
+                        <li><strong>Section 47 Actual Bodily</strong> Harm Contrary to the Offences Against the Person Act 1861</li>
+                    </ol>
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
