@@ -152,9 +152,31 @@ function execCmd(command, value = null) {
     document.execCommand(command, false, value);
 }
 
-document.getElementById('editor').addEventListener('input', function() {
-    console.log(this.innerHTML); 
-});
+// document.getElementById('editor').addEventListener('input', function() {
+//     console.log(this.innerHTML); 
+// });
+
+$(document).ready(function() {
+// Function to add days to the current date
+        function addDays(date, days) {
+            const result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+
+        // Get today's date
+        const today = new Date();
+
+        // Add 2 days to today's date
+        const newDate = addDays(today, 2);
+
+        // Format the new date as a string
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const newDateString = newDate.toLocaleDateString(undefined, options);
+
+        // Insert the new date into the HTML
+        document.getElementById('date').textContent = newDateString;
+        });
 
 </script>
 <div class="govuk-grid-row">
@@ -164,7 +186,7 @@ document.getElementById('editor').addEventListener('input', function() {
                 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
                 {{ govukBackLink({
                 text: "Back",
-                href: "javascript:history.back()"
+                href: "L-case-review-html"
                 }) }}
             </div>
         </div>
@@ -205,7 +227,7 @@ document.getElementById('editor').addEventListener('input', function() {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <h2 class="govuk-heading-s">Priority pre-charge decision review</h2>
-                <div class="govuk-tag govuk-tag--blue" style=" max-width:100%">Due by 11 June 2024 16:45</div>
+                <div class="govuk-tag govuk-tag--blue" style=" max-width:100%">Due by <span id="date"></span> 16:45</div>
             </div>
             <div class="govuk-grid-column-full">
                 <div class="timeline">
@@ -322,7 +344,7 @@ document.getElementById('editor').addEventListener('input', function() {
                             <button onclick="execCmd('bold')"><b>B</b></button>
                             <button onclick="execCmd('italic')"><i>I</i></button>
                             <button onclick="execCmd('underline')"><u>U</u></button>
-                            <button onclick="execCmd('fontSize', '4')">A<small>A</small></button>
+                            <button onclick="execCmd('fontSize', '5')">A<small>A</small></button>
                             <button onclick="execCmd('insertOrderedList')">1.</button>
                             <button onclick="execCmd('insertUnorderedList')">&#8226;</button>
                             
