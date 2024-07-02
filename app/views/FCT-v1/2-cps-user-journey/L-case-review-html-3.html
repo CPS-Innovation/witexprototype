@@ -45,6 +45,9 @@
     border: 2px solid #1d70b8;
     border-radius: 50%;
     background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .timeline-icon--active {
@@ -77,6 +80,15 @@
     padding: 0 5px;
 }
 
+.timeline-item.completed .timeline-icon {
+    color: #fff;
+}
+
+
+.checkmark {
+    width: 14px;
+    height: 14px;
+}
 
 .editor-container {
             border: 2px solid black;
@@ -204,16 +216,20 @@ document.getElementById('editor').addEventListener('input', function() {
             </div>
             <div class="govuk-grid-column-full">
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-icon timeline-icon--active"></div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-icon ">
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path fill="none" stroke="black" stroke-width="5" d="M2 12l5 5L20 4" />
+                            </svg>
+                        </div>
                         <div class="timeline-content">
-                            <h3 class="govuk-heading-s">Case summary</h3>
+                            <p>Case summary</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-icon "></div>
-                        <div class="timeline-content">
-                            <p class="govuk-body">Evidential analysis</p>
+                        <div class="timeline-icon timeline-icon--active"></div>
+                        <div class="timeline-content ">
+                            <h3 class="govuk-heading-s">Evidential analysis</h3>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -288,8 +304,8 @@ document.getElementById('editor').addEventListener('input', function() {
     </div>
     <div class="govuk-grid-column-two-thirds" style="">
         <div style="margin-left:35px">
-            <h2 class="govuk-heading-l">Case summary</h2>
-            <p>Provide a brief overview of the charges and facts in a case and the current bail or remand status of the suspect(s). You should also outline your rationale for applying the Threshold Test. </p>
+            <h2 class="govuk-heading-l">Evidential analysis</h2>
+            <p>Provide your analysis of whether or not, and in what ways, the evidence proves all elements of the offence or offences in accordance with the Threshold Test. Your assessment should anticipate any likely issues for trial and suggest ways to overcome potential challenges to the prosecution case. </p>
             <details class="govuk-details">
                 <summary class="govuk-details__summary">
                     <span class="govuk-details__summary-text">
@@ -297,22 +313,22 @@ document.getElementById('editor').addEventListener('input', function() {
                     </span>
                 </summary>
                 <div class="govuk-details__text">
-                    <p>You must be confident that all 5 conditions of the threshold test have been met. These are:</p>
-                    <ol class="govuk-list govuk-list--number">
-                        <li>there are reasonable ground to suspect that the person to be charged has committed the offence</li>
-                        <li>further evidence can be obtained to provide a realistic prospect of conviction</li>
-                        <li>the seriousness or the circumstances of the case justifies the making of an immediate charging decision</li>
-                        <li>there are continuing substantial grounds to object to bail in accordance with the Bail Act 1976 and in all the circumstances of the case it is proper to do so </li>
-                        <li>it is in the public interest to charge the suspect </li>
-                    </ol>
-                    <p>Where any of the conditions are not met, the Threshold Test cannot be applied and the suspect cannot be charged. </p>
+                    <p>Ensure you have considered:</p>
+                    <ul class="govuk-list govuk-list--bullet ">
+                        <li>whether the evidence is reliable, credible and admissible</li>
+                        <li>any evidence that could be used by the defence to undermine the case and what can be done to counter that</li>
+                        <li>the strength of the evidence if a victim is unwilling to testify or withdraws their support </li>
+                        <li>if any alternative lines of enquiry should be explored or additional evidence sought that would strengthen the case </li>
+                        <li>whether any further evidence will become available and how to deal with this - and what to do if it does not become available within a clear time frame </li>
+                    </ul>
+                    <p>Reference any points of law or CPS policy in your assessment that may be relevant. </p>
+                    <a href="">View detailed guidance on evidential analysis in the case strategy hub (opens in new tab)</a>
                 </div>
             </details>
             <div class="govuk-form-group">
-                
-                    <fieldset class="govuk-fieldset">
-                        <!-- <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="40" aria-describedby="with-hint-info with-hint-hint"></textarea> -->
-                        <div class="editor-container">
+                <fieldset class="govuk-fieldset">
+                    <!-- <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="40" aria-describedby="with-hint-info with-hint-hint"></textarea> -->
+                    <div class="editor-container">
                         <div class="toolbar">
                             <button onclick="execCmd('bold')"><b>B</b></button>
                             <button onclick="execCmd('italic')"><i>I</i></button>
@@ -320,26 +336,21 @@ document.getElementById('editor').addEventListener('input', function() {
                             <button onclick="execCmd('fontSize', '4')">A<small>A</small></button>
                             <button onclick="execCmd('insertOrderedList')">1.</button>
                             <button onclick="execCmd('insertUnorderedList')">&#8226;</button>
-                            
                         </div>
                         <div id="editor" contenteditable="true" class="editor"></div>
                     </div>
-                        <div id="with-hint-info" class="govuk-hint govuk-character-count__message" style="padding-top:15px">
-                            You have 32,767 characters remaining
-                        </div>
-                    </fieldset>
+                    <div id="with-hint-info" class="govuk-hint govuk-character-count__message" style="padding-top:15px">
+                        You have 32,767 characters remaining
+                    </div>
+                </fieldset>
             </div>
-            <form action="L-case-review-html-3" method="get" class="form" style="">
-            <div class="govuk-button-group">
-                <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Continue
-                </button>
-                <a class="govuk-link" href="#">Save and exit</a>
-            </div>
-
-
-
-
+            <form action="L-case-review-html-4" method="get" class="form" style="">
+                <div class="govuk-button-group">
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Continue
+                    </button>
+                    <a class="govuk-link" href="#">Save and exit</a>
+                </div>
             </form>
         </div>
     </div>
