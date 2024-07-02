@@ -217,11 +217,14 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
-@import "patterns/navbar";
+
 
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "node_modules/@ministryofjustice/frontend/moj/all";
+@import "patterns/navbar";
+@import "patterns/new-design";
+
 
 
 @mixin das-clearfix {
