@@ -1,34 +1,36 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
 <style>
-
 header.govuk-header .govuk-header__container {
     margin-bottom: 0;
     border-bottom: none;
 }
 
- main.case-files {padding-top:0 !important}
- #secondary-navigation ul li a {
+main.case-files {
+    padding-top: 0 !important
+}
+
+#secondary-navigation ul li a {
     color: #1d70b8;
     text-decoration: none;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
     font-size: 1.3em;
 }
+
 #secondary-navigation ul li {
     box-sizing: border-box;
-/*    height: 3.125rem;*/
+    /*    height: 3.125rem;*/
     padding: 0 15px;
-/*    float: left;*/
-/*    line-height: 50px;*/
+    /*    float: left;*/
+    /*    line-height: 50px;*/
     position: relative;
 }
 
 #secondary-navigation ul:first-child {
- padding-left:0;
+    padding-left: 0;
 }
 
 #secondary-navigation ul li.current {
-/*    position: absolute;
+    /*    position: absolute;
     bottom: -5px;
     display: inline-block;
     height: 5px;
@@ -36,7 +38,7 @@ header.govuk-header .govuk-header__container {
     left: 0px;
     right: 0px;
     content: " ";*/
-    font-weight:bold;
+    font-weight: bold;
 }
 
 #global-navigation ul {
@@ -44,7 +46,7 @@ header.govuk-header .govuk-header__container {
 
 }
 
-#global-navigation ul li{
+#global-navigation ul li {
     z-index: 9999;
 }
 
@@ -66,31 +68,31 @@ header.govuk-header .govuk-header__container {
 /* Hide the dropdown menu by default */
 .dropdown-menu {
     display: none;
-/*  display: flex;
+    /*  display: flex;
     flex-direction: column;*/
     position: absolute !important;
-    z-index:99;
+    z-index: 99;
     top: 100%;
-    background:#F5F5F5;
+    background: #F5F5F5;
     right: 30px;
     list-style: none;
     padding: 0;
     margin: 0;
-    min-width:250px;
+    min-width: 250px;
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
     border-top: 5px solid #1d70b8;
 
 
 }
 
-.dropdown-menu li  {
-    display:block;
+.dropdown-menu li {
+    display: block;
     padding: 10px 15px;
-    font-weight:400;
+    font-weight: 400;
 }
 
 .dropdown-menu li a {
-    font-weight:400 !important;
+    font-weight: 400 !important;
 }
 
 
@@ -100,32 +102,30 @@ header.govuk-header .govuk-header__container {
     display: flex;
     flex-direction: column;
 }
-
 </style>
-
 <script>
-        $( document ).ready(function() {
-        $('#global-navigation').show();
-        // $('#secondary-navigation').show();
-        // $('.my-cases').addClass('current');
-        // $('.sub-case').addClass('current');
+$(document).ready(function() {
+    $('#global-navigation').show();
+    // $('#secondary-navigation').show();
+    // $('.my-cases').addClass('current');
+    // $('.sub-case').addClass('current');
 
-    });
+});
 
-    document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     var dropdownToggle = document.querySelector('.dropdown-toggle');
     var dropdownMenu = dropdownToggle.nextElementSibling;
 
-    dropdownToggle.addEventListener('click', function (e) {
+    dropdownToggle.addEventListener('click', function(e) {
         e.preventDefault(); // Prevent default link behavior
         var parentMenuItem = dropdownToggle.parentElement;
-        
+
         if (parentMenuItem.classList.contains('show')) {
             parentMenuItem.classList.remove('show');
         } else {
             // Close any open dropdowns
             var openDropdowns = document.querySelectorAll('.menu-item.show');
-            openDropdowns.forEach(function (dropdown) {
+            openDropdowns.forEach(function(dropdown) {
                 dropdown.classList.remove('show');
             });
             // Open the clicked dropdown
@@ -134,30 +134,26 @@ header.govuk-header .govuk-header__container {
     });
 
     // Close the dropdown menu if clicked outside
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', function(e) {
         var isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
         if (!isClickInside) {
             dropdownToggle.parentElement.classList.remove('show');
         }
     });
 });
-
 </script>
-
-
-
-<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %} style=" border-bottom:10px solid #1d70b8">
+<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %} style=" border-bottom:10px solid #1d70b8">
     <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
         <div style="display:flex">
             <div class="govuk-header__logo">
                 <a href="../2-cps-user-journey/A-dashboard" class="govuk-header__link govuk-header__link--homepage">
                     <span class="govuk-header__logotype" style="height:30px">
-                        <span class="moj-header__link moj-header__link--organisation-name" style="font-size:30px">CPS</span> 
+                        <span class="moj-header__link moj-header__link--organisation-name" style="font-size:30px">CPS</span>
                         <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span>
                     </span>
                 </a>
             </div>
-<!--             <div class="govuk-header__logo right">
+            <!--             <div class="govuk-header__logo right">
                 <a href="" class="username">user_name_1983</a>
                 <div class="user-settings">
                     <div class="govuk-form-group">
@@ -236,30 +232,27 @@ header.govuk-header .govuk-header__container {
         </div>
     </div>
 </header>
-
 <nav class="cps-bar-wrapper" id="global-navigation" style="">
     <div class="govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-
                 <ul style="display:flex; width:99%" class="">
-
                     <li class="dashboard" style="margin-left:-17px"><a href="https://as-web-rumpole-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/A-dashboard">Home</a></li>
-                    <li class="my-tasks"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list#past-day">Tasks</a></li>
+                    <li class="my-tasks"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a></li>
                     <li class="my-cases"><a href="https://as-web-rumpole-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/D-my-cases">Cases</a></li>
                     <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
                         <ul class="dropdown-menu" style="left: inherit; right:0;">
-                              <li><a href="I-CMS-Classic">Task list</a></li>
+                            <li><a href="I-CMS-Classic">Task list</a></li>
                             <li><a href="I-CMS-Classic">Cases </a></li>
                             <li><a href="I-CMS-Classic">Case review </a></li>
-                             <li><a href="I-CMS-Classic">Case materials </a></li>
+                            <li><a href="I-CMS-Classic">Case materials </a></li>
                             <!-- <li><a href="#seo">Yet more </a></li> -->
                         </ul>
                     </li>
                     <!-- <li class=""><a href="J-CMS-modern" target="_blank">CMS Modern</a></li> -->
                 </ul>
             </div>
-<!--             <div class="govuk-grid-column-one-third">
+            <!--             <div class="govuk-grid-column-one-third">
                 <form action="B-search-results" method="get">
                     <fieldset>
                         <div class="govuk-form-group">
@@ -287,7 +280,6 @@ header.govuk-header .govuk-header__container {
         </div>
     </div>
 </nav> -->
-
 <!-- <div class="govuk-width-container">
     <div class="govuk-phase-banner header">
         <p class="govuk-phase-banner__content">
@@ -296,16 +288,19 @@ header.govuk-header .govuk-header__container {
     </div>
 </div>
  -->
-<style>body {visibility: hidden}</style>
+<style>
+body {
+    visibility: hidden
+}
+</style>
 <script>
-    $(document).ready(function () {
-        $("body")
-            .contents()
-            .filter(function () {
-        return this.nodeType == Node.TEXT_NODE;
-    })
+$(document).ready(function() {
+    $("body")
+        .contents()
+        .filter(function() {
+            return this.nodeType == Node.TEXT_NODE;
+        })
         .remove();
-        $("body").css("visibility", "visible");
-    });
+    $("body").css("visibility", "visible");
+});
 </script>
-
