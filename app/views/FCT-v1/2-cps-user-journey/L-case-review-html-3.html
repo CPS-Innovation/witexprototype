@@ -7,8 +7,6 @@
 {% block content %}
 <style>
 
-
-
     nav {padding:0 !important}
     .govuk-header__logo {width:50%}
         .govuk-main-wrapper--auto-spacing:first-child {padding-top:0}
@@ -174,8 +172,7 @@ function execCmd(command, value = null) {
 // });
 
 $(document).ready(function() {
-// Function to add days to the current date
-        function addDays(date, days) {
+   function addDays(date, days) {
             const result = new Date(date);
             result.setDate(result.getDate() + days);
             return result;

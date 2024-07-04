@@ -112,35 +112,35 @@ $(document).ready(function() {
 
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdownToggle = document.querySelector('.dropdown-toggle');
-    var dropdownMenu = dropdownToggle.nextElementSibling;
+// document.addEventListener('DOMContentLoaded', function() {
+//     var dropdownToggle = document.querySelector('.dropdown-toggle');
+//     var dropdownMenu = dropdownToggle.nextElementSibling;
 
-    dropdownToggle.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent default link behavior
-        var parentMenuItem = dropdownToggle.parentElement;
+//     dropdownToggle.addEventListener('click', function(e) {
+//         e.preventDefault(); // Prevent default link behavior
+//         var parentMenuItem = dropdownToggle.parentElement;
 
-        if (parentMenuItem.classList.contains('show')) {
-            parentMenuItem.classList.remove('show');
-        } else {
-            // Close any open dropdowns
-            var openDropdowns = document.querySelectorAll('.menu-item.show');
-            openDropdowns.forEach(function(dropdown) {
-                dropdown.classList.remove('show');
-            });
-            // Open the clicked dropdown
-            parentMenuItem.classList.add('show');
-        }
-    });
+//         if (parentMenuItem.classList.contains('show')) {
+//             parentMenuItem.classList.remove('show');
+//         } else {
+//             // Close any open dropdowns
+//             var openDropdowns = document.querySelectorAll('.menu-item.show');
+//             openDropdowns.forEach(function(dropdown) {
+//                 dropdown.classList.remove('show');
+//             });
+//             // Open the clicked dropdown
+//             parentMenuItem.classList.add('show');
+//         }
+//     });
 
-    // Close the dropdown menu if clicked outside
-    document.addEventListener('click', function(e) {
-        var isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
-        if (!isClickInside) {
-            dropdownToggle.parentElement.classList.remove('show');
-        }
-    });
-});
+//     // Close the dropdown menu if clicked outside
+//     document.addEventListener('click', function(e) {
+//         var isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
+//         if (!isClickInside) {
+//             dropdownToggle.parentElement.classList.remove('show');
+//         }
+//     });
+// });
 </script>
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %} style=" border-bottom:10px solid #1d70b8">
     <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
@@ -152,6 +152,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span>
                     </span>
                 </a>
+            </div>
+            <div style="margin-left:auto; width:100%; margin-top:-4px">
+             <form action="B-search-results" method="get">
+                    <fieldset style="margin-bottom:0; padding:0; border:0">
+                        <div class="govuk-form-group" style="margin-left:auto;width:75%;display:flex; margin-bottom:0 ">
+                            <!-- <label class="govuk-label govuk-label--s" for="searchURN">Search all cases</label> -->
+                            <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="  Search all cases">                         
+                            <button type="submit" class="govuk-button search" style="margin-bottom:0;height:36px;margin-top:2px;margin-left:-2px">Search</button>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
             <!--             <div class="govuk-header__logo right">
                 <a href="" class="username">user_name_1983</a>
@@ -240,14 +251,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li class="dashboard" style="margin-left:-17px"><a href="https://as-web-rumpole-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/A-dashboard">Home</a></li>
                     <li class="my-tasks"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a></li>
                     <li class="my-cases"><a href="https://as-web-rumpole-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/D-my-cases">Cases</a></li>
-                    <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
+<!--                     <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
                         <ul class="dropdown-menu" style="left: inherit; right:0;">
                             <li><a href="I-CMS-Classic">Task list</a></li>
                             <li><a href="I-CMS-Classic">Cases </a></li>
                             <li><a href="I-CMS-Classic">Case review </a></li>
                             <li><a href="I-CMS-Classic">Case materials </a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- <li class=""><a href="J-CMS-modern" target="_blank">CMS Modern</a></li> -->
                 </ul>
             </div>

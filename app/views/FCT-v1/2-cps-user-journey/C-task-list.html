@@ -164,6 +164,40 @@ nav {padding:0 !important}
      $('.my-tasks').addClass('current');
 
 });
+
+
+     $(document).ready(function() {
+          // Function to adjust the date by a certain number of days
+        function adjustDate(days) {
+            const result = new Date();
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+
+        // Function to format the date in UK format (dd/mm/yyyy)
+        function formatDate(date) {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        // Function to update dates in the HTML
+        function updateDates() {
+            const dateElements = document.querySelectorAll('.date');
+            dateElements.forEach(el => {
+                const days = parseInt(el.getAttribute('data-days'), 10);
+                const adjustedDate = adjustDate(days);
+                const formattedDate = formatDate(adjustedDate);
+                el.textContent = formattedDate;
+            });
+        }
+
+        // Run the updateDates function
+        updateDates();
+    });
+    </script>
+
 </script>
 <div class="govuk-grid-row">
     <div style="margin-top:15px; display:flex; align-items: center" >
@@ -215,17 +249,17 @@ nav {padding:0 !important}
             <ul class="govuk-tabs__list">
                 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                     <a class="govuk-tabs__tab" href="#past-day">
-                        Tasks (X)
+                        Tasks (15)
                     </a>
                 </li>
                 <li class="govuk-tabs__list-item">
                     <a class="govuk-tabs__tab" href="#past-week">
-                        Directions (X)
+                        Directions (0)
                     </a>
                 </li>
                 <li class="govuk-tabs__list-item">
                     <a class="govuk-tabs__tab" href="#past-month">
-                        Saved (X)
+                        Saved (0)
                     </a>
                 </li>
             </ul>
@@ -339,7 +373,7 @@ nav {padding:0 !important}
                     </div>
                 </div>
                 <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
-                    <p> Showing x of x tasks</p>
+                    <p> Showing 15 of 15 tasks</p>
                     <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-left: auto; ">
                         Set alert
                     </button>
@@ -367,7 +401,7 @@ nav {padding:0 !important}
                             <th scope="col" class="govuk-table__header">Task</th>
                             <th scope="col" class="govuk-table__header">Type</th>
                             <th scope="col" class="govuk-table__header">Location</th>
-                            <th scope="col" class="govuk-table__header">Due date</th>
+                            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Due date</th>
                             <th scope="col" class="govuk-table__header"></th>
                             <th scope="col" class="govuk-table__header"></th>
                             <th scope="col" class="govuk-table__header"></th>
@@ -388,25 +422,73 @@ nav {padding:0 !important}
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell">45AA209820/1</td>
+                            <td class="govuk-table__cell">21XX009875/1</td>
                             <td class="govuk-table__cell bold">Doe, J. McGregor,C</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Expired</strong></td>
-                            <td class="govuk-table__cell bold">22/05/24</td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="-3"></span></td>
                             <td class="govuk-table__cell">Retrieve core details</td>
-                            <td class="govuk-table__cell">First hearing</td>
+                            <td class="govuk-table__cell">Trial</td>
                             <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold addRightLine">21/05/24 <i class="fa-solid fa-triangle-exclamation"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-10"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px"></i></td>
                             <td class="govuk-table__cell  " style=""><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
-                        <tr class="expandable-panel">
-                            <td colspan="11">
-                                <div>
-                                    This is an expandable panel for Row 1.
+                          {% include "../includes/panels/panel1.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
                                 </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
                             </td>
+                            <td class="govuk-table__cell">46BA339831/1</td>
+                            <td class="govuk-table__cell bold">McGregor, Colin</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">3</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="3"></span></td>
+                            <td class="govuk-table__cell">Check New Communications</td>
+                            <td class="govuk-table__cell">First Hearing</td>
+                            <td class="govuk-table__cell">Hull MC / ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-8"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  " style=""><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
+                          {% include "../includes/panels/panel2.html" %}
+                                                  <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">98FG978547/1</td>
+                            <td class="govuk-table__cell bold"> Bodger, Roisin</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">?</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="5"></span></td>
+                            <td class="govuk-table__cell">Check CTL Case </td>
+                            <td class="govuk-table__cell">Trial</td>
+                            <td class="govuk-table__cell">Hull MC / ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-7"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px" ></i></td>
+                            <td class="govuk-table__cell  " style=""><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel3.html" %}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
                                 <!-- <div class="govuk-form-group"> -->
@@ -423,18 +505,153 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">45AA209820/1</td>
                             <td class="govuk-table__cell bold">McLove, Eoin</td>
-                            <td class="govuk-table__cell "> <strong class="govuk-tag govuk-tag--red" style="">2 Active</strong></td>
-                            <td class="govuk-table__cell bold">01/06/24</td>
+                            <td class="govuk-table__cell ">- </td>
+                            <td class="govuk-table__cell bold">-</td>
                             <td class="govuk-table__cell">28 Day PCD Review</td>
-                            <td class="govuk-table__cell">First hearing</td>
-                            <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold addRightLine">14/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
-                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style=" margin-left:20px"></i></td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-6"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
                         <!-- dropdown panel include goes here -->
-                        {% include "../includes/panels/panel2.html" %}
+                        {% include "../includes/panels/panel4.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">33FQ456221/1</td>
+                            <td class="govuk-table__cell bold">Priest, Kim</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">8</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="8"></span></td>
+                            <td class="govuk-table__cell">Retrieve core details</td>
+                            <td class="govuk-table__cell">First hearing</td>
+                            <td class="govuk-table__cell">Hull MC / ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-5"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel5.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">91PC294683/1</td>
+                            <td class="govuk-table__cell bold">Doe, Jack. McGregor, Colin</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Bail</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="3"></span></td>
+                            <td class="govuk-table__cell">Check New Communications</td>
+                            <td class="govuk-table__cell">Sentencing</td>
+                            <td class="govuk-table__cell">Chester CC/ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-3"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel6.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">33FY456221/1</td>
+                            <td class="govuk-table__cell bold">McGregor, Colin. D, Tale</td>
+                            <td class="govuk-table__cell"> -</td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="9"></span></td>
+                            <td class="govuk-table__cell">Check New Communications</td>
+                            <td class="govuk-table__cell">Trial</td>
+                            <td class="govuk-table__cell">Chester CC/ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-3"></span><i class="fa-solid fa-triangle-exclamation" style="margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel7.html" %}
+                                                  <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">95YU134253/1</td>
+                            <td class="govuk-table__cell bold">Stevens, Tom</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">8</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="8"></span></td>
+                            <td class="govuk-table__cell">Retrieve Core Details</td>
+                            <td class="govuk-table__cell">Trial</td>
+                            <td class="govuk-table__cell">Grimsby MC/FIL</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-2"></span><i class="fa-solid fa-circle-exclamation" style="color:#ffdd00; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel8.html" %}
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">43LP879068/1</td>
+                            <td class="govuk-table__cell bold">Hall, Cat</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">12</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="11"></span></td>
+                            <td class="govuk-table__cell">Check New Communications</td>
+                            <td class="govuk-table__cell">Trial</td>
+                            <td class="govuk-table__cell">Chester CC/ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="-1"></span><i class="fa-solid fa-circle-exclamation" style="color:#ffdd00; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel9.html" %}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
                                 <!-- <div class="govuk-form-group"> -->
@@ -450,24 +667,153 @@ nav {padding:0 !important}
                                 <!-- </div> -->
                             </td>
                             <td class="govuk-table__cell">45AA209820/1</td>
-                            <td class="govuk-table__cell bold">Doe, J. McGregor,C</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Expired</strong></td>
-                            <td class="govuk-table__cell bold">22/05/24</td>
-                            <td class="govuk-table__cell">Retrieve core details</td>
-                            <td class="govuk-table__cell">First hearing</td>
-                            <td class="govuk-table__cell">Hull MC / ELE</td>
-                            <td class="govuk-table__cell bold addRightLine">21/05/24 <i class="fa-solid fa-triangle-exclamation" style=""></i></td>
+                            <td class="govuk-table__cell bold">McGregor, Colin</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">?</strong></td>
+                            <td class="govuk-table__cell bold">-</td>
+                            <td class="govuk-table__cell">Check CTL Case</td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell">Hull MC/ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="0"></span><i class="fa-solid fa-circle-exclamation" style="color:#b1b4b6; margin-left:5px"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
-                        <tr class="expandable-panel">
-                            <td colspan="11">
-                                <div>
-                                    This is an expandable panel for Row 3.
+                          {% include "../includes/panels/panel10.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
                                 </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
                             </td>
+                            <td class="govuk-table__cell">46BA339821/1</td>
+                            <td class="govuk-table__cell bold">Bodger, Roisin. Bodger, Penny</td>
+                            <td class="govuk-table__cell"> -</td>
+                            <td class="govuk-table__cell bold">-</td>
+                            <td class="govuk-table__cell">28 Day PCD Review</td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="0"></span><i class="fa-solid fa-circle-exclamation" style="color:#b1b4b6; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                         </tr>
+                          {% include "../includes/panels/panel11.html" %}
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">21XX109875/1</td>
+                            <td class="govuk-table__cell bold">Georgia, Ella. Hall, Cat</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Bail</strong></td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="5"></span></td>
+                            <td class="govuk-table__cell">Retrieve Core Details</td>
+                            <td class="govuk-table__cell">Trial</td>
+                            <td class="govuk-table__cell">Chester CC/ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="2"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel12.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">95ZU134253/1</td>
+                            <td class="govuk-table__cell bold">Freeman, Natalie</td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Bail</strong></td>
+                            <td class="govuk-table__cell bold">-</td>
+                            <td class="govuk-table__cell">Chase Outstanding PCD</td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell">-</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="3"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel13.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">91PD294683/1</td>
+                            <td class="govuk-table__cell bold">Bodger, Roisin. Voke, Gerry</td>
+                            <td class="govuk-table__cell">- </td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="15"></span></td>
+                            <td class="govuk-table__cell">Check New Communications</td>
+                            <td class="govuk-table__cell">Trial</td>
+                            <td class="govuk-table__cell">Grimsby MC/FIL</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="5"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel14.html" %}
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell">42LP879068/1</td>
+                            <td class="govuk-table__cell bold">McGregor, Colin</td>
+                            <td class="govuk-table__cell"> -</td>
+                            <td class="govuk-table__cell bold"><span class="date" data-days="15"></span></td>
+                            <td class="govuk-table__cell">Retrieve Core Details</td>
+                            <td class="govuk-table__cell">First Hearing</td>
+                            <td class="govuk-table__cell">Hull MC/ELE</td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="6"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px;"></i></td>
+                            <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
+                            <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
+                        </tr>
+                          {% include "../includes/panels/panel15.html" %}
                     </tbody>
                 </table>
             </div>
