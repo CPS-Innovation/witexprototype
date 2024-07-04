@@ -13,6 +13,23 @@
 
 <style>
 
+.cpsTagBlack {
+        background-color:black;color:white; width:80%;font-weight:700 !important;text-align: center;
+    }
+
+.cpsTagRed {
+        background-color:#d4351c ;color:white; width:80%;font-weight:700 !important;text-align: center;
+    }
+
+.cpsTagYellow {
+        background-color:#ffdd00 ;color:black; width:80%;font-weight:700 !important;text-align: center;
+    }
+
+.cpsTagUnkown {
+        background-color:white;color:black; width:80%;font-weight:700 !important;text-align: center; border: 3px solid #d4351c  ;
+    }
+
+
 .taskCountBar {margin-left:100px
 }
 
@@ -44,7 +61,7 @@
     font-size:19px
 }
 
-.fa-comment, .fa-star, .fa-circle-exclamation {
+.fa-comment, .fa-star, .fa-circle-exclamation, .fa-circle-info {
     font-size:19px
 }
 
@@ -200,7 +217,7 @@ nav {padding:0 !important}
 
 </script>
 <div class="govuk-grid-row">
-    <div style="margin-top:15px; display:flex; align-items: center" >
+    <div style="margin-top:15px; display:flex; align-items: center" > 
         <div class="govuk-grid-column-one-third" style="" id="" >
             <h1 class="govuk-heading-m" style="margin-bottom:0">Hubert Blaine Wolfeschlegelsteinhausenbergerdorff
 </h1>
@@ -214,7 +231,7 @@ nav {padding:0 !important}
                 <div class="govuk-grid-column-one-quarter taskCountItems" style="">
                     <i class="fa-solid fa-triangle-exclamation" style=""></i>
                     <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p>
-                    <p class="taskcCountItemNumber "> 22</p>
+                    <p class="taskcCountItemNumber "> 7</p>
                 </div>
 
                   <div class="govuk-grid-column-one-quarter taskCountItems" style="">
@@ -225,15 +242,15 @@ nav {padding:0 !important}
                 </div>
 
                   <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                     <i class="fa-solid fa-circle-exclamation" style="color:#1d70b8; "></i>
-                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due</p>
-                    <p class="taskcCountItemNumber "> 3</p>
+                     <i class="fa-solid fa-circle-info" style="color:#b1b4b6; "></i>
+                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due today</p>
+                    <p class="taskcCountItemNumber "> 2</p>
                 </div>
 
                   <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                    <!-- <i class="fa-solid fa-triangle-exclamation" style=""></i> -->
+                     <i class="fa-solid fa-circle-info" style="color:#fff; "></i>
                     <p class="" style="font-size:16px;  margin-bottom:0">Due soon</p>
-                    <p class="taskcCountItemNumber "> 14</p>
+                    <p class="taskcCountItemNumber "> 4</p>
                 </div>
 
             </div>
@@ -424,7 +441,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">21XX009875/1</td>
                             <td class="govuk-table__cell bold">Doe, J. McGregor,C</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Expired</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagBlack" style="">Expired</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="-3"></span></td>
                             <td class="govuk-table__cell">Retrieve core details</td>
                             <td class="govuk-table__cell">Trial</td>
@@ -451,7 +468,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">46BA339831/1</td>
                             <td class="govuk-table__cell bold">McGregor, Colin</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">3</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed" style="">3</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="3"></span></td>
                             <td class="govuk-table__cell">Check New Communications</td>
                             <td class="govuk-table__cell">First Hearing</td>
@@ -478,7 +495,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">98FG978547/1</td>
                             <td class="govuk-table__cell bold"> Bodger, Roisin</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">?</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagUnkown" style="">?</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="5"></span></td>
                             <td class="govuk-table__cell">Check CTL Case </td>
                             <td class="govuk-table__cell">Trial</td>
@@ -533,7 +550,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">33FQ456221/1</td>
                             <td class="govuk-table__cell bold">Priest, Kim</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">8</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed" style="">8</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="8"></span></td>
                             <td class="govuk-table__cell">Retrieve core details</td>
                             <td class="govuk-table__cell">First hearing</td>
@@ -560,7 +577,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">91PC294683/1</td>
                             <td class="govuk-table__cell bold">Doe, Jack. McGregor, Colin</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Bail</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="3"></span></td>
                             <td class="govuk-table__cell">Check New Communications</td>
                             <td class="govuk-table__cell">Sentencing</td>
@@ -614,7 +631,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">95YU134253/1</td>
                             <td class="govuk-table__cell bold">Stevens, Tom</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">8</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed" style="">8</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="8"></span></td>
                             <td class="govuk-table__cell">Retrieve Core Details</td>
                             <td class="govuk-table__cell">Trial</td>
@@ -641,7 +658,7 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">43LP879068/1</td>
                             <td class="govuk-table__cell bold">Hall, Cat</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">12</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed " style="">12</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="11"></span></td>
                             <td class="govuk-table__cell">Check New Communications</td>
                             <td class="govuk-table__cell">Trial</td>
@@ -668,12 +685,12 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">45AA209820/1</td>
                             <td class="govuk-table__cell bold">McGregor, Colin</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">?</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagUnkown" style="">?</strong></td>
                             <td class="govuk-table__cell bold">-</td>
                             <td class="govuk-table__cell">Check CTL Case</td>
                             <td class="govuk-table__cell">-</td>
                             <td class="govuk-table__cell">Hull MC/ELE</td>
-                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="0"></span><i class="fa-solid fa-circle-exclamation" style="color:#b1b4b6; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="0"></span><i class="fa-solid fa-circle-info" style="color:#b1b4b6; margin-left:5px"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
@@ -700,7 +717,7 @@ nav {padding:0 !important}
                             <td class="govuk-table__cell">28 Day PCD Review</td>
                             <td class="govuk-table__cell">-</td>
                             <td class="govuk-table__cell">-</td>
-                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="0"></span><i class="fa-solid fa-circle-exclamation" style="color:#b1b4b6; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="0"></span><i class="fa-solid fa-circle-info" style="color:#b1b4b6; margin-left:5px"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
@@ -722,12 +739,12 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">21XX109875/1</td>
                             <td class="govuk-table__cell bold">Georgia, Ella. Hall, Cat</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Bail</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong></td>
                             <td class="govuk-table__cell bold"><span class="date" data-days="5"></span></td>
                             <td class="govuk-table__cell">Retrieve Core Details</td>
                             <td class="govuk-table__cell">Trial</td>
                             <td class="govuk-table__cell">Chester CC/ELE</td>
-                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="2"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="2"></span><i class="fa-solid fa-circle-info" style="color:#fff; margin-left:5px"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
@@ -749,12 +766,12 @@ nav {padding:0 !important}
                             </td>
                             <td class="govuk-table__cell">95ZU134253/1</td>
                             <td class="govuk-table__cell bold">Freeman, Natalie</td>
-                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey" style="">Bail</strong></td>
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong></td>
                             <td class="govuk-table__cell bold">-</td>
                             <td class="govuk-table__cell">Chase Outstanding PCD</td>
                             <td class="govuk-table__cell">-</td>
                             <td class="govuk-table__cell">-</td>
-                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="3"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="3"></span><i class="fa-solid fa-circle-info" style="color:#fff; margin-left:5px"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
@@ -781,7 +798,7 @@ nav {padding:0 !important}
                             <td class="govuk-table__cell">Check New Communications</td>
                             <td class="govuk-table__cell">Trial</td>
                             <td class="govuk-table__cell">Grimsby MC/FIL</td>
-                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="5"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="5"></span><i class="fa-solid fa-circle-info" style="color:#fff; margin-left:5px"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
@@ -808,7 +825,7 @@ nav {padding:0 !important}
                             <td class="govuk-table__cell">Retrieve Core Details</td>
                             <td class="govuk-table__cell">First Hearing</td>
                             <td class="govuk-table__cell">Hull MC/ELE</td>
-                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="6"></span><i class="fa-solid fa-circle-exclamation" style="color:#fff; margin-left:5px;"></i></td>
+                            <td class="govuk-table__cell bold addRightLine govuk-table__cell--numeric"><span class="date" data-days="6"></span><i class="fa-solid fa-circle-info" style="color:#fff; margin-left:5px;"></i></td>
                             <td class="govuk-table__cell  "><i class="fa-regular fa-comment" style="margin-left:20px"></i></td>
                             <td class="govuk-table__cell bold addRightLine"><i class="fa-regular fa-star" style=""></i></td>
                             <td class="govuk-table__cell toggle-panel bold"><i class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
