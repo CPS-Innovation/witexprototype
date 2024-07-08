@@ -1,36 +1,651 @@
-{% extends "layoutCPS-NEW-INDEX.html" %}
+{% extends "layout.html" %}
 {% block header %}
-    {% include "../includes/banner-V5.html" %}
+{% include "../includes/banner-V7.html" %}
 {% endblock %}
 {% block beforeContent %}
-
 {% endblock %}
 {% block content %}
+<style>
+nav {
+    padding: 0 !important
+}
 
+.govuk-header__logo {
+    width: 50%
+}
+
+.govuk-main-wrapper--auto-spacing:first-child {
+    padding-top: 0
+}
+
+.js-enabled .govuk-tabs__tab {
+    /*    // this is because the table is too narrow for all the tabs - fix this by making the page wider when you have time*/
+    font-size: 0.98em;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 15px 5px;
+
+    position: relative;
+    border: 1px solid #b1b4b6;
+}
+
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 75%;
+    left: 30px;
+    right: 38px;
+    height: 4px;
+    background-color: white;
+    transform: translateY(-50%);
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    flex: 1;
+    padding: 0 5px;
+}
+
+.step:first-child,
+.step:last-child {
+    flex: 0 0 auto;
+}
+
+.step-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #b1b4b6;
+    border: 4px solid white;
+}
+
+
+.active .indicator {
+    width: 25px;
+    height: 25px;
+    background-color: #1d70b8;
+    border: none;
+}
+
+.active .indicator svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+
+.double-indicator .indicator {
+    width: 15px;
+    height: 15px;
+    /*            border-radius: 10px;*/
+}
+
+.double-indicator .indicator:first-child {
+    margin-right: -10px;
+}
+
+
+}
+</style>
 <script>
-        $( document ).ready(function() {
-        $('#global-navigation').show();
-        $('#secondary-navigation').show();
-        $('.my-cases').addClass('current');
-        $('.sub-overview').addClass('current');
+$(document).ready(function() {
+    $('#global-navigation').show();
+    $('.my-cases').addClass('current');
+    $('.sub-overview').addClass('current');
 
-    });
-
-
-
+});
 </script>
-
-<div id="image-wrapper" class="D-my-cases">
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-            <a href="javascript:history.back()" class="govuk-back-link">Back</a>
-            <div class="wrapper">
-                <a href="F-casework-app">
-                    <img src="../../../public/images/cps-concept/E-case-overview.jpg" alt="Case materials" class="cps-concept-image">
-                </a>
-            </div>
-        </div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <h1 class="govuk-heading-l" style="margin-bottom:5px">Eoin McLove</h1>
+        <h2 class="govuk-heading-m" style="font-weight:400; margin-bottom:5px">45AA209820/1, Op: Operation Name</h1>
+            <p class="govuk-caption-m">Compass ID: 21415000 </p>
     </div>
-</div>
-
-{% endblock %}
+    <div class="govuk-grid-column-one-half">
+    </div>
+    <div class="govuk-grid-column-full">
+        <div class="govuk-tabs" data-module="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+                Stuff
+            </h2>
+            <ul class="govuk-tabs__list">
+                <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                    <a class="govuk-tabs__tab" href="#past-day">
+                        Overview
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#past-week">
+                        Defendants
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#past-month">
+                        Witnesses
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#past-year">
+                        Materials served
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#applications">
+                        Applications
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#directions">
+                        Directions
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#contacts">
+                        Contacts
+                    </a>
+                </li>
+            </ul>
+            <div class="govuk-tabs__panel" id="past-day">
+                <!-- <h2 class="govuk-heading-l">Past day</h2> -->
+                <div class="progress-container">
+                    <div class="step active">
+                        <div class="step-title">
+                            <p style="font-weight:700; margin-bottom:0px">Charge</p>
+                            <p style="padding:0; margin:0">-</p>
+                        </div>
+                        <div class="indicator">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="12" y1="12" x2="12" y2="7" />
+                                <line x1="12" y1="12" x2="8" y2="12" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="step double-indicator">
+                        <div class="step-title">
+                            <p style="margin-bottom:0px">Disclosure / First Hearing</p>
+                            <p style="padding:0; margin:0">-</p>
+                        </div>
+                        <div style="display: flex;">
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+                    <div class="step double-indicator">
+                        <div class="step-title">
+                            <p style="margin-bottom:0px">PTPH / Trial</p>
+                            <p style="padding:0; margin:0">-</p>
+                        </div>
+                        <div style="display: flex;">
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">
+                            <p style="margin-bottom:0px">Sentence</p>
+                            <p style="padding:0; margin:0">-</p>
+                        </div>
+                        <div class="indicator"></div>
+                    </div>
+                </div>
+                <div class="govuk-grid-row" style="margin-top:25px">
+                    <div class="govuk-grid-column-one-half">
+                        <div class="govuk-summary-card" style="height:256px">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title"> Status</h2>
+                                <ul class="govuk-summary-card__actions">
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <dl class="govuk-summary-list">
+                                    <div class="app-summary-card__body">
+                                        <div class="govuk-tag govuk-tag--blue" style=" max-width:100%">28 day PCD Review</div>
+                                        <p style="margin-top:10px; font-size:16px">The case is awaiting a charging decision </p>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <div class="govuk-summary-card">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title"> Tasks</h2>
+                                <ul class="govuk-summary-card__actions">
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <dl class="govuk-summary-list">
+                                    <div class="app-summary-card__body">
+                                        <table class="govuk-table">
+                                            <!-- <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption> -->
+                                            <thead class="govuk-table__head">
+                                                <tr class="govuk-table__row">
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Task</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Due date</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Role</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="govuk-table__body" style="font-size:16px">
+                                                <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">28 day PCD review</td>
+                                                    <td class="govuk-table__cell">06 July 2024</td>
+                                                    <td class="govuk-table__cell">Role</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Check new communi...</td>
+                                                    <td class="govuk-table__cell">30 May 2024</td>
+                                                    <td class="govuk-table__cell">Role</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:25px"></div>
+                    <div class="govuk-grid-column-one-half">
+                        <div class="govuk-summary-card">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title"> Case activity</h2>
+                                <ul class="govuk-summary-card__actions">
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <dl class="govuk-summary-list">
+                                    <div class="app-summary-card__body">
+                                        <div class="moj-timeline">
+<!--                                             <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">28 Day PCD review </h2>
+                                                    <p class="moj-timeline__byline">by Joe Bloggs</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-06-14T14:01:00.000Z">14 June 2019 at 2:01pm</time>
+                                                </p>
+                                                <div class="moj-timeline__description">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non felis risus. Curabitur nec ante vitae felis ullamcorper tincidunt.</p>
+                                                    <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
+                                                </div>
+                                            </div> -->
+<!--                                             <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">Application review in progress</h2>
+                                                    <p class="moj-timeline__byline">by Caseworker 1</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-06-07T12:32:00.000Z">7 June 2019 at 12:32pm</time>
+                                                </p>
+                                                <div class="moj-timeline__description">Your application is being reviewed by one of our case workers.</div>
+                                            </div> -->
+<!--                                             <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">Application received</h2>
+                                                    <p class="moj-timeline__byline">by Caseworker 1</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-06-06T09:12:00.000Z">6 June 2019 at 9:12am</time>
+                                                </p>
+                                                <div class="moj-timeline__description">Your application has been received – reference MOJ-1234-5678</div>
+                                            </div> -->
+<!--                                             <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">Application submitted</h2>
+                                                    <p class="moj-timeline__byline">by Joe Bloggs</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-05-28T10:45:00.000Z">28 May 2019 at 10:45am</time>
+                                                </p>
+                                                <div class="moj-timeline__description">
+                                                    <details class="govuk-details govuk-!-margin-bottom-0">
+                                                        <summary class="govuk-details__summary">
+                                                            <span class="govuk-details__summary-text">
+                                                                Application details
+                                                            </span>
+                                                        </summary>
+                                                        <div class="govuk-details__text">
+                                                            Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a class="govuk-link" href="#">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+                                                        </div>
+                                                    </details>
+                                                </div>
+                                            </div> -->
+<!--                                             <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">Documents uploaded</h2>
+                                                    <p class="moj-timeline__byline">by Joe Bloggs</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-05-28T10:15:00.000Z">28 May 2019 at 10:15am</time>
+                                                </p>
+                                                <div class="moj-timeline__description">
+                                                    <ul class="moj-timeline__documents">
+                                                        <li class="moj-timeline__document-item">
+                                                            <a class="govuk-link" href="#">
+                                                                <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                                                                    <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+                                                                </svg>
+                                                                Document 1
+                                                            </a>
+                                                        </li>
+                                                        <li class="moj-timeline__document-item">
+                                                            <a class="govuk-link" href="#">
+                                                                <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                                                                    <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+                                                                </svg>
+                                                                Document 2
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> -->
+                                            <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">New task added </h2>
+                                                    <p class="moj-timeline__byline">by Phelps. V</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-05-21T13:15:00.000Z">06 July 2024 at 1:15pm</time>
+                                                </p>
+                                                <div class="moj-timeline__description">
+                                                    <ul class="govuk-list govuk-list--bullet">
+                                                        <li><a class="govuk-link" href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/F-casework-app">28 day PCD review</a></li>
+                                                        <!-- <li><a class="govuk-link" href="#">Item 2</a></li> -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="moj-timeline__item">
+                                                <div class="moj-timeline__header">
+                                                    <h2 class="moj-timeline__title">New task added </h2>
+                                                    <p class="moj-timeline__byline">by Phelps. V</p>
+                                                </div>
+                                                <p class="moj-timeline__date">
+                                                    <time datetime="2019-05-21T13:15:00.000Z">21 May 2024 at 1:15pm</time>
+                                                </p>
+                                                <div class="moj-timeline__description">
+                                                    <ul class="govuk-list govuk-list--bullet">
+                                                        <li><a class="govuk-link" href="#">Check communications</a></li>
+                                                        <!-- <li><a class="govuk-link" href="#">Item 2</a></li> -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-grid-column-one-half">
+                        <div class="govuk-summary-card">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title"> Communications</h2>
+                                <ul class="govuk-summary-card__actions">
+                                     <li class="govuk-summary-card__action" style="margin-right:0"> <a class="govuk-link" href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/F-casework-app" style="font-weight:400;">
+                                    All case materials<span class="govuk-visually-hidden"> </span>
+                                </a>
+                            </li>
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <dl class="govuk-summary-list">
+                                    <div class="app-summary-card__body">
+                                        <table class="govuk-table">
+                                            <!-- <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption> -->
+                                            <thead class="govuk-table__head">
+                                                <tr class="govuk-table__row">
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Title</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Document</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Type</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class">Date</th>
+                                                    <th scope="col" class="govuk-table__header app-custom-class"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="govuk-table__body" style="font-size:16px">
+                                                <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Title</td>
+                                                    <td class="govuk-table__cell">Document</td>
+                                                    <td class="govuk-table__cell">Type</td>
+                                                    <td class="govuk-table__cell">Date</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Title</td>
+                                                    <td class="govuk-table__cell">Document</td>
+                                                    <td class="govuk-table__cell">Type</td>
+                                                    <td class="govuk-table__cell">Date</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                                 <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Title</td>
+                                                    <td class="govuk-table__cell">Document</td>
+                                                    <td class="govuk-table__cell">Type</td>
+                                                    <td class="govuk-table__cell">Date</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                                <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Title</td>
+                                                    <td class="govuk-table__cell">Document</td>
+                                                    <td class="govuk-table__cell">Type</td>
+                                                    <td class="govuk-table__cell">Date</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                                 <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Title</td>
+                                                    <td class="govuk-table__cell">Document</td>
+                                                    <td class="govuk-table__cell">Type</td>
+                                                    <td class="govuk-table__cell">Date</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                                 <tr class="govuk-table__row">
+                                                    <td class="govuk-table__cell">Title</td>
+                                                    <td class="govuk-table__cell">Document</td>
+                                                    <td class="govuk-table__cell">Type</td>
+                                                    <td class="govuk-table__cell">Date</td>
+                                                    <td class="govuk-table__cell"><i class="fa-solid fa-chevron-right"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+                    <h2 class="govuk-heading-l">Past week</h2>
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Case manager</th>
+                                <th scope="col" class="govuk-table__header">Cases opened</th>
+                                <th scope="col" class="govuk-table__header">Cases closed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">David Francis</td>
+                                <td class="govuk-table__cell">24</td>
+                                <td class="govuk-table__cell">18</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Paul Farmer</td>
+                                <td class="govuk-table__cell">16</td>
+                                <td class="govuk-table__cell">20</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Rita Patel</td>
+                                <td class="govuk-table__cell">24</td>
+                                <td class="govuk-table__cell">27</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+                    <h2 class="govuk-heading-l">Past month</h2>
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Case manager</th>
+                                <th scope="col" class="govuk-table__header">Cases opened</th>
+                                <th scope="col" class="govuk-table__header">Cases closed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">David Francis</td>
+                                <td class="govuk-table__cell">98</td>
+                                <td class="govuk-table__cell">95</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Paul Farmer</td>
+                                <td class="govuk-table__cell">122</td>
+                                <td class="govuk-table__cell">131</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Rita Patel</td>
+                                <td class="govuk-table__cell">126</td>
+                                <td class="govuk-table__cell">142</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+                    <h2 class="govuk-heading-l">Past year</h2>
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Case manager</th>
+                                <th scope="col" class="govuk-table__header">Cases opened</th>
+                                <th scope="col" class="govuk-table__header">Cases closed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">David Francis</td>
+                                <td class="govuk-table__cell">1380</td>
+                                <td class="govuk-table__cell">1472</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Paul Farmer</td>
+                                <td class="govuk-table__cell">1129</td>
+                                <td class="govuk-table__cell">1083</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Rita Patel</td>
+                                <td class="govuk-table__cell">1539</td>
+                                <td class="govuk-table__cell">1265</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="applications">
+                    <!-- <h2 class="govuk-heading-l">Past year</h2> -->
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Case manager</th>
+                                <th scope="col" class="govuk-table__header">Cases opened</th>
+                                <th scope="col" class="govuk-table__header">Cases closed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">David Francis</td>
+                                <td class="govuk-table__cell">1380</td>
+                                <td class="govuk-table__cell">1472</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Paul Farmer</td>
+                                <td class="govuk-table__cell">1129</td>
+                                <td class="govuk-table__cell">1083</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Rita Patel</td>
+                                <td class="govuk-table__cell">1539</td>
+                                <td class="govuk-table__cell">1265</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="directions">
+                    <!-- <h2 class="govuk-heading-l">Past year</h2> -->
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Case manager</th>
+                                <th scope="col" class="govuk-table__header">Cases opened</th>
+                                <th scope="col" class="govuk-table__header">Cases closed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">David Francis</td>
+                                <td class="govuk-table__cell">1380</td>
+                                <td class="govuk-table__cell">1472</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Paul Farmer</td>
+                                <td class="govuk-table__cell">1129</td>
+                                <td class="govuk-table__cell">1083</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Rita Patel</td>
+                                <td class="govuk-table__cell">1539</td>
+                                <td class="govuk-table__cell">1265</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contacts">
+                    <!-- <h2 class="govuk-heading-l">Past year</h2> -->
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">Case manager</th>
+                                <th scope="col" class="govuk-table__header">Cases opened</th>
+                                <th scope="col" class="govuk-table__header">Cases closed</th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">David Francis</td>
+                                <td class="govuk-table__cell">1380</td>
+                                <td class="govuk-table__cell">1472</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Paul Farmer</td>
+                                <td class="govuk-table__cell">1129</td>
+                                <td class="govuk-table__cell">1083</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">Rita Patel</td>
+                                <td class="govuk-table__cell">1539</td>
+                                <td class="govuk-table__cell">1265</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </h2>
+        </div>
+        {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layoutCPS-NEW-INDEX.html" %}
+{% block header %}
+    {% include "../includes/banner-V5.html" %}
+{% endblock %}
+{% block beforeContent %}
+
+{% endblock %}
+{% block content %}
+
+<script>
+        $( document ).ready(function() {
+        $('#global-navigation').show();
+        $('#secondary-navigation').show();
+        $('.my-cases').addClass('current');
+        $('.sub-overview').addClass('current');
+
+    });
+
+
+
+</script>
+
+<div id="image-wrapper" class="D-my-cases">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <a href="javascript:history.back()" class="govuk-back-link">Back</a>
+            <div class="wrapper">
+                <a href="F-casework-app">
+                    <img src="../../../public/images/cps-concept/E-case-overview.jpg" alt="Case materials" class="cps-concept-image">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
