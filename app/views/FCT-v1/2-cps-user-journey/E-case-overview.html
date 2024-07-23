@@ -50,13 +50,17 @@ nav {
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    flex: 1;
     padding: 0 5px;
 }
 
 .step:first-child,
 .step:last-child {
     flex: 0 0 auto;
+}
+
+.step:nth-child(2),
+.step:nth-child(3) {
+/*    flex-grow: 1; /* Take up remaining space equally */*/
 }
 
 .step-title {
