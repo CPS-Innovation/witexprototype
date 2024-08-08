@@ -1,38 +1,26 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <style>
-main.case-files {
-    padding-top: 0 !important
-}
-
-#secondary-navigation ul li a {
+ main.case-files {padding-top:0 !important}
+ #secondary-navigation ul li a {
     color: #1d70b8;
     text-decoration: none;
-    /*    font-weight: bold;*/
+/*    font-weight: bold;*/
     font-size: 1.3em;
 }
-
 #secondary-navigation ul li {
     box-sizing: border-box;
-    /*    height: 3.125rem;*/
+/*    height: 3.125rem;*/
     padding: 0 15px;
-    /*    float: left;*/
-    /*    line-height: 50px;*/
+/*    float: left;*/
+/*    line-height: 50px;*/
     position: relative;
-    list-style-type: none;
-    /* Remove bullets from unordered and ordered lists */
-
-}
-
-#global-navigation {
-    margin-bottom: 0
 }
 
 #secondary-navigation ul:first-child {
-    padding-left: 0;
+ padding-left:0;
 }
 
 #secondary-navigation ul li.current {
-    /*    position: absolute;
+/*    position: absolute;
     bottom: -5px;
     display: inline-block;
     height: 5px;
@@ -40,26 +28,15 @@ main.case-files {
     left: 0px;
     right: 0px;
     content: " ";*/
-    font-weight: bold;
+    font-weight:bold;
 }
-
-/*#secondary-navigation ul li.current:after {
-      position: absolute;
-    bottom: -12px;
-    display: inline-block;
-    height: 5px;
-    background: #1d70b8;
-    left: 0px;
-    right: 0px;
-    content: " ";
-}*/
 
 #global-navigation ul {
     position: static;
 
 }
 
-#global-navigation ul li {
+#global-navigation ul li{
     z-index: 9999;
 }
 
@@ -73,7 +50,7 @@ main.case-files {
     border-top: 8px solid #1d70b8;
     position: absolute;
     left: 135px;
-    top: 9px;
+    top: 21px;
 }
 
 
@@ -81,40 +58,31 @@ main.case-files {
 /* Hide the dropdown menu by default */
 .dropdown-menu {
     display: none;
-    /*  display: flex;
+/*  display: flex;
     flex-direction: column;*/
     position: absolute !important;
-    z-index: 99;
+    z-index:99;
     top: 100%;
-    background: #F5F5F5;
+    background:#F5F5F5;
     right: 30px;
     list-style: none;
     padding: 0;
     margin: 0;
-    min-width: 250px;
+    min-width:250px;
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
     border-top: 5px solid #1d70b8;
 
 
 }
 
-.dropdown-menu li {
-    box-sizing: border-box;
-    height: 3.125rem;
-    padding: 0 15px;
-    float: left;
-    line-height: 50px;
-    position: relative;
-
+.dropdown-menu li  {
+    display:block;
+    padding: 10px 15px;
+    font-weight:400;
 }
-
 
 .dropdown-menu li a {
-    font-weight: 400 !important;
-}
-
-.dropdown-menu li:hover {
-    text-decoration: underline;
+    font-weight:400 !important;
 }
 
 
@@ -125,61 +93,23 @@ main.case-files {
     flex-direction: column;
 }
 
-#test-nav h1 {
-    position: relative;
-}
-
-#test-nav h1:after {
-    position: absolute;
-    content: '';
-/*    right: -20px;*/
-      right: -30px;
-    top: 0;
-    bottom: 0;
-    border-left: 32px solid #f3f2f1;
-    border-bottom: 32px solid transparent;
-    border-top: 30px solid transparent;
-/*    border-left: 22px solid #f3f2f1;
-    border-bottom: 22px solid transparent;
-    border-top: 20px solid transparent;*/
-/*    test*/
-}
-
-#test-nav h1:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background: #f3f2f1;
-    left: -1000em;
-    z-index: 1;
-    right: 0;
-}
-
 </style>
+
 <script>
-$(document).ready(function() {
-    $('#global-navigation').show();
-    // $('#secondary-navigation').show();
-    // $('.my-cases').addClass('current');
-    // $('.sub-case').addClass('current');
-
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
     var dropdownToggle = document.querySelector('.dropdown-toggle');
     var dropdownMenu = dropdownToggle.nextElementSibling;
 
-    dropdownToggle.addEventListener('click', function(e) {
+    dropdownToggle.addEventListener('click', function (e) {
         e.preventDefault(); // Prevent default link behavior
         var parentMenuItem = dropdownToggle.parentElement;
-
+        
         if (parentMenuItem.classList.contains('show')) {
             parentMenuItem.classList.remove('show');
         } else {
             // Close any open dropdowns
             var openDropdowns = document.querySelectorAll('.menu-item.show');
-            openDropdowns.forEach(function(dropdown) {
+            openDropdowns.forEach(function (dropdown) {
                 dropdown.classList.remove('show');
             });
             // Open the clicked dropdown
@@ -188,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Close the dropdown menu if clicked outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         var isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
         if (!isClickInside) {
             dropdownToggle.parentElement.classList.remove('show');
@@ -196,30 +126,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %} style=" border-bottom:10px solid #1d70b8">
+
+
+<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
     <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
         <div style="display:flex">
             <div class="govuk-header__logo">
                 <a href="../2-cps-user-journey/A-dashboard" class="govuk-header__link govuk-header__link--homepage">
-                    <span class="govuk-header__logotype" style="height:30px">
-                        <span class="moj-header__link moj-header__link--organisation-name" style="font-size:30px">CPS</span>
-                        <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span>
+                    <span class="govuk-header__logotype">
+                        <span class="govuk-header__logotype-text caseReviewHeader">CPS</span>
+                        <span class="govuk-header__logotype-text caseReviewHeaderSub">Casey McCase Face</span>
                     </span>
                 </a>
             </div>
-        <div style="margin-left:auto; width:100%; margin-top:-4px">
-             <form action="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/B-search-results" method="get">
-                    <fieldset style="margin-bottom:0; padding:0; border:0">
-                        <div class="govuk-form-group" style="margin-left:auto;width:75%;display:flex; margin-bottom:0 ">
-                            <!-- <label class="govuk-label govuk-label--s" for="searchURN">Search all cases</label> -->
-                            <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="  Search all cases">                         
-                            <button type="submit" class="govuk-button search" style="margin-bottom:0;height:36px;margin-top:2px;margin-left:-2px">Search</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-
-            <!--             <div class="govuk-header__logo right">
+<!--             <div class="govuk-header__logo right">
                 <a href="" class="username">user_name_1983</a>
                 <div class="user-settings">
                     <div class="govuk-form-group">
@@ -296,87 +216,60 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div> -->
         </div>
-
     </div>
-
 </header>
-<nav class="cps-bar-wrapper" id="global-navigation" style="">
+
+<nav class="cps-bar-wrapper" id="global-navigation" style="margin-bottom:0">
     <div class="govuk-width-container">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third">
-                <ul style="display:flex;" class="">
-                    <li class="dashboard" style="margin-left:-17px"><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/A-dashboard">Home</a></li>
-                    <li class="my-tasks"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a></li>
-                    <li class="my-cases"><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/D-my-cases">Cases</a></li>
-                    <!--                     <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
-                        <ul class="dropdown-menu" style="left: inherit; right:0;">
+            <div class="govuk-grid-column-full">
+
+                <ul style="display:flex; width:99%" class="">
+
+                    <li class="dashboard"><a href="A-dashboard">Home</a></li>
+                    <li class="my-tasks"><a href="https://www.figma.com/proto/DaTT38fhdtqoGXduKi2Igd/Demo-Screens?page-id=1380%3A16551&type=design&node-id=8714-4320&viewport=-7624%2C-6040%2C0.15&t=AiMdCBFUKK76zNhN-1&scaling=min-zoom&starting-point-node-id=8714%3A4320">Tasks</a></li>
+                    <li class="my-cases"><a href="D-my-cases">Cases</a></li>
+                    <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
+                        <ul class="dropdown-menu">
                             <li><a href="I-CMS-Classic">Task list</a></li>
                             <li><a href="I-CMS-Classic">Cases </a></li>
                             <li><a href="I-CMS-Classic">Case review </a></li>
-                            <li><a href="I-CMS-Classic">Case materials </a></li>
+                             <li><a href="I-CMS-Classic">Case materials </a></li>
+                            <!-- <li><a href="#seo">Yet more </a></li> -->
                         </ul>
-                    </li> -->
+                    </li>
                     <!-- <li class=""><a href="J-CMS-modern" target="_blank">CMS Modern</a></li> -->
                 </ul>
             </div>
-            <div class="govuk-grid-column-two-thirds">
-<!--                 <form action="B-search-results" method="get">
+<!--             <div class="govuk-grid-column-one-third">
+                <form action="B-search-results" method="get">
                     <fieldset>
-                        <div class="govuk-form-group" style="margin-left:auto;width:55%">
+                        <div class="govuk-form-group">
                             <label class="govuk-label govuk-label--s" for="searchURN">Search Casey McCase Face</label>
-                            <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="  Search Casey McCase Face">                         
+                            <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="Search Casey McCase Face">                         
                             <button type="submit" class="govuk-button search" style="">Search</button>
                         </div>
                     </fieldset>
-                </form> -->            
-            </div> 
+                </form>            
+            </div> -->
         </div>
     </div>
 </nav>
 <nav class="cps-bar-wrapper" id="secondary-navigation" style="background:#fff; z-index:9">
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <div class="case-info" id="test-nav" style="display:inline-block; float:left">
-                    <h1 class="govuk-heading-s" style="margin:0; padding: 0.6em 0.5em; background: #f3f2f1;">
-                        <span style="position: relative; z-index:2; margin-left:-12px">McLove, Eoin +4<span style="display:block; font-size:12px; font-weight:400; margin-left:-12px">45AA209820/1
-
-</span> </span>
-                    </h1>
-                </div>
-                <ul style="display:flex; margin:20px 0; ">
-                    <li class="sub-overview" style="margin-left:-17px"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/E-case-overview">Details</a></li>
-                    <li class="sub-case"><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/F-casework-app">Materials</a></li>
-                    <li class="sub-review"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/L-case-review-html">Review</a></li>
-                    <li class="sub-bundle"><a href="">Bundle</a></li>
-                    <!-- <li class="" style=""><a href="I-CMS-Classic" target="_blank">CMS Classic</a></li> -->
-                    <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
-                        <ul class="dropdown-menu" style="left: inherit; right:0;">
-                            <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Task list</a></li>
-                            <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Cases </a></li>
-                            <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Case review </a></li>
-                            <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Case materials </a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-<!-- <nav class="cps-bar-wrapper" id="secondary-navigation" style="background:#fff; z-index:9">
         <div class="govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <ul style="display:flex; margin:10px 0;">
                     <li class="sub-overview"><a href="E-case-overview">Overview</a></li>
-                    <li class="sub-case"><a href="">Case</a></li>
+                    <li class="sub-case"><a href="F-casework-app">Materials</a></li>
                     <li class="sub-review"><a href="H-review-case">Review</a></li>
-                  
+                    <!-- <li class="" style=""><a href="I-CMS-Classic" target="_blank">CMS Classic</a></li> -->
                 </ul>
             </div>
         </div>
     </div>
-</nav> -->
+</nav>
+
 <!-- <div class="govuk-width-container">
     <div class="govuk-phase-banner header">
         <p class="govuk-phase-banner__content">
@@ -385,19 +278,16 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
  -->
-<style>
-body {
-    visibility: hidden
-}
-</style>
+<style>body {visibility: hidden}</style>
 <script>
-$(document).ready(function() {
-    $("body")
-        .contents()
-        .filter(function() {
-            return this.nodeType == Node.TEXT_NODE;
-        })
+    $(document).ready(function () {
+        $("body")
+            .contents()
+            .filter(function () {
+        return this.nodeType == Node.TEXT_NODE;
+    })
         .remove();
-    $("body").css("visibility", "visible");
-});
+        $("body").css("visibility", "visible");
+    });
 </script>
+

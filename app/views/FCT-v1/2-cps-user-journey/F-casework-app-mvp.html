@@ -1,0 +1,270 @@
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+    {% include "../includes/banner-V5-MVP.html" %}
+{% endblock %}
+{% block beforeContent %}
+    {% include "../includes/modals/redaction-log.html" %}
+    {% include "../includes/modals/redaction-history.html" %}
+    {% include "../includes/modals/redaction-over.html" %}
+    {% include "../includes/modals/report-a-problem.html" %}
+    {% include "../includes/modals/search.html" %}
+    {% include "../includes/modals/view-redactions.html" %}
+    {% include "../includes/modals/feedback.html" %}
+    {% include "../includes/modals/feedback-survey.html" %}
+    {% include "../includes/modals/notes.html" %}
+    {% include "../includes/modals/notes-new.html" %}
+    {% include "../includes/modals/case-action-plan.html" %}
+    {% include "../includes/modals/case-action-plan-2.html" %}
+    {% include "../includes/modals/case-action-plan-builder.html" %}
+    {% include "../includes/modals/confirmation.html" %}
+    {% include "../includes/modals/redact-all.html" %}
+    {% include "../includes/modals/discarded.html" %}
+    {% include "../includes/modals/search-redaction.html" %}
+    {% include "../includes/modals/search-suggestions.html" %}
+    {% include "../includes/modals/document-history.html" %}
+    {% include "../includes/modals/confirmation-Document.html" %}
+{% endblock %}
+{% block content %}
+
+<link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- remove if you get rid of the gov width container -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% include "../includes/new-script.html" %}
+
+
+<style>
+#global-navigation {
+    display:block !important;
+}
+
+#secondary-navigation {
+    display:block !important; 
+}
+</style>
+<script>
+
+        $( document ).ready(function() {
+            $('#global-navigation').show();
+            $('#secondary-navigation').show();
+            $('.my-cases').addClass('current');
+            $('.sub-case').addClass('current');
+    });
+
+    $(".success-banner").hide();
+
+    function showHideRedaction() {
+        setTimeout(function () {
+            redactionSummary()
+        }, 0)
+        setTimeout(function () {
+            redactionSummary()
+            $("#saving-panel").hide();
+            $(".success-banner").show();
+            $("#redaction-log-button").removeClass('govuk-button--disabled').removeAttr('aria-disabled');
+            document.getElementById("redaction-log-button").disabled = false;
+            // $("#redaction-log").show()
+            // addRedactionLogRows()
+        }, 5000)
+        setTimeout(function () {
+            $(".success-banner").slideUp();
+        }, 10000)
+        setTimeout(function () {
+            $(".success-banner").slideUp();
+        }, 15000)
+    }
+
+    function topFunction() {
+        $("html, body").animate({ scrollTop: 0 }, {
+            duration: 500,
+            easing: "easeInOutExpo"
+        });
+    }
+
+
+
+
+</script>
+
+
+<!-- <div class="search-bar-wrapper case-file-page">
+    <div class="govuk-width-container">
+        <div class="govuk-phase-banner header new-V3">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-quarter">
+                    <div id="searchFormTest" class="searchForm" method="get">
+                        <label class="govuk-label--s govuk-label" for="searchURNModal" style="">Search case</label>
+                        <div class="searchForm-inner">
+                            <input class="govuk-input" id="searchURNModal" name="searchURNModal" type="text" aria-describedby="FirstName-hint" value="" placeholder="Search case..." />
+                            <div class="bba"><button class="search searchModal modalButton" type="submit" id="openSearch" onClick="openModal(); searchTerm();"></button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-three-quarters">
+                   
+                    <div class="govuk-phase-banner__content">
+                        <a href="" onClick="return openFeedbackSurveyModal()" class="feedback-survey">Improve this service</a>
+                        <div class="loading-PII loading">
+                            <div class="hods-loading-spinner">
+                                <div class="hods-loading-spinner__spinner" aria-live="polite" role="status"></div>
+                            </div>
+                            <span id="documents-loaded-number-2">1</span> of 21 documents loaded...
+                        </div>
+                        <div class="search-PII">
+                            <span id="push-notification">
+                                <span class="govuk-tag govuk-tag--green"><span id="new-documents">2</span> new document<span id="plural">s</span></span>&nbsp; - 
+                            </span>
+                            <span id="push-notification-2">
+                                <span class="govuk-tag govuk-tag--orange">3 document updates</span> - 
+                            </span>
+                            <span id="push-notification-3">
+                                <span class="govuk-tag govuk-tag--red">1 document disgarded</span> - 
+                            </span>
+                            <span id="push-notification-4">
+                                <span class="govuk-tag govuk-tag--green">1 new document</span>
+                                &nbsp;and&nbsp;
+                                <span class="govuk-tag govuk-tag--orange">1 document update</span> - 
+                            </span>
+                            <span class="govuk-phase-banner__text">
+                                <span>Updated:</span> <span id="date-stamp">####</span> - 
+                                <a href="" class="refresh-button" id="page-refresh">Refresh</a>
+                                <a href="" class="refresh-button" id="page-refresh-2">Refresh</a>
+                                <a href="" class="refresh-button" id="page-refresh-3" onClick="return openDiscardedModel()">Refresh</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="govuk-grid-row" id=""> -->
+<div class="govuk-grid-row concept" id="cps-casework-concept">
+
+    <!-- ////////////////////////////////////////////// STICKY BAR - PART 1 - START ////////////////////////////////////////////// -->
+    <div class="govuk-grid-column-one-quarter" id="left-column-top">
+
+        <div class="govuk-phase-banner header new-V2">
+
+        </div>
+
+        <div id="navbar" class="navbar">
+            <div class="govuk-width-container">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-quarter">
+                        <div class="case-info">
+                            <h1 class="govuk-heading-m">McLove, Eoin</h1>
+                            <table class="govuk-table">
+                                <tbody>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell govuk-body-s wrapLongFilenamesCPS openMe" scope="row">
+                                            {% if data['searchURN'] %}
+                                                <a href="" class="show-case" data-doc="PRE_CONS_D.pdf" data-count="2" onclick="return pageCounter()" data-page="9">{{ data['searchURN'] }}/1</a>
+                                            {% else %}
+                                                <a href="" class="show-case" data-doc="PRE_CONS_D.pdf" data-count="2" onclick="return pageCounter()" data-page="9">45AA209820/1</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+<!--                         <div class="cap-wrapper">
+                            <button id="case-action-plan" class="govuk-button" data-module="govuk-button" type="button" onClick="location.href = 'H-review-case';">
+                                <span>Review case</span>
+                            </button>
+                        </div> -->
+                        <div class="alert tooltip">
+                            <a href="#" class="alert-button" id="alert">Document updates</a>
+                            <a href="#" class="alert-button tooltip" id="alert2">Document updates</a>
+                            <a href="#" class="alert-button tooltip" id="alert3" onClick="return openDiscardedModel()">Document updates</a>
+                            <span class="tooltiptext" id="header-alert">No document updates</span>
+                        </div>
+                        <div id="searchFormTest2" class="searchForm" method="get">
+                            <div class="search-button">Search case</div>
+                            <label class="govuk-label--s govuk-label" for="searchURNModal2" style="">Search case</label>
+                            <div class="searchForm-inner">
+                                <input class="govuk-input" id="searchURNModal2" name="searchURNModal2" type="text" aria-describedby="FirstName-hint" value="" placeholder="" />
+                                <div class="bba v2"><button class="search searchModal modalButton" type="submit" id="openSearch" onClick="openModal(); searchTerm2();">Search</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////// STICKY BAR - PART 1 - END ////////////////////////////////////////////// -->
+
+    <!-- ////////////////////////////////////////////// DOCUMENT COLUMN - START ////////////////////////////////////////////// -->
+    <div class="govuk-grid-column-three-quarters document-holder" id="right-column">
+
+        <div id="document-top"></div>
+
+        <div class="file1 weirdFix1400">
+            <div class="govuk-tabs" data-module="govuk-tabs">
+                <!-- ====== STICKY BAR - PART 2 - START ====== -->
+                <div id="navbar2" class="">
+                    <div class="page-counter"><p>Page: <span>1/<strong>2</strong></span></p></div>
+                    <div class="govuk-width-container">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full">
+                                {% include "../includes/banners/search-banner-tab-heading.html" %}
+                                <ul class="govuk-tabs__list navbar sticky-tabs">
+                                    <li class="arrow left"><a href="#">tab left</a></li>
+                                    <li class="arrow right"><a href="#">tab right</a></li>
+                                    {% include "../includes/banners/search-banner-tab-scroll.html" %}
+                                    <li class="arrow down"><a href="#">tab down</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====== STICKY BAR - PART 2 - END ====== -->
+
+                <div id="docCopy" class="docCopy">
+                    <div class="loading">
+<!--                         <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                            <div class="govuk-notification-banner__header">
+                                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+                            </div>
+                            <div class="govuk-notification-banner__content">
+                                <p class="govuk-notification-banner__heading">Search will not be available until all documents have finished being loaded.</p>
+                            </div>
+                        </div>                        
+ -->                        
+                        <div class="hods-loading-spinner">
+                            <div class="hods-loading-spinner__spinner" aria-live="polite" role="status"></div>
+                            <div class="hods-loading-spinner__content">
+                                <h1 class="govuk-heading-m"><span id="documents-loaded-number">1</span> of 21 documents loaded...</h1>
+                                <p class="failed-documents">Documents not possible to load: <span>"MG11 Geoff MCLOVE" (Case overview)</span></p>
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="documents-loaded">
+                        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                            <div class="govuk-notification-banner__header">
+                                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success - View your documents</h2>
+                            </div>
+                            <div class="govuk-notification-banner__content">
+                                <p class="govuk-body"><strong>20</strong> documents loaded out of <strong>21</strong>, search or choose a file to start reviewing documents.</p>
+                                <p class="no-margin-bottom">It was not possible to load the following documents, please check CMS:</p>
+                                <ul class="govuk-list files">
+                                    <li>"MG11 Geoff MCLOVE" <span>(Case overview)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ////////////////////////////////////////////// DOCUMENT COLUMN - END ////////////////////////////////////////////// -->
+
+</div>
+
+<div class="govuk-grid-row">
+    {% include "../includes/documents/case-1.html" %}
+</div>
+
+{% endblock %}
