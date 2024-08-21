@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="moreContact" method="get" class="form">
+                <h1 class="govuk-heading-l">
+                    What is the first date the witness attended court?
+                </h1>
+                <!-- This should be the hint, fix it up -->
+                <p>You can only claim for days the witness was required to attend court.</p>
+    
+       
+                    <fieldset class="govuk-fieldset">    
+                        <div class="govuk-form-group">
+                    <!--         <label class="govuk-label govuk-!-width-three-quarters bold-label" for="courtDate">
+                               Date of hearing
+                            </label> -->
+                                      <span id="email-hint" class="govuk-hint">
+              For example 14 2 2023
+            </span> 
+            <div class="govuk-date-input" id="Court-date">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="court-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="court-day" name="court-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="court-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="court-month" name="court-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="court-year" name="court-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+        
+                        </div>    
+                    </fieldset>
+                </div> </div>
+                <button class="govuk-button">Continue</button>
+                <!--   <a  class="govuk-button clear-button" href="confirmEmail" >Cancel and return</a>  -->
+            </form>
+                  {% include "includes/cps/v11/help.html" %}
+        </div>
+    </div>
+    {% endblock %}

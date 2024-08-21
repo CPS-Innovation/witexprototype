@@ -1,0 +1,430 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+<style>
+.govuk-summary-list__key {
+    width: 40%;
+}
+    </style>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">Check your answers</h1>
+        <h2 class="govuk-heading-m">Personal details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['first-name-real'] }} {{ data['last-name-real'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> name</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['email'] }} </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> contact details</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Postcode
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <p class="govuk-body"> {{ data['postcode'] }} </p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> contact details</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        <h2 class="govuk-heading-m">Food and drink</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    How many hours were you away from home
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['away5hours'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        <h2 class="govuk-heading-m">Travel</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Claiming for travel?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['travelclaim'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    How did you travel to court?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['transportChoice'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total cost of public transport
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    £{{ data['trainCost'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> home address</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        <!--     <h2 class="govuk-heading-m">Overnight stay</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Claiming for overnight stay?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {{ data['overnightStay'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+        </dl> -->
+        <!--             <h2 class="govuk-heading-m">Unpaid days off work</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Claiming for unpaid days off work?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {{ data['lossPay'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+        </dl> -->
+        <!--       <h2 class="govuk-heading-m">Employing someone to do your job</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Claiming for employing someone else to do your job?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {{ data['employmentType'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+        </dl> -->
+        <!--     <h2 class="govuk-heading-m">Childcare</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Claiming for childcare?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {{ data['childcare'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+        </dl> -->
+        <!--     <h2 class="govuk-heading-m">Pet sitting</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Claiming for petsitting?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {{ data['petsitting'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    How many days did you have a pet sitter?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                        {{ data['petTime'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+             <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    What is the total cost of pet sitting?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                        £{{ data['petCost'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+        </dl> -->
+        <!--     <h2 class="govuk-heading-m">Other expenses</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   Claiming for other expenses?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {{ data['otherexpenses'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+        </dl> -->
+        <h2 class="govuk-heading-m">Receipts</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Receipts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    File1.pdf <br />receipt.jpg
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        <h2 class="govuk-heading-m">Payment</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    How do you want to be paid?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['paymetype'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> previous application number</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Name on the account
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['name-on-the-account'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Sort code
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['sort-code'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Account number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['account-number'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Building society roll number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    {{ data['roll-number'] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                        Change<span class="govuk-visually-hidden"> licence type</span>
+                    </a>
+                </dd>
+            </div>
+        </dl>
+        <h2 class="govuk-heading-m">Amount payable</h2>
+        <p>We will now review your claim - the amount you receive may change when we have completed our checks. </p>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Food and drink
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £2.25
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Travel
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £30.50
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Accommodation
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £95.00
+                </dd>
+            </div>
+             <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="width:40%">
+                    Overnight meals and refreshments
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £26.00
+                </dd>
+            </div>
+<!--              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="width:40%">
+                    Friends and family overnight stay 
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £25.00
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key" style="width:40%">
+                    Evening meal allowance
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                    £5.00
+                </dd>
+            </div> -->
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Total
+                </dt>
+                <dd class="govuk-summary-list__value">
+                </dd>
+                <dd class="govuk-summary-list__actions" style="font-weight:700">
+                    £153.75
+                </dd>
+            </div>
+        </dl>
+        <h2 class="govuk-heading-m">Send your claim</h2>
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                     <p style="font-weight:700">By submitting your claim you agree that:</p>
+                                      <ul class="govuk-list govuk-list--bullet" style="font-weight:700">
+                      <li>the information is correct and complete as far as you know</li>
+                   
+                      <li>you're aware it's a criminal offence to knowingly submit false information to make a claim </li>
+                      <li>you'll pay back any money you have been overpaid if you're asked  </li>
+                        
+                    </ul>
+                  <p style="font-weight:700; margin-bottom:0; padding-bottom:0">  We will send a confirmation email with a copy of these answers to email@email.com</p>
+            </strong>
+        </div>
+        <form action="./Finish/index2" method="post" novalidate>
+            <input type="hidden" name="answers-checked" value="true">
+            <button class="govuk-button" data-module="govuk-button">
+                Accept and send
+            </button>
+        </form>
+        {% include "includes/cps/v11/help.html" %}
+    </div>
+</div>
+</main>
+{% endblock %}

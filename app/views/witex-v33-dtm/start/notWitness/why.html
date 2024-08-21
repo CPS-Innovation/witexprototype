@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="nonWitRouter3">
+                <!-- <h1 class="govuk-heading-xl">Are you</h1> -->
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                                    <div class="govuk-radios" data-module="govuk-radios">
+                                      
+                                                    <h1 class="govuk-label-wrapper">
+                                                  <label class="govuk-label govuk-label--l" for="postcode">
+                                                    Who is claiming?
+                                                  </label>
+                                                </h1>
+
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="whyHigher" name="whyNoWitness" type="radio" value="I'm a parent or guardian of a witness under 18" data-aria-controls="conditional-contact-2">
+                                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                               A parent or guardian of a witness under 18
+                                            </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="whyHigher" name="whyNoWitness" type="radio" value="I'm the carer of a witness" data-aria-controls="conditional-contact-2">
+                                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                                                The carer of a witness
+                                            </label>
+                                        </div>
+                                        <div class="govuk-radios__item">
+                                            <input class="govuk-radios__input" id="contact-3" name="whyNoWitness" type="radio" value="Other" data-aria-controls="conditional-contact-3">
+                                            <label class="govuk-label govuk-radios__label" for="contact-3">
+                                                Other
+                                            </label>
+                                        </div>
+                                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+                                            <div class="govuk-form-group">
+                                                <label class="govuk-label bold-label" for="contact-by-text">
+                                                  Tell us why you are claiming
+                                                </label>
+                                                <input class="govuk-input " id="whyNoWitness2" name="whyNoWitness2" type="text" autocomplete="tel">
+                                            </div>
+                                        </div> 
+                                </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

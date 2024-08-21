@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+        
+                <h1 class="govuk-heading-l">Continuing your claim</h1>
+                <p >To continue your claim online you will need to be able to:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>upload receipts, or have a satisfactory reason for not providing evidence of your
+payment if you are claiming for:</li>
+ <ul class="govuk-list govuk-list--bullet">
+                <li>train</li>
+                 <li>coach</li>
+                  <li>taxi</li>
+                   <li>parking</li>
+                    <li>plane</li>
+                     <li>ferry</li>
+              </ul>
+                <li>upload proof if you are claiming for:</li>
+                 <ul class="govuk-list govuk-list--bullet">
+                <li>overnight stays</li>
+                 <li>lost income if self-employed</li>
+                  <li>childcare</li>
+                   <li>adult care</li>
+              </ul>
+              <!-- <li>be able to upload receipts as a PDF or an image</li> -->
+            </ul>
+                <!-- <p>You cannot use this service to claim your witness expenses.</p> -->
+                <p>When you have all the information, you can <a href="">continue with your claim</a>.</p>
+
+                 <!-- <h2 class="govuk-heading-m">Uploading the thing</h2> -->
+
+                <p>If you unable to upload your proof, call 01924 205 200 or email <a href="mailto:witness.query@cps.gov.uk"> witness.query@cps.gov.uk</a></p>
+
+         
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

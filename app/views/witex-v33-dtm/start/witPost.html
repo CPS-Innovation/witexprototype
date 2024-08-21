@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="dob" method="get" class="form">
+            <div class="govuk-form-group">
+                 <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="event-name">
+      What is the witness's postcode?
+    </label>
+  </h1>
+                <div class="govuk-input__wrapper">
+                    <input class="govuk-input govuk-input--width-10" id="homePostcode" name="homePostcode" type="text" spellcheck="false">
+                </div>
+            </div>
+            <button class="govuk-button">Continue</button>
+        </form>
+    </div>
+    </main>
+</div>
+{% endblock %}
