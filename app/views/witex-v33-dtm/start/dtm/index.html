@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="DTMMWhere">
+                <!-- <h1 class="govuk-heading-xl">Are you</h1> -->
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            Where did the meeting take place?
+                        </legend>
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="online">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Online
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="court">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Court
+                                </label>
+                            </div>
+                            <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="somewhere else">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    Somewhere else
+                                </label>
+                            </div>
+
+
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

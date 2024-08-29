@@ -2437,6 +2437,85 @@ router.get('/*/areYouRouter2' , function (req, res) {
         } 
 })
 
+// DTM branching
+router.get('/*/DTMMBranch' , function (req, res) {
+      var confirmTraining = req.query.DTMBranch
+       switch (true) {
+          case  (confirmTraining == "yes"):
+              res.redirect(`dtm`)
+           break;
+
+
+            case  (confirmTraining == 'no'):
+            res.redirect(`notWitness/child`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+              res.redirect(`bork`)
+            break;
+        } 
+})
+
+
+// DTM branching
+router.get('/*/DTMMWhere' , function (req, res) {
+      var confirmTraining = req.query.DTMMWhere
+       switch (true) {
+          case  (confirmTraining == "online"):
+            req.session.data['isDTM'] = false;
+              res.redirect(`stop`)
+           break;
+
+
+            case  (confirmTraining == 'court'):
+              req.session.data['isDTM'] = false;
+            res.redirect(`./notWitness/child`)
+            break;
+
+
+              case  (confirmTraining == 'somewhere else'):
+              req.session.data['isDTM'] = true;
+            res.redirect(`./notWitness/child`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+            req.session.data['isDTM'] = false;
+              res.redirect(`bork`)
+            break;
+        } 
+})
+
+// DTM branching
+router.get('/*/DTMMWhere' , function (req, res) {
+      var confirmTraining = req.query.DTMName
+       switch (true) {
+          case  (confirmTraining == "yes"):
+            req.session.data['isDTM'] = true;
+              res.redirect(`./notWitness/child`)
+           break;
+
+
+            case  (confirmTraining == 'no'):
+              req.session.data['isDTM'] = false;
+            res.redirect(`./notWitness/child`)
+            break;
+
+
+              case  (confirmTraining == 'dont know'):
+              req.session.data['isDTM'] = false;
+            res.redirect(`./notWitness/child`)
+            break;
+
+        default:
+            console.log("bork bork bork bork");
+            req.session.data['isDTM'] = false;
+              res.redirect(`bork`)
+            break;
+        } 
+})
+
 // witness type beginning
 router.get('/*/nonWitRouter2' , function (req, res) {
       var confirmTraining = req.query.whyNoWitness
