@@ -2488,7 +2488,7 @@ router.get('/*/DTMMWhere' , function (req, res) {
 })
 
 // DTM branching
-router.get('/*/DTMMWhere' , function (req, res) {
+router.get('/*/DTMName' , function (req, res) {
       var confirmTraining = req.query.DTMName
        switch (true) {
           case  (confirmTraining == "yes"):
