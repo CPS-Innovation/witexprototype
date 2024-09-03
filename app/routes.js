@@ -2462,14 +2462,31 @@ router.get('/*/DTMMBranch' , function (req, res) {
 router.get('/*/DTMMWhere' , function (req, res) {
       var confirmTraining = req.query.DTMMWhere
        switch (true) {
-          case  (confirmTraining == "yes"):
-              res.redirect(`dtm/dtmCourt`)
+          case  (confirmTraining == "online"):
+              req.session.data['isDTM'] = false;
+              res.redirect(`stop`)
            break;
 
+          case  (confirmTraining == "phone"):
+              req.session.data['sisDTMtop'] = false;
+              res.redirect(`stop`)
+           break;
 
-            case  (confirmTraining == 'no'):
-             res.redirect(`stop`)
-            break;
+            case  (confirmTraining == "court"):
+              req.session.data['isDTM'] = false;
+              res.redirect(`./notWitness/child`)
+           break;
+
+            case  (confirmTraining == "police"):
+              req.session.data['isDTM'] = false;
+              res.redirect(`./notWitness/child`)
+           break;
+
+       case  (confirmTraining == "other"):
+              req.session.data['isDTM'] = true;
+              res.redirect(`./notWitness/child`)
+           break;
+
 
 
         default:
