@@ -14,33 +14,34 @@ href: "javascript:history.back()"
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form method="get" action="DTMMWhere">
+            <form method="get" action="DTMMCourt">
                 <!-- <h1 class="govuk-heading-xl">Are you</h1> -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                            Did you meet in person?
+                           Where did you meet?
                         </legend>
                         <div class="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="yes">
+                                <input class="govuk-radios__input" id="DTMMCourt" name="DTMMCourt" type="radio" value="court">
                                 <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    Yes
+                                    Court
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="no">
+                                <input class="govuk-radios__input" id="DTMMCourt" name="DTMMCourt" type="radio" value="police">
                                 <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    No
+                                    Police station
                                 </label>
                             </div>
-                            <!-- <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="court">
+                             <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="DTMMCourt" name="DTMMCourt" type="radio" value="other">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    At Court
+                                    Somewhere else
                                 </label>
                             </div>
-                            <div class="govuk-radios__item">
+                           <!--  <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="somewhere else">
                                 <label class="govuk-label govuk-radios__label" for="TRN-no">
                                     In person (outside of court)
