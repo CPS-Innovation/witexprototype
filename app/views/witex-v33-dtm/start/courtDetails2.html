@@ -17,10 +17,14 @@ href: "javascript:history.back()"
         <div class="govuk-grid-column-two-thirds">
             <form action="moreContact" method="get" class="form">
                 <h1 class="govuk-heading-l">
-                    What is the first date the witness attended court?
+                    
+
+                        {% if data.isDTM  == true %}When does the trial start? {% else %}What is the first date the witness attended court?{% endif %} 
+
+
                 </h1>
                 <!-- This should be the hint, fix it up -->
-                <p>You can only claim for days the witness was required to attend court.</p>
+               {% if data.isDTM  == true %} {% else %}<p>You can only claim for days the witness was required to attend court.</p>{% endif %} 
     
        
                     <fieldset class="govuk-fieldset">    

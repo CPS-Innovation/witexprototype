@@ -2482,6 +2482,11 @@ router.get('/*/DTMMWhere' , function (req, res) {
               res.redirect(`./notWitness/child`)
            break;
 
+            case  (confirmTraining == "cps"):
+             req.session.data['isDTM'] = true;
+              res.redirect(`./notWitness/child`)
+           break;
+
        case  (confirmTraining == "other"):
               req.session.data['isDTM'] = true;
               res.redirect(`./notWitness/child`)

@@ -57,7 +57,9 @@ $(document).ready(function() {
 <div class="">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Which court did the witness attend?</h1>
+            <h1 class="govuk-heading-l">
+                  {% if data.isDTM  == true %}In which court will the trial take place? {% else %}Which court did the witness attend? {% endif %} 
+            </h1>
             <!-- <p>You can claim for loss of earnings if </p> -->
             <form action="courtDetails2" method="get" class="form">
                 <div class="govuk-form-group">
