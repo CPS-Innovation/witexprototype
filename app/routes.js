@@ -2468,17 +2468,17 @@ router.get('/*/DTMMWhere' , function (req, res) {
            break;
 
           case  (confirmTraining == "phone"):
-              req.session.data['sisDTMtop'] = false;
+              req.session.data['isDTM'] = false;
               res.redirect(`stop`)
            break;
 
             case  (confirmTraining == "court"):
-              req.session.data['isDTM'] = false;
+              req.session.data['isDTM'] = true;
               res.redirect(`./notWitness/child`)
            break;
 
             case  (confirmTraining == "police"):
-              req.session.data['isDTM'] = false;
+              req.session.data['isDTM'] = true;
               res.redirect(`./notWitness/child`)
            break;
 
