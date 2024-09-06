@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">There was a problem connecting to CMS</h1>
+        <!-- <p class="govuk-body">Try again later.</p> -->
+        <p class="govuk-body">
+              To fix the problem:</p>
+              <ul class="govuk-list govuk-list--number">
+                <li>Open CMS in a new <a href="">browser window</a></li>
+                <li>Sign in to CMS</li>
+                <li> <a href="javascript:void(0);" onclick="location.reload();">Refresh</a> this page</li>
+              </ul>
+
+      </div>
+    </div>
+
+
+{% endblock %}
