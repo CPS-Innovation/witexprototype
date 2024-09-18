@@ -1,3 +1,5 @@
+ <!-- "govuk-frontend": "^4.7.0", -->
+
 {% extends "layoutCPS-NEW-CASEFILE.html" %}
 {% block header %}
 {% include "../includes/banner-V6.html" %}
@@ -178,7 +180,7 @@ nav {padding:0 !important}
 
     $(document).ready(function() {
     $('#global-navigation').show();
-     $('.my-tasks').addClass('current');
+     $('.my-tasks').attr('aria-current', 'page');
 
 });
 

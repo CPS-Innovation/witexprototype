@@ -127,8 +127,8 @@
 <script>
     $(document).ready(function() {
     $('#global-navigation').show();
-    $('.my-cases').addClass('current');
-    $('.sub-overview').addClass('current');
+    $('.my-cases').attr('aria-current', 'page');
+    $('.sub-overview').attr('aria-current', 'page');
 
 });
 </script>
