@@ -78,8 +78,8 @@
     border-right: 8px solid transparent;
     border-top: 8px solid #1d70b8;
     position: absolute;
-    left: 135px;
-    top: 9px;
+    left: 110px;
+    top: 8px;
 }
 
 
@@ -305,32 +305,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li class="moj-sub-navigation__item">
                     <a class="moj-sub-navigation__link sub-bundle" href="">Bundle</a>
                 </li>
-                <!--       <li class="menu-item dropdown" style=" margin-left:auto; float: right; margin-right: 13px;"><a href="" target="_blank" class="classicNav dropdown-toggle">CMS Classic</a>
+            </ul>
+                <div>
+                    <li class="menu-item dropdown " style=" margin-left:auto; float: right; margin-right: 23px; position:relative; font-size:19px; text-decoration:none; list-style-type: none; margin-top:-35px">
+                        <a href="" target="_blank" class="classicNav dropdown-toggle" style="text-decoration:none">CMS Classic</a>
                         <ul class="dropdown-menu" style="left: inherit; right:0;">
                             <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Task list</a></li>
                             <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Cases </a></li>
                             <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Case review </a></li>
                             <li><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/I-CMS-Classic">Case materials </a></li>
                         </ul>
-                    </li> -->
-            </ul>
+                    </li>
+                </div>
         </nav>
     </div>
 </div>
 
 
-<style>
-body {
-    visibility: hidden
-}
-</style>
-<script>
-$(document).ready(function() {
-    $("body")
-        .contents()
-        .filter(function() {
-            return this.nodeType == Node.TEXT_NODE;
-        })
+            <style>
+            body {
+                visibility: hidden
+            }
+            </style>
+            <script>
+            $(document).ready(function() {
+                $("body")
+                    .contents()
+                    .filter(function() {
+                        return this.nodeType == Node.TEXT_NODE;
+                    })
         .remove();
     $("body").css("visibility", "visible");
 });
