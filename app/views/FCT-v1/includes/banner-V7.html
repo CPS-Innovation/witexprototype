@@ -82,6 +82,11 @@
     top: 8px;
 }
 
+.classicNav.active:after {
+    border-top: none;
+    border-bottom: 8px solid #1d70b8; /* Reversed arrow (points up) */
+}
+
 
 
 /* Hide the dropdown menu by default */
@@ -104,23 +109,36 @@
 
 }
 
-.dropdown-menu li {
-    box-sizing: border-box;
-    height: 3.125rem;
+.dropdown-menu li  {
+       box-sizing: border-box;
+    height: 2.75rem;
     padding: 0 15px;
     float: left;
     line-height: 50px;
     position: relative;
-
+   
 }
-
 
 .dropdown-menu li a {
-    font-weight: 400 !important;
+    font-weight:400 !important;
+     font-size:19px;
+    text-decoration:none;
 }
 
-.dropdown-menu li:hover {
-    text-decoration: underline;
+.dropdown-menu li a:hover {
+    color:#5694ca;
+}
+
+.classicNav:hover {
+    color:#5694ca !important ;
+}
+
+.dropdown-menu li:first-child  {
+      margin-top:5px;
+}
+
+.dropdown-menu li:last-child  {
+      margin-bottom:10px;
 }
 
 
@@ -190,14 +208,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (parentMenuItem.classList.contains('show')) {
             parentMenuItem.classList.remove('show');
+            dropdownToggle.classList.remove('active'); // Remove the arrow-up class when dropdown closes
         } else {
             // Close any open dropdowns
             var openDropdowns = document.querySelectorAll('.menu-item.show');
             openDropdowns.forEach(function(dropdown) {
                 dropdown.classList.remove('show');
+                dropdown.querySelector('.dropdown-toggle').classList.remove('active'); // Ensure any other arrows also point down
             });
             // Open the clicked dropdown
             parentMenuItem.classList.add('show');
+            dropdownToggle.classList.add('active'); // Add the arrow-up class when dropdown opens
         }
     });
 
@@ -206,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
         if (!isClickInside) {
             dropdownToggle.parentElement.classList.remove('show');
+            dropdownToggle.classList.remove('active'); // Ensure the arrow points down when clicking outside
         }
     });
 });
