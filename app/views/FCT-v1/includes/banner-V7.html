@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
 <style>
     main.case-files {
     padding-top: 0 !important
@@ -189,6 +190,7 @@
 }
 
 </style>
+<script src="/public/javascripts/mojall.js"></script>
 <script>
     $(document).ready(function() {
     $('#global-navigation').show();
@@ -243,23 +245,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     </span>
                 </a>
             </div>
-            <div style="margin-left:auto; width:100%; margin-top:-4px">
+<!--             <div style="margin-left:auto; width:100%; margin-top:-4px">
                 <form action="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/B-search-results" method="get">
                     <fieldset style="margin-bottom:0; padding:0; border:0">
                         <div class="govuk-form-group" style="margin-left:auto;width:75%;display:flex; margin-bottom:0 ">
-                            <!-- <label class="govuk-label govuk-label--s" for="searchURN">Search all cases</label> -->
+                   
                             <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="  Search all cases">
                             <button type="submit" class="govuk-button search" style="margin-bottom:0;height:36px;margin-top:2px;margin-left:-2px">Search</button>
                         </div>
                     </fieldset>
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
 </header>
 <div class="moj-primary-navigation" style="border-bottom: 1px solid #b1b4b6;">
     <div class="moj-primary-navigation__container" style="max-width:1400px">
-        <div class="moj-primary-navigation__nav">
+           <div class="moj-primary-navigation__nav">
             <nav class="moj-primary-navigation" aria-label="Primary navigation">
                 <ul class="moj-primary-navigation__list">
                     <li class="moj-primary-navigation__item dashboard">
@@ -274,6 +276,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 </ul>
             </nav>
         </div>
+
+            <div class="moj-primary-navigation__search">
+                <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
+                    <div class="moj-search-toggle__toggle"></div>
+                    <div class="moj-search-toggle__search">
+                        <div class="moj-search moj-search--ondark moj-search--toggle moj-js-hidden">
+                            <form action="" method="get">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label moj-search__label govuk-visually-hidden" for="search2">
+                                        Search
+                                    </label>
+                                    <div id="search2-hint" class="govuk-hint moj-search__hint ">
+                                        Enter case number
+                                    </div>
+                                    <input class="govuk-input moj-search__input " id="search2" name="search2" type="search" aria-describedby="search2-hint">
+                                </div>
+                                <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+                                    Search
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
     </div>
 </div>
 <!-- <nav class="cps-bar-wrapper" id="secondary-navigation" style="background:#fff; z-index:9;">
@@ -344,18 +372,22 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 
-            <style>
-            body {
-                visibility: hidden
-            }
-            </style>
-            <script>
-            $(document).ready(function() {
-                $("body")
-                    .contents()
-                    .filter(function() {
-                        return this.nodeType == Node.TEXT_NODE;
-                    })
+<script type="text/javascript">
+MOJFrontend.initAll();
+</script>
+
+<style>
+body {
+    visibility: hidden
+}
+</style>
+<script>
+$(document).ready(function() {
+    $("body")
+        .contents()
+        .filter(function() {
+            return this.nodeType == Node.TEXT_NODE;
+        })
         .remove();
     $("body").css("visibility", "visible");
 });

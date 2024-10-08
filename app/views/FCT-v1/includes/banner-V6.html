@@ -103,6 +103,7 @@ main.case-files {
     flex-direction: column;
 }
 </style>
+<script src="/public/javascripts/mojall.js"></script>
 <script>
 $(document).ready(function() {
     $('#global-navigation').show();
@@ -153,17 +154,17 @@ $(document).ready(function() {
                     </span>
                 </a>
             </div>
-            <div style="margin-left:auto; width:100%; margin-top:-4px">
+<!--             <div style="margin-left:auto; width:100%; margin-top:-4px">
              <form action="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/B-search-results" method="get">
                     <fieldset style="margin-bottom:0; padding:0; border:0">
                         <div class="govuk-form-group" style="margin-left:auto;width:75%;display:flex; margin-bottom:0 ">
-                            <!-- <label class="govuk-label govuk-label--s" for="searchURN">Search all cases</label> -->
+                        
                             <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="  Search all cases">                         
                             <button type="submit" class="govuk-button search" style="margin-bottom:0;height:36px;margin-top:2px;margin-left:-2px">Search</button>
                         </div>
                     </fieldset>
                 </form>
-            </div>
+            </div> -->
             <!--             <div class="govuk-header__logo right">
                 <a href="" class="username">user_name_1983</a>
                 <div class="user-settings">
@@ -261,6 +262,29 @@ $(document).ready(function() {
                 </ul>
             </nav>
         </div>
+                    <div class="moj-primary-navigation__search">
+                <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
+                    <div class="moj-search-toggle__toggle"></div>
+                    <div class="moj-search-toggle__search">
+                        <div class="moj-search moj-search--ondark moj-search--toggle moj-js-hidden">
+                            <form action="" method="get">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label moj-search__label govuk-visually-hidden" for="search2">
+                                        Search
+                                    </label>
+                                    <div id="search2-hint" class="govuk-hint moj-search__hint ">
+                                        Enter case number
+                                    </div>
+                                    <input class="govuk-input moj-search__input " id="search2" name="search2" type="search" aria-describedby="search2-hint">
+                                </div>
+                                <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+                                    Search
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
 </div>
@@ -308,6 +332,9 @@ body {
     visibility: hidden
 }
 </style>
+ <script type="text/javascript">
+MOJFrontend.initAll();
+</script>
 <script>
 $(document).ready(function() {
     $("body")
