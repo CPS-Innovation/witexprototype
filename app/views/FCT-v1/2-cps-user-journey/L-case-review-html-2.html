@@ -210,7 +210,7 @@ $(document).ready(function() {
 </div>
 <div class="govuk-grid-row" style="display: flex; align-items: flex-end;">
     <div class="govuk-grid-column-one-third" style="border-bottom:2px black solid; padding:0; margin:0 0 0  15px; ">
-<!--         <h1 class="govuk-heading-m" style="margin-bottom: 5px;">Eoin McLove</h1>
+        <!--         <h1 class="govuk-heading-m" style="margin-bottom: 5px;">Eoin McLove</h1>
         <p style="">45AA209820/1</p> -->
     </div>
     <div class="govuk-grid-column-two-thirds" style="display: flex; align-items: flex-end; border-bottom:2px black solid; padding:0; margin:0 15px 0 0 ">
@@ -337,10 +337,9 @@ $(document).ready(function() {
                 </div>
             </details>
             <div class="govuk-form-group">
-                
-                    <fieldset class="govuk-fieldset">
-                        <!-- <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="40" aria-describedby="with-hint-info with-hint-hint"></textarea> -->
-                        <div class="editor-container">
+                <fieldset class="govuk-fieldset">
+                    <!-- <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="40" aria-describedby="with-hint-info with-hint-hint"></textarea> -->
+                    <div class="editor-container">
                         <div class="toolbar">
                             <button onclick="execCmd('bold')"><b>B</b></button>
                             <button onclick="execCmd('italic')"><i>I</i></button>
@@ -348,26 +347,21 @@ $(document).ready(function() {
                             <button onclick="execCmd('fontSize', '5')">A<small>A</small></button>
                             <button onclick="execCmd('insertOrderedList')">1.</button>
                             <button onclick="execCmd('insertUnorderedList')">&#8226;</button>
-                            
                         </div>
                         <div id="editor" contenteditable="true" class="editor"></div>
                     </div>
-                        <div id="with-hint-info" class="govuk-hint govuk-character-count__message" style="padding-top:15px">
-                            You have 32,767 characters remaining
-                        </div>
-                    </fieldset>
+                    <div id="with-hint-info" class="govuk-hint govuk-character-count__message" style="padding-top:15px">
+                        You have 32,767 characters remaining
+                    </div>
+                </fieldset>
             </div>
             <form action="L-case-review-html-3" method="get" class="form" style="">
-            <div class="govuk-button-group">
-                <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Continue
-                </button>
-                <a class="govuk-link" href="#">Save and exit</a>
-            </div>
-
-
-
-
+                <div class="govuk-button-group">
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Continue
+                    </button>
+                    <a class="govuk-link" href="#">Save and exit</a>
+                </div>
             </form>
         </div>
     </div>
