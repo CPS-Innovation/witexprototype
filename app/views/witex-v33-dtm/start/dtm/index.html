@@ -21,45 +21,105 @@ href: "javascript:history.back()"
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                             Where did the meeting take place?
                         </legend>
-                        <div class="govuk-radios">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="online">
-                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    Online
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="phone">
-                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    On the phone
-                                </label>
-                            </div>
-                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="court">
-                                <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    At a Court
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="police">
-                                <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    At a police station
-                                </label>
-                            </div> 
-                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="cps">
-                                <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    At a Crown Prosecution Service (CPS) office
-                                </label>
-                            </div>
-                             <div class="govuk-radios__divider">or</div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="other">
-                                <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    Somewhere else
-                                </label>
-                            </div>
-                    </fieldset>
+      <fieldset class="govuk-fieldset">
+
+  <div class="govuk-radios" data-module="govuk-radios">
+    <!-- Radio Option 1 -->
+    <div class="govuk-radios__item">
+      <input
+        class="govuk-radios__input"
+        id="DTMMWhere-online"
+        name="DTMMWhere"
+        type="radio"
+        value="online">
+      <label class="govuk-label govuk-radios__label" for="DTMMWhere-online">
+        Online
+      </label>
+    </div>
+
+    <!-- Radio Option 2 -->
+    <div class="govuk-radios__item">
+      <input
+        class="govuk-radios__input"
+        id="DTMMWhere-phone"
+        name="DTMMWhere"
+        type="radio"
+        value="phone">
+      <label class="govuk-label govuk-radios__label" for="DTMMWhere-phone">
+        On the phone
+      </label>
+    </div>
+
+    <!-- Radio Option 3 -->
+    <div class="govuk-radios__item">
+      <input
+        class="govuk-radios__input"
+        id="DTMMWhere-court"
+        name="DTMMWhere"
+        type="radio"
+        value="court">
+      <label class="govuk-label govuk-radios__label" for="DTMMWhere-court">
+        At a court
+      </label>
+    </div>
+
+    <!-- Radio Option 4 -->
+    <div class="govuk-radios__item">
+      <input
+        class="govuk-radios__input"
+        id="DTMMWhere-police"
+        name="DTMMWhere"
+        type="radio"
+        value="police">
+      <label class="govuk-label govuk-radios__label" for="DTMMWhere-police">
+        At a police station
+      </label>
+    </div>
+
+    <!-- Radio Option 5 -->
+    <div class="govuk-radios__item">
+      <input
+        class="govuk-radios__input"
+        id="DTMMWhere-cps"
+        name="DTMMWhere"
+        type="radio"
+        value="cps">
+      <label class="govuk-label govuk-radios__label" for="DTMMWhere-cps">
+        At a Crown Prosecution Service (CPS) office
+      </label>
+    </div>
+
+    <div class="govuk-radios__divider">or</div>
+
+    <!-- Conditional Reveal Radio Option -->
+    <div class="govuk-radios__item">
+      <input
+        class="govuk-radios__input"
+        id="DTMMWhere-other"
+        name="DTMMWhere"
+        type="radio"
+        value="other"
+        data-aria-controls="conditional-DTMMWhere-other">
+      <label class="govuk-label govuk-radios__label" for="DTMMWhere-other">
+        Somewhere else
+      </label>
+    </div>
+    <div
+      class="govuk-radios__conditional govuk-radios__conditional--hidden"
+      id="conditional-DTMMWhere-other">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="other-location">
+          Where was the meeting held?
+        </label>
+        <input
+          class="govuk-input govuk-!-width-one-half"
+          id="other-location"
+          name="otherLocation"
+          type="text">
+      </div>
+    </div>
+  </div>
+</fieldset>
                 </div>
                 <button type="submit" class="govuk-button">Continue </button>
             </form>
