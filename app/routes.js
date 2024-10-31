@@ -2463,13 +2463,13 @@ router.get('/*/DTMMWhere' , function (req, res) {
       var confirmTraining = req.query.DTMMWhere
        switch (true) {
           case  (confirmTraining == "online"):
-              req.session.data['isDTM'] = false;
-              res.redirect(`stop`)
+              req.session.data['isDTM'] = true;
+              res.redirect(`./notWitness/child`)
            break;
 
           case  (confirmTraining == "phone"):
-              req.session.data['isDTM'] = false;
-              res.redirect(`stop`)
+              req.session.data['isDTM'] = true;
+              res.redirect(`./notWitness/child`)
            break;
 
             case  (confirmTraining == "court"):
