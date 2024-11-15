@@ -1,0 +1,135 @@
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+{% include "../includes/banner-V6.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<style>
+.rj-alert-wrapper {
+    // border: 1px solid #bfc1c3;
+    border-left: 4px solid #005ea5;
+    width: 100%;
+    min-height: 120px;
+    margin-top: 15px;
+    //  margin-left: 15px;
+    // background-color: $grey-3;
+}
+
+.rj-alert-copy {
+    display: inline-block;
+    height: 80px;
+    vertical-align: top;
+}
+
+.looks-like-a-link-underline {
+    color: #005ea5;
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 641px) {
+    /*  ///   MOBILE*/
+
+    .rj-space-top-mobile {
+        margin-top: 35px;
+    }
+}
+</style>
+<script>
+/*
+// putting this here so i don't forget it.
+
+  //store details entered into the form in local storage
+var creategovuk-button = document.getElementById('createAccountgovuk-button');
+EventUtil.addHandler(creategovuk-button, 'click', function(){
+              // save the form info to local storage by first putting the data into an object
+              var userDetails = {
+                email: document.getElementById('email-address').value,
+                password: document.getElementById('password').value
+            };
+
+            //store the object in local storage using json stringify
+              localStorage.setItem("login", JSON.stringify(userDetails));
+
+            //store the users email address in a cookie to repeat back to them later. Remember that we have some of the data stored in an object in local storage as well -  so we'll use that again if we need it.
+            document.cookie =  "emailAddress="  + userDetails.email 
+            // shows the cookie in the console log to check it is working
+            console.log (document.cookie)
+
+        // not needed at the moment
+
+              //hide the login form
+              //$('#login').addClass('hidden');
+              //show the quiz
+           // $('#wrapper').removeClass('hidden')
+    });
+*/
+</script>
+<!----------/////////////////////////// MAIN PAGE CONTENT HERE /////////////////////////////////////////////////////////////////////////////////-->
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div>
+        <h1 class="govuk-heading-l rj-headings-border" style="margin-top:35px; margin-bottom:20pxpx" id="company-Name">Charge a case
+        </h1>
+         <!-- <h2 class="govuk-heading-m"  id="company-Name">Charge a case</h2> -->
+       <!--   <p class="rj-headings-border" style="color:#505a5f; padding-bottom:30px ">The things I can do to charge a case </p>
+        <div> -->
+
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half" style="padding-bottom:4px">
+                    <h3 class="govuk-heading-m " style="margin-top:0;"><a href="./finance">Task list</a></h3>
+                    <p class="rj-home-spacer rj-bottom-border-mobile ">Do the thing with the tasks, then do the thing</p>
+                </div>
+                <div class="govuk-grid-column-one-half rj-space-top-mobile ">
+                    <h3 class="govuk-heading-m " style="margin-top:0;  "><a href="./apprentices">Case list</a></h3>
+                    <p class="rj-home-spacer  ">Do the thing with the cases, then do the thing, then do the cases again </p>
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                    <h3 class="govuk-heading-m rj-top-border" style="margin-top:0; padding-top:20px"><a href="https://das-raa-v2.herokuapp.com/prototypes/public-beta/dashboard">Find a case</a></h3>
+                    <p class="rj-home-spacer  ">Find the case, then do the thing with the case </p>
+                </div>
+                <div class="govuk-grid-column-one-half ">
+                     <h3 class="govuk-heading-m rj-top-border" style="margin-top:0; padding-top:20px"> <!-- <a href="./team">Your team</a></h3>
+                    <p>Control what your team can do and invite new team members.</p> -->
+                </div>
+            </div>
+            <div class="rj-headings-border"></div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half ">
+                    <h3 class="govuk-heading-m" style="margin-top:0; padding-top:30px"><a href="./paye">CMS Classic</a></h3>
+                    <p class="rj-home-spacer">Do the thing with the things, then do the thing</p>
+                </div>
+                <div class="govuk-grid-column-one-half  ">
+                    <h3 class="govuk-heading-m  " style="margin-top:0;padding-top:30px "><a href="./orgs">CMS Modern</a></h3>
+                    <p class="rj-home-spacer rj-bottom-border-mobile">Do the thing with the things, then do the thing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <!--   
+        <h2 class="govuk-heading-m toDoHome" style="">CMS</h2>
+        <div class="">
+            <div class="rj-alert-copy">
+                <h2 class="govuk-heading-s" style="margin: 22px 10px 5px 20px">CMS Classic</h2>
+     
+            </div>
+        </div>
+        <div class="">
+            <div class="rj-alert-copy">
+                <h2 class="govuk-heading-s" style="margin: 22px 10px 5px 20px">CMS Modern</h2>
+            
+            </div>
+        </div> -->
+    </div>
+</div>
+<!-- </div> -->
+</section>
+</div>
+{% endblock %}

@@ -7,6 +7,32 @@
   }
 
 
+
+
+@font-face {
+  font-family: "NewTransport";
+    font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+/*  size-adjust: 90%;*/
+  src: url('/public/fonts/NewTransport/NewTransport-RegularWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-RegularWEB.woff') format('woff');
+}
+
+
+
+@font-face {
+  font-family: "NewTransport";
+    font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+/*  size-adjust: 86.5%;*/
+  src: url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff') format('woff');
+}
+
+$govuk-font-family: "NewTransport" ;
+
+
+
 /*@import url("//hello.myfonts.net/count/413f20");
   
 @font-face {
@@ -5011,6 +5037,12 @@ font-size: 19px;
 .rj-headings-border {
   padding-bottom: 20px;
   border-bottom: 4px solid #bfc1c3;
+}
+
+.rj-headings-borderTwo {
+  padding-bottom: 20px;
+  border-bottom: 4px solid #bfc1c3;
+  Max-width:66%;
 }
 
 .rj-headings-border-top {
