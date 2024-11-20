@@ -29,8 +29,8 @@
   src: url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff') format('woff');
 }
 
-$govuk-font-family: "NewTransport" ;
 
+$govuk-font-family: "NewTransport" ;
 
 
 /*@import url("//hello.myfonts.net/count/413f20");
@@ -298,7 +298,13 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 // Navigation from gov uk navigation
 
-
+.cpsTagBlack {
+    background-color: black !important;
+    color: white !important;
+    font-weight:700 !important;
+    width: 100px;
+    text-align: center;
+}
 
 
 .cps-bar-wrapper {

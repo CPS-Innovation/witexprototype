@@ -1,0 +1,281 @@
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+{% include "../includes/banner-V6.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<script>
+$(document).ready(function() {
+    $('#global-navigation').show();
+    $('.dashboard').addClass('current');
+
+});
+</script>
+<h1 class="govuk-heading-l" style="margin-top:25px">Tags</h1>
+<div class="govuk-grid-row" style="margin-top:25px">
+    <div class="govuk-grid-column-two-thirds" id="">
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="col"> Origin</th>
+                    <th class="govuk-table__header" scope="col"> Class name </th>
+                    <th class="govuk-table__header" scope="col"> Tag </th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Work management
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> Custom </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag cpsTagBlack govuk-tag--grey " style="font-weight:700 !important">
+                            Expired
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF & Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--grey </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--grey">
+                            Draft
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--grey </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--grey">
+                            Withdrawn
+                        </strong>
+                    </td>
+                </tr>
+                 <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--grey </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--grey">
+                            None
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF & Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--blue </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">
+                            New
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--blue </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">
+                            Sent
+                        </strong>
+                    </td>
+                </tr>
+
+                 <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--blue </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">
+                            Used
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Review
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--blue </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--blue">
+                            Done
+                        </strong>
+                    </td>
+                </tr>
+                 <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--light-blue </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--light-blue">
+                            In progress
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--green </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--green">
+                            Completed
+                        </strong>
+                    </td>
+                </tr>
+                                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--green </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--green">
+                            Renamed
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       - 
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--turquoise </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--turquoise">
+                            - 
+                        </strong>
+                    </td>
+                </tr>
+
+
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--purple </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--purple">
+                            Re-opened
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--purple </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--purple">
+                            Reclassified
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       -
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--pink </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--pink">
+                            -
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Work managment and Casework app
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--red and Custom padding</code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--red" style="padding: 0 0px 0px 0; text-align: center;width:100px">
+                            3
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       DCF
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--orange </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--orange">
+                            Abandoned
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Housekeeping
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--yellow </code>
+                    </td>
+                    <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--yellow">
+                            Unused
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                     <td class="govuk-table__cell">
+                       Work management & Case review
+                    </td>
+                    <td class="govuk-table__cell">
+                        <code> govuk-tag--yellow </code> and Custom padding
+                    </td>
+                    <td class="govuk-table__cell" style="">
+                        <strong class="govuk-tag govuk-tag--yellow" style="padding: 0 0px 0px 0; text-align: center;width:100px">
+                            Bail
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
