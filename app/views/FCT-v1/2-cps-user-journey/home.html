@@ -69,46 +69,37 @@ EventUtil.addHandler(creategovuk-button, 'click', function(){
 </script>
 <!----------/////////////////////////// MAIN PAGE CONTENT HERE /////////////////////////////////////////////////////////////////////////////////-->
 
-<header class="dfe-header" role="banner" style="background-color:#1d70b8; margin:0 -150px 0 -150px">
-  <div class="dfe-width-container dfe-header__container" style="padding:50px 0 50px 0; margin:0 150px 0 150px">
-    <div class="dfe-header__content" id="content-header">
-                <h1 class="govuk-heading-xl" style=" color:#fff; font-size:4rem" id="company-Name">Case management
-        </h1>
-
-
-       <form method="get" action="search/searchresults" style="display: flex; align-items: center; ">
-        <div class="govuk-form-group" style="display: flex; flex-direction: column;">
-            <label class="govuk-label govuk-label--s" for="partialCost" style="color: #fff; margin-bottom:5px ">
-                Find a case by Unique Reference Number (URN)
-            </label>
-            <input class="govuk-input" id="searchURN" name="searchURN" type="text" aria-describedby="FirstName-hint" value="" 
-                style="max-width: 600px;height:50px; border:0 " />
-        </div>
-<!--         <button type="submit" class="govuk-button" style=" color: #fff;margin-top:30px ">
-            Search
-        </button> -->
-        <div class="gem-c-search__item gem-c-search__submit-wrapper" style="width:1%">
-            <button class="gem-c-search__submit" type="submit" enterkeyhint="search" style="    background-color: #d2e2f1;
+<!-- <header class="dfe-header" role="banner" style="background-color:#1d70b8; margin:0 -150px 0 -150px">
+    <div class="dfe-width-container dfe-header__container" style="padding:50px 0 50px 0; margin:0 150px 0 150px">
+        <div class="dfe-header__content" id="content-header">
+            <h1 class="govuk-heading-xl" style=" color:#fff; font-size:4rem" id="company-Name">Case management
+            </h1>
+            <form method="get" action="search/searchresults" style="display: flex; align-items: center; ">
+                <div class="govuk-form-group" style="display: flex; flex-direction: column;">
+                    <label class="govuk-label govuk-label--s" for="partialCost" style="color: #fff; margin-bottom:5px ">
+                        Find a case by Unique Reference Number (URN)
+                    </label>
+                    <input class="govuk-input" id="searchURN" name="searchURN" type="text" aria-describedby="FirstName-hint" value="" style="max-width: 600px;height:50px; border:0 " />
+                </div>
+                <div class="gem-c-search__item gem-c-search__submit-wrapper" style="width:1%">
+                    <button class="gem-c-search__submit" type="submit" enterkeyhint="search" style="    background-color: #d2e2f1;
     color: #1d70b8; width:50px;height:50px; background-image: none; margin-left:-2px">
-                Search 
-                <svg class="gem-c-search__icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="transform: scale(0.4); pointer-events: none; position: absolute; height: 100%; width: 100%; top: 0; left: 0;">
-                    <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>
-                    <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
-                </svg>
-            </button> 
+                        Search
+                        <svg class="gem-c-search__icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="transform: scale(0.4); pointer-events: none; position: absolute; height: 100%; width: 100%; top: 0; left: 0;">
+                            <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>
+                            <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </form>
         </div>
-    </form>
-
-
-
-            </div>
-                </div>  
-        </header>
+    </div>
+</header> -->
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <div>
-                <h2 class="govuk-heading-l rj-headings-border" style="margin-top:35px; margin-bottom:20pxpx" id="company-Name">Charge a case
+                <h2 class="govuk-heading-l rj-headings-border" style="margin-top:35px; margin-bottom:20pxpx" id="company-Name">Make a charging decision
         </h2>
          <!-- <h2 class="govuk-heading-m"  id="company-Name">Charge a case</h2> -->
        <!--   <p class="rj-headings-border" style="color:#505a5f; padding-bottom:30px ">The things I can do to charge a case </p>
@@ -118,11 +109,11 @@ EventUtil.addHandler(creategovuk-button, 'click', function(){
 
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-half" style="padding-bottom:4px">
-                    <h3 class="govuk-heading-m " style="margin-top:0;"><a href="./finance">Task list</a></h3>
+                    <h3 class="govuk-heading-m " style="margin-top:0;"><a href="./finance">Tasks</a></h3>
                     <p class="rj-home-spacer rj-bottom-border-mobile ">Do the thing with the tasks, then do the thing</p>
                 </div>
                 <div class="govuk-grid-column-one-half rj-space-top-mobile ">
-                    <h3 class="govuk-heading-m " style="margin-top:0;  "><a href="./apprentices">Case list</a></h3>
+                    <h3 class="govuk-heading-m " style="margin-top:0;  "><a href="./apprentices">Cases</a></h3>
                     <p class="rj-home-spacer  ">Do the thing with the cases, then do the thing, then do the cases again </p>
                 </div>
             </div>
