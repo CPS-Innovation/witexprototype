@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">This service isn’t available yet</h1>
+        <p class="govuk-body">The new service will be ready soon.</p>
+        <p class="govuk-body">
+              You can:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>continue your task in<a href=""> CMS</a></li>
+                <li>open the <a href="">Casework app </a></li>
+                <li>find out more about the <a href="">Future Casework Tools </a></li>
+               
+              </ul>
+
+      </div>
+    </div>
+
+
+{% endblock %}
