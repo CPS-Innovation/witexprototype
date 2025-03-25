@@ -1,17 +1,32 @@
 <!-- "govuk-frontend": "^4.7.0", -->
+
+
 {% extends "layoutCPS-NEW-CASEFILE.html" %}
+
+<script>
+  if (window.location.hash) {
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 1);
+    });
+  }
+</script>
 {% block header %}
 {% include "../includes/banner-V7.html" %}
 {% endblock %}
 {% block beforeContent %}
 {% endblock %}
 {% block content %}
+
 <script type="module" src="/public/javascripts/moj-frontend-41ac88f676.min.js"></script>
 <script src="/public/javascripts/sorttable.js"></script>
 <script src="/public/javascripts/filter-toggle-button.js"></script>
 <!-- <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" /> -->
 <!-- remove if you get rid of the gov width container -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+
 <style>
     .cpsTagBlack {
         background-color:black;color:white; width:80%;font-weight:700 !important;text-align: center;
@@ -923,7 +938,7 @@ nav {padding:0 !important}
         <script type="text/javascript">
         MOJFrontend.initAll();
         </script>
-        <script type="module">new MOJFrontend.FilterToggleButton({
+<!--         <script type="module">new MOJFrontend.FilterToggleButton({
   bigModeMediaQuery: '(min-width: 48.063em)',
   startHidden: false,
   toggleButton: {
@@ -940,7 +955,7 @@ nav {padding:0 !important}
     container: document.querySelector('.moj-filter')
   }
 })
-</script>
+</script> -->
         <script>
         document.addEventListener('DOMContentLoaded', function() {
 
