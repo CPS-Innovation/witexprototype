@@ -1,0 +1,1074 @@
+<!-- "govuk-frontend": "^4.7.0", -->
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+{% include "../includes/banner-V7.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<script type="module" src="/public/javascripts/moj-frontend-41ac88f676.min.js"></script>
+<script src="/public/javascripts/sorttable.js"></script>
+<script src="/public/javascripts/filter-toggle-button.js"></script>
+<!-- <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" /> -->
+<!-- remove if you get rid of the gov width container -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<style>
+    .cpsTagBlack {
+        background-color:black;color:white; width:80%;font-weight:700 !important;text-align: center;
+    }
+
+.cpsTagRed {
+        background-color:#d4351c ;color:white; width:80%;font-weight:700 !important;text-align: center;
+    }
+
+.cpsTagYellow {
+        background-color:#ffdd00 ;color:black; width:80%;font-weight:700 !important;text-align: center;
+    }
+
+.cpsTagUnkown {
+        background-color:white;color:black; width:80%;font-weight:700 !important;text-align: center; border: 3px solid #d4351c  ;
+    }
+
+
+.taskCountBar {margin-left:100px
+}
+
+.taskOverViewContent {
+    display:flex;margin-left:auto; width:80%
+}
+
+.taskOverViewContentPanel {
+    display:flex;margin-left:auto; 
+}
+
+.taskCountItems {
+    border: 2px solid black; display:flex;   align-items: center;
+  justify-content: center;
+  height:50px;
+  margin-right:15px;
+}
+
+.taskcCountItemNumber {
+    font-size:19px; font-weight:700; margin-left:auto; margin-bottom:0
+}
+
+
+.fa-triangle-exclamation {
+    color:#d4351c; 
+}
+
+ .fa-chevron-down, .fa-triangle-exclamation {
+    font-size:19px
+}
+
+             
+.govuk-tag--red {
+
+    background: #f4cdc6;
+}
+
+.panelTagRed {
+    min-width:200px;
+}
+
+.govuk-tag {
+      font-size:19px !important;
+}
+
+/*pulls the content next to the checkboxes closer on the main panel*/
+.govuk-checkboxes__item {
+        margin-right:-30px;
+    }
+
+.expandable-panel {
+    display: none;
+}
+
+
+.cpsAdminMenuWrapper {
+ max-width:1400px;
+    }
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.MT-15 {
+    margin-top:-7px;
+}
+
+
+
+.addRightLine {position:relative}
+.addRightLine:after {
+             content: '';
+            position: absolute;
+            right: -10%;
+            top: 20%; /* (100% - 75%) / 2 to center the line vertically */
+            width: 1px; /* Adjust width of the line */
+            height: 75%; /* 75% of the height of the parent box */
+            background-color: #505a5f   ; /* Adjust color as needed */
+}
+
+    .makeBannerMiddle {
+    display: none;
+}
+
+.caseReviewHeader {
+    display: none
+}
+
+.govuk-tabs__panel {
+ padding-left:0 !important;
+ padding-right:0 !important;
+ border:0 !important;
+}
+
+.govuk-table__cell, .govuk-table__header {
+    font-size: 19px;
+}
+
+.bold {font-weight: 700}
+
+nav {padding:0 !important}
+
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.toggle-panel');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var panel = this.closest('tr').nextElementSibling;
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'table-row';
+            } else {
+                panel.style.display = 'none';
+            }
+
+// Force the browser to reflow layout to correctly handle scrollbars
+            panel.offsetHeight; // Trigger reflow
+        });
+    });
+});
+
+
+       $(document).ready(function() {
+        $('#global-navigation').show();
+         $('.my-cases').attr('aria-current', 'page');
+        $('.sub-case').attr('aria-current', 'page');
+
+});
+
+
+
+
+     $(document).ready(function() {
+          // Function to adjust the date by a certain number of days
+        function adjustDate(days) {
+            const result = new Date();
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+
+        // Function to format the date in UK format (dd/mm/yyyy)
+        function formatDate(date) {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        // Function to update dates in the HTML
+        function updateDates() {
+            const dateElements = document.querySelectorAll('.date');
+            dateElements.forEach(el => {
+                const days = parseInt(el.getAttribute('data-days'), 10);
+                const adjustedDate = adjustDate(days);
+                const formattedDate = formatDate(adjustedDate);
+                el.textContent = formattedDate;
+            });
+        }
+
+        // Run the updateDates function
+        updateDates();
+    });
+    </script>
+</script>
+<div style=" display: flex; align-items: center;">
+    <div class="govuk-grid-column-two-thirds-quarters" style="display: flex; width: 100%;">
+        <div class="taskOverViewContent" style="justify-content: flex-end; display: flex; align-items: center;">
+            <p style="margin-left:15px; margin-bottom: 30px;">
+                <a href="" style="display: inline-block; ">Guidance</a>
+            </p>
+            <p style="margin-left:15px; margin-bottom: 30px;">
+                <a href="" style="display: inline-block;">Further housekeeping</a>
+            </p>
+            <button type="submit" class="govuk-button" style="margin-left:15px;">
+                Complete triage
+            </button>
+        </div>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <div class="govuk-tabs" data-module="govuk-tabs" style="">
+            <h2 class="govuk-tabs__title">
+                Contents
+            </h2>
+            <ul class="govuk-tabs__list">
+                <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                    <a class="govuk-tabs__tab" href="#past-day">
+                        PCD request
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#past-week">
+                        Materials (20)
+                    </a>
+                </li>
+                <li class="govuk-tabs__list-item">
+                    <a class="govuk-tabs__tab" href="#past-month" style="min-width:185px; text-overflow: unset">
+                        Communications (<span data-comm-total></span>)
+                    </a>
+                </li>
+            </ul>
+            <div class="govuk-tabs__panel" id="past-day">
+            </div>
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+                
+                    <div class="">
+                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="float:right">
+                            Add material</button>
+                    </div>
+                    <div class="" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
+                        <p> Showing <strong>15</strong> materials out of <strong>20</strong></p>
+                    </div>
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header">
+                                    <!-- <div class="govuk-form-group"> -->
+                                    <!-- <fieldset class="govuk-fieldset"> -->
+                                    <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                            <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- </fieldset> -->
+                                    <!-- </div> -->
+                                </th>
+                                <th scope="col" class="govuk-table__header">Material</th>
+                                <th scope="col" class="govuk-table__header">Type</th>
+                                <th scope="col" class="govuk-table__header">Category</th>
+                                <th scope="col" class="govuk-table__header">Status</th>
+                                <th scope="col" class="govuk-table__header">From</th>
+                                <th scope="col" class="govuk-table__header ">Date</th>
+                                <th scope="col" class="govuk-table__header"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">
+                                    <!-- <div class="govuk-form-group"> -->
+                                    <!-- <fieldset class="govuk-fieldset"> -->
+                                    <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                            <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- </fieldset> -->
+                                    <!-- </div> -->
+                                </td>
+                                <td class="govuk-table__cell "><strong class="govuk-tag govuk-tag--blue" style="margin-right:10px">New</strong>MG3 (1 suspect)</td>
+                                <td class="govuk-table__cell"> MG3</td>
+                                <td class="govuk-table__cell ">MG Form</td>
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--light-blue" style="">Used</strong></td>
+                                <td class="govuk-table__cell">Police</td>
+                                <td class="govuk-table__cell">13/01/2025</td>
+                                <td class="govuk-table__cell toggle-panel"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                            </tr>
+                            {% include "../includes/panels/panel1.html" %}
+                        </tbody>
+                    </table>
+               
+            </div>
+            <!-- ------------------------- HERE IS THE COMMS TAB --------------------------------------------------------------------------- -->
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+                <!-- HERE IS THE COMMS TAB -->
+                <!--   <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-quarter"> -->
+                <div class="moj-filter-layout">
+                    <div class="moj-filter-layout__filter">
+                        <div class="moj-filter" style="box-shadow:none;padding-left:0px">
+                            <div class="moj-filter__header" style="background-color:#fff; padding-left:0; padding-top:0">
+                                <div class="moj-filter__header-title">
+                                    <h2 class="govuk-heading-m" style="margin-top:-22px">Filters</h2>
+                                </div>
+                                <div class="moj-filter__heading-action">
+                                  <p><a id="clearFiltersLink" class="govuk-link govuk-link--no-visited-state" href="#">Clear filters</a></p>
+                                </div>
+                            </div>
+                            <div class="moj-filter__content">
+                                <!--  -->
+                                <div class="moj-filter__options" style="box-shadow:none;padding:0px">
+                                    <!--                                             <div class="govuk-form-group">
+                                                <label class="govuk-label govuk-label--m" for="keywords">
+                                                    Keywords
+                                                </label>
+                                                <input class="govuk-input" id="keywords" name="keywords" type="text">
+                                            </div> -->
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                                New communications
+                                            </legend>
+                                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status" name="newComms" type="checkbox" value="1" >
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status">
+                                                        Show only new <br />communications (unread)
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                                In/Out
+                                            </legend>
+                                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" >
+                                                    <label class="govuk-label govuk-checkboxes__label" for="type">
+                                                        Incoming
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" >
+                                                    <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                                        Outgoing
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                                Category
+                                            </legend>
+                                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status" name="status-11" type="checkbox" value="11" >
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status-11">
+                                                        Bundle
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status-22" name="status" type="checkbox" value="22">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status-22">
+                                                        Document
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status-33" name="status" type="checkbox" value="33">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status-33">
+                                                        Email
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status-44" name="status" type="checkbox" value="44">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status-44">
+                                                        Item
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status-55" name="status" type="checkbox" value="55">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status-55">
+                                                        Meeting
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="status-66" name="status" type="checkbox" value="66">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="status-66">
+                                                        Telephone call
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                                Comms with
+                                            </legend>
+                                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-111" name="commsWith" type="checkbox" value="111" >
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-111">
+                                                        Counsel
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-222" name="commsWith" type="checkbox" value="222">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-222">
+                                                        Court
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-333" name="commsWith" type="checkbox" value="333">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-333">
+                                                        DCS
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-444" name="commsWith" type="checkbox" value="444">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-444">
+                                                        Defence
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-555" name="commsWith" type="checkbox" value="555">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-555">
+                                                        Police
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-666" name="commsWith" type="checkbox" value="666">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-666">
+                                                        WCU
+                                                    </label>
+                                                </div>
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="commsWith-777" name="commsWith" type="checkbox" value="777">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="commsWith-777">
+                                                        Other
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                       <button id="applyFiltersBtn" type="submit" class="govuk-button" data-module="govuk-button" style="margin-top:25px">
+  Apply filters</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="moj-filter-layout__content">
+                        <!--          </div>
+                    </div> -->
+                        <!-- <div class="govuk-grid-column-full" id="three-quarters"> -->
+                        <div class="moj-scrollable-pane">
+                            <div style="margin-bottom:25px">
+                                <!-- Label sits outside, behaves naturally -->
+                                <label class="govuk-label govuk-label--s" for="searchURNModal">Search communications</label>
+                                <!-- Flex container: input + search icon + green button aligned -->
+                                <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+                                    <!-- Input + search icon -->
+                                    <div style="display: flex; align-items: center; height: 40px;">
+                                        <input class="govuk-input" id="searchURNModal" name="searchURNModal" type="text" placeholder="" style="width:350px" />
+                                        <button class="search searchModal modalButton" type="button" id="runSearch" style="background-position: -2% 50%"></button>
+                                    </div>
+                                    <!-- Auto reclassify button -->
+                                    <button type="submit" class="govuk-button" data-module="govuk-button" style="margin: 0;">
+                                        Auto Reclassify UM
+                                    </button>
+                                    <button type="submit" class="govuk-button govuk-button--secondary" disabled aria-disabled="true" data-module="govuk-button" style="margin: 0;">
+                                        Reclasify to Unused
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="moj-action-bar__filter"></div>
+                            <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
+                                <p> Showing <strong data-comm-shown></strong> communications out of <strong data-comm-total></strong></p>
+                            </div>
+                            <!-- <div class="moj-scrollable-pane"> -->
+                            <table class="govuk-table" data-module="moj-sortable-table">
+                                <thead class="govuk-table__head">
+                                    <tr class="govuk-table__row">
+                                        <th scope="col" class="govuk-table__header">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </th>
+                                        <th scope="col" class="govuk-table__header" aria-sort="ascending">Subject</th>
+                                        <th scope="col" class="govuk-table__header" aria-sort="none">In/Out</th>
+                                        <th scope="col" class="govuk-table__header" aria-sort="none">Comms with</th>
+                                        <th scope="col" class="govuk-table__header" aria-sort="none">Comms type</th>
+                                        <th scope="col" class="govuk-table__header" aria-sort="none">Type</th>
+                                        <th scope="col" class="govuk-table__header " aria-sort="none">Date</th>
+                                        <th scope="col" class="govuk-table__header"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <strong class="govuk-tag govuk-tag--blue" style="margin-right:10px; flex-shrink:0;">New</strong>
+                                                <span>Police update</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell"> Incoming</td>
+                                        <td class="govuk-table__cell ">Police</td>
+                                        <td class="govuk-table__cell">Bundle</td>
+                                        <td class="govuk-table__cell">Other communication</td>
+                                        <td class="govuk-table__cell">01/02/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <strong class="govuk-tag govuk-tag--blue" style="margin-right:10px; flex-shrink:0;">New</strong>
+                                                <span>Official statement on trial</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell"> Outgoing</td>
+                                        <td class="govuk-table__cell ">Counsel</td>
+                                        <td class="govuk-table__cell">Document</td>
+                                        <td class="govuk-table__cell">Asset recovery</td>
+                                        <td class="govuk-table__cell">21/03/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <strong class="govuk-tag govuk-tag--blue" style="margin-right:10px; flex-shrink:0;">New</strong>
+                                                <span>Legal matter</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell"> Outgoing</td>
+                                        <td class="govuk-table__cell ">Counsel</td>
+                                        <td class="govuk-table__cell">Comms Type</td>
+                                        <td class="govuk-table__cell">Counsel case acknowedgement</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Official court notice</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">Police</td>
+                                        <td class="govuk-table__cell">Bundle</td>
+                                        <td class="govuk-table__cell">Other communication</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>New developments in Maggie Simpson's case</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Outgoing</td>
+                                        <td class="govuk-table__cell ">Police</td>
+                                        <td class="govuk-table__cell">Telephone call</td>
+                                        <td class="govuk-table__cell">Correspondence</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Maggie Simpson - Court Case update</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Outgoing</td>
+                                        <td class="govuk-table__cell ">Defence</td>
+                                        <td class="govuk-table__cell">Email</td>
+                                        <td class="govuk-table__cell">Correspondence</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Meeting with WCU</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Outgoing</td>
+                                        <td class="govuk-table__cell ">WCU</td>
+                                        <td class="govuk-table__cell">Meeting</td>
+                                        <td class="govuk-table__cell">Other communications</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>JDU update Maggie Simpson</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">Court</td>
+                                        <td class="govuk-table__cell">Item</td>
+                                        <td class="govuk-table__cell">Physical media</td>
+                                        <td class="govuk-table__cell">01/02/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>New developments on 0723 Case</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Outgoing</td>
+                                        <td class="govuk-table__cell ">Court</td>
+                                        <td class="govuk-table__cell">Document</td>
+                                        <td class="govuk-table__cell">Other communication</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Legal proceedings update</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">Counsel</td>
+                                        <td class="govuk-table__cell">Telephone call</td>
+                                        <td class="govuk-table__cell">Correspondence</td>
+                                        <td class="govuk-table__cell">21/03/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Case under review</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Outgoing</td>
+                                        <td class="govuk-table__cell ">Police</td>
+                                        <td class="govuk-table__cell">Email</td>
+                                        <td class="govuk-table__cell">Correspondence</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Court Summons</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">DCS</td>
+                                        <td class="govuk-table__cell">Email</td>
+                                        <td class="govuk-table__cell">Correspondence</td>
+                                        <td class="govuk-table__cell">13/01/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Justice department update</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">DCS</td>
+                                        <td class="govuk-table__cell">Comms Type</td>
+                                        <td class="govuk-table__cell">Other communication</td>
+                                        <td class="govuk-table__cell">21/03/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Update 6123754</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">WCU</td>
+                                        <td class="govuk-table__cell">Meeting</td>
+                                        <td class="govuk-table__cell">Other communication</td>
+                                        <td class="govuk-table__cell">01/02/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">
+                                            <!-- <div class="govuk-form-group"> -->
+                                            <!-- <fieldset class="govuk-fieldset"> -->
+                                            <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- </fieldset> -->
+                                            <!-- </div> -->
+                                        </td>
+                                        <td class="govuk-table__cell subject-cell">
+                                            <div style="display: flex; align-items: flex-start;">
+                                                <span>Important legal update</span>
+                                            </div>
+                                        </td>
+                                        <td class="govuk-table__cell">Incoming</td>
+                                        <td class="govuk-table__cell ">Counsel</td>
+                                        <td class="govuk-table__cell">Email</td>
+                                        <td class="govuk-table__cell">Correspondence</td>
+                                        <td class="govuk-table__cell">01/02/2025</td>
+                                        <td class="govuk-table__cell toggle-panel" style="min-width:85px"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p id="no-results-message" class="govuk-body" style="display: none;">
+                                No results found
+                            </p>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        MOJFrontend.initAll();
+        </script>
+        <script type="module">new MOJFrontend.FilterToggleButton({
+  bigModeMediaQuery: '(min-width: 48.063em)',
+  startHidden: true,
+  toggleButton: {
+    container: document.querySelector('.moj-action-bar__filter'),
+    showText: 'Show filter',
+    hideText: 'Hide filter',
+    classes: 'govuk-button--secondary'
+  },
+  closeButton: {
+    container: document.querySelector('.moj-filter__header-action'),
+    text: 'Close'
+  },
+  filter: {
+    container: document.querySelector('.moj-filter')
+  }
+})
+</script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Run applyFilters when either search OR filter "Apply filters" button is clicked
+const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+if (applyFiltersBtn) {
+  applyFiltersBtn.addEventListener('click', e => {
+    e.preventDefault();
+    applyFilters();
+  });
+}
+
+  // Clears the filters
+const clearFiltersLink = document.getElementById('clearFiltersLink');
+
+if (clearFiltersLink) {
+  clearFiltersLink.addEventListener('click', e => {
+    e.preventDefault();
+
+    // Uncheck all checkboxes
+    const checkboxes = document.querySelectorAll('.moj-filter input[type="checkbox"]');
+    checkboxes.forEach(cb => cb.checked = false);
+
+    // Reapply search without filters
+    applyFilters(); // This will still use the current search input
+  });
+}
+
+            function applyFilters() {
+    const searchTerm = document.getElementById('searchURNModal').value.trim().toLowerCase();
+
+    const checkedNew = Array.from(document.querySelectorAll('input[name="newComms"]:checked')).length > 0;
+    const checkedInOut = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
+    const checkedCategory = Array.from(document.querySelectorAll('input[name^="status"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
+    const checkedCommsWith = Array.from(document.querySelectorAll('input[name="commsWith"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
+
+    const rows = Array.from(document.querySelectorAll('.govuk-table__body .govuk-table__row'))
+        .filter(row => row.querySelector('.subject-cell')); // skip panel rows
+
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+        const subjectText = row.querySelector('.subject-cell')?.textContent.toLowerCase() || '';
+        const inOut = row.children[2]?.textContent.trim();
+        const commsWith = row.children[3]?.textContent.trim();
+        const category = row.children[4]?.textContent.trim();
+        const isNew = row.querySelector('.govuk-tag--blue') !== null;
+
+        const matchesSearch = subjectText.includes(searchTerm);
+        const matchesInOut = checkedInOut.length === 0 || checkedInOut.includes(inOut);
+        const matchesCategory = checkedCategory.length === 0 || checkedCategory.includes(category);
+        const matchesCommsWith = checkedCommsWith.length === 0 || checkedCommsWith.includes(commsWith);
+        const matchesNew = !checkedNew || isNew;
+
+        const shouldShow = matchesSearch && matchesInOut && matchesCategory && matchesCommsWith && matchesNew;
+
+        row.style.display = shouldShow ? '' : 'none';
+        if (shouldShow) visibleCount++;
+    });
+
+    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
+    document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
+    document.getElementById('no-results-message').style.display = visibleCount === 0 ? 'block' : 'none';
+}
+
+// Rebind apply filters
+document.querySelector('button[type="submit"]').addEventListener('click', e => {
+    e.preventDefault();
+    applyFilters();
+});
+
+// Also re-run filter on page load (optional)
+applyFilters();
+
+
+            const searchInput = document.getElementById('searchURNModal');
+            const searchButton = document.getElementById('runSearch');
+            const clearButton = document.getElementById('clearSearch');
+            const shownCountEls = document.querySelectorAll('[data-comm-shown]');
+            const totalCountEls = document.querySelectorAll('[data-comm-total]');
+            const noResultsMessage = document.getElementById('no-results-message');
+
+            // Only target rows with actual subject cells
+            const allRows = Array.from(document.querySelectorAll('.govuk-table__body .govuk-table__row'))
+                .filter(row => row.querySelector('.subject-cell'));
+
+            function updateCounts() {
+                const visibleRows = allRows.filter(row => row.style.display !== 'none');
+                const shown = visibleRows.length;
+                const total = allRows.length;
+
+                shownCountEls.forEach(el => el.textContent = shown);
+                totalCountEls.forEach(el => el.textContent = total);
+
+                if (noResultsMessage) {
+                    noResultsMessage.style.display = shown === 0 ? 'block' : 'none';
+                }
+            }
+
+            function runSearch() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+
+                allRows.forEach(row => {
+                    const subjectCell = row.querySelector('.subject-cell');
+                    const text = subjectCell.textContent.trim().toLowerCase();
+
+                    row.style.display = text.includes(searchTerm) ? '' : 'none';
+                });
+
+                updateCounts();
+                applyFilters();
+            }
+
+            searchButton.addEventListener('click', runSearch);
+
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') runSearch();
+            });
+
+            if (clearButton) {
+                clearButton.addEventListener('click', () => {
+                    searchInput.value = '';
+                    allRows.forEach(row => row.style.display = '');
+                    updateCounts();
+                });
+            }
+
+            updateCounts(); // Initial count
+        });
+        </script>
+        {% endblock %}
