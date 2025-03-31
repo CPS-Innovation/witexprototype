@@ -244,6 +244,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/step-by-step-related";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "components/gov-filter";
 
 
 
@@ -294,6 +295,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     right: 0px;
     border-top: 4px solid $govuk-border-colour;
 }*/
+
+
 
 
 [aria-sort] button,
