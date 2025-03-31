@@ -78,6 +78,17 @@
     transform: translateY(-25%) rotate(135deg) scale(1)
 }
 
+
+/*.app-c-filter-panel__button::before {
+  display: none; 
+}
+
+
+.app-c-filter-panel__button[aria-expanded="true"]::after {
+  transform: rotate(-45deg); 
+  top: 2px;
+}*/
+
 @media print {
     .app-c-filter-panel__button {
         font-family: sans-serif
