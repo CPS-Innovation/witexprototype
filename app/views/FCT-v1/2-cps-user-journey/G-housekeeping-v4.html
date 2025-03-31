@@ -310,7 +310,7 @@ nav {padding:0 !important}
                     <!-- Auto reclassify button -->
                 </div>
                 <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third" style="">
+                    <div class="govuk-grid-column-full" style="">
                         <div class="app-c-filter-panel" data-filter-panel-module-started="true">
                             <div class="app-c-filter-panel__header">
                                 <button id="filter-button-aca6bc14" class="app-c-filter-panel__button govuk-link" aria-expanded="false" aria-controls="filter-panel-aca6bc14" >
@@ -328,7 +328,7 @@ nav {padding:0 !important}
                                     <div class="app-c-filter-section__content">
                                         <div id="keywords" data-module="keywords" class=" govuk-form-group ">
                                             <fieldset class="govuk-fieldset">
-                                                <input class="govuk-input" id="event-name" name="eventName" type="text">
+                                                <input class="govuk-input govuk-input--width-20" id="event-name" name="eventName" type="text" >
                                             </fieldset>
                                         </div>
                                     </div>
@@ -352,7 +352,7 @@ nav {padding:0 !important}
                                         </div>
                                     </div>
                                 </details>
-                                <details " class="app-c-filter-section">
+                                <details  class="app-c-filter-section">
                                     <summary class="app-c-filter-section__summary" >
                                         <h2 class="app-c-filter-section__summary-heading">
                                             <span class="govuk-visually-hidden">Filter by</span>
@@ -365,12 +365,12 @@ nav {padding:0 !important}
                                                 <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--m gem-c-checkboxes__legend--hidden">Type</legend> -->
                                                 <div class="govuk-checkboxes">
                                                     <div class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="content_purpose_services_supergroup[]" id="content_purpose_supergroup-services" value="11" class="govuk-checkboxes__input">
-                                                        <label for="content_purpose_supergroup-services" class="govuk-label govuk-checkboxes__label">Services</label>
+                                                        <input type="checkbox" name="content_purpose_services_supergroup[]" id="content_purpose_supergroup-services" value="Incoming" class="govuk-checkboxes__input">
+                                                        <label for="content_purpose_supergroup-services" class="govuk-label govuk-checkboxes__label">Incoming</label>
                                                     </div>
                                                     <div class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="content_purpose_services_supergroup[]" id="content_purpose_supergroup-services-2" value="22" class="govuk-checkboxes__input">
-                                                        <label for="content_purpose_supergroup-services-2" class="govuk-label govuk-checkboxes__label">Guidance and regulation</label>
+                                                        <input type="checkbox" name="content_purpose_services_supergroup[]" id="content_purpose_supergroup-services-2" value="Outgoing" class="govuk-checkboxes__input">
+                                                        <label for="content_purpose_supergroup-services-2" class="govuk-label govuk-checkboxes__label">Outgoing</label>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -465,7 +465,8 @@ nav {padding:0 !important}
                                     </div>
                                 </details>
                                 <div class="app-c-filter-panel__actions">
-                                    <input type="submit" value="Apply" class="govuk-button app-c-filter-panel__action app-c-filter-panel__action--submit"  data-disable-with="Apply">
+                                    <!-- <input type="submit" value="Apply" class="govuk-button app-c-filter-panel__action app-c-filter-panel__action--submit"  data-disable-with="Apply"> -->
+                                      <input type="submit" value="Apply filters" class="govuk-button "  data-disable-with="Apply filters" style="margin-bottom:0">
                                 </div>
                             </div>
                         </div>
