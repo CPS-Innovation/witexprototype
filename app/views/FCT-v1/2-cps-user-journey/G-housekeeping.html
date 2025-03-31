@@ -311,8 +311,8 @@ nav {padding:0 !important}
                                     <h2 class="govuk-heading-m" style="margin-top:-22px">Filters</h2>
                                 </div>
                                 <div class="moj-filter__heading-action">
-                                  <p><a id="clearFiltersLink" class="govuk-link govuk-link--no-visited-state" href="#">Clear filters</a></p>
-                                </div>
+  <a href="#" class="govuk-link govuk-link--no-visited-state clear-filters">Clear filters</a>
+</div>
                             </div>
                             <div class="moj-filter__content">
                                 <!--  -->
@@ -468,7 +468,7 @@ nav {padding:0 !important}
                         <div class="moj-scrollable-pane">
                             <div style="margin-bottom:25px">
                                 <!-- Label sits outside, behaves naturally -->
-                                <label class="govuk-label govuk-label--s" for="searchURNModal">Search communications</label>
+                                <!-- <label class="govuk-label govuk-label--s" for="searchURNModal">Search communications</label> -->
                                 <!-- Flex container: input + search icon + green button aligned -->
                                 <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
                                     <!-- Input + search icon -->
@@ -485,7 +485,7 @@ nav {padding:0 !important}
                                     </button>
                                 </div>
                             </div>
-                            <div class="moj-action-bar__filter"></div>
+                            <!-- <div class="moj-action-bar__filter"></div> -->
                             <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
                                 <p> Showing <strong data-comm-shown></strong> communications out of <strong data-comm-total></strong></p>
                             </div>
@@ -920,10 +920,96 @@ nav {padding:0 !important}
                 </div>
             </div>
         </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tableRows = Array.from(document.querySelectorAll('#past-month table.govuk-table tbody tr'))
+    .filter(row => row.querySelector('.subject-cell')); // Skip panels
+
+  const shownEls = document.querySelectorAll('[data-comm-shown]');
+  const totalEls = document.querySelectorAll('[data-comm-total]');
+  const noResults = document.getElementById('no-results-message');
+  const keywordInput = document.querySelector('input[name="eventName"]');
+
+  function updateCounts(visible) {
+    shownEls.forEach(el => el.textContent = visible.length);
+    totalEls.forEach(el => el.textContent = tableRows.length);
+    if (noResults) noResults.style.display = visible.length === 0 ? 'block' : 'none';
+  }
+
+  function applyFilters() {
+    const keyword = keywordInput?.value.trim().toLowerCase() || '';
+
+    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(cb => cb.value.trim());
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(cb => cb.value.trim().toLowerCase());
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(cb => cb.value.trim().toLowerCase());
+
+    const visibleRows = [];
+
+    tableRows.forEach(row => {
+      const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
+      const inOutText = row.children[2]?.innerText.trim();
+      const commsText = row.children[3]?.innerText.trim().toLowerCase();
+      const categoryText = row.children[4]?.innerText.trim().toLowerCase();
+      const hasNewTag = row.querySelector('.govuk-tag--blue') !== null;
+
+      let show = true;
+
+      if (keyword && !subject.includes(keyword)) show = false;
+      if (newCommChecked && !hasNewTag) show = false;
+      if (inOut.length && !inOut.includes(inOutText)) show = false;
+      if (categories.length && !categories.includes(categoryText)) show = false;
+      if (commsWith.length && !commsWith.includes(commsText)) show = false;
+
+      row.style.display = show ? '' : 'none';
+      if (show) visibleRows.push(row);
+    });
+
+    updateCounts(visibleRows);
+  }
+
+  // Hook up the Apply Filters button
+  const applyButton = document.querySelector('input[type="submit"][value="Apply filters"]');
+  if (applyButton) {
+    applyButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      applyFilters();
+    });
+  }
+
+  // Hook up all clear filter links
+  document.querySelectorAll('.clear-filters').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // Clear checkboxes
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+      // Clear keyword input
+      if (keywordInput) keywordInput.value = '';
+
+      // Reset rows
+      tableRows.forEach(row => row.style.display = '');
+
+      updateCounts(tableRows);
+    });
+  });
+
+  // Initial counts on load
+  updateCounts(tableRows);
+});
+</script>
+
+
+
+
+
+        
         <script type="text/javascript">
         MOJFrontend.initAll();
         </script>
-        <script type="module">new MOJFrontend.FilterToggleButton({
+<!--         <script type="module">new MOJFrontend.FilterToggleButton({
   bigModeMediaQuery: '(min-width: 48.063em)',
   startHidden: true,
   toggleButton: {
@@ -940,135 +1026,9 @@ nav {padding:0 !important}
     container: document.querySelector('.moj-filter')
   }
 })
-</script>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // Run applyFilters when either search OR filter "Apply filters" button is clicked
-const applyFiltersBtn = document.getElementById('applyFiltersBtn');
-if (applyFiltersBtn) {
-  applyFiltersBtn.addEventListener('click', e => {
-    e.preventDefault();
-    applyFilters();
-  });
-}
-
-  // Clears the filters
-const clearFiltersLink = document.getElementById('clearFiltersLink');
-
-if (clearFiltersLink) {
-  clearFiltersLink.addEventListener('click', e => {
-    e.preventDefault();
-
-    // Uncheck all checkboxes
-    const checkboxes = document.querySelectorAll('.moj-filter input[type="checkbox"]');
-    checkboxes.forEach(cb => cb.checked = false);
-
-    // Reapply search without filters
-    applyFilters(); // This will still use the current search input
-  });
-}
-
-            function applyFilters() {
-    const searchTerm = document.getElementById('searchURNModal').value.trim().toLowerCase();
-
-    const checkedNew = Array.from(document.querySelectorAll('input[name="newComms"]:checked')).length > 0;
-    const checkedInOut = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
-    const checkedCategory = Array.from(document.querySelectorAll('input[name^="status"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
-    const checkedCommsWith = Array.from(document.querySelectorAll('input[name="commsWith"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
-
-    const rows = Array.from(document.querySelectorAll('.govuk-table__body .govuk-table__row'))
-        .filter(row => row.querySelector('.subject-cell')); // skip panel rows
-
-    let visibleCount = 0;
-
-    rows.forEach(row => {
-        const subjectText = row.querySelector('.subject-cell')?.textContent.toLowerCase() || '';
-        const inOut = row.children[2]?.textContent.trim();
-        const commsWith = row.children[3]?.textContent.trim();
-        const category = row.children[4]?.textContent.trim();
-        const isNew = row.querySelector('.govuk-tag--blue') !== null;
-
-        const matchesSearch = subjectText.includes(searchTerm);
-        const matchesInOut = checkedInOut.length === 0 || checkedInOut.includes(inOut);
-        const matchesCategory = checkedCategory.length === 0 || checkedCategory.includes(category);
-        const matchesCommsWith = checkedCommsWith.length === 0 || checkedCommsWith.includes(commsWith);
-        const matchesNew = !checkedNew || isNew;
-
-        const shouldShow = matchesSearch && matchesInOut && matchesCategory && matchesCommsWith && matchesNew;
-
-        row.style.display = shouldShow ? '' : 'none';
-        if (shouldShow) visibleCount++;
-    });
-
-    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
-    document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
-    document.getElementById('no-results-message').style.display = visibleCount === 0 ? 'block' : 'none';
-}
-
-// Rebind apply filters
-document.querySelector('button[type="submit"]').addEventListener('click', e => {
-    e.preventDefault();
-    applyFilters();
-});
-
-// Also re-run filter on page load (optional)
-applyFilters();
+</script> -->
 
 
-            const searchInput = document.getElementById('searchURNModal');
-            const searchButton = document.getElementById('runSearch');
-            const clearButton = document.getElementById('clearSearch');
-            const shownCountEls = document.querySelectorAll('[data-comm-shown]');
-            const totalCountEls = document.querySelectorAll('[data-comm-total]');
-            const noResultsMessage = document.getElementById('no-results-message');
+</div>
 
-            // Only target rows with actual subject cells
-            const allRows = Array.from(document.querySelectorAll('.govuk-table__body .govuk-table__row'))
-                .filter(row => row.querySelector('.subject-cell'));
-
-            function updateCounts() {
-                const visibleRows = allRows.filter(row => row.style.display !== 'none');
-                const shown = visibleRows.length;
-                const total = allRows.length;
-
-                shownCountEls.forEach(el => el.textContent = shown);
-                totalCountEls.forEach(el => el.textContent = total);
-
-                if (noResultsMessage) {
-                    noResultsMessage.style.display = shown === 0 ? 'block' : 'none';
-                }
-            }
-
-            function runSearch() {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-
-                allRows.forEach(row => {
-                    const subjectCell = row.querySelector('.subject-cell');
-                    const text = subjectCell.textContent.trim().toLowerCase();
-
-                    row.style.display = text.includes(searchTerm) ? '' : 'none';
-                });
-
-                updateCounts();
-                applyFilters();
-            }
-
-            searchButton.addEventListener('click', runSearch);
-
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') runSearch();
-            });
-
-            if (clearButton) {
-                clearButton.addEventListener('click', () => {
-                    searchInput.value = '';
-                    allRows.forEach(row => row.style.display = '');
-                    updateCounts();
-                });
-            }
-
-            updateCounts(); // Initial count
-        });
-        </script>
         {% endblock %}

@@ -484,11 +484,11 @@ nav {padding:0 !important}
                             </a> </li>
                     </ul>
                     <div>
-                        <a class="app-c-filter-summary__clear-filters govuk-link govuk-link--no-visited-state"  href="/search/all?keywords=dfsg">Clear all filters</a>
+                      <p> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear filters</a></p>
                     </div>
                 </div>
                 <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center; margin-top:20px;    border-top: 1px solid #b1b4b6;">
-                    <p style="margin-top:20px"> Showing <strong data-comm-shown>20</strong> communications out of <strong data-comm-total>20</strong></p>
+                    <p style="margin-top:20px"> Showing <strong data-comm-shown></strong> communications out of <strong data-comm-total></strong></p>
                 </div>
                 <div style="margin-bottom:20px; ">
                     <button type="submit" class="govuk-button govuk-button--secondary" disabled aria-disabled="true" data-module="govuk-button" style="margin: 0;">
@@ -518,7 +518,7 @@ nav {padding:0 !important}
                             <th scope="col" class="govuk-table__header" aria-sort="ascending">Subject</th>
                             <th scope="col" class="govuk-table__header" aria-sort="none">In/Out</th>
                             <th scope="col" class="govuk-table__header" aria-sort="none">Comms with</th>
-                            <th scope="col" class="govuk-table__header" aria-sort="none">Comms type</th>
+                            <th scope="col" class="govuk-table__header" aria-sort="none">Category</th>
                             <th scope="col" class="govuk-table__header" aria-sort="none">Type</th>
                             <th scope="col" class="govuk-table__header " aria-sort="none">Date</th>
                             <th scope="col" class="govuk-table__header"></th>
@@ -929,19 +929,80 @@ nav {padding:0 !important}
     </div>
 </div>
 </div>
-<!-- <script>
+<script>
   document.addEventListener('DOMContentLoaded', function () {
-    var filterPanels = document.querySelectorAll('.app-c-filter-panel');
-    filterPanels.forEach(function (panel) {
-      if (typeof GOVUK?.Modules?.FilterPanel === 'function') {
-        new GOVUK.Modules.FilterPanel(panel).init();
-      }
+    const rows = document.querySelectorAll('#past-month table.govuk-table tbody tr.govuk-table__row');
+    const total = rows.length;
+
+    document.querySelector('[data-comm-total]').textContent = total;
+    document.querySelector('[data-comm-shown]').textContent = total;
+
+    document.querySelector('input[type="submit"][value="Apply filters"]').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      let visibleCount = 0;
+
+      const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
+      const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+
+      const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+      const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+      const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+
+      rows.forEach(row => {
+        const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
+        const inOutText = row.children[2]?.innerText.trim();
+        const commsText = row.children[3]?.innerText.trim().toLowerCase();
+        const categoryText = row.children[4]?.innerText.trim().toLowerCase();
+        const hasNewTag = row.querySelector('.govuk-tag--blue') !== null;
+
+        let show = true;
+        if (keyword && !subject.includes(keyword)) show = false;
+        if (newCommChecked && !hasNewTag) show = false;
+        if (inOut.length && !inOut.includes(inOutText)) show = false;
+        if (categories.length && !categories.includes(categoryText)) show = false;
+        if (commsWith.length && !commsWith.includes(commsText)) show = false;
+
+        row.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      document.querySelector('[data-comm-shown]').textContent = visibleCount;
     });
   });
-</script> -->
+</script>
+
 <script type="text/javascript">
 MOJFrontend.initAll();
 </script>
+<script type="text/javascript">
+document.querySelectorAll('.clear-filters').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Clear checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+    // Clear keyword input
+    const keywordInput = document.querySelector('input[name="eventName"]');
+    if (keywordInput) keywordInput.value = '';
+
+    // Reset table rows
+    const rows = Array.from(document.querySelectorAll('#past-month table.govuk-table tbody tr'))
+      .filter(row => row.querySelector('.subject-cell'));
+    rows.forEach(row => row.style.display = '');
+
+    // Update counts
+    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = rows.length);
+    document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
+
+    const noResults = document.getElementById('no-results-message');
+    if (noResults) noResults.style.display = 'none';
+  });
+});
+
+</script>
+
 <!-- <script type="module">new MOJFrontend.FilterToggleButton({
   bigModeMediaQuery: '(min-width: 48.063em)',
   startHidden: true,
