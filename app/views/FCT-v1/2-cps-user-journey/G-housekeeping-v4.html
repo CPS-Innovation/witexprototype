@@ -484,7 +484,7 @@ nav {padding:0 !important}
                             </a> </li>
                     </ul>
                     <div>
-                      <p> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear filters</a></p>
+                      <p style="margin-bottom:0"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear filters</a></p>
                     </div>
                 </div>
                 <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center; margin-top:20px;    border-top: 1px solid #b1b4b6;">
@@ -930,24 +930,31 @@ nav {padding:0 !important}
 </div>
 </div>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const rows = document.querySelectorAll('#past-month table.govuk-table tbody tr.govuk-table__row');
-    const total = rows.length;
+document.addEventListener('DOMContentLoaded', function () {
+  const rows = document.querySelectorAll('#past-month table.govuk-table tbody tr.govuk-table__row');
+  const total = rows.length;
 
-    document.querySelector('[data-comm-total]').textContent = total;
-    document.querySelector('[data-comm-shown]').textContent = total;
+   document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
+  document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
 
-    document.querySelector('input[type="submit"][value="Apply filters"]').addEventListener('click', function (e) {
+  // Existing apply filters event
+  document.querySelector('input[type="submit"][value="Apply filters"]')
+    .addEventListener('click', function (e) {
       e.preventDefault();
 
       let visibleCount = 0;
 
       const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
       const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
-
-      const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
-      const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
-      const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+      const inOut = Array.from(
+        document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')
+      ).map(el => el.value.trim());
+      const categories = Array.from(
+        document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')
+      ).map(el => el.value.trim().toLowerCase());
+      const commsWith = Array.from(
+        document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')
+      ).map(el => el.value.trim().toLowerCase());
 
       rows.forEach(row => {
         const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
@@ -968,8 +975,14 @@ nav {padding:0 !important}
       });
 
       document.querySelector('[data-comm-shown]').textContent = visibleCount;
+
+      // Close the filter panel if it's open
+      const filterButton = document.querySelector('.app-c-filter-panel__button');
+      if (filterButton && filterButton.getAttribute('aria-expanded') === 'true') {
+        filterButton.click();
+      }
     });
-  });
+});
 </script>
 
 
