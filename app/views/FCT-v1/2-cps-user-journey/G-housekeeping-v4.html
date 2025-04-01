@@ -345,7 +345,7 @@ nav {padding:0 !important}
                                                 <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--s gem-c-checkboxes__legend--hidden">New communications</legend> -->
                                                 <div class="govuk-checkboxes">
                                                     <div class="govuk-checkboxes__item">
-                                                        <input type="checkbox" name="new_comms_supergroup[]" id="content_purpose_supergroup-services" value="1" class="govuk-checkboxes__input"><label for="content_purpose_supergroup-services" class="govuk-label govuk-checkboxes__label">Show only new commincations (unread)</label>
+                                                        <input type="checkbox" name="new_comms_supergroup[]" id="content_purpose_supergroup-services" value="1" class="govuk-checkboxes__input"><label for="content_purpose_supergroup-services" class="govuk-label govuk-checkboxes__label">Show only new communications (unread)</label>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -472,7 +472,7 @@ nav {padding:0 !important}
                         </div>
                     </div>
                 </div>
-                <div  class="app-c-filter-summary" style="display: none; border-bottom: 1px solid #b1b4b6;padding-bottom:20px">
+<!--                 <div  class="app-c-filter-summary" style="display: none; border-bottom: 1px solid #b1b4b6;padding-bottom:20px">
                     <h3 class="app-c-filter-summary__heading">Active filters</h3>
                     <ul class="app-c-filter-summary__remove-filters">
                         <li>
@@ -483,7 +483,13 @@ nav {padding:0 !important}
                                 </span>
                             </a> </li>
                     </ul>
-                    <div>
+                    <div> -->
+                    <div class="app-c-filter-summary" style="display: none; border-bottom: 1px solid #b1b4b6; padding-bottom:20px">
+  <h3 class="app-c-filter-summary__heading">Active filters</h3>
+  <ul class="app-c-filter-summary__remove-filters" data-active-filters>
+    <!-- Dynamic filter lozenges will be inserted here -->
+  </ul>
+  <div>
                         <p style="margin-bottom:0"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear filters</a></p>
                     </div>
                 </div>
@@ -931,108 +937,215 @@ nav {padding:0 !important}
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // Cache row elements and counts
   const rows = document.querySelectorAll('#past-month table.govuk-table tbody tr.govuk-table__row');
   const total = rows.length;
   
-  // Update all [data-comm-total] and [data-comm-shown] with the total
+  // Update all elements with data-comm-total and data-comm-shown
   document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
   document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
-
-  // Grab the filter summary section
+  
+  // Grab the active filters container within the summary block
   const filterSummary = document.querySelector('.app-c-filter-summary');
+  // Use a marker attribute to target the list for dynamic insertion
+  const activeFiltersContainer = document.querySelector('.app-c-filter-summary__remove-filters');
 
-  // Helper to check if any filter is active
+  // Helper: Determine if any filter is active
   function isFilterActive() {
-    const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
+    const keyword = document.querySelector('input[name="eventName"]').value.trim();
     const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
-    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked'))
-      .map(el => el.value.trim());
-    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked'))
-      .map(el => el.value.trim().toLowerCase());
-    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked'))
-      .map(el => el.value.trim().toLowerCase());
-
-    // If any filter is applied, return true
-    return (
-      keyword.length > 0 ||
-      newCommChecked ||
-      inOut.length > 0 ||
-      categories.length > 0 ||
-      commsWith.length > 0
-    );
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim());
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim());
+    
+    return (keyword.length > 0 || newCommChecked || inOut.length > 0 || categories.length > 0 || commsWith.length > 0);
   }
 
-  // Apply filters
-  document.querySelector('input[type="submit"][value="Apply filters"]')
-    .addEventListener('click', function (e) {
-      e.preventDefault();
-
-      let visibleCount = 0;
-      const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
-      const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
-      const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked'))
-        .map(el => el.value.trim());
-      const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked'))
-        .map(el => el.value.trim().toLowerCase());
-      const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked'))
-        .map(el => el.value.trim().toLowerCase());
-
-      rows.forEach(row => {
-        const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
-        const inOutText = row.children[2]?.innerText.trim();
-        const commsText = row.children[3]?.innerText.trim().toLowerCase();
-        const categoryText = row.children[4]?.innerText.trim().toLowerCase();
-        const hasNewTag = row.querySelector('.govuk-tag--blue') !== null;
-
-        let show = true;
-        if (keyword && !subject.includes(keyword)) show = false;
-        if (newCommChecked && !hasNewTag) show = false;
-        if (inOut.length && !inOut.includes(inOutText)) show = false;
-        if (categories.length && !categories.includes(categoryText)) show = false;
-        if (commsWith.length && !commsWith.includes(commsText)) show = false;
-
-        row.style.display = show ? '' : 'none';
-        if (show) visibleCount++;
-      });
-
-      // Update shown count
-      document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
-
-      // Show/hide the filter summary
-      if (filterSummary) {
-        filterSummary.style.display = isFilterActive() ? 'block' : 'none';
-      }
-
-      // Close the filter panel if it's open
-      const filterButton = document.querySelector('.app-c-filter-panel__button');
-      if (filterButton && filterButton.getAttribute('aria-expanded') === 'true') {
-        filterButton.click();
-      }
+  // Build dynamic active filter lozenges
+  function buildActiveFiltersList() {
+    // Clear previous lozenges
+    activeFiltersContainer.innerHTML = '';
+    
+    // Keyword filter
+    const keyword = document.querySelector('input[name="eventName"]').value.trim();
+    if (keyword) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="keyword">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            Keyword: ${keyword}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    }
+    
+    // New communications filter
+    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+    if (newCommChecked) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="newComms">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            New communications: unread
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    }
+    
+    // In/Out filter(s)
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+    inOut.forEach(val => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="inOut" data-filter-value="${val}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            In/Out: ${val}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
     });
+    
+    // Category filter(s)
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim());
+    categories.forEach(val => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="category" data-filter-value="${val}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            Category: ${val}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    });
+    
+    // Comms with filter(s)
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim());
+    commsWith.forEach(val => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="commsWith" data-filter-value="${val}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            Comms with: ${val}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    });
+  }
 
-  // Clear filters
+  // Delegate click events on the active filters container to remove individual filters
+  activeFiltersContainer.addEventListener('click', function(e) {
+    const target = e.target.closest('.app-c-filter-summary__remove-filter');
+    if (target) {
+      e.preventDefault();
+      const filterType = target.getAttribute('data-filter');
+      const filterValue = target.getAttribute('data-filter-value');
+      
+      // Remove the corresponding filter based on its type
+      if (filterType === 'keyword') {
+        const keywordInput = document.querySelector('input[name="eventName"]');
+        if (keywordInput) keywordInput.value = '';
+      } else if (filterType === 'newComms') {
+        const newCommInput = document.querySelector('input[name="new_comms_supergroup[]"]:checked');
+        if (newCommInput) newCommInput.checked = false;
+      } else if (filterType === 'inOut') {
+        document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')
+          .forEach(input => {
+            if (input.value.trim() === filterValue) input.checked = false;
+          });
+      } else if (filterType === 'category') {
+        document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')
+          .forEach(input => {
+            if (input.value.trim() === filterValue) input.checked = false;
+          });
+      } else if (filterType === 'commsWith') {
+        document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')
+          .forEach(input => {
+            if (input.value.trim() === filterValue) input.checked = false;
+          });
+      }
+      
+      // Reapply filters (simulate a click on the "Apply filters" button)
+      document.querySelector('input[type="submit"][value="Apply filters"]').click();
+    }
+  });
+  
+  // Apply filters button event
+  document.querySelector('input[type="submit"][value="Apply filters"]').addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    let visibleCount = 0;
+    const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
+    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+    
+    // Filter table rows based on active filters
+    rows.forEach(row => {
+      const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
+      const inOutText = row.children[2]?.innerText.trim();
+      const commsText = row.children[3]?.innerText.trim().toLowerCase();
+      const categoryText = row.children[4]?.innerText.trim().toLowerCase();
+      const hasNewTag = row.querySelector('.govuk-tag--blue') !== null;
+      
+      let show = true;
+      if (keyword && !subject.includes(keyword)) show = false;
+      if (newCommChecked && !hasNewTag) show = false;
+      if (inOut.length && !inOut.includes(inOutText)) show = false;
+      if (categories.length && !categories.includes(categoryText)) show = false;
+      if (commsWith.length && !commsWith.includes(commsText)) show = false;
+      
+      row.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    
+    // Update the communication count elements
+    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
+    
+    // If filters are active, update and show the active filters summary; otherwise hide it
+    if (filterSummary) {
+      if (isFilterActive()) {
+        filterSummary.style.display = 'block';
+        buildActiveFiltersList();
+      } else {
+        filterSummary.style.display = 'none';
+      }
+    }
+    
+    // Optionally, close the filter panel if it is open
+    const filterButton = document.querySelector('.app-c-filter-panel__button');
+    if (filterButton && filterButton.getAttribute('aria-expanded') === 'true') {
+      filterButton.click();
+    }
+  });
+  
+  // Clear filters event (for the "Clear filters" link)
   document.querySelectorAll('.clear-filters').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-
-      // Clear checkboxes
+      // Reset checkboxes and keyword input
       document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-
-      // Clear keyword input
       const keywordInput = document.querySelector('input[name="eventName"]');
       if (keywordInput) keywordInput.value = '';
-
-      // Reset table rows
+      
+      // Reset table rows visibility
       rows.forEach(row => row.style.display = '');
-
+      
       // Update counts
       document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = rows.length);
       document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
-
-      const noResults = document.getElementById('no-results-message');
-      if (noResults) noResults.style.display = 'none';
-
-      // Hide the filter summary
+      
+      // Hide the active filters summary
       if (filterSummary) {
         filterSummary.style.display = 'none';
       }
