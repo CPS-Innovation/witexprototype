@@ -311,7 +311,7 @@ nav {padding:0 !important}
                 </div>
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-full" style="">
-                        <div class="app-c-filter-panel" data-filter-panel-module-started="true" style="border-bottom: 1px solid #b1b4b6; padding-bottom:10px">
+                        <div class="app-c-filter-panel" data-filter-panel-module-started="true" style="">
                             <div class="app-c-filter-panel__header">
                                 <button id="filter-button-aca6bc14" class="app-c-filter-panel__button govuk-link" aria-expanded="false" aria-controls="filter-panel-aca6bc14">
                                     <span class="app-c-filter-panel__button-inner">Filter communications</span>
@@ -486,12 +486,16 @@ nav {padding:0 !important}
                     <div> -->
                     <div class="app-c-filter-summary" style="display: none; border-bottom: 1px solid #b1b4b6; padding-bottom:20px">
   <h3 class="app-c-filter-summary__heading">Active filters</h3>
+  <div style="display:flex">
   <ul class="app-c-filter-summary__remove-filters" data-active-filters>
     <!-- Dynamic filter lozenges will be inserted here -->
+
   </ul>
-  <div>
-                        <p style="margin-bottom:0"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear filters</a></p>
-                    </div>
+    <p style="margin:8px 15px"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear all filters</a></p>
+</div>
+<!--   <div style="display:inline-block;">
+                        <p style="margin-bottom:0"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear all filters</a></p>
+                    </div> -->
                 </div>
                 <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center;    ">
                     <p style="margin-top:20px"> Showing <strong data-comm-shown></strong> communications out of <strong data-comm-total></strong></p>

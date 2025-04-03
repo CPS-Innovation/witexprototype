@@ -132,27 +132,17 @@
 
 nav {padding:0 !important}
 
+.govuk-checkboxes__label::before {
+  background-color: #ffffff; /* force white background */
+}
+
+.moj-action-bar__filter button {
+    margin-bottom:20px !important;
+}
+
 
 </style>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var buttons = document.querySelectorAll('.toggle-panel');
-
-    buttons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var panel = this.closest('tr').nextElementSibling;
-            if (panel.style.display === 'none' || panel.style.display === '') {
-                panel.style.display = 'table-row';
-            } else {
-                panel.style.display = 'none';
-            }
-
-// Force the browser to reflow layout to correctly handle scrollbars
-            panel.offsetHeight; // Trigger reflow
-        });
-    });
-});
-
 
        $(document).ready(function() {
         $('#global-navigation').show();
@@ -161,39 +151,6 @@ nav {padding:0 !important}
 
 });
 
-
-
-
-     $(document).ready(function() {
-          // Function to adjust the date by a certain number of days
-        function adjustDate(days) {
-            const result = new Date();
-            result.setDate(result.getDate() + days);
-            return result;
-        }
-
-        // Function to format the date in UK format (dd/mm/yyyy)
-        function formatDate(date) {
-            const day = date.getDate().toString().padStart(2, '0');
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}/${month}/${year}`;
-        }
-
-        // Function to update dates in the HTML
-        function updateDates() {
-            const dateElements = document.querySelectorAll('.date');
-            dateElements.forEach(el => {
-                const days = parseInt(el.getAttribute('data-days'), 10);
-                const adjustedDate = adjustDate(days);
-                const formattedDate = formatDate(adjustedDate);
-                el.textContent = formattedDate;
-            });
-        }
-
-        // Run the updateDates function
-        updateDates();
-    });
     </script>
 </script>
 <div style=" display: flex; align-items: center;">
@@ -237,66 +194,64 @@ nav {padding:0 !important}
             <div class="govuk-tabs__panel" id="past-day">
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
-                
-                    <div class="">
-                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="float:right">
-                            Add material</button>
-                    </div>
-                    <div class="" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
-                        <p> Showing <strong>15</strong> materials out of <strong>20</strong></p>
-                    </div>
-                    <table class="govuk-table">
-                        <thead class="govuk-table__head">
-                            <tr class="govuk-table__row">
-                                <th scope="col" class="govuk-table__header">
-                                    <!-- <div class="govuk-form-group"> -->
-                                    <!-- <fieldset class="govuk-fieldset"> -->
-                                    <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
-                                            <label class="govuk-label govuk-checkboxes__label" for="organisation">
-                                            </label>
-                                        </div>
+                <div class="">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="float:right">
+                        Add material</button>
+                </div>
+                <div class="" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
+                    <p> Showing <strong>15</strong> materials out of <strong>20</strong></p>
+                </div>
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
                                     </div>
-                                    <!-- </fieldset> -->
-                                    <!-- </div> -->
-                                </th>
-                                <th scope="col" class="govuk-table__header">Material</th>
-                                <th scope="col" class="govuk-table__header">Type</th>
-                                <th scope="col" class="govuk-table__header">Category</th>
-                                <th scope="col" class="govuk-table__header">Status</th>
-                                <th scope="col" class="govuk-table__header">From</th>
-                                <th scope="col" class="govuk-table__header ">Date</th>
-                                <th scope="col" class="govuk-table__header"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="govuk-table__body">
-                            <tr class="govuk-table__row">
-                                <td class="govuk-table__cell">
-                                    <!-- <div class="govuk-form-group"> -->
-                                    <!-- <fieldset class="govuk-fieldset"> -->
-                                    <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
-                                        <div class="govuk-checkboxes__item">
-                                            <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
-                                            <label class="govuk-label govuk-checkboxes__label" for="organisation">
-                                            </label>
-                                        </div>
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </th>
+                            <th scope="col" class="govuk-table__header">Material</th>
+                            <th scope="col" class="govuk-table__header">Type</th>
+                            <th scope="col" class="govuk-table__header">Category</th>
+                            <th scope="col" class="govuk-table__header">Status</th>
+                            <th scope="col" class="govuk-table__header">From</th>
+                            <th scope="col" class="govuk-table__header ">Date</th>
+                            <th scope="col" class="govuk-table__header"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                <!-- <div class="govuk-form-group"> -->
+                                <!-- <fieldset class="govuk-fieldset"> -->
+                                <div class="govuk-checkboxes govuk-checkboxes--small MT-15" data-module="govuk-checkboxes">
+                                    <div class="govuk-checkboxes__item">
+                                        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                                        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                                        </label>
                                     </div>
-                                    <!-- </fieldset> -->
-                                    <!-- </div> -->
-                                </td>
-                                <td class="govuk-table__cell "><strong class="govuk-tag govuk-tag--blue" style="margin-right:10px">New</strong>MG3 (1 suspect)</td>
-                                <td class="govuk-table__cell"> MG3</td>
-                                <td class="govuk-table__cell ">MG Form</td>
-                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--light-blue" style="">Used</strong></td>
-                                <td class="govuk-table__cell">Police</td>
-                                <td class="govuk-table__cell">13/01/2025</td>
-                                <td class="govuk-table__cell toggle-panel"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
-                            </tr>
-                            {% include "../includes/panels/panel1.html" %}
-                        </tbody>
-                    </table>
-               
+                                </div>
+                                <!-- </fieldset> -->
+                                <!-- </div> -->
+                            </td>
+                            <td class="govuk-table__cell "><strong class="govuk-tag govuk-tag--blue" style="margin-right:10px">New</strong>MG3 (1 suspect)</td>
+                            <td class="govuk-table__cell"> MG3</td>
+                            <td class="govuk-table__cell ">MG Form</td>
+                            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--light-blue" style="">Used</strong></td>
+                            <td class="govuk-table__cell">Police</td>
+                            <td class="govuk-table__cell">13/01/2025</td>
+                            <td class="govuk-table__cell toggle-panel"><span class="looks-like-a-link-underline-v2">Actions<i class="fa-solid fa-chevron-down" style="padding-left:5px; font-size:14px; "></i></span></td>
+                        </tr>
+                        {% include "../includes/panels/panel1.html" %}
+                    </tbody>
+                </table>
             </div>
             <!-- ------------------------- HERE IS THE COMMS TAB --------------------------------------------------------------------------- -->
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
@@ -305,24 +260,24 @@ nav {padding:0 !important}
                     <div class="govuk-grid-column-one-quarter"> -->
                 <div class="moj-filter-layout">
                     <div class="moj-filter-layout__filter">
-                        <div class="moj-filter" style="box-shadow:none;padding-left:0px">
-                            <div class="moj-filter__header" style="background-color:#fff; padding-left:0; padding-top:0">
+                        <div class="moj-filter" style="box-shadow:none; padding:20px; background-color:#f3f2f1;">
+                            <div class="moj-filter__header" style="background-color:#f3f2f1; padding-left:0; padding-top:0">
                                 <div class="moj-filter__header-title">
                                     <h2 class="govuk-heading-m" style="margin-top:-22px">Filters</h2>
                                 </div>
                                 <div class="moj-filter__heading-action">
-                                  <p><a id="clearFiltersLink" class="govuk-link govuk-link--no-visited-state" href="#">Clear filters</a></p>
+                                    <p><a id="clearFiltersLink" class="govuk-link govuk-link--no-visited-state" href="#">Clear filters</a></p>
                                 </div>
                             </div>
                             <div class="moj-filter__content">
                                 <!--  -->
                                 <div class="moj-filter__options" style="box-shadow:none;padding:0px">
-                                    <!--                                             <div class="govuk-form-group">
-                                                <label class="govuk-label govuk-label--m" for="keywords">
-                                                    Keywords
-                                                </label>
-                                                <input class="govuk-input" id="keywords" name="keywords" type="text">
-                                            </div> -->
+                                    <div class="govuk-form-group">
+                                        <label class="govuk-label govuk-label--s" for="keywords">
+                                            Subject keywords
+                                        </label>
+                                        <input class="govuk-input" id="keywords" name="keywords" type="text">
+                                    </div>
                                     <div class="govuk-form-group">
                                         <fieldset class="govuk-fieldset">
                                             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -330,7 +285,7 @@ nav {padding:0 !important}
                                             </legend>
                                             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="status" name="newComms" type="checkbox" value="1" >
+                                                    <input class="govuk-checkboxes__input" id="status" name="newComms" type="checkbox" value="1">
                                                     <label class="govuk-label govuk-checkboxes__label" for="status">
                                                         Show only new <br />communications (unread)
                                                     </label>
@@ -345,13 +300,13 @@ nav {padding:0 !important}
                                             </legend>
                                             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" >
+                                                    <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
                                                     <label class="govuk-label govuk-checkboxes__label" for="type">
                                                         Incoming
                                                     </label>
                                                 </div>
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" >
+                                                    <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2">
                                                     <label class="govuk-label govuk-checkboxes__label" for="type-2">
                                                         Outgoing
                                                     </label>
@@ -366,7 +321,7 @@ nav {padding:0 !important}
                                             </legend>
                                             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="status" name="status-11" type="checkbox" value="11" >
+                                                    <input class="govuk-checkboxes__input" id="status" name="status-11" type="checkbox" value="Bundle">
                                                     <label class="govuk-label govuk-checkboxes__label" for="status-11">
                                                         Bundle
                                                     </label>
@@ -411,7 +366,7 @@ nav {padding:0 !important}
                                             </legend>
                                             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="commsWith-111" name="commsWith" type="checkbox" value="111" >
+                                                    <input class="govuk-checkboxes__input" id="commsWith-111" name="commsWith" type="checkbox" value="111">
                                                     <label class="govuk-label govuk-checkboxes__label" for="commsWith-111">
                                                         Counsel
                                                     </label>
@@ -454,8 +409,8 @@ nav {padding:0 !important}
                                                 </div>
                                             </div>
                                         </fieldset>
-                                       <button id="applyFiltersBtn" type="submit" class="govuk-button" data-module="govuk-button" style="margin-top:25px">
-  Apply filters</button>
+                                        <button id="applyFiltersBtn" type="submit" class="govuk-button" data-module="govuk-button" style="margin-top:25px">
+                                            Apply filters</button>
                                     </div>
                                 </div>
                             </div>
@@ -466,28 +421,51 @@ nav {padding:0 !important}
                     </div> -->
                         <!-- <div class="govuk-grid-column-full" id="three-quarters"> -->
                         <div class="moj-scrollable-pane">
-                            <div style="margin-bottom:25px">
+                            <div style="">
                                 <!-- Label sits outside, behaves naturally -->
-                                <label class="govuk-label govuk-label--s" for="searchURNModal">Search communications</label>
+                                <!-- <label class="govuk-label govuk-label--s" for="searchURNModal">Search communications</label> -->
                                 <!-- Flex container: input + search icon + green button aligned -->
                                 <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
                                     <!-- Input + search icon -->
-                                    <div style="display: flex; align-items: center; height: 40px;">
+                                    <div style="display: none; align-items: center; height: 40px;">
                                         <input class="govuk-input" id="searchURNModal" name="searchURNModal" type="text" placeholder="" style="width:350px" />
                                         <button class="search searchModal modalButton" type="button" id="runSearch" style="background-position: -2% 50%"></button>
                                     </div>
                                     <!-- Auto reclassify button -->
-                                    <button type="submit" class="govuk-button" data-module="govuk-button" style="margin: 0;">
+                                    <!--                                     <button type="submit" class="govuk-button" data-module="govuk-button" style="margin: 0;">
                                         Auto Reclassify UM
                                     </button>
                                     <button type="submit" class="govuk-button govuk-button--secondary" disabled aria-disabled="true" data-module="govuk-button" style="margin: 0;">
                                         Reclasify to Unused
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                             <div class="moj-action-bar__filter"></div>
-                            <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
-                                <p> Showing <strong data-comm-shown></strong> communications out of <strong data-comm-total></strong></p>
+
+                            <div class="app-c-filter-summary" style="display: ; border-bottom: 1px solid #b1b4b6; padding-bottom:20px">
+                                <h3 class="app-c-filter-summary__heading">Active filters</h3>
+                                <div style="display:flex">
+                                    <ul class="app-c-filter-summary__remove-filters" data-active-filters>
+                                        <!-- Dynamic filter lozenges will be inserted here -->
+                                    </ul>
+                                    <p style="margin:8px 15px"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear all filters</a></p>
+                                </div>
+                                <!--   <div style="display:inline-block;">
+                                                    <p style="margin-bottom:0"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear all filters</a></p>
+                                                </div> -->
+                            </div>
+
+
+                         <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; display:flex; align-items: center;">
+                            <p > Showing <strong data-comm-shown></strong> communications out of <strong data-comm-total></strong></p>
+                            </div>
+                            <div style="margin-bottom:20px; ">
+                                <button type="submit" class="govuk-button govuk-button--secondary" disabled aria-disabled="true" data-module="govuk-button" style="margin: 0;">
+                                    Reclassify to Unused
+                                </button>
+                                <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-left:10px; margin-bottom:0px">
+                                    Auto Reclassify UM
+                                </button>
                             </div>
                             <!-- <div class="moj-scrollable-pane"> -->
                             <table class="govuk-table" data-module="moj-sortable-table">
@@ -920,155 +898,160 @@ nav {padding:0 !important}
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-        MOJFrontend.initAll();
-        </script>
-        <script type="module">new MOJFrontend.FilterToggleButton({
-  bigModeMediaQuery: '(min-width: 48.063em)',
-  startHidden: false,
-  toggleButton: {
-    container: document.querySelector('.moj-action-bar__filter'),
-    showText: 'Show filter',
-    hideText: 'Hide filter',
-    classes: 'govuk-button--secondary'
-  },
-  closeButton: {
-    container: document.querySelector('.moj-filter__header-action'),
-    text: 'Close'
-  },
-  filter: {
-    container: document.querySelector('.moj-filter')
-  }
-})
+     <script type="text/javascript">
+  MOJFrontend.initAll();
 </script>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
+<script type="module">
+  new MOJFrontend.FilterToggleButton({
+    bigModeMediaQuery: '(min-width: 48.063em)',
+    startHidden: true,
+    toggleButton: {
+      container: document.querySelector('.moj-action-bar__filter'),
+      showText: 'Show filter',
+      hideText: 'Hide filter',
+      classes: 'govuk-button--secondary'
+    },
+    closeButton: {
+      container: document.querySelector('.moj-filter__header-action'),
+      text: 'Close'
+    },
+    filter: {
+      container: document.querySelector('.moj-filter')
+    }
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+  const clearFiltersLink = document.getElementById('clearFiltersLink');
+  const filters = {
+    keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
+    newComms: () => document.querySelector('input[name="newComms"]:checked') !== null,
+    type: () => [...document.querySelectorAll('input[name="type"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
+    status: () => [...document.querySelectorAll('input[name^="status"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
+    commsWith: () => [...document.querySelectorAll('input[name="commsWith"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase())
+  };
 
-            // Run applyFilters when either search OR filter "Apply filters" button is clicked
-const applyFiltersBtn = document.getElementById('applyFiltersBtn');
-if (applyFiltersBtn) {
+  const rows = [...document.querySelectorAll('#past-month tbody tr.govuk-table__row')];
+  const activeFilterList = document.querySelector('[data-active-filters]');
+
+  const noResults = document.getElementById('no-results-message');
+
+     const total = rows.length;
+
+   // Update all elements with data-comm-total and data-comm-shown
+  document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
+  document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
+
+  function applyFilters() {
+    const active = {
+      keyword: filters.keywords(),
+      newComms: filters.newComms(),
+      type: filters.type(),
+      status: filters.status(),
+      commsWith: filters.commsWith()
+    };
+
+    let visibleCount = 0;
+    rows.forEach(row => {
+      const subject = row.querySelector('.subject-cell')?.innerText.toLowerCase() || '';
+      const type = row.children[2].innerText.toLowerCase().trim();
+      const commsWith = row.children[3].innerText.toLowerCase().trim();
+      const category = row.children[4].innerText.toLowerCase().trim();
+      const isNew = row.querySelector('.govuk-tag--blue') !== null;
+
+      const matchKeyword = !active.keyword || subject.includes(active.keyword);
+      const matchNewComms = !active.newComms || isNew;
+      const matchType = active.type.length === 0 || active.type.includes(type);
+      const matchStatus = active.status.length === 0 || active.status.includes(category);
+      const matchCommsWith = active.commsWith.length === 0 || active.commsWith.includes(commsWith);
+
+      const matches = matchKeyword && matchNewComms && matchType && matchStatus && matchCommsWith;
+
+      row.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    shownDisplay.textContent = visibleCount;
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    updateLozenges(active);
+  }
+
+  function updateLozenges(active) {
+    activeFilterList.innerHTML = '';
+
+    const createLozenge = (label, value, key) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="${label}" data-filter-value="${value}" data-filter-key="${key}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            ${label}: ${value}
+          </span>
+        </a>
+      `;
+      activeFilterList.appendChild(li);
+    };
+
+    if (active.keyword) createLozenge('Keyword', active.keyword, 'keywords');
+    if (active.newComms) createLozenge('New', 'Yes', 'newComms');
+    active.type.forEach(val => createLozenge('In/Out', val, 'type'));
+    active.status.forEach(val => createLozenge('Category', val, 'status'));
+    active.commsWith.forEach(val => createLozenge('Comms with', val, 'commsWith'));
+
+    document.querySelectorAll('.app-c-filter-summary__remove-filter').forEach(link => {
+      link.addEventListener('click', () => {
+        const key = link.getAttribute('data-filter-key');
+        const value = link.getAttribute('data-filter-value');
+        removeSingleFilter(key, value);
+        applyFilters();
+      });
+    });
+  }
+
+  function removeSingleFilter(key, value) {
+    switch (key) {
+      case 'keywords':
+        document.getElementById('keywords').value = '';
+        break;
+      case 'newComms':
+        document.querySelector('input[name="newComms"]').checked = false;
+        break;
+      case 'type':
+        document.querySelectorAll('input[name="type"]').forEach(el => {
+          if (el.nextElementSibling.innerText.trim().toLowerCase() === value) el.checked = false;
+        });
+        break;
+      case 'status':
+        document.querySelectorAll('input[name^="status"]').forEach(el => {
+          if (el.nextElementSibling.innerText.trim().toLowerCase() === value) el.checked = false;
+        });
+        break;
+      case 'commsWith':
+        document.querySelectorAll('input[name="commsWith"]').forEach(el => {
+          if (el.nextElementSibling.innerText.trim().toLowerCase() === value) el.checked = false;
+        });
+        break;
+    }
+  }
+
+  function clearFilters() {
+    document.getElementById('keywords').value = '';
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    applyFilters();
+  }
+
   applyFiltersBtn.addEventListener('click', e => {
     e.preventDefault();
     applyFilters();
   });
-}
 
-  // Clears the filters
-const clearFiltersLink = document.getElementById('clearFiltersLink');
-
-if (clearFiltersLink) {
   clearFiltersLink.addEventListener('click', e => {
     e.preventDefault();
-
-    // Uncheck all checkboxes
-    const checkboxes = document.querySelectorAll('.moj-filter input[type="checkbox"]');
-    checkboxes.forEach(cb => cb.checked = false);
-
-    // Reapply search without filters
-    applyFilters(); // This will still use the current search input
+    clearFilters();
   });
-}
 
-            function applyFilters() {
-    const searchTerm = document.getElementById('searchURNModal').value.trim().toLowerCase();
-
-    const checkedNew = Array.from(document.querySelectorAll('input[name="newComms"]:checked')).length > 0;
-    const checkedInOut = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
-    const checkedCategory = Array.from(document.querySelectorAll('input[name^="status"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
-    const checkedCommsWith = Array.from(document.querySelectorAll('input[name="commsWith"]:checked')).map(cb => cb.nextElementSibling.textContent.trim());
-
-    const rows = Array.from(document.querySelectorAll('.govuk-table__body .govuk-table__row'))
-        .filter(row => row.querySelector('.subject-cell')); // skip panel rows
-
-    let visibleCount = 0;
-
-    rows.forEach(row => {
-        const subjectText = row.querySelector('.subject-cell')?.textContent.toLowerCase() || '';
-        const inOut = row.children[2]?.textContent.trim();
-        const commsWith = row.children[3]?.textContent.trim();
-        const category = row.children[4]?.textContent.trim();
-        const isNew = row.querySelector('.govuk-tag--blue') !== null;
-
-        const matchesSearch = subjectText.includes(searchTerm);
-        const matchesInOut = checkedInOut.length === 0 || checkedInOut.includes(inOut);
-        const matchesCategory = checkedCategory.length === 0 || checkedCategory.includes(category);
-        const matchesCommsWith = checkedCommsWith.length === 0 || checkedCommsWith.includes(commsWith);
-        const matchesNew = !checkedNew || isNew;
-
-        const shouldShow = matchesSearch && matchesInOut && matchesCategory && matchesCommsWith && matchesNew;
-
-        row.style.display = shouldShow ? '' : 'none';
-        if (shouldShow) visibleCount++;
-    });
-
-    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
-    document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
-    document.getElementById('no-results-message').style.display = visibleCount === 0 ? 'block' : 'none';
-}
-
-// Rebind apply filters
-document.querySelector('button[type="submit"]').addEventListener('click', e => {
-    e.preventDefault();
-    applyFilters();
+  clearFilters(); // reset on load
 });
-
-// Also re-run filter on page load (optional)
-applyFilters();
-
-
-            const searchInput = document.getElementById('searchURNModal');
-            const searchButton = document.getElementById('runSearch');
-            const clearButton = document.getElementById('clearSearch');
-            const shownCountEls = document.querySelectorAll('[data-comm-shown]');
-            const totalCountEls = document.querySelectorAll('[data-comm-total]');
-            const noResultsMessage = document.getElementById('no-results-message');
-
-            // Only target rows with actual subject cells
-            const allRows = Array.from(document.querySelectorAll('.govuk-table__body .govuk-table__row'))
-                .filter(row => row.querySelector('.subject-cell'));
-
-            function updateCounts() {
-                const visibleRows = allRows.filter(row => row.style.display !== 'none');
-                const shown = visibleRows.length;
-                const total = allRows.length;
-
-                shownCountEls.forEach(el => el.textContent = shown);
-                totalCountEls.forEach(el => el.textContent = total);
-
-                if (noResultsMessage) {
-                    noResultsMessage.style.display = shown === 0 ? 'block' : 'none';
-                }
-            }
-
-            function runSearch() {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-
-                allRows.forEach(row => {
-                    const subjectCell = row.querySelector('.subject-cell');
-                    const text = subjectCell.textContent.trim().toLowerCase();
-
-                    row.style.display = text.includes(searchTerm) ? '' : 'none';
-                });
-
-                updateCounts();
-                applyFilters();
-            }
-
-            searchButton.addEventListener('click', runSearch);
-
-            searchInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') runSearch();
-            });
-
-            if (clearButton) {
-                clearButton.addEventListener('click', () => {
-                    searchInput.value = '';
-                    allRows.forEach(row => row.style.display = '');
-                    updateCounts();
-                });
-            }
-
-            updateCounts(); // Initial count
-        });
-        </script>
-        {% endblock %}
+</script>
+{% endblock %}
