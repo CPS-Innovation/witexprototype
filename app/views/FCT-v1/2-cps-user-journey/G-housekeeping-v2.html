@@ -152,7 +152,7 @@ nav {padding:0 !important}
 });
 
     </script>
-</script>
+
 <div style=" display: flex; align-items: center;">
     <div class="govuk-grid-column-two-thirds-quarters" style="display: flex; width: 100%;">
         <div class="taskOverViewContent" style="justify-content: flex-end; display: flex; align-items: center;">
@@ -442,8 +442,8 @@ nav {padding:0 !important}
                             </div>
                             <div class="moj-action-bar__filter"></div>
 
-                            <div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ; border-bottom: 1px solid #b1b4b6; padding-bottom:20px">
-                                <h3 class="app-c-filter-summary__heading">Active filters</h3>
+                            <div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ; border-bottom: 1px solid #b1b4b6; margin-bottom:20px">
+                                <h3 class="app-c-filter-summary__heading" style="margin-top:0; font-weight:700">Active filters</h3>
                                 <div style="display:flex">
                                     <ul class="app-c-filter-summary__remove-filters" data-active-filters>
                                         <!-- Dynamic filter lozenges will be inserted here -->
@@ -998,7 +998,6 @@ document.addEventListener('DOMContentLoaded', () => {
     active.status.forEach(val => addFilter('Category', val));
     active.commsWith.forEach(val => addFilter('Comms with', val));
 
-    // Only show the active filters area if filters are active.
     activeFiltersArea.style.display = activeFilterList.children.length ? 'block' : 'none';
 
     document.querySelectorAll('.app-c-filter-summary__remove-filter').forEach(link => {
@@ -1013,27 +1012,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function removeFilter(filterType, filterValue) {
     switch (filterType) {
-      case 'keyword':
+      case 'Keyword':
         document.getElementById('keywords').value = '';
         break;
-      case 'new':
+      case 'New communications':
         document.querySelector('input[name="newComms"]').checked = false;
         break;
-      case 'type':
-        document.querySelectorAll('input[name="type"]').forEach(el => {
+      case 'In/Out':
+        document.querySelectorAll('input[name="In/Out"]').forEach(el => {
           if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
             el.checked = false;
           }
         });
         break;
-      case 'category':
+      case 'Category':
         document.querySelectorAll('input[name^="status"]').forEach(el => {
           if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
             el.checked = false;
           }
         });
         break;
-      case 'commsWith':
+      case 'Comms with':
         document.querySelectorAll('input[name="commsWith"]').forEach(el => {
           if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
             el.checked = false;
@@ -1052,22 +1051,21 @@ document.addEventListener('DOMContentLoaded', () => {
   applyFiltersBtn.addEventListener('click', e => {
     e.preventDefault();
     applyFilters();
-    // Close the filters drawer via simulating the toggle button click.
     const toggleBtn = document.querySelector('.moj-action-bar__filter button');
     if (toggleBtn && toggleBtn.textContent.trim() === 'Hide filter') {
       toggleBtn.click();
     }
   });
 
-  // Attach clear filters handler to all clear filters links/buttons.
-  document.querySelectorAll('.clear-filters').forEach(clearLink => {
+  // Attach clear filters handler to both clear filters buttons/links.
+  document.querySelectorAll('.clear-filters, #clearFiltersLink').forEach(clearLink => {
     clearLink.addEventListener('click', e => {
       e.preventDefault();
       clearFilters();
     });
   });
 
-  clearFilters(); // Reset filters on page load.
+  clearFilters();
 });
 </script>
 {% endblock %}
