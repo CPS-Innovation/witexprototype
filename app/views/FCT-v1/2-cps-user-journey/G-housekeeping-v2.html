@@ -442,7 +442,7 @@ nav {padding:0 !important}
                             </div>
                             <div class="moj-action-bar__filter"></div>
 
-                            <div class="app-c-filter-summary" style="display: ; border-bottom: 1px solid #b1b4b6; padding-bottom:20px">
+                            <div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ; border-bottom: 1px solid #b1b4b6; padding-bottom:20px">
                                 <h3 class="app-c-filter-summary__heading">Active filters</h3>
                                 <div style="display:flex">
                                     <ul class="app-c-filter-summary__remove-filters" data-active-filters>
@@ -902,7 +902,8 @@ nav {padding:0 !important}
   MOJFrontend.initAll();
 </script>
 <script type="module">
-  new MOJFrontend.FilterToggleButton({
+  // Store the existing MOJ filter toggle instance without altering its behavior.
+  const mojFilterToggle = new MOJFrontend.FilterToggleButton({
     bigModeMediaQuery: '(min-width: 48.063em)',
     startHidden: true,
     toggleButton: {
@@ -922,8 +923,9 @@ nav {padding:0 !important}
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const shownDisplay = document.querySelector('[data-comm-shown]');
   const applyFiltersBtn = document.getElementById('applyFiltersBtn');
-  const clearFiltersLink = document.getElementById('clearFiltersLink');
+  const activeFiltersArea = document.getElementById('activeFiltersArea');
   const filters = {
     keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
     newComms: () => document.querySelector('input[name="newComms"]:checked') !== null,
@@ -934,12 +936,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const rows = [...document.querySelectorAll('#past-month tbody tr.govuk-table__row')];
   const activeFilterList = document.querySelector('[data-active-filters]');
-
   const noResults = document.getElementById('no-results-message');
+  const total = rows.length;
 
-     const total = rows.length;
-
-   // Update all elements with data-comm-total and data-comm-shown
+  // Update totals
   document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
   document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
 
@@ -967,7 +967,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const matchCommsWith = active.commsWith.length === 0 || active.commsWith.includes(commsWith);
 
       const matches = matchKeyword && matchNewComms && matchType && matchStatus && matchCommsWith;
-
       row.style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
     });
@@ -980,56 +979,65 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateLozenges(active) {
     activeFilterList.innerHTML = '';
 
-    const createLozenge = (label, value, key) => {
+    const addFilter = (filterType, value) => {
       const li = document.createElement('li');
       li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="${label}" data-filter-value="${value}" data-filter-key="${key}">
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="${filterType}" data-filter-value="${value}">
           <span class="app-c-filter-summary__remove-filter-text">
             <span class="govuk-visually-hidden">Remove filter</span>
-            ${label}: ${value}
+            ${filterType.charAt(0).toUpperCase() + filterType.slice(1)}: ${value}
           </span>
         </a>
       `;
       activeFilterList.appendChild(li);
     };
 
-    if (active.keyword) createLozenge('Keyword', active.keyword, 'keywords');
-    if (active.newComms) createLozenge('New', 'Yes', 'newComms');
-    active.type.forEach(val => createLozenge('In/Out', val, 'type'));
-    active.status.forEach(val => createLozenge('Category', val, 'status'));
-    active.commsWith.forEach(val => createLozenge('Comms with', val, 'commsWith'));
+    if (active.keyword) addFilter('keyword', active.keyword);
+    if (active.newComms) addFilter('new', 'Yes');
+    active.type.forEach(val => addFilter('type', val));
+    active.status.forEach(val => addFilter('category', val));
+    active.commsWith.forEach(val => addFilter('commsWith', val));
+
+    // Only show the active filters area if filters are active.
+    activeFiltersArea.style.display = activeFilterList.children.length ? 'block' : 'none';
 
     document.querySelectorAll('.app-c-filter-summary__remove-filter').forEach(link => {
       link.addEventListener('click', () => {
-        const key = link.getAttribute('data-filter-key');
-        const value = link.getAttribute('data-filter-value');
-        removeSingleFilter(key, value);
+        const filterType = link.getAttribute('data-filter');
+        const filterValue = link.getAttribute('data-filter-value');
+        removeFilter(filterType, filterValue);
         applyFilters();
       });
     });
   }
 
-  function removeSingleFilter(key, value) {
-    switch (key) {
-      case 'keywords':
+  function removeFilter(filterType, filterValue) {
+    switch (filterType) {
+      case 'keyword':
         document.getElementById('keywords').value = '';
         break;
-      case 'newComms':
+      case 'new':
         document.querySelector('input[name="newComms"]').checked = false;
         break;
       case 'type':
         document.querySelectorAll('input[name="type"]').forEach(el => {
-          if (el.nextElementSibling.innerText.trim().toLowerCase() === value) el.checked = false;
+          if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
+            el.checked = false;
+          }
         });
         break;
-      case 'status':
+      case 'category':
         document.querySelectorAll('input[name^="status"]').forEach(el => {
-          if (el.nextElementSibling.innerText.trim().toLowerCase() === value) el.checked = false;
+          if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
+            el.checked = false;
+          }
         });
         break;
       case 'commsWith':
         document.querySelectorAll('input[name="commsWith"]').forEach(el => {
-          if (el.nextElementSibling.innerText.trim().toLowerCase() === value) el.checked = false;
+          if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
+            el.checked = false;
+          }
         });
         break;
     }
@@ -1044,14 +1052,22 @@ document.addEventListener('DOMContentLoaded', () => {
   applyFiltersBtn.addEventListener('click', e => {
     e.preventDefault();
     applyFilters();
+    // Close the filters drawer via simulating the toggle button click.
+    const toggleBtn = document.querySelector('.moj-action-bar__filter button');
+    if (toggleBtn && toggleBtn.textContent.trim() === 'Hide filter') {
+      toggleBtn.click();
+    }
   });
 
-  clearFiltersLink.addEventListener('click', e => {
-    e.preventDefault();
-    clearFilters();
+  // Attach clear filters handler to all clear filters links/buttons.
+  document.querySelectorAll('.clear-filters').forEach(clearLink => {
+    clearLink.addEventListener('click', e => {
+      e.preventDefault();
+      clearFilters();
+    });
   });
 
-  clearFilters(); // reset on load
+  clearFilters(); // Reset filters on page load.
 });
 </script>
 {% endblock %}
