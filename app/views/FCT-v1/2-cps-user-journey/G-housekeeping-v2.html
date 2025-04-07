@@ -300,13 +300,13 @@ nav {padding:0 !important}
                                             </legend>
                                             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
+                                                    <input class="govuk-checkboxes__input" id="type" name="In/Out" type="checkbox" value="1">
                                                     <label class="govuk-label govuk-checkboxes__label" for="type">
                                                         Incoming
                                                     </label>
                                                 </div>
                                                 <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2">
+                                                    <input class="govuk-checkboxes__input" id="type-2" name="In/Out" type="checkbox" value="2">
                                                     <label class="govuk-label govuk-checkboxes__label" for="type-2">
                                                         Outgoing
                                                     </label>
@@ -929,7 +929,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const filters = {
     keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
     newComms: () => document.querySelector('input[name="newComms"]:checked') !== null,
-    type: () => [...document.querySelectorAll('input[name="type"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
+    type: () => [...document.querySelectorAll('input[name="In/Out"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
     status: () => [...document.querySelectorAll('input[name^="status"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
     commsWith: () => [...document.querySelectorAll('input[name="commsWith"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase())
   };
@@ -992,11 +992,11 @@ document.addEventListener('DOMContentLoaded', () => {
       activeFilterList.appendChild(li);
     };
 
-    if (active.keyword) addFilter('keyword', active.keyword);
-    if (active.newComms) addFilter('new', 'Yes');
-    active.type.forEach(val => addFilter('type', val));
-    active.status.forEach(val => addFilter('category', val));
-    active.commsWith.forEach(val => addFilter('commsWith', val));
+    if (active.keyword) addFilter('Keyword', active.keyword);
+    if (active.newComms) addFilter('New communications', 'Unread');
+    active.type.forEach(val => addFilter('In/Out', val));
+    active.status.forEach(val => addFilter('Category', val));
+    active.commsWith.forEach(val => addFilter('Comms with', val));
 
     // Only show the active filters area if filters are active.
     activeFiltersArea.style.display = activeFilterList.children.length ? 'block' : 'none';
