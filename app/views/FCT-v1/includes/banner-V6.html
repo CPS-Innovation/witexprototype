@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <style>
-header.govuk-header .govuk-header__container {
+    header.govuk-header .govuk-header__container {
     margin-bottom: 0;
     border-bottom: none;
 }
@@ -105,156 +105,35 @@ main.case-files {
 </style>
 <script src="/public/javascripts/mojall.js"></script>
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $('#global-navigation').show();
-    // $('#secondary-navigation').show();
-    // $('.my-cases').addClass('current');
-    // $('.sub-case').addClass('current');
 
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var dropdownToggle = document.querySelector('.dropdown-toggle');
-//     var dropdownMenu = dropdownToggle.nextElementSibling;
 
-//     dropdownToggle.addEventListener('click', function(e) {
-//         e.preventDefault(); // Prevent default link behavior
-//         var parentMenuItem = dropdownToggle.parentElement;
-
-//         if (parentMenuItem.classList.contains('show')) {
-//             parentMenuItem.classList.remove('show');
-//         } else {
-//             // Close any open dropdowns
-//             var openDropdowns = document.querySelectorAll('.menu-item.show');
-//             openDropdowns.forEach(function(dropdown) {
-//                 dropdown.classList.remove('show');
-//             });
-//             // Open the clicked dropdown
-//             parentMenuItem.classList.add('show');
-//         }
-//     });
-
-//     // Close the dropdown menu if clicked outside
-//     document.addEventListener('click', function(e) {
-//         var isClickInside = dropdownToggle.contains(e.target) || dropdownMenu.contains(e.target);
-//         if (!isClickInside) {
-//             dropdownToggle.parentElement.classList.remove('show');
-//         }
-//     });
-// });
 </script>
 <header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %} style=" border-bottom:10px solid #1d70b8">
     <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
         <div style="display:flex">
-            <div class="govuk-header__logo">
+            <div class="govuk-header__logo" style="max-height:30px">
                 <a href="../2-cps-user-journey/A-dashboard" class="govuk-header__link govuk-header__link--homepage">
                     <span class="govuk-header__logotype" style="height:30px">
                         <span class="moj-header__link moj-header__link--organisation-name" style="font-size:30px">CPS</span>
-                        <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span>
+                        <!-- <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span> -->
                     </span>
                 </a>
             </div>
-<!--             <div style="margin-left:auto; width:100%; margin-top:-4px">
-             <form action="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/B-search-results" method="get">
-                    <fieldset style="margin-bottom:0; padding:0; border:0">
-                        <div class="govuk-form-group" style="margin-left:auto;width:75%;display:flex; margin-bottom:0 ">
-                        
-                            <input class="govuk-input govuk-!-width-full" id="searchURN" name="searchURN" type="text" value="" placeholder="  Search all cases">                         
-                            <button type="submit" class="govuk-button search" style="margin-bottom:0;height:36px;margin-top:2px;margin-left:-2px">Search</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </div> -->
-            <!--             <div class="govuk-header__logo right">
-                <a href="" class="username">user_name_1983</a>
-                <div class="user-settings">
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h1 class="govuk-fieldset__heading">Colour scheme</h1>
-                            </legend>
-                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourScheme__White" name="colourScheme" type="radio" value="White" checked>
-                                    <label class="govuk-label govuk-radios__label" for="colourScheme__White">White</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourScheme__SoftGrey" name="colourScheme" type="radio" value="Soft grey">
-                                    <label class="govuk-label govuk-radios__label" for="colourScheme__SoftGrey">Soft grey</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourScheme__Grey" name="colourScheme" type="radio" value="Grey">
-                                    <label class="govuk-label govuk-radios__label" for="colourScheme__Grey">Grey</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourScheme__Dark" name="colourScheme" type="radio" value="Dark">
-                                    <label class="govuk-label govuk-radios__label" for="colourScheme__Dark">Dark</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h1 class="govuk-fieldset__heading">Colour overlay</h1>
-                            </legend>
-                            <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourOverlay__Pink" name="colourOverlay" type="radio" value="Pink">
-                                    <label class="govuk-label govuk-radios__label" for="colourOverlay__Pink" checked>Pink</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourOverlay__Green" name="colourOverlay" type="radio" value="Green">
-                                    <label class="govuk-label govuk-radios__label" for="colourOverlay__Green">Green</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourOverlay__Blue" name="colourOverlay" type="radio" value="Blue">
-                                    <label class="govuk-label govuk-radios__label" for="colourOverlay__Blue">Blue</label>
-                                </div>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourOverlay__Yellow" name="colourOverlay" type="radio" value="Yellow">
-                                    <label class="govuk-label govuk-radios__label" for="colourOverlay__Yellow">Yellow</label>
-                                </div>
-                                <hr>
-                                <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="colourOverlay__Remove" name="colourOverlay" type="radio" value="Remove" checked>
-                                    <label class="govuk-label govuk-radios__label" for="colourOverlay__Remove">No colour overlay</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                                <h1 class="govuk-fieldset__heading">Colour hue</h1>
-                            </legend>
-                            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="colourHue" name="colourHue" type="checkbox" value="Change colour hue">
-                                    <label class="govuk-label govuk-checkboxes__label" for="colourHue">Change colour hue</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="govuk-form-group">
-                        <button type="button" class="govuk-button govuk-!-margin-bottom-3" onclick="location.href='../../prototype-admin/clear-data';">Clear data</button>
-                    </div>                
-                </div>
-            </div> -->
         </div>
     </div>
 </header>
-
-<div class="moj-primary-navigation">
+<div class="moj-primary-navigation" style="border-bottom: 1px solid #b1b4b6;">
     <div class="moj-primary-navigation__container" style="max-width:1400px">
         <div class="moj-primary-navigation__nav">
             <nav class="moj-primary-navigation" aria-label="Primary navigation">
                 <ul class="moj-primary-navigation__list">
-                    <li class="moj-primary-navigation__item dashboard">
-                        <a class="moj-primary-navigation__link" style="" href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/A-dashboard">Home</a>
-                    </li>
+
                     <li class="moj-primary-navigation__item">
-                        <a class="moj-primary-navigation__link my-tasks"  href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a>
+                        <a class="moj-primary-navigation__link my-tasks" href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a>
                     </li>
                     <li class="moj-primary-navigation__item">
                         <a class="moj-primary-navigation__link my-cases" href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/D-my-cases">Cases</a>
@@ -262,77 +141,15 @@ $(document).ready(function() {
                 </ul>
             </nav>
         </div>
-                    <div class="moj-primary-navigation__search">
-                <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
-                    <div class="moj-search-toggle__toggle"></div>
-                    <div class="moj-search-toggle__search">
-                        <div class="moj-search moj-search--ondark moj-search--toggle moj-js-hidden">
-                            <form action="" method="get">
-                                <div class="govuk-form-group">
-                                    <label class="govuk-label moj-search__label govuk-visually-hidden" for="search2">
-                                        Search
-                                    </label>
-                                    <div id="search2-hint" class="govuk-hint moj-search__hint ">
-                                        Enter case number
-                                    </div>
-                                    <input class="govuk-input moj-search__input " id="search2" name="search2" type="search" aria-describedby="search2-hint">
-                                </div>
-                                <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
-                                    Search
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
     </div>
-
 </div>
-<!-- <div style= " box-shadow: inset 0 -1px 0 #b1b4b6; width:100% ">
-<div style="max-width:1400px; margin:0 auto; ">
-<nav class="moj-sub-navigation" aria-label="Sub navigation">
-    <ul class="moj-sub-navigation__list">
-        <li class="moj-sub-navigation__item">
-            <a class="moj-sub-navigation__link" 
-            href="#1">Details</a>
-        </li>
-        <li class="moj-sub-navigation__item">
-            <a class="moj-sub-navigation__link" aria-current="page"  href="#2">Materials</a>
-        </li>
-        <li class="moj-sub-navigation__item">
-            <a class="moj-sub-navigation__link" href="#3">Review</a>
-        </li>
-    </ul>
-</nav>
-</div>
-</div> -->
-
-
-
-
-<!-- <nav class="cps-bar-wrapper" id="global-navigation" style="">
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <ul style="display:flex; width:99%" class="">
-                    <li class="dashboard" style="margin-left:-17px"><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/A-dashboard">Home</a></li>
-                    <li class="my-tasks"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a></li>
-                    <li class="my-cases"><a href="https://as-web-endtoend-ux-dev.azurewebsites.net/version-41/2-cps-user-journey/D-my-cases">Cases</a></li>
-
-                </ul>
-
-            </div>
-
-        </div>
-    </div>
-</nav> -->
-
 <style>
-body {
+    body {
     visibility: hidden
 }
 </style>
- <script type="text/javascript">
+<script type="text/javascript">
 MOJFrontend.initAll();
 </script>
 <script>
