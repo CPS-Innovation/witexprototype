@@ -1,16 +1,143 @@
-{% extends "layoutCPS-NEW-INDEX.html" %}
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
 {% block header %}
-    {% include "../includes/banner-V6.html" %}
-{% endblock %}
-{% block beforeContent %}
+{% include "../includes/banner-V6.html" %}
 
 {% endblock %}
+{% block beforeContent %}
+{% endblock %}
 {% block content %}
+<style>
+    nav {
+    padding: 0 !important
+}
+
+.addRightLine, .addRightLine2 {position:relative}
+.addRightLine:after, .addRightLine2:after {
+             content: '';
+            position: absolute;
+            right: -60px;
+            top: 20%; /* (100% - 75%) / 2 to center the line vertically */
+            width: 1px; /* Adjust width of the line */
+            height: 60%; /* 75% of the height of the parent box */
+            background-color: #505a5f   ; /* Adjust color as needed */
+}
+
+.addRightLine2:after {
+    right: -30px;
+}
+
+.govuk-header__logo {
+    width: 50%
+}
+
+.govuk-main-wrapper--auto-spacing:first-child {
+    padding-top: 0
+}
+
+.js-enabled .govuk-tabs__tab {
+    /*    // this is because the table is too narrow for all the tabs - fix this by making the page wider when you have time*/
+/*    font-size: 0.98em;*/
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 15px 5px;
+
+    position: relative;
+    border: 1px solid #b1b4b6;
+}
+
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 75%;
+    left: 30px;
+    right: 38px;
+    height: 4px;
+    background-color: white;
+    transform: translateY(-50%);
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    padding: 0 5px;
+}
+
+.step:first-child,
+.step:last-child {
+    flex: 0 0 auto;
+}
+
+.step:nth-child(2),
+.step:nth-child(3) {
+/*    flex-grow: 1; /* Take up remaining space equally */*/
+}
+
+.step-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #b1b4b6;
+    border: 4px solid white;
+}
+
+
+.active .indicator {
+    width: 25px;
+    height: 25px;
+    background-color: #1d70b8;
+    border: none;
+}
+
+.active .indicator svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+
+.double-indicator .indicator {
+    width: 15px;
+    height: 15px;
+    /*            border-radius: 10px;*/
+}
+
+.double-indicator .indicator:first-child {
+    margin-right: -10px;
+}
+
+
+}
+</style>
+<script>
+    $(document).ready(function() {
+    $('#global-navigation').show();
+    $('.my-cases').attr('aria-current', 'page');
+    $('.sub-overview').attr('aria-current', 'page');
+
+});
+</script>
 
 <div id="image-wrapper" class="D-my-cases">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-            <h1 class="govuk-heading-l">My cases</h1>
+            <h1 class="govuk-heading-l" style="margin-top:40px">My cases</h1>
             <div class="wrapper">
                 <a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/E-case-overview">
                     <img src="../../../public/images/cps-concept/D-my-cases.jpg" alt="My Cases" class="cps-concept-image">
