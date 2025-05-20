@@ -568,7 +568,7 @@
                                                 <option value="sev4">Urgent</option>
                                             </select>
                                         </fieldset>
-                                        <button id="applyFiltersBtn" type="submit" class="govuk-button"
+                                        <button id="applyFiltersBtn" type="submit" class="govuk-button apply-filters-btn"
                                             data-module="govuk-button" style="margin-top:25px">
                                             Apply filters</button>
                                     </div>
@@ -601,6 +601,7 @@
                             </div>
                             <div class="moj-action-bar__filter"></div>
 
+
                             <div class="app-c-filter-summary" id="activeFiltersArea"
                                 style="display:none ; border-bottom: 1px solid #b1b4b6; margin-bottom:20px">
                                 <h3 class="app-c-filter-summary__heading" style="margin-top:0; font-weight:700">Active
@@ -620,7 +621,7 @@
 
                             <div class="govuk-grid-column-full"
                                 style="padding-left:0; padding-right:0; display:flex; align-items: center;">
-                                <p> Showing 15 of 15 tasks</p>
+                                <p > Showing <strong data-comm-shown></strong> of <strong data-comm-total></strong> tasks</p>
                                 <!-- <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-left: auto; ">
                         Set alert
                     </button> -->
@@ -662,7 +663,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="govuk-table__body">
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row  main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -679,7 +680,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">21XX009875/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">21XX009875/1</td>
                                         <td class="govuk-table__cell bold">Doe, J. McGregor,C</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagBlack" style="">Expired</strong>
@@ -703,7 +704,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel1.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -720,7 +721,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">46BA339831/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">46BA339831/1</td>
                                         <td class="govuk-table__cell bold">McGregor, Colin</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagRed" style="">3</strong></td>
@@ -742,7 +743,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel2.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -759,7 +760,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">98FG978547/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">98FG978547/1</td>
                                         <td class="govuk-table__cell bold"> Bodger, Roisin</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagUnkown" style="">?</strong></td>
@@ -781,7 +782,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel3.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -798,7 +799,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">45AA209820/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">45AA209820/1</td>
                                         <td class="govuk-table__cell bold">McLove, Eoin</td>
                                         <td class="govuk-table__cell ">- </td>
                                        
@@ -820,7 +821,7 @@
                                     </tr>
                                     <!-- dropdown panel include goes here -->
                                     {% include "../includes/panels/panel4.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -837,7 +838,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">33FQ456221/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">33FQ456221/1</td>
                                         <td class="govuk-table__cell bold">Priest, Kim</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagRed" style="">8</strong></td>
@@ -859,7 +860,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel5.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -876,7 +877,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">91PC294683/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">91PC294683/1</td>
                                         <td class="govuk-table__cell bold">Doe, Jack. McGregor, Colin</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong>
@@ -899,7 +900,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel6.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -916,7 +917,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">33FY456221/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">33FY456221/1</td>
                                         <td class="govuk-table__cell bold">McGregor, Colin. D, Tale</td>
                                         <td class="govuk-table__cell"> -</td>
                                        
@@ -937,7 +938,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel7.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -954,7 +955,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">95YU134253/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">95YU134253/1</td>
                                         <td class="govuk-table__cell bold">Stevens, Tom</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagRed" style="">8</strong></td>
@@ -976,7 +977,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel8.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -993,7 +994,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">43LP879068/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">43LP879068/1</td>
                                         <td class="govuk-table__cell bold">Hall, Cat</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagRed " style="">12</strong></td>
@@ -1016,7 +1017,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel9.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -1033,7 +1034,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">45AA209820/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">45AA209820/1</td>
                                         <td class="govuk-table__cell bold">McGregor, Colin</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagUnkown" style="">?</strong></td>
@@ -1055,7 +1056,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel10.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -1072,7 +1073,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">46BA339821/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">46BA339821/1</td>
                                         <td class="govuk-table__cell bold">Bodger, Roisin. Bodger, Penny</td>
                                         <td class="govuk-table__cell"> -</td>
                                        
@@ -1093,7 +1094,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel11.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -1110,7 +1111,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">21XX109875/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">21XX109875/1</td>
                                         <td class="govuk-table__cell bold">Georgia, Ella. Hall, Cat</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong>
@@ -1132,7 +1133,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel12.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -1149,7 +1150,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">95ZU134253/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">95ZU134253/1</td>
                                         <td class="govuk-table__cell bold">Freeman, Natalie</td>
                                         <td class="govuk-table__cell"> <strong
                                                 class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong>
@@ -1170,7 +1171,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel13.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -1187,7 +1188,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">91PD294683/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">91PD294683/1</td>
                                         <td class="govuk-table__cell bold">Bodger, Roisin. Voke, Gerry</td>
                                         <td class="govuk-table__cell">- </td>
                                        
@@ -1208,7 +1209,7 @@
                                                 class="fa-solid fa-chevron-down" style="margin-left:20px"></i></td>
                                     </tr>
                                     {% include "../includes/panels/panel14.html" %}
-                                    <tr class="govuk-table__row">
+                                    <tr class="govuk-table__row main-task-row">
                                         <td class="govuk-table__cell">
                                             <!-- <div class="govuk-form-group"> -->
                                             <!-- <fieldset class="govuk-fieldset"> -->
@@ -1225,7 +1226,7 @@
                                             <!-- </fieldset> -->
                                             <!-- </div> -->
                                         </td>
-                                        <td class="govuk-table__cell">42LP879068/1</td>
+                                        <td class="govuk-table__cell" data-col="urn">42LP879068/1</td>
                                         <td class="govuk-table__cell bold">McGregor, Colin</td>
                                         <td class="govuk-table__cell"> -</td>
                                        
@@ -1336,7 +1337,7 @@
             <script>
             document.addEventListener('DOMContentLoaded', () => {
   const shownDisplay = document.querySelector('[data-comm-shown]');
-  const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+  // const applyFiltersBtn = document.getElementById('applyFiltersBtn');
   const activeFiltersArea = document.getElementById('activeFiltersArea');
 
   // Get all selects with name "sort" (they appear in DOM order)
@@ -1405,7 +1406,7 @@
   };
 
   // Target correct rows in your task table
-  const rows = [...document.querySelectorAll('#past-day tbody tr.govuk-table__row')];
+const rows = [...document.querySelectorAll('#past-day tbody tr.govuk-table__row.main-task-row')];
   const activeFilterList = document.querySelector('[data-active-filters]');
   // You may or may not have this, so don't fail if missing:
   const noResults = document.getElementById('no-results-message');
@@ -1542,14 +1543,20 @@
     applyFilters();
   }
 
-  applyFiltersBtn.addEventListener('click', e => {
+document.querySelectorAll('.apply-filters-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
     e.preventDefault();
     applyFilters();
-    const toggleBtn = document.querySelector('.moj-action-bar__filter button');
-    if (toggleBtn && toggleBtn.textContent.trim() === 'Hide filter') {
+
+    // Close filter panels if open (MOJFrontend)
+    // Try to find the filter toggle button
+    const toggleBtn = document.querySelector('.moj-action-bar__filter button, [aria-controls="filter-panel"]');
+    // If visible and says 'Hide filter', click to close
+    if (toggleBtn && /hide filter/i.test(toggleBtn.textContent)) {
       toggleBtn.click();
     }
   });
+});
 
   document.querySelectorAll('.clear-filters, #clearFiltersLink').forEach(clearLink => {
     clearLink.addEventListener('click', e => {
