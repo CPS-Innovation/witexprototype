@@ -323,7 +323,7 @@
             <ul class="govuk-tabs__list">
                 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
                     <a class="govuk-tabs__tab" href="#past-day">
-                        Tasks (15)
+                        Task list (15)
                     </a>
                 </li>
                 <li class="govuk-tabs__list-item">
@@ -1334,137 +1334,158 @@
                 });
             </script>
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('DOMContentLoaded', () => {
   const shownDisplay = document.querySelector('[data-comm-shown]');
   const applyFiltersBtn = document.getElementById('applyFiltersBtn');
   const activeFiltersArea = document.getElementById('activeFiltersArea');
 
-  // --- NEW: Owner display name to initials mapping (expand as needed) ---
+  // Get all selects with name "sort" (they appear in DOM order)
+  const selects = Array.from(document.querySelectorAll('select[name="sort"]'));
+  // Map each to the correct filter
+  const selectMap = {
+    unitGroup: selects[0], // not used yet
+    unit: selects[1],      // not used yet
+    court: selects[2],     // not used yet
+    taskType: selects[3],
+    owner: selects[4],
+    severity: selects[5]
+  };
+
+  // --- Owner display name to initials mapping (expand as needed) ---
   const ownerNameToInitials = {
     'David Jenkins': 'DJ',
-    'Admin pool': 'Admin pool', // update as per your table
+    'Admin pool': 'Admin pool', // Example, adapt as you add owners
     'CZ': 'CZ',
     'KP': 'KP',
     'NE': 'NE',
-    'RJ': 'RJ'
-    // Add more if needed
+    'RJ': 'RJ',
+    'DJ': 'DJ'
+    // Add more as needed
   };
 
-  // --- Severity color logic: maps "Escalates, Overdue, Due" etc to icons ---
+  // Severity mapping logic
   function matchesSeverity(row, severityValue) {
-    // Get the icon cell after due date (column index may vary: adjust if needed)
+    // Find icon after due date
     const iconCell = row.querySelector('td.addRightLine i.fa-solid, td.addRightLine i.fa-circle-exclamation, td.addRightLine i.fa-triangle-exclamation, td.addRightLine i.fa-circle-info');
     if (!iconCell) return false;
-    // Get computed color
+    // Get computed color (RGB)
     const color = window.getComputedStyle(iconCell).color;
-    // Map filter values to icon colors
-    if (severityValue === "Escalates, Overdue, Due") {
-      // Accept red (#d4351c), yellow (#ffdd00), or grey (#b1b4b6)
-      // Convert computed rgb/rgba to hex for easy match
-      function rgb2hex(rgb) {
-        if (!rgb) return '';
-        const result = rgb.match(/\d+/g);
-        if (!result || result.length < 3) return '';
-        return "#" + result.slice(0,3).map(x => ("0"+parseInt(x).toString(16)).slice(-2)).join('');
-      }
-      const hex = rgb2hex(color);
+    // Convert rgb(212, 53, 28) etc to hex
+    function rgb2hex(rgb) {
+      if (!rgb) return '';
+      const result = rgb.match(/\d+/g);
+      if (!result || result.length < 3) return '';
+      return "#" + result.slice(0,3).map(x => ("0"+parseInt(x).toString(16)).slice(-2)).join('');
+    }
+    const hex = rgb2hex(color);
+
+    if (severityValue === "sev2") { // Escalates, Overdue, Due
+      // Accept red (#d4351c), yellow (#ffdd00), or grey (#b1b4b6), or white (#ffffff)
       return (
         hex === "#d4351c" || // red
         hex === "#ffdd00" || // yellow
         hex === "#b1b4b6" || // govuk grey
-        hex === "#ffffff"    // white, if "due soon"
+        hex === "#ffffff"    // white
       );
-    } else if (severityValue === "Due Soon") {
-      // Only yellow (#ffdd00)
-      return color && color.includes("255, 221, 0"); // RGB for #ffdd00
-    } else if (severityValue === "Urgent") {
-      // Only red (#d4351c)
-      return color && color.includes("212, 53, 28"); // RGB for #d4351c
+    } else if (severityValue === "sev3") { // Due Soon
+      return hex === "#ffdd00";
+    } else if (severityValue === "sev4") { // Urgent
+      return hex === "#d4351c";
     }
     return false;
   }
 
   // Map UI filters to functions that extract their values
   const filters = {
-    // Free text (search): new logic below
+    // Free text (search): matches URN or Defendants
     keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
-    // Task type: from select
-    taskType: () => document.querySelector('select[name="sort"][id*="Task"]')?.value || "",
-    // Owner: from select, must map to initials
-    owner: () => document.querySelector('select[name="sort"][id*="Owner"]')?.value || "",
-    // Severity: from select
-    severity: () => document.querySelector('select[name="sort"][id*="sev"]')?.value || ""
-    // Ignored: Unit, Unit group, Court, Hearing dates
+    taskType: () => selectMap.taskType ? selectMap.taskType.value : "",
+    owner: () => selectMap.owner ? selectMap.owner.value : "",
+    severity: () => selectMap.severity ? selectMap.severity.value : ""
   };
 
-  const rows = [...document.querySelectorAll('#past-day tbody tr.govuk-table__row')]; // Use #past-day (main tab)
+  // Target correct rows in your task table
+  const rows = [...document.querySelectorAll('#past-day tbody tr.govuk-table__row')];
   const activeFilterList = document.querySelector('[data-active-filters]');
+  // You may or may not have this, so don't fail if missing:
   const noResults = document.getElementById('no-results-message');
   const total = rows.length;
 
-  // Update totals
   document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
   document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
 
-  // --- UPDATED: Main filter logic ---
   function applyFilters() {
-    // Get current filters
-    const active = {
-      keyword: filters.keywords(),
-      taskType: filters.taskType(),
-      owner: filters.owner(),
-      severity: filters.severity()
-    };
+  // Get the visible text for filters (not the value!)
+  const taskTypeOption = selectMap.taskType.options[selectMap.taskType.selectedIndex];
+  const taskTypeText = taskTypeOption ? taskTypeOption.text.trim().toLowerCase() : '';
 
-    let visibleCount = 0;
-    rows.forEach(row => {
-      // Get relevant columns
-      const urn = row.children[1]?.innerText.toLowerCase().trim() || "";
-      const defendants = row.children[2]?.innerText.toLowerCase().trim() || "";
-      const task = row.children[4]?.innerText.toLowerCase().trim() || "";
-      const ownerCell = row.children[7]?.innerText.trim() || "";
-      const ownerValue = ownerCell.toLowerCase();
-      // For icon color, use severity logic below
+  const ownerOption = selectMap.owner.options[selectMap.owner.selectedIndex];
+  const ownerText = ownerOption ? ownerOption.text.trim() : '';
 
-      // --- Keyword matches URN OR Defendants (partial, case-insensitive) ---
-      let matchKeyword = true;
-      if (active.keyword) {
-        matchKeyword =
-          urn.includes(active.keyword) ||
-          defendants.includes(active.keyword);
-      }
+  const severityValue = selectMap.severity ? selectMap.severity.value : "";
 
-      // --- Task type ---
-      let matchTaskType = true;
-      if (active.taskType && active.taskType !== "" && active.taskType !== "Task1" && active.taskType !== "All") {
-        matchTaskType = task === active.taskType.toLowerCase();
-      }
+  const active = {
+    keyword: filters.keywords(),
+    taskType: taskTypeText,
+    owner: ownerText,
+    severity: severityValue
+  };
 
-      // --- Owner ---
-      let matchOwner = true;
-      if (active.owner && active.owner !== "" && active.owner !== "Owner1" && active.owner !== "All") {
-        const mappedInitials = ownerNameToInitials[active.owner] || active.owner;
-        matchOwner = ownerCell === mappedInitials;
-      }
+  let visibleCount = 0;
+  rows.forEach(row => {
+    const urn = row.children[1]?.innerText.toLowerCase().trim() || "";
+    const defendants = row.children[2]?.innerText.toLowerCase().trim() || "";
+    const task = row.children[4]?.innerText.toLowerCase().trim() || "";
+    const ownerCell = row.children[7]?.innerText.trim() || "";
 
-      // --- Severity ---
-      let matchSeverity = true;
-      if (active.severity && active.severity !== "" && active.severity !== "sev1") {
-        matchSeverity = matchesSeverity(row, active.severity);
-      }
+    // Keyword: match URN OR defendants
+    let matchKeyword = true;
+    if (active.keyword) {
+      matchKeyword = urn.includes(active.keyword) || defendants.includes(active.keyword);
+    }
 
-      // Only show rows matching ALL enabled filters
-      const matches = matchKeyword && matchTaskType && matchOwner && matchSeverity;
-      row.style.display = matches ? '' : 'none';
-      if (matches) visibleCount++;
-    });
+    // Task type: skip if default or "All"
+    let matchTaskType = true;
+    if (
+      active.taskType &&
+      active.taskType !== "" &&
+      !/^task\s*$/i.test(active.taskType) &&
+      !/^all$/i.test(active.taskType)
+    ) {
+      matchTaskType = task === active.taskType;
+    }
 
-    shownDisplay.textContent = visibleCount;
-    if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-    updateLozenges(active);
-  }
+    // Owner: skip if default or "All"
+    let matchOwner = true;
+    if (
+      active.owner &&
+      active.owner !== "" &&
+      !/^owner$/i.test(active.owner) &&
+      !/^all$/i.test(active.owner)
+    ) {
+      // Map to initials
+      const mappedInitials =
+        ownerNameToInitials[active.owner] ||
+        (active.owner.match(/\b([A-Z])/g) || []).join("");
+      matchOwner = ownerCell === mappedInitials;
+    }
 
-  // --- Update active filter lozenges ---
+    // Severity: skip if default
+    let matchSeverity = true;
+    if (active.severity && active.severity !== "" && active.severity !== "sev1") {
+      matchSeverity = matchesSeverity(row, active.severity);
+    }
+
+    const matches = matchKeyword && matchTaskType && matchOwner && matchSeverity;
+    row.style.display = matches ? '' : 'none';
+    if (matches) visibleCount++;
+  });
+
+  shownDisplay.textContent = visibleCount;
+  if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  updateLozenges(active);
+}
+  // Lozenges for current filters
   function updateLozenges(active) {
     activeFilterList.innerHTML = '';
     const addFilter = (filterType, value) => {
@@ -1481,45 +1502,43 @@
     };
 
     if (active.keyword) addFilter('Keyword', active.keyword);
-    if (active.taskType && active.taskType !== "" && active.taskType !== "Task1" && active.taskType !== "All") addFilter('Task type', active.taskType);
-    if (active.owner && active.owner !== "" && active.owner !== "Owner1" && active.owner !== "All") addFilter('Owner', active.owner);
-    if (active.severity && active.severity !== "" && active.severity !== "sev1") addFilter('Severity', active.severity);
+    if (active.taskType && active.taskType !== "" && active.taskType !== "Task1" && active.taskType !== "All") addFilter('Task type', selectMap.taskType.options[selectMap.taskType.selectedIndex].text);
+    if (active.owner && active.owner !== "" && active.owner !== "Owner1" && active.owner !== "All") addFilter('Owner', selectMap.owner.options[selectMap.owner.selectedIndex].text);
+    if (active.severity && active.severity !== "" && active.severity !== "sev1") addFilter('Severity', selectMap.severity.options[selectMap.severity.selectedIndex].text);
 
     activeFiltersArea.style.display = activeFilterList.children.length ? 'block' : 'none';
 
     document.querySelectorAll('.app-c-filter-summary__remove-filter').forEach(link => {
       link.addEventListener('click', () => {
         const filterType = link.getAttribute('data-filter');
-        const filterValue = link.getAttribute('data-filter-value');
-        removeFilter(filterType, filterValue);
+        removeFilter(filterType);
         applyFilters();
       });
     });
   }
 
-  // --- Remove filter for lozenge click ---
-  function removeFilter(filterType, filterValue) {
+  function removeFilter(filterType) {
     switch (filterType) {
       case 'Keyword':
         document.getElementById('keywords').value = '';
         break;
       case 'Task type':
-        document.querySelector('select[name="sort"][id*="Task"]').selectedIndex = 0;
+        if (selectMap.taskType) selectMap.taskType.selectedIndex = 0;
         break;
       case 'Owner':
-        document.querySelector('select[name="sort"][id*="Owner"]').selectedIndex = 0;
+        if (selectMap.owner) selectMap.owner.selectedIndex = 0;
         break;
       case 'Severity':
-        document.querySelector('select[name="sort"][id*="sev"]').selectedIndex = 0;
+        if (selectMap.severity) selectMap.severity.selectedIndex = 0;
         break;
     }
   }
 
   function clearFilters() {
     document.getElementById('keywords').value = '';
-    if (document.querySelector('select[name="sort"][id*="Task"]')) document.querySelector('select[name="sort"][id*="Task"]').selectedIndex = 0;
-    if (document.querySelector('select[name="sort"][id*="Owner"]')) document.querySelector('select[name="sort"][id*="Owner"]').selectedIndex = 0;
-    if (document.querySelector('select[name="sort"][id*="sev"]')) document.querySelector('select[name="sort"][id*="sev"]').selectedIndex = 0;
+    if (selectMap.taskType) selectMap.taskType.selectedIndex = 0;
+    if (selectMap.owner) selectMap.owner.selectedIndex = 0;
+    if (selectMap.severity) selectMap.severity.selectedIndex = 0;
     applyFilters();
   }
 
@@ -1532,7 +1551,6 @@
     }
   });
 
-  // Attach clear filters handler to both clear filters buttons/links.
   document.querySelectorAll('.clear-filters, #clearFiltersLink').forEach(clearLink => {
     clearLink.addEventListener('click', e => {
       e.preventDefault();
