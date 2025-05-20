@@ -1334,19 +1334,70 @@
                 });
             </script>
             <script>
-document.addEventListener('DOMContentLoaded', () => {
+                document.addEventListener('DOMContentLoaded', () => {
   const shownDisplay = document.querySelector('[data-comm-shown]');
   const applyFiltersBtn = document.getElementById('applyFiltersBtn');
   const activeFiltersArea = document.getElementById('activeFiltersArea');
-  const filters = {
-    keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
-    newComms: () => document.querySelector('input[name="newComms"]:checked') !== null,
-    type: () => [...document.querySelectorAll('input[name="In/Out"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
-    status: () => [...document.querySelectorAll('input[name^="status"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase()),
-    commsWith: () => [...document.querySelectorAll('input[name="commsWith"]:checked')].map(el => el.nextElementSibling.innerText.trim().toLowerCase())
+
+  // --- NEW: Owner display name to initials mapping (expand as needed) ---
+  const ownerNameToInitials = {
+    'David Jenkins': 'DJ',
+    'Admin pool': 'Admin pool', // update as per your table
+    'CZ': 'CZ',
+    'KP': 'KP',
+    'NE': 'NE',
+    'RJ': 'RJ'
+    // Add more if needed
   };
 
-  const rows = [...document.querySelectorAll('#past-month tbody tr.govuk-table__row')];
+  // --- Severity color logic: maps "Escalates, Overdue, Due" etc to icons ---
+  function matchesSeverity(row, severityValue) {
+    // Get the icon cell after due date (column index may vary: adjust if needed)
+    const iconCell = row.querySelector('td.addRightLine i.fa-solid, td.addRightLine i.fa-circle-exclamation, td.addRightLine i.fa-triangle-exclamation, td.addRightLine i.fa-circle-info');
+    if (!iconCell) return false;
+    // Get computed color
+    const color = window.getComputedStyle(iconCell).color;
+    // Map filter values to icon colors
+    if (severityValue === "Escalates, Overdue, Due") {
+      // Accept red (#d4351c), yellow (#ffdd00), or grey (#b1b4b6)
+      // Convert computed rgb/rgba to hex for easy match
+      function rgb2hex(rgb) {
+        if (!rgb) return '';
+        const result = rgb.match(/\d+/g);
+        if (!result || result.length < 3) return '';
+        return "#" + result.slice(0,3).map(x => ("0"+parseInt(x).toString(16)).slice(-2)).join('');
+      }
+      const hex = rgb2hex(color);
+      return (
+        hex === "#d4351c" || // red
+        hex === "#ffdd00" || // yellow
+        hex === "#b1b4b6" || // govuk grey
+        hex === "#ffffff"    // white, if "due soon"
+      );
+    } else if (severityValue === "Due Soon") {
+      // Only yellow (#ffdd00)
+      return color && color.includes("255, 221, 0"); // RGB for #ffdd00
+    } else if (severityValue === "Urgent") {
+      // Only red (#d4351c)
+      return color && color.includes("212, 53, 28"); // RGB for #d4351c
+    }
+    return false;
+  }
+
+  // Map UI filters to functions that extract their values
+  const filters = {
+    // Free text (search): new logic below
+    keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
+    // Task type: from select
+    taskType: () => document.querySelector('select[name="sort"][id*="Task"]')?.value || "",
+    // Owner: from select, must map to initials
+    owner: () => document.querySelector('select[name="sort"][id*="Owner"]')?.value || "",
+    // Severity: from select
+    severity: () => document.querySelector('select[name="sort"][id*="sev"]')?.value || ""
+    // Ignored: Unit, Unit group, Court, Hearing dates
+  };
+
+  const rows = [...document.querySelectorAll('#past-day tbody tr.govuk-table__row')]; // Use #past-day (main tab)
   const activeFilterList = document.querySelector('[data-active-filters]');
   const noResults = document.getElementById('no-results-message');
   const total = rows.length;
@@ -1355,42 +1406,67 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
   document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
 
+  // --- UPDATED: Main filter logic ---
   function applyFilters() {
+    // Get current filters
     const active = {
       keyword: filters.keywords(),
-      newComms: filters.newComms(),
-      type: filters.type(),
-      status: filters.status(),
-      commsWith: filters.commsWith()
+      taskType: filters.taskType(),
+      owner: filters.owner(),
+      severity: filters.severity()
     };
 
     let visibleCount = 0;
     rows.forEach(row => {
-      const subject = row.querySelector('.subject-cell')?.innerText.toLowerCase() || '';
-      const type = row.children[2].innerText.toLowerCase().trim();
-      const commsWith = row.children[3].innerText.toLowerCase().trim();
-      const category = row.children[4].innerText.toLowerCase().trim();
-      const isNew = row.querySelector('.govuk-tag--blue') !== null;
+      // Get relevant columns
+      const urn = row.children[1]?.innerText.toLowerCase().trim() || "";
+      const defendants = row.children[2]?.innerText.toLowerCase().trim() || "";
+      const task = row.children[4]?.innerText.toLowerCase().trim() || "";
+      const ownerCell = row.children[7]?.innerText.trim() || "";
+      const ownerValue = ownerCell.toLowerCase();
+      // For icon color, use severity logic below
 
-      const matchKeyword = !active.keyword || subject.includes(active.keyword);
-      const matchNewComms = !active.newComms || isNew;
-      const matchType = active.type.length === 0 || active.type.includes(type);
-      const matchStatus = active.status.length === 0 || active.status.includes(category);
-      const matchCommsWith = active.commsWith.length === 0 || active.commsWith.includes(commsWith);
+      // --- Keyword matches URN OR Defendants (partial, case-insensitive) ---
+      let matchKeyword = true;
+      if (active.keyword) {
+        matchKeyword =
+          urn.includes(active.keyword) ||
+          defendants.includes(active.keyword);
+      }
 
-      const matches = matchKeyword && matchNewComms && matchType && matchStatus && matchCommsWith;
+      // --- Task type ---
+      let matchTaskType = true;
+      if (active.taskType && active.taskType !== "" && active.taskType !== "Task1" && active.taskType !== "All") {
+        matchTaskType = task === active.taskType.toLowerCase();
+      }
+
+      // --- Owner ---
+      let matchOwner = true;
+      if (active.owner && active.owner !== "" && active.owner !== "Owner1" && active.owner !== "All") {
+        const mappedInitials = ownerNameToInitials[active.owner] || active.owner;
+        matchOwner = ownerCell === mappedInitials;
+      }
+
+      // --- Severity ---
+      let matchSeverity = true;
+      if (active.severity && active.severity !== "" && active.severity !== "sev1") {
+        matchSeverity = matchesSeverity(row, active.severity);
+      }
+
+      // Only show rows matching ALL enabled filters
+      const matches = matchKeyword && matchTaskType && matchOwner && matchSeverity;
       row.style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
     });
 
     shownDisplay.textContent = visibleCount;
-    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     updateLozenges(active);
   }
 
+  // --- Update active filter lozenges ---
   function updateLozenges(active) {
     activeFilterList.innerHTML = '';
-
     const addFilter = (filterType, value) => {
       const li = document.createElement('li');
       li.innerHTML = `
@@ -1405,10 +1481,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (active.keyword) addFilter('Keyword', active.keyword);
-    if (active.newComms) addFilter('New communications', 'Unread');
-    active.type.forEach(val => addFilter('In/Out', val));
-    active.status.forEach(val => addFilter('Category', val));
-    active.commsWith.forEach(val => addFilter('Comms with', val));
+    if (active.taskType && active.taskType !== "" && active.taskType !== "Task1" && active.taskType !== "All") addFilter('Task type', active.taskType);
+    if (active.owner && active.owner !== "" && active.owner !== "Owner1" && active.owner !== "All") addFilter('Owner', active.owner);
+    if (active.severity && active.severity !== "" && active.severity !== "sev1") addFilter('Severity', active.severity);
 
     activeFiltersArea.style.display = activeFilterList.children.length ? 'block' : 'none';
 
@@ -1422,41 +1497,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Remove filter for lozenge click ---
   function removeFilter(filterType, filterValue) {
     switch (filterType) {
       case 'Keyword':
         document.getElementById('keywords').value = '';
         break;
-      case 'New communications':
-        document.querySelector('input[name="newComms"]').checked = false;
+      case 'Task type':
+        document.querySelector('select[name="sort"][id*="Task"]').selectedIndex = 0;
         break;
-      case 'In/Out':
-        document.querySelectorAll('input[name="In/Out"]').forEach(el => {
-          if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
-            el.checked = false;
-          }
-        });
+      case 'Owner':
+        document.querySelector('select[name="sort"][id*="Owner"]').selectedIndex = 0;
         break;
-      case 'Category':
-        document.querySelectorAll('input[name^="status"]').forEach(el => {
-          if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
-            el.checked = false;
-          }
-        });
-        break;
-      case 'Comms with':
-        document.querySelectorAll('input[name="commsWith"]').forEach(el => {
-          if (el.nextElementSibling.innerText.trim().toLowerCase() === filterValue.toLowerCase()) {
-            el.checked = false;
-          }
-        });
+      case 'Severity':
+        document.querySelector('select[name="sort"][id*="sev"]').selectedIndex = 0;
         break;
     }
   }
 
   function clearFilters() {
     document.getElementById('keywords').value = '';
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    if (document.querySelector('select[name="sort"][id*="Task"]')) document.querySelector('select[name="sort"][id*="Task"]').selectedIndex = 0;
+    if (document.querySelector('select[name="sort"][id*="Owner"]')) document.querySelector('select[name="sort"][id*="Owner"]').selectedIndex = 0;
+    if (document.querySelector('select[name="sort"][id*="sev"]')) document.querySelector('select[name="sort"][id*="sev"]').selectedIndex = 0;
     applyFilters();
   }
 
@@ -1480,4 +1543,5 @@ document.addEventListener('DOMContentLoaded', () => {
   clearFilters();
 });
 </script>
+
             {% endblock %}
