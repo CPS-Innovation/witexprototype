@@ -271,6 +271,57 @@
         updateDates();
     });
 </script>
+<script>
+    window.GOVUK = window.GOVUK || {};
+  window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+  (function (Modules) {
+    'use strict';
+
+    class FilterPanel {
+      constructor(module) {
+        this.$module = module;
+        this.$button = this.$module.querySelector('.app-c-filter-panel__button');
+        this.$content = this.$module.querySelector('.app-c-filter-panel__content');
+      }
+
+      init() {
+        if (!this.$button || !this.$content) return;
+
+        if (this.$module.getAttribute('open')) {
+          this.$button.setAttribute('aria-expanded', 'true');
+        } else {
+          this.$button.setAttribute('aria-expanded', 'false');
+          this.$content.setAttribute('hidden', '');
+        }
+
+        this.$button.addEventListener('click', this.onButtonClick.bind(this));
+      }
+
+      onButtonClick(event) {
+        event.preventDefault();
+        this.toggle();
+      }
+
+      toggle() {
+        const isExpanded = this.$button.getAttribute('aria-expanded') === 'true';
+        this.$button.setAttribute('aria-expanded', !isExpanded);
+        this.$content.toggleAttribute('hidden');
+      }
+    }
+
+    Modules.FilterPanel = FilterPanel;
+  })(window.GOVUK.Modules);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var filterPanels = document.querySelectorAll('.app-c-filter-panel');
+    filterPanels.forEach(function (panel) {
+      if (typeof GOVUK?.Modules?.FilterPanel === 'function') {
+        new GOVUK.Modules.FilterPanel(panel).init();
+      }
+    });
+  });
+</script>
 
 </script>
 <div class="govuk-grid-row">
@@ -279,39 +330,6 @@
             <h1 class="govuk-heading-m" style="margin-bottom:0">Paul Stone
             </h1>
         </div>
-<!--         <div class="govuk-grid-column-two-thirds-quarters" style="display:flex;  align-items: center; width:80%
-" id="">
-            <div class="taskCountBar" style="">
-                <p style="font-size:16px;margin-bottom:0">Task count</p>
-            </div>
-            <div class="taskOverViewContent" style="">
-                <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                    <i class="fa-solid fa-triangle-exclamation" style=""></i>
-                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p>
-                    <p class="taskcCountItemNumber "> 7</p>
-                </div>
-
-                <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-
-                    <i class="fa-solid fa-circle-exclamation" style="color:#ffdd00"></i>
-                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Overdue</p>
-                    <p class="taskcCountItemNumber "> 2</p>
-                </div>
-
-                <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                    <i class="fa-solid fa-circle-info" style="color:#b1b4b6; "></i>
-                    <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due today</p>
-                    <p class="taskcCountItemNumber "> 2</p>
-                </div>
-
-                <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                    <i class="fa-solid fa-circle-info" style="color:#fff; "></i>
-                    <p class="" style="font-size:16px;  margin-bottom:0">Due soon</p>
-                    <p class="taskcCountItemNumber "> 4</p>
-                </div>
-
-            </div>
-        </div> -->
     </div>
 </div>
 <div class="govuk-grid-row">
@@ -338,195 +356,78 @@
                 </li>
             </ul>
 <div class="govuk-tabs__panel" id="past-day">
-<!-- 
-    <div class="" style="display:flex;  align-items: center;  " id="">
-        <div class="taskOverViewContent" style="display: flex; gap: 15px; max-width: 800px; width: 100%; margin-left: auto;">
-                        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                <i class="fa-solid fa-circle-info" style="color:#fff; "></i>
-                <p class="" style="font-size:16px;  margin-bottom:0">Due soon</p>
-                <p class="taskcCountItemNumber "> (4)</p>
-            </div>
-                        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                <i class="fa-solid fa-circle-info" style="color:#b1b4b6; "></i>
-                <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due today</p>
-                <p class="taskcCountItemNumber "> (2)</p>
-            </div>
-                        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                <i class="fa-solid fa-circle-exclamation" style="color:#ffdd00"></i>
-                <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Overdue</p>
-                <p class="taskcCountItemNumber "> (2)</p>
-            </div>
-            <div class="govuk-grid-column-one-quarter taskCountItems" style="margin-right:0">
-                <i class="fa-solid fa-triangle-exclamation" style=""></i>
-                <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p>
-                <p class="taskcCountItemNumber "> (7)</p>
-            </div>
-        </div>
-    </div> -->
-
-                <!-- <div>
-                    <div class="govuk-grid-column-one-quarter" style="padding-left:0" id="">
-                        <div class="govuk-form-group mb15 ">
-                            <input class="govuk-input" id="event-name" name="eventName" type="text" placeholder="Search Defendant or URN">
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>Area</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>Unit</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>Court</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="govuk-grid-column-one-quarter" style="padding-left: 0;" id="">
-                        <div class="govuk-form-group mb15">
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>Task</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                      
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>Hearing date</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                         
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>Owner</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                         
-                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                <option value="published" selected>CTL type</option>
-                                <option value="updated">1</option>
-                                <option value="views">2</option>
-                                <option value="comments">3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0;">
-                    <div class="filterBar" style="">
-                        <div class="filterSetBox" style="display:flex;  align-items: center; padding-right:20px; position:relative ">
-                            <i class="fa-solid fa-chevron-down" style="margin-left:30px"></i>
-                            <p style="font-weight:700;margin-left:5px; margin-top:20px">Filter sets</p>
-                        </div>
-                        <div class="filterButtons" style="display:flex;   align-items: center; margin-left:auto">
-                            <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-bottom:0;">
-                              Save filter
-                            </button>
-                            <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-bottom:0; margin-left:15px">
-                              Clear filter
-                            </button>
-                            <button type="submit" disabled class="govuk-button" data-module="govuk-button" style="margin-bottom:0; margin-left:15px; margin-right:15px">
-                             Search
-                            </button>
-
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="">
-                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button"
-                        style="float:right; margin-bottom:0px">
-                        Add material</button>
-                </div>
-                <div class="clear-float"></div> -->
-
-                <div class="moj-filter-layout" style="">
-                    <div class="moj-filter-layout__filter">
-                        <div class="moj-filter" style="box-shadow:none; padding:20px; background-color:#f3f2f1;">
-                            <div class="moj-filter__header"
-                                style="background-color:#f3f2f1; padding-left:0; padding-top:0">
-                                <div class="moj-filter__header-title">
-                                    <h2 class="govuk-heading-m" style="margin-top:-22px">Filters</h2>
-                                </div>
-                                <div class="moj-filter__heading-action">
-                                    <p><a id="clearFiltersLink" class="govuk-link govuk-link--no-visited-state"
-                                            href="#">Clear filters</a></p>
-                                </div>
+                    <div class="app-c-filter-panel" data-filter-panel-module-started="true" style="margin-bottom:20px; max-width:50%">
+                            <div class="app-c-filter-panel__header">
+                                <button id="filter-button-aca6bc14" class="app-c-filter-panel__button govuk-link" aria-expanded="false" aria-controls="filter-panel-aca6bc14">
+                                    <span class="app-c-filter-panel__button-inner">Filter tasks</span>
+                                </button>
+                                <!-- <h2 id="js-result-count" class="app-c-filter-panel__count">4,595 results</h2> -->
                             </div>
-                            <div class="moj-filter__content">
-                                <!--  -->
-                                <div class="moj-filter__options" style="box-shadow:none;padding:0px">
-                                    <div class="govuk-form-group">
-                                        <label class="govuk-label govuk-label--s" for="keywords">
-                                            Search Defendant or URN
-                                        </label>
-                                        <input class="govuk-input" id="keywords" name="keywords" type="text">
+                            <div class="app-c-filter-panel__content" id="filter-panel-aca6bc14" role="region" aria-labelledby="filter-button-aca6bc14" hidden="">
+                                <details class="app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            URN or Defendant surname
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="keywords" data-module="keywords" class=" govuk-form-group ">
+                                            <fieldset class="govuk-fieldset">
+                                                <input class="govuk-input govuk-input--width-20" id="event-name" name="eventName" type="text">
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                             Unit group
-                                            </legend>
-                                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                </details>
+                                <details class="app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            Unit group
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="option-unitGroup" >
+                                            <fieldset class="govuk-fieldset">
+                                               <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                                 <option value="U1" selected></option>
                                                 <option value="U2">Yorkshire and Humberside Crown Court</option>
                                                 <option value="U3">Yorkshire and Humberside Magistrates Court</option>
                                             </select>
-                                        </fieldset>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                             Unit 
-                                            </legend>
-                                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                </details>
+                                <details class="app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            <span class="govuk-visually-hidden">Filter by</span>
+                                            Unit
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="options-unit" data-col="unit" >
+                                            <fieldset class="govuk-fieldset">
+                                              <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                                 <option value="Unit1" selected></option>
                                                 <option value="Unit2">All</option>
                                                 <option value="Unit3">Hull CJU</option>
                                                 <option value="Unit3">Hull TU</option>
                                                 <option value="Unit3">Stafford CJU</option>
                                             </select>
-                                        </fieldset>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                             Court 
-                                            </legend>
-                                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                </details>
+                                <details class="js-all-content-finder-taxonomy-select app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            <span class="govuk-visually-hidden">Filter by</span>
+                                            Court
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="option-courts" data-col="court" >
+                                            <fieldset class="govuk-fieldset">
+                                                <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                                 <option value="Court1" selected></option>
                                                 <option value="Court2">Aldersgate House CC NC</option>
                                                 <option value="Court3">Ashton Hall CC NC</option>
@@ -537,22 +438,36 @@
                                                 <option value="Court8">Hull CC</option>
                                                 <option value="Court9">Leeds Cloth Hall CC NC</option>
                                             </select>
-                                        </fieldset>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                             Hearing dates 
-                                            </legend>
-                                            <p>t.b.c</p>
-                                        </fieldset>
+                                </details>
+                                <details class="app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            <span class="govuk-visually-hidden">Filter by</span>
+                                            Hearing dates
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="option-hearing" data-col="hearing">
+                                            <fieldset class="govuk-fieldset">
+                                                t.b.c.
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                             Task type 
-                                            </legend>
-                                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                </details>
+                                <details class="js-all-content-finder-taxonomy-select app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            <span class="govuk-visually-hidden">Filter by</span>
+                                            Task type
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="option-taskType" data-col="task" >
+                                            <fieldset class="govuk-fieldset">
+                                               <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                                 <option value="Task1" selected></option>
                                                 <option value="Task2">All</option>
                                                 <option value="Task3">28 Day PCD Review</option>
@@ -561,14 +476,21 @@
                                                 <option value="Task6">Check New Communications</option>
                                                 <option value="Task7">Retrieve core details</option>
                                             </select>
-                                        </fieldset>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                </details>
+                                <details class="js-all-content-finder-taxonomy-select app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            <span class="govuk-visually-hidden">Filter by</span>
                                             Owner
-                                            </legend>
-                                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="option-owner" data-col="owner" >
+                                            <fieldset class="govuk-fieldset">
+                                               <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                                 <option value="Owner1" selected></option>
                                                 <option value="Owner2">David Jenkins</option>
                                                 <option value="Owner3">Admin pool</option>
@@ -580,81 +502,64 @@
                                                 <option value="Owner9">PO Tasking</option>
                                                 
                                             </select>
-                                        </fieldset>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                                             Severity
-                                            </legend>
-                                            <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                </details>
+                                <details class="js-all-content-finder-taxonomy-select app-c-filter-section">
+                                    <summary class="app-c-filter-section__summary">
+                                        <h2 class="app-c-filter-section__summary-heading">
+                                            <span class="govuk-visually-hidden">Filter by</span>
+                                            Severity
+                                        </h2>
+                                    </summary>
+                                    <div class="app-c-filter-section__content">
+                                        <div id="option-severity" data-col="severity" >
+                                            <fieldset class="govuk-fieldset">
+                                             <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
                                                 <option value="sev1" selected></option>
                                                 <option value="sev2">Escalates, Overdue, Due</option>
                                                 <option value="sev3">Due Soon</option>
                                                 <option value="sev4">Urgent</option>
                                             </select>
-                                        </fieldset>
-                                        <button id="applyFiltersBtn" type="submit" class="govuk-button apply-filters-btn"
-                                            data-module="govuk-button" style="margin-top:25px">
-                                            Apply filters</button>
+                                            </fieldset>
+                                        </div>
                                     </div>
+                                </details>
+                                 <div class="app-c-filter-panel__actions">
+                                    <!-- <input type="submit" value="Apply" class="govuk-button app-c-filter-panel__action app-c-filter-panel__action--submit"  data-disable-with="Apply"> -->
+                                    <input type="submit" value="Apply filters" class="govuk-button " data-disable-with="Apply filters" style="margin-bottom:0">
                                 </div>
+
                             </div>
                         </div>
-                    </div>
-                    <div class="moj-filter-layout__content">
-                        <div class="moj-scrollable-pane">
-                            <div style="">
-                                <!-- Label sits outside, behaves naturally -->
-                                <!-- <label class="govuk-label govuk-label--s" for="searchURNModal">Search communications</label> -->
-                                <!-- Flex container: input + search icon + green button aligned -->
-                                <div style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
-                                    <!-- Input + search icon -->
-                                    <div style="display: none; align-items: center; height: 40px;">
-                                        <input class="govuk-input" id="searchURNModal" name="searchURNModal" type="text"
-                                            placeholder="" style="width:350px" />
-                                        <button class="search searchModal modalButton" type="button" id="runSearch"
-                                            style="background-position: -2% 50%"></button>
-                                    </div>
-                                    <!-- Auto reclassify button -->
-                                    <!--                                     <button type="submit" class="govuk-button" data-module="govuk-button" style="margin: 0;">
-                                        Auto Reclassify UM
-                                    </button>
-                                    <button type="submit" class="govuk-button govuk-button--secondary" disabled aria-disabled="true" data-module="govuk-button" style="margin: 0;">
-                                        Reclasify to Unused
-                                    </button> -->
-                                </div>
-                            </div>
-                            <!-- <div class="moj-action-bar__filter"></div> -->
-
-                                <div class="" style="display:flex;  align-items: center;  " id="">
-                                    <div class="moj-action-bar__filter" style="min-width:108px"></div>
-<!--         <div class="taskCountBar" style="">
-            <p style="font-size:16px;margin-bottom:0">Task count</p>
-        </div> -->
-        <div class="taskOverViewContent" style="display: flex; gap: 15px; max-width: 800px;min-width:800px; width: 100%; margin-left: auto;">
-                        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                <i class="fa-solid fa-circle-info" style="color:#fff; "></i>
-                <p class="" style="font-size:16px;  margin-bottom:0">Due soon</p>
-                <p class="taskcCountItemNumber "> (4)</p>
-            </div>
-                        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                <i class="fa-solid fa-circle-info" style="color:#b1b4b6; "></i>
-                <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due today</p>
-                <p class="taskcCountItemNumber "> (2)</p>
-            </div>
-                        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
-                <i class="fa-solid fa-circle-exclamation" style="color:#ffdd00"></i>
-                <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Overdue</p>
-                <p class="taskcCountItemNumber "> (2)</p>
-            </div>
-            <div class="govuk-grid-column-one-quarter taskCountItems" style="margin-right:0">
-                <i class="fa-solid fa-triangle-exclamation" style=""></i>
-                <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p>
-                <p class="taskcCountItemNumber "> (7)</p>
-            </div>
+                    
+                            
+<!-- 
+<div class="" style="display:flex;  align-items: center;  " id="">
+    <div class="taskOverViewContent" style="display: flex; gap: 15px; max-width: 800px;min-width:800px; width: 100%; margin-left: auto;">
+        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+            <i class="fa-solid fa-circle-info" style="color:#fff; "></i>
+            <p class="" style="font-size:16px;  margin-bottom:0">Due soon</p>
+            <p class="taskcCountItemNumber "> (4)</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+            <i class="fa-solid fa-circle-info" style="color:#b1b4b6; "></i>
+            <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Due today</p>
+            <p class="taskcCountItemNumber "> (2)</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter taskCountItems" style="">
+            <i class="fa-solid fa-circle-exclamation" style="color:#ffdd00"></i>
+            <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Overdue</p>
+            <p class="taskcCountItemNumber "> (2)</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter taskCountItems" style="margin-right:0">
+            <i class="fa-solid fa-triangle-exclamation" style=""></i>
+            <p class="" style="font-size:16px; margin-left:15px; margin-bottom:0">Escalated</p>
+            <p class="taskcCountItemNumber "> (7)</p>
         </div>
     </div>
+</div> -->
 
 
                             <div class="app-c-filter-summary" id="activeFiltersArea"
@@ -1390,237 +1295,221 @@
                 });
             </script>
             <script>
-            document.addEventListener('DOMContentLoaded', () => {
-  const shownDisplay = document.querySelector('[data-comm-shown]');
-  // const applyFiltersBtn = document.getElementById('applyFiltersBtn');
-  const activeFiltersArea = document.getElementById('activeFiltersArea');
-
-  // Get all selects with name "sort" (they appear in DOM order)
-  const selects = Array.from(document.querySelectorAll('select[name="sort"]'));
-  // Map each to the correct filter
-  const selectMap = {
-    unitGroup: selects[0], // not used yet
-    unit: selects[1],      // not used yet
-    court: selects[2],     // not used yet
-    taskType: selects[3],
-    owner: selects[4],
-    severity: selects[5]
-  };
-
-  // --- Owner display name to initials mapping (expand as needed) ---
-  const ownerNameToInitials = {
-    'David Jenkins': 'DJ',
-    'Admin pool': 'Admin pool', // Example, adapt as you add owners
-    'CZ': 'CZ',
-    'KP': 'KP',
-    'NE': 'NE',
-    'RJ': 'RJ',
-    'DJ': 'DJ'
-    // Add more as needed
-  };
-
-  // Severity mapping logic
-  function matchesSeverity(row, severityValue) {
-    // Find icon after due date
-    const iconCell = row.querySelector('td.addRightLine i.fa-solid, td.addRightLine i.fa-circle-exclamation, td.addRightLine i.fa-triangle-exclamation, td.addRightLine i.fa-circle-info');
-    if (!iconCell) return false;
-    // Get computed color (RGB)
-    const color = window.getComputedStyle(iconCell).color;
-    // Convert rgb(212, 53, 28) etc to hex
-    function rgb2hex(rgb) {
-      if (!rgb) return '';
-      const result = rgb.match(/\d+/g);
-      if (!result || result.length < 3) return '';
-      return "#" + result.slice(0,3).map(x => ("0"+parseInt(x).toString(16)).slice(-2)).join('');
-    }
-    const hex = rgb2hex(color);
-
-    if (severityValue === "sev2") { // Escalates, Overdue, Due
-      // Accept red (#d4351c), yellow (#ffdd00), or grey (#b1b4b6), or white (#ffffff)
-      return (
-        hex === "#d4351c" || // red
-        hex === "#ffdd00" || // yellow
-        hex === "#b1b4b6" || // govuk grey
-        hex === "#ffffff"    // white
-      );
-    } else if (severityValue === "sev3") { // Due Soon
-      return hex === "#ffdd00";
-    } else if (severityValue === "sev4") { // Urgent
-      return hex === "#d4351c";
-    }
-    return false;
-  }
-
-  // Map UI filters to functions that extract their values
-  const filters = {
-    // Free text (search): matches URN or Defendants
-    keywords: () => document.getElementById('keywords').value.trim().toLowerCase(),
-    taskType: () => selectMap.taskType ? selectMap.taskType.value : "",
-    owner: () => selectMap.owner ? selectMap.owner.value : "",
-    severity: () => selectMap.severity ? selectMap.severity.value : ""
-  };
-
-  // Target correct rows in your task table
-const rows = [...document.querySelectorAll('#past-day tbody tr.govuk-table__row.main-task-row')];
-  const activeFilterList = document.querySelector('[data-active-filters]');
-  // You may or may not have this, so don't fail if missing:
-  const noResults = document.getElementById('no-results-message');
+document.addEventListener('DOMContentLoaded', function () {
+  // Cache row elements and counts
+  const rows = document.querySelectorAll('#past-month table.govuk-table tbody tr.govuk-table__row');
   const total = rows.length;
-
+  
+  // Update all elements with data-comm-total and data-comm-shown
   document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
   document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
+  
+  // Grab the active filters container within the summary block
+  const filterSummary = document.querySelector('.app-c-filter-summary');
+  // Use a marker attribute to target the list for dynamic insertion
+  const activeFiltersContainer = document.querySelector('.app-c-filter-summary__remove-filters');
 
-  function applyFilters() {
-  // Get the visible text for filters (not the value!)
-  const taskTypeOption = selectMap.taskType.options[selectMap.taskType.selectedIndex];
-  const taskTypeText = taskTypeOption ? taskTypeOption.text.trim().toLowerCase() : '';
+  // Helper: Determine if any filter is active
+  function isFilterActive() {
+    const keyword = document.querySelector('input[name="eventName"]').value.trim();
+    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim());
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim());
+    
+    return (keyword.length > 0 || newCommChecked || inOut.length > 0 || categories.length > 0 || commsWith.length > 0);
+  }
 
-  const ownerOption = selectMap.owner.options[selectMap.owner.selectedIndex];
-  const ownerText = ownerOption ? ownerOption.text.trim() : '';
-
-  const severityValue = selectMap.severity ? selectMap.severity.value : "";
-
-  const active = {
-    keyword: filters.keywords(),
-    taskType: taskTypeText,
-    owner: ownerText,
-    severity: severityValue
-  };
-
-  let visibleCount = 0;
-  rows.forEach(row => {
-    const urn = row.children[1]?.innerText.toLowerCase().trim() || "";
-    const defendants = row.children[2]?.innerText.toLowerCase().trim() || "";
-    const task = row.children[4]?.innerText.toLowerCase().trim() || "";
-    const ownerCell = row.children[7]?.innerText.trim() || "";
-
-    // Keyword: match URN OR defendants
-    let matchKeyword = true;
-    if (active.keyword) {
-      matchKeyword = urn.includes(active.keyword) || defendants.includes(active.keyword);
-    }
-
-    // Task type: skip if default or "All"
-    let matchTaskType = true;
-    if (
-      active.taskType &&
-      active.taskType !== "" &&
-      !/^task\s*$/i.test(active.taskType) &&
-      !/^all$/i.test(active.taskType)
-    ) {
-      matchTaskType = task === active.taskType;
-    }
-
-    // Owner: skip if default or "All"
-    let matchOwner = true;
-    if (
-      active.owner &&
-      active.owner !== "" &&
-      !/^owner$/i.test(active.owner) &&
-      !/^all$/i.test(active.owner)
-    ) {
-      // Map to initials
-      const mappedInitials =
-        ownerNameToInitials[active.owner] ||
-        (active.owner.match(/\b([A-Z])/g) || []).join("");
-      matchOwner = ownerCell === mappedInitials;
-    }
-
-    // Severity: skip if default
-    let matchSeverity = true;
-    if (active.severity && active.severity !== "" && active.severity !== "sev1") {
-      matchSeverity = matchesSeverity(row, active.severity);
-    }
-
-    const matches = matchKeyword && matchTaskType && matchOwner && matchSeverity;
-    row.style.display = matches ? '' : 'none';
-    if (matches) visibleCount++;
-  });
-
-  shownDisplay.textContent = visibleCount;
-  if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-  updateLozenges(active);
-}
-  // Lozenges for current filters
-  function updateLozenges(active) {
-    activeFilterList.innerHTML = '';
-    const addFilter = (filterType, value) => {
+  // Build dynamic active filter lozenges
+  function buildActiveFiltersList() {
+    // Clear previous lozenges
+    activeFiltersContainer.innerHTML = '';
+    
+    // Keyword filter
+    const keyword = document.querySelector('input[name="eventName"]').value.trim();
+    if (keyword) {
       const li = document.createElement('li');
       li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="${filterType}" data-filter-value="${value}">
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="keyword">
           <span class="app-c-filter-summary__remove-filter-text">
             <span class="govuk-visually-hidden">Remove filter</span>
-            ${filterType.charAt(0).toUpperCase() + filterType.slice(1)}: ${value}
+            Keyword: ${keyword}
           </span>
         </a>
       `;
-      activeFilterList.appendChild(li);
-    };
-
-    if (active.keyword) addFilter('Keyword', active.keyword);
-    if (active.taskType && active.taskType !== "" && active.taskType !== "Task1" && active.taskType !== "All") addFilter('Task type', selectMap.taskType.options[selectMap.taskType.selectedIndex].text);
-    if (active.owner && active.owner !== "" && active.owner !== "Owner1" && active.owner !== "All") addFilter('Owner', selectMap.owner.options[selectMap.owner.selectedIndex].text);
-    if (active.severity && active.severity !== "" && active.severity !== "sev1") addFilter('Severity', selectMap.severity.options[selectMap.severity.selectedIndex].text);
-
-    activeFiltersArea.style.display = activeFilterList.children.length ? 'block' : 'none';
-
-    document.querySelectorAll('.app-c-filter-summary__remove-filter').forEach(link => {
-      link.addEventListener('click', () => {
-        const filterType = link.getAttribute('data-filter');
-        removeFilter(filterType);
-        applyFilters();
-      });
+      activeFiltersContainer.appendChild(li);
+    }
+    
+    // New communications filter
+    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+    if (newCommChecked) {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="newComms">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            New communications: unread
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    }
+    
+    // In/Out filter(s)
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+    inOut.forEach(val => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="inOut" data-filter-value="${val}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            In/Out: ${val}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    });
+    
+    // Category filter(s)
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim());
+    categories.forEach(val => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="category" data-filter-value="${val}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            Category: ${val}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
+    });
+    
+    // Comms with filter(s)
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim());
+    commsWith.forEach(val => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="commsWith" data-filter-value="${val}">
+          <span class="app-c-filter-summary__remove-filter-text">
+            <span class="govuk-visually-hidden">Remove filter</span>
+            Comms with: ${val}
+          </span>
+        </a>
+      `;
+      activeFiltersContainer.appendChild(li);
     });
   }
 
-  function removeFilter(filterType) {
-    switch (filterType) {
-      case 'Keyword':
-        document.getElementById('keywords').value = '';
-        break;
-      case 'Task type':
-        if (selectMap.taskType) selectMap.taskType.selectedIndex = 0;
-        break;
-      case 'Owner':
-        if (selectMap.owner) selectMap.owner.selectedIndex = 0;
-        break;
-      case 'Severity':
-        if (selectMap.severity) selectMap.severity.selectedIndex = 0;
-        break;
-    }
-  }
-
-  function clearFilters() {
-    document.getElementById('keywords').value = '';
-    if (selectMap.taskType) selectMap.taskType.selectedIndex = 0;
-    if (selectMap.owner) selectMap.owner.selectedIndex = 0;
-    if (selectMap.severity) selectMap.severity.selectedIndex = 0;
-    applyFilters();
-  }
-
-document.querySelectorAll('.apply-filters-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    applyFilters();
-
-    // Close filter panels if open (MOJFrontend)
-    // Try to find the filter toggle button
-    const toggleBtn = document.querySelector('.moj-action-bar__filter button, [aria-controls="filter-panel"]');
-    // If visible and says 'Hide filter', click to close
-    if (toggleBtn && /hide filter/i.test(toggleBtn.textContent)) {
-      toggleBtn.click();
-    }
-  });
-});
-
-  document.querySelectorAll('.clear-filters, #clearFiltersLink').forEach(clearLink => {
-    clearLink.addEventListener('click', e => {
+  // Delegate click events on the active filters container to remove individual filters
+  activeFiltersContainer.addEventListener('click', function(e) {
+    const target = e.target.closest('.app-c-filter-summary__remove-filter');
+    if (target) {
       e.preventDefault();
-      clearFilters();
+      const filterType = target.getAttribute('data-filter');
+      const filterValue = target.getAttribute('data-filter-value');
+      
+      // Remove the corresponding filter based on its type
+      if (filterType === 'keyword') {
+        const keywordInput = document.querySelector('input[name="eventName"]');
+        if (keywordInput) keywordInput.value = '';
+      } else if (filterType === 'newComms') {
+        const newCommInput = document.querySelector('input[name="new_comms_supergroup[]"]:checked');
+        if (newCommInput) newCommInput.checked = false;
+      } else if (filterType === 'inOut') {
+        document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')
+          .forEach(input => {
+            if (input.value.trim() === filterValue) input.checked = false;
+          });
+      } else if (filterType === 'category') {
+        document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')
+          .forEach(input => {
+            if (input.value.trim() === filterValue) input.checked = false;
+          });
+      } else if (filterType === 'commsWith') {
+        document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')
+          .forEach(input => {
+            if (input.value.trim() === filterValue) input.checked = false;
+          });
+      }
+      
+      // Reapply filters (simulate a click on the "Apply filters" button)
+      document.querySelector('input[type="submit"][value="Apply filters"]').click();
+    }
+  });
+  
+  // Apply filters button event
+  document.querySelector('input[type="submit"][value="Apply filters"]').addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    let visibleCount = 0;
+    const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
+    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
+    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
+    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
+    
+    // Filter table rows based on active filters
+    rows.forEach(row => {
+      const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
+      const inOutText = row.children[2]?.innerText.trim();
+      const commsText = row.children[3]?.innerText.trim().toLowerCase();
+      const categoryText = row.children[4]?.innerText.trim().toLowerCase();
+      const hasNewTag = row.querySelector('.govuk-tag--blue') !== null;
+      
+      let show = true;
+      if (keyword && !subject.includes(keyword)) show = false;
+      if (newCommChecked && !hasNewTag) show = false;
+      if (inOut.length && !inOut.includes(inOutText)) show = false;
+      if (categories.length && !categories.includes(categoryText)) show = false;
+      if (commsWith.length && !commsWith.includes(commsText)) show = false;
+      
+      row.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    
+    // Update the communication count elements
+    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
+    
+    // If filters are active, update and show the active filters summary; otherwise hide it
+    if (filterSummary) {
+      if (isFilterActive()) {
+        filterSummary.style.display = 'block';
+        buildActiveFiltersList();
+      } else {
+        filterSummary.style.display = 'none';
+      }
+    }
+    
+    // Optionally, close the filter panel if it is open
+    const filterButton = document.querySelector('.app-c-filter-panel__button');
+    if (filterButton && filterButton.getAttribute('aria-expanded') === 'true') {
+      filterButton.click();
+    }
+  });
+  
+  // Clear filters event (for the "Clear filters" link)
+  document.querySelectorAll('.clear-filters').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Reset checkboxes and keyword input
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      const keywordInput = document.querySelector('input[name="eventName"]');
+      if (keywordInput) keywordInput.value = '';
+      
+      // Reset table rows visibility
+      rows.forEach(row => row.style.display = '');
+      
+      // Update counts
+      document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = rows.length);
+      document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
+      
+      // Hide the active filters summary
+      if (filterSummary) {
+        filterSummary.style.display = 'none';
+      }
     });
   });
-
-  clearFilters();
 });
 </script>
 
