@@ -1295,222 +1295,145 @@
                 });
             </script>
             <script>
+
 document.addEventListener('DOMContentLoaded', function () {
-  // Cache row elements and counts
-  const rows = document.querySelectorAll('#past-month table.govuk-table tbody tr.govuk-table__row');
-  const total = rows.length;
-  
-  // Update all elements with data-comm-total and data-comm-shown
-  document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = total);
-  document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = total);
-  
-  // Grab the active filters container within the summary block
+  const rows = document.querySelectorAll('#past-day table.govuk-table tbody tr.main-task-row');
   const filterSummary = document.querySelector('.app-c-filter-summary');
-  // Use a marker attribute to target the list for dynamic insertion
   const activeFiltersContainer = document.querySelector('.app-c-filter-summary__remove-filters');
+  const applyButton = document.querySelector('input[type="submit"][value="Apply filters"]');
 
-  // Helper: Determine if any filter is active
-  function isFilterActive() {
-    const keyword = document.querySelector('input[name="eventName"]').value.trim();
-    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
-    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
-    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim());
-    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim());
-    
-    return (keyword.length > 0 || newCommChecked || inOut.length > 0 || categories.length > 0 || commsWith.length > 0);
+  function getFilters() {
+    return {
+      keyword: document.querySelector('input[name="eventName"]').value.trim().toLowerCase(),
+      task: document.querySelector('#option-taskType select').value,
+      owner: document.querySelector('#option-owner select').value,
+      severity: document.querySelector('#option-severity select').value
+    };
   }
 
-  // Build dynamic active filter lozenges
-  function buildActiveFiltersList() {
-    // Clear previous lozenges
+  function isDefault(value) {
+    return !value || value === 'Task1' || value === 'Owner1' || value === 'sev1';
+  }
+
+  function buildLozenges(filters) {
     activeFiltersContainer.innerHTML = '';
-    
-    // Keyword filter
-    const keyword = document.querySelector('input[name="eventName"]').value.trim();
-    if (keyword) {
+    const options = {
+      task: '#option-taskType select',
+      owner: '#option-owner select',
+      severity: '#option-severity select'
+    };
+
+    if (filters.keyword) {
       const li = document.createElement('li');
-      li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="keyword">
-          <span class="app-c-filter-summary__remove-filter-text">
-            <span class="govuk-visually-hidden">Remove filter</span>
-            Keyword: ${keyword}
-          </span>
-        </a>
-      `;
+      li.innerHTML = `<a class="app-c-filter-summary__remove-filter" href="#" data-filter="keyword">Keyword: ${filters.keyword}</a>`;
       activeFiltersContainer.appendChild(li);
     }
-    
-    // New communications filter
-    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
-    if (newCommChecked) {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="newComms">
-          <span class="app-c-filter-summary__remove-filter-text">
-            <span class="govuk-visually-hidden">Remove filter</span>
-            New communications: unread
-          </span>
-        </a>
-      `;
-      activeFiltersContainer.appendChild(li);
+
+    for (const key of ['task', 'owner', 'severity']) {
+      if (!isDefault(filters[key])) {
+        const select = document.querySelector(options[key]);
+        const text = select.options[select.selectedIndex].text;
+        const li = document.createElement('li');
+        li.innerHTML = `<a class="app-c-filter-summary__remove-filter" href="#" data-filter="${key}">${key.charAt(0).toUpperCase() + key.slice(1)}: ${text}</a>`;
+        activeFiltersContainer.appendChild(li);
+      }
     }
-    
-    // In/Out filter(s)
-    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
-    inOut.forEach(val => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="inOut" data-filter-value="${val}">
-          <span class="app-c-filter-summary__remove-filter-text">
-            <span class="govuk-visually-hidden">Remove filter</span>
-            In/Out: ${val}
-          </span>
-        </a>
-      `;
-      activeFiltersContainer.appendChild(li);
-    });
-    
-    // Category filter(s)
-    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim());
-    categories.forEach(val => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="category" data-filter-value="${val}">
-          <span class="app-c-filter-summary__remove-filter-text">
-            <span class="govuk-visually-hidden">Remove filter</span>
-            Category: ${val}
-          </span>
-        </a>
-      `;
-      activeFiltersContainer.appendChild(li);
-    });
-    
-    // Comms with filter(s)
-    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim());
-    commsWith.forEach(val => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <a class="app-c-filter-summary__remove-filter" href="javascript:void(0)" data-filter="commsWith" data-filter-value="${val}">
-          <span class="app-c-filter-summary__remove-filter-text">
-            <span class="govuk-visually-hidden">Remove filter</span>
-            Comms with: ${val}
-          </span>
-        </a>
-      `;
-      activeFiltersContainer.appendChild(li);
-    });
+
+    filterSummary.style.display = activeFiltersContainer.children.length ? 'block' : 'none';
   }
 
-  // Delegate click events on the active filters container to remove individual filters
-  activeFiltersContainer.addEventListener('click', function(e) {
-    const target = e.target.closest('.app-c-filter-summary__remove-filter');
+  function applyFilters() {
+    const filters = getFilters();
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const urn = row.children[1]?.textContent.toLowerCase();
+      const defendants = row.children[2]?.textContent.toLowerCase();
+      const task = row.children[4]?.textContent.trim();
+      const ownerInitials = row.children[7]?.textContent.trim().toUpperCase();
+      const icon = row.children[8]?.querySelector('i');
+
+      let visible = true;
+
+      if (filters.keyword && !(urn.includes(filters.keyword) || defendants.includes(filters.keyword))) {
+        visible = false;
+      }
+
+      if (!isDefault(filters.task)) {
+        const selectedText = document.querySelector('#option-taskType select option:checked').textContent.trim();
+        if (task !== selectedText) visible = false;
+      }
+
+      if (!isDefault(filters.owner)) {
+        const ownerMap = {
+          'Owner2': 'DJ', // David Jenkins
+          'Owner3': 'AP', // Admin Pool
+          'Owner4': 'ALL',
+          'Owner5': 'CC',
+          'Owner6': 'DT',
+          'Owner7': 'MC',
+          'Owner8': 'MG',
+          'Owner9': 'PT'
+        };
+        const expected = ownerMap[filters.owner];
+        if (expected && expected !== 'ALL' && ownerInitials !== expected) visible = false;
+      }
+
+      if (!isDefault(filters.severity)) {
+        let match = false;
+        if (icon) {
+          const className = icon.className;
+          if (filters.severity === 'sev2') match = /fa-(triangle-exclamation|circle-exclamation|circle-info)/.test(className);
+          else if (filters.severity === 'sev3') match = className.includes('fa-circle-exclamation');
+          else if (filters.severity === 'sev4') match = className.includes('fa-triangle-exclamation');
+        }
+        if (!match) visible = false;
+      }
+
+      row.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
+    buildLozenges(filters);
+  }
+
+  function clearFilters() {
+    document.querySelector('input[name="eventName"]').value = '';
+    document.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+    applyFilters();
+  }
+
+  function removeFilter(type) {
+    if (type === 'keyword') document.querySelector('input[name="eventName"]').value = '';
+    else document.querySelector(`#option-${type} select`).selectedIndex = 0;
+    applyFilters();
+  }
+
+  // Event listeners
+  applyButton.addEventListener('click', e => {
+    e.preventDefault();
+    applyFilters();
+  });
+
+  activeFiltersContainer.addEventListener('click', e => {
+    const target = e.target.closest('a[data-filter]');
     if (target) {
       e.preventDefault();
-      const filterType = target.getAttribute('data-filter');
-      const filterValue = target.getAttribute('data-filter-value');
-      
-      // Remove the corresponding filter based on its type
-      if (filterType === 'keyword') {
-        const keywordInput = document.querySelector('input[name="eventName"]');
-        if (keywordInput) keywordInput.value = '';
-      } else if (filterType === 'newComms') {
-        const newCommInput = document.querySelector('input[name="new_comms_supergroup[]"]:checked');
-        if (newCommInput) newCommInput.checked = false;
-      } else if (filterType === 'inOut') {
-        document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')
-          .forEach(input => {
-            if (input.value.trim() === filterValue) input.checked = false;
-          });
-      } else if (filterType === 'category') {
-        document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')
-          .forEach(input => {
-            if (input.value.trim() === filterValue) input.checked = false;
-          });
-      } else if (filterType === 'commsWith') {
-        document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')
-          .forEach(input => {
-            if (input.value.trim() === filterValue) input.checked = false;
-          });
-      }
-      
-      // Reapply filters (simulate a click on the "Apply filters" button)
-      document.querySelector('input[type="submit"][value="Apply filters"]').click();
+      removeFilter(target.getAttribute('data-filter'));
     }
   });
-  
-  // Apply filters button event
-  document.querySelector('input[type="submit"][value="Apply filters"]').addEventListener('click', function (e) {
-    e.preventDefault();
-    
-    let visibleCount = 0;
-    const keyword = document.querySelector('input[name="eventName"]').value.trim().toLowerCase();
-    const newCommChecked = document.querySelector('input[name="new_comms_supergroup[]"]:checked') !== null;
-    const inOut = Array.from(document.querySelectorAll('input[name="content_purpose_services_supergroup[]"]:checked')).map(el => el.value.trim());
-    const categories = Array.from(document.querySelectorAll('input[name="content_category_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
-    const commsWith = Array.from(document.querySelectorAll('input[name="content_comms_supergroup[]"]:checked')).map(el => el.value.trim().toLowerCase());
-    
-    // Filter table rows based on active filters
-    rows.forEach(row => {
-      const subject = row.querySelector('.subject-cell')?.innerText.trim().toLowerCase() || '';
-      const inOutText = row.children[2]?.innerText.trim();
-      const commsText = row.children[3]?.innerText.trim().toLowerCase();
-      const categoryText = row.children[4]?.innerText.trim().toLowerCase();
-      const hasNewTag = row.querySelector('.govuk-tag--blue') !== null;
-      
-      let show = true;
-      if (keyword && !subject.includes(keyword)) show = false;
-      if (newCommChecked && !hasNewTag) show = false;
-      if (inOut.length && !inOut.includes(inOutText)) show = false;
-      if (categories.length && !categories.includes(categoryText)) show = false;
-      if (commsWith.length && !commsWith.includes(commsText)) show = false;
-      
-      row.style.display = show ? '' : 'none';
-      if (show) visibleCount++;
-    });
-    
-    // Update the communication count elements
-    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
-    
-    // If filters are active, update and show the active filters summary; otherwise hide it
-    if (filterSummary) {
-      if (isFilterActive()) {
-        filterSummary.style.display = 'block';
-        buildActiveFiltersList();
-      } else {
-        filterSummary.style.display = 'none';
-      }
-    }
-    
-    // Optionally, close the filter panel if it is open
-    const filterButton = document.querySelector('.app-c-filter-panel__button');
-    if (filterButton && filterButton.getAttribute('aria-expanded') === 'true') {
-      filterButton.click();
-    }
-  });
-  
-  // Clear filters event (for the "Clear filters" link)
-  document.querySelectorAll('.clear-filters').forEach(link => {
-    link.addEventListener('click', function (e) {
+
+  document.querySelectorAll('.clear-filters').forEach(btn =>
+    btn.addEventListener('click', e => {
       e.preventDefault();
-      // Reset checkboxes and keyword input
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      const keywordInput = document.querySelector('input[name="eventName"]');
-      if (keywordInput) keywordInput.value = '';
-      
-      // Reset table rows visibility
-      rows.forEach(row => row.style.display = '');
-      
-      // Update counts
-      document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = rows.length);
-      document.querySelectorAll('[data-comm-total]').forEach(el => el.textContent = rows.length);
-      
-      // Hide the active filters summary
-      if (filterSummary) {
-        filterSummary.style.display = 'none';
-      }
-    });
-  });
+      clearFilters();
+    })
+  );
+
+  // Initial run to show all rows
+  applyFilters();
 });
-</script>
+            </script>  
 
             {% endblock %}
