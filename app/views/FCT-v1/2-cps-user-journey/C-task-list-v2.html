@@ -471,7 +471,7 @@
                                                 <option value="Task1" selected></option>
                                                 <option value="Task2">All</option>
                                                 <option value="Task3">28 Day PCD Review</option>
-                                                <option value="Task4">Case Outstanding PCD</option>
+                                                <option value="Task4">Chase Outstanding PCD</option>
                                                 <option value="Task5">Check CTL Case</option>
                                                 <option value="Task6">Check New Communications</option>
                                                 <option value="Task7">Retrieve core details</option>
@@ -1394,7 +1394,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (visible) visibleCount++;
     });
 
-    document.querySelectorAll('[data-comm-shown]').forEach(el => el.textContent = visibleCount);
+    const totalCount = rows.length;
+
+document.querySelectorAll('[data-comm-shown]').forEach(el => {
+  el.textContent = visibleCount;
+});
+document.querySelectorAll('[data-comm-total]').forEach(el => {
+  el.textContent = totalCount;
+});
     buildLozenges(filters);
   }
 
@@ -1404,17 +1411,36 @@ document.addEventListener('DOMContentLoaded', function () {
     applyFilters();
   }
 
-  function removeFilter(type) {
-    if (type === 'keyword') document.querySelector('input[name="eventName"]').value = '';
-    else document.querySelector(`#option-${type} select`).selectedIndex = 0;
-    applyFilters();
+function removeFilter(type) {
+  if (type === 'keyword') {
+    document.querySelector('input[name="eventName"]').value = '';
+  } else {
+    const idMap = {
+      task: 'taskType',
+      owner: 'owner',
+      severity: 'severity'
+    };
+    const targetId = idMap[type] || type;
+    document.querySelector(`#option-${targetId} select`).selectedIndex = 0;
   }
 
+  applyFilters();
+}
+
   // Event listeners
-  applyButton.addEventListener('click', e => {
-    e.preventDefault();
-    applyFilters();
-  });
+ applyButton.addEventListener('click', e => {
+  e.preventDefault();
+  applyFilters();
+
+  // === NEW CODE TO CLOSE FILTER PANEL ===
+  const filterPanel = document.querySelector('.app-c-filter-panel__content');
+  const filterButton = document.querySelector('.app-c-filter-panel__button');
+
+  if (filterPanel && filterButton) {
+    filterPanel.setAttribute('hidden', '');
+    filterButton.setAttribute('aria-expanded', 'false');
+  }
+});
 
   activeFiltersContainer.addEventListener('click', e => {
     const target = e.target.closest('a[data-filter]');
