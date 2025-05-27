@@ -8,8 +8,10 @@
 {% block beforeContent %}
 {% endblock %}
 {% block content %}
+
 <script type="module" src="/public/javascripts/moj-frontend-41ac88f676.min.js"></script>
 <script src="/public/javascripts/sorttable.js"></script>
+<!-- <script type="module" src="/public/javascripts/date-picker.mjs"></script> -->
 <script src="/public/javascripts/filter-toggle-button.js"></script>
 <!-- <link href="/public/stylesheets/filtering.css" media="screen" rel="stylesheet" type="text/css" /> -->
 <!-- remove if you get rid of the gov width container -->
@@ -216,6 +218,18 @@
 .app-c-filter-summary__remove-filter {
     color: #fff !important;
     background-color: #1d70b8;
+}
+
+.moj-datepicker__toggle {
+    background-color: #0b0c0c;
+    border: none;
+    border-bottom: 4px solid #0000;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    outline: 3px solid #0000;
+    outline-offset: -3px;
+    padding-top: 6px;
 }
 
 
@@ -458,16 +472,37 @@
                     </div>
                 </div>
                 <div>
-                    <div class="govuk-grid-column-one-quarter" style="padding-left: 0;" id="">
+                <div class="govuk-grid-column-one-quarter" style="padding-left: 0;" id="">
                         <div class="govuk-form-group mb15">
-                             <div id="option-hearing" data-col="hearing">
-                                 <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Hearing dates
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                                t.b.c.
-                                            </fieldset>
-                                        </div>
+                            <div id="option-hearing" data-col="hearing">
+                                <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
+                                    Hearing dates
+                                </h2>
+                                <div class="moj-datepicker" data-module="moj-date-picker">
+                                    <div class="govuk-form-group">
+                                        <input class="govuk-input moj-js-datepicker-input"
+       id="date"
+       name="date"
+       type="text"
+       aria-describedby="date-hint"
+       autocomplete="off"
+       style="width: calc(100% - 38px); display: inline-block; vertical-align: middle;">
+                                       <button class="moj-datepicker__toggle moj-js-datepicker-toggle"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="datepicker-date"
+        aria-expanded="false"
+        style="height: 40px; margin-left: -4px; vertical-align: middle; padding: 0 3px 0 3px; display: inline-flex; align-items: center;">
+                                            <span class="govuk-visually-hidden">Choose date</span>
+                                            <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
+                                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.1333 2.93333H5.86668V4.4C5.86668 5.21002 5.21003 5.86667 4.40002 5.86667C3.59 5.86667 2.93335 5.21002 2.93335 4.4V2.93333H2C0.895431 2.93333 0 3.82877 0 4.93334V19.2667C0 20.3712 0.89543 21.2667 2 21.2667H20C21.1046 21.2667 22 20.3712 22 19.2667V4.93333C22 3.82876 21.1046 2.93333 20 2.93333H19.0667V4.4C19.0667 5.21002 18.41 5.86667 17.6 5.86667C16.79 5.86667 16.1333 5.21002 16.1333 4.4V2.93333ZM20.5333 8.06667H1.46665V18.8C1.46665 19.3523 1.91436 19.8 2.46665 19.8H19.5333C20.0856 19.8 20.5333 19.3523 20.5333 18.8V8.06667Z"></path>
+                                                <rect x="3.66669" width="1.46667" height="5.13333" rx="0.733333" fill="currentColor"></rect>
+                                                <rect x="16.8667" width="1.46667" height="5.13333" rx="0.733333" fill="currentColor"></rect>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="">
@@ -1129,24 +1164,24 @@
             </script>
             <script type="module">
                 // Store the existing MOJ filter toggle instance without altering its behavior.
-                const mojFilterToggle = new MOJFrontend.FilterToggleButton({
-                    bigModeMediaQuery: '(min-width: 48.063em)',
-                    startHidden: true,
-                    toggleButton: {
-                        container: document.querySelector('.moj-action-bar__filter'),
-                        showText: 'Show filter',
-                        hideText: 'Hide filter',
-                        classes: 'govuk-button--secondary'
-                    },
-                    closeButton: {
-                        container: document.querySelector('.moj-filter__header-action'),
-                        text: 'Close'
-                    },
-                    filter: {
-                        container: document.querySelector('.moj-filter')
-                    }
-                });
-            </script>
+            //     const mojFilterToggle = new MOJFrontend.FilterToggleButton({
+            //         bigModeMediaQuery: '(min-width: 48.063em)',
+            //         startHidden: true,
+            //         toggleButton: {
+            //             container: document.querySelector('.moj-action-bar__filter'),
+            //             showText: 'Show filter',
+            //             hideText: 'Hide filter',
+            //             classes: 'govuk-button--secondary'
+            //         },
+            //         closeButton: {
+            //             container: document.querySelector('.moj-filter__header-action'),
+            //             text: 'Close'
+            //         },
+            //         filter: {
+            //             container: document.querySelector('.moj-filter')
+            //         }
+            //     });
+            // </script>
             <script>
 
 document.addEventListener('DOMContentLoaded', function () {
