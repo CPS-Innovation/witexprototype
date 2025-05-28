@@ -376,10 +376,8 @@
                     </a>
                 </li>
             </ul>
-
             <div class="govuk-tabs__panel" id="past-day">
-
-<!--     <div class="" style="display:flex;  align-items: center;  " id="">
+                <!--     <div class="" style="display:flex;  align-items: center;  " id="">
         <div class="taskOverViewContent" style="display: flex; gap: 15px; max-width: 800px; width: 100%; margin-left: auto;">
                         <div class="govuk-grid-column-one-quarter taskCountItems" style="">
                 <i class="fa-solid fa-circle-info" style="color:#fff; "></i>
@@ -402,77 +400,76 @@
                 <p class="taskcCountItemNumber "> (7)</p>
             </div>
         </div>
-    </div> --> 
-    <div>
-         <form id="filters-form">
-                    <div class="govuk-grid-column-one-quarter" style="padding-left:0" id="">
-                        <div class="govuk-form-group mb15 ">
-                            <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            URN or defendant surname
-                                        </h2>
-                            <input class="govuk-input" id="event-name" name="eventName" type="text" placeholder="">
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-
-                                         <div id="option-unitGroup" >
-                                            <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Unit group
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                               <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                                <option value="U1" ></option>
-                                                <option value="U2">Yorkshire and Humberside Crown Court</option>
-                                                <option value="U3">Yorkshire and Humberside Magistrates Court</option>
-                                            </select>
-                                            </fieldset>
-                                        </div>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="">
-                        <div class="govuk-form-group mb15">
-                            <div id="options-unit" data-col="unit" >
-                                 <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Unit
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                              <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                                <option value="Unit1"  selected ></option>
-                                                <option value="Unit2">All</option>
-                                                <option value="Unit3">Hull CJU</option>
-                                                <option value="Unit3">Hull TU</option>
-                                                <option value="Unit3">Stafford CJU</option>
-                                            </select>
-                                            </fieldset>
-                                        </div>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-quarter" id="" style="padding-right:0">
-                        <div class="govuk-form-group mb15">
-                               <div id="option-courts" data-col="court" >
+    </div> -->
+                <div>
+                    <form id="filters-form">
+                        <div class="govuk-grid-column-one-quarter" style="padding-left:0" id="">
+                            <div class="govuk-form-group mb15 ">
                                 <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Court
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                                <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                                <option value="Court1" selected></option>
-                                                <option value="Court2">Aldersgate House CC NC</option>
-                                                <option value="Court3">Ashton Hall CC NC</option>
-                                                <option value="Court4">Ashton Hall MC NC</option>
-                                                <option value="Court5">Birmingham CC NC</option>
-                                                <option value="Court6">Bolton Stadium CC NC</option>
-                                                <option value="Court7">Chester CC NC</option>
-                                                <option value="Court8">Hull CC</option>
-                                                <option value="Court9">Leeds Cloth Hall CC NC</option>
-                                            </select>
-                                            </fieldset>
-                                        </div>
+                                    URN or defendant surname
+                                </h2>
+                                <input class="govuk-input" id="event-name" name="eventName" type="text" placeholder="">
+                            </div>
                         </div>
-                    </div>
+                        <div class="govuk-grid-column-one-quarter" id="">
+                            <div class="govuk-form-group mb15">
+                                <div id="option-unitGroup">
+                                    <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
+                                        Unit group
+                                    </h2>
+                                    <fieldset class="govuk-fieldset">
+                                        <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                            <option value="U1"></option>
+                                            <option value="U2">Yorkshire and Humberside Crown Court</option>
+                                            <option value="U3">Yorkshire and Humberside Magistrates Court</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="govuk-grid-column-one-quarter" id="">
+                            <div class="govuk-form-group mb15">
+                                <div id="options-unit" data-col="unit">
+                                    <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
+                                        Unit
+                                    </h2>
+                                    <fieldset class="govuk-fieldset">
+                                        <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                            <option value="Unit1" selected></option>
+                                            <option value="Unit2">All</option>
+                                            <option value="Unit3">Hull CJU</option>
+                                            <option value="Unit3">Hull TU</option>
+                                            <option value="Unit3">Stafford CJU</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="govuk-grid-column-one-quarter" id="" style="padding-right:0">
+                            <div class="govuk-form-group mb15">
+                                <div id="option-courts" data-col="court">
+                                    <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
+                                        Court
+                                    </h2>
+                                    <fieldset class="govuk-fieldset">
+                                        <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                            <option value="Court1" selected></option>
+                                            <option value="Court2">Aldersgate House CC NC</option>
+                                            <option value="Court3">Ashton Hall CC NC</option>
+                                            <option value="Court4">Ashton Hall MC NC</option>
+                                            <option value="Court5">Birmingham CC NC</option>
+                                            <option value="Court6">Bolton Stadium CC NC</option>
+                                            <option value="Court7">Chester CC NC</option>
+                                            <option value="Court8">Hull CC</option>
+                                            <option value="Court9">Leeds Cloth Hall CC NC</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div>
-                <div class="govuk-grid-column-one-quarter" style="padding-left: 0;" id="">
+                    <div class="govuk-grid-column-one-quarter" style="padding-left: 0;" id="">
                         <div class="govuk-form-group mb15">
                             <div id="option-hearing" data-col="hearing">
                                 <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
@@ -480,19 +477,8 @@
                                 </h2>
                                 <div class="moj-datepicker" data-module="moj-date-picker">
                                     <div class="govuk-form-group">
-                                        <input class="govuk-input moj-js-datepicker-input"
-       id="date"
-       name="date"
-       type="text"
-       aria-describedby="date-hint"
-       autocomplete="off"
-       style="width: calc(100% - 38px); display: inline-block; vertical-align: middle;">
-                                       <button class="moj-datepicker__toggle moj-js-datepicker-toggle"
-        type="button"
-        aria-haspopup="dialog"
-        aria-controls="datepicker-date"
-        aria-expanded="false"
-        style="height: 40px; margin-left: -4px; vertical-align: middle; padding: 0 3px 0 3px; display: inline-flex; align-items: center;">
+                                        <input class="govuk-input moj-js-datepicker-input" id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off" style="width: calc(100% - 38px); display: inline-block; vertical-align: middle;">
+                                        <button class="moj-datepicker__toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog" aria-controls="datepicker-date" aria-expanded="false" style="height: 40px; margin-left: -4px; vertical-align: middle; padding: 0 3px 0 3px; display: inline-flex; align-items: center;">
                                             <span class="govuk-visually-hidden">Choose date</span>
                                             <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
                                                 <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.1333 2.93333H5.86668V4.4C5.86668 5.21002 5.21003 5.86667 4.40002 5.86667C3.59 5.86667 2.93335 5.21002 2.93335 4.4V2.93333H2C0.895431 2.93333 0 3.82877 0 4.93334V19.2667C0 20.3712 0.89543 21.2667 2 21.2667H20C21.1046 21.2667 22 20.3712 22 19.2667V4.93333C22 3.82876 21.1046 2.93333 20 2.93333H19.0667V4.4C19.0667 5.21002 18.41 5.86667 17.6 5.86667C16.79 5.86667 16.1333 5.21002 16.1333 4.4V2.93333ZM20.5333 8.06667H1.46665V18.8C1.46665 19.3523 1.91436 19.8 2.46665 19.8H19.5333C20.0856 19.8 20.5333 19.3523 20.5333 18.8V8.06667Z"></path>
@@ -507,67 +493,63 @@
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="">
                         <div class="govuk-form-group mb15">
-                      
-                             <div id="option-taskType" data-col="task" >
+                            <div id="option-taskType" data-col="task">
                                 <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Task types
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                               <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                                <option value="Task1" selected></option>
-                                                <option value="Task2">All</option>
-                                                <option value="Task3">28 Day PCD Review</option>
-                                                <option value="Task4">Chase Outstanding PCD</option>
-                                                <option value="Task5">Check CTL Case</option>
-                                                <option value="Task6">Check New Communications</option>
-                                                <option value="Task7">Retrieve core details</option>
-                                            </select>
-                                            </fieldset>
-                                        </div>
+                                    Task types
+                                </h2>
+                                <fieldset class="govuk-fieldset">
+                                    <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                        <option value="Task1" selected></option>
+                                        <option value="Task2">All</option>
+                                        <option value="Task3">28 Day PCD Review</option>
+                                        <option value="Task4">Chase Outstanding PCD</option>
+                                        <option value="Task5">Check CTL Case</option>
+                                        <option value="Task6">Check New Communications</option>
+                                        <option value="Task7">Retrieve core details</option>
+                                    </select>
+                                </fieldset>
+                            </div>
                         </div>
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="">
                         <div class="govuk-form-group mb15">
-                          <div id="option-owner" data-col="owner" >
-                            <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Owner
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                               <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                                <option value="Owner1" selected></option>
-                                                <option value="Owner2">David Jenkins</option>
-                                                <option value="Owner3">Admin pool</option>
-                                                <option value="Owner4">All</option>
-                                                <option value="Owner5">Crown Court</option>
-                                                <option value="Owner6">DCP Triage Team</option>
-                                                <option value="Owner7">MC Contested</option>
-                                                <option value="Owner8">MC General</option>
-                                                <option value="Owner9">PO Tasking</option>
-                                                
-                                            </select>
-                                            </fieldset>
-                                        </div>
+                            <div id="option-owner" data-col="owner">
+                                <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
+                                    Owner
+                                </h2>
+                                <fieldset class="govuk-fieldset">
+                                    <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                        <option value="Owner1" selected></option>
+                                        <option value="Owner2">David Jenkins</option>
+                                        <option value="Owner3">Admin pool</option>
+                                        <option value="Owner4">All</option>
+                                        <option value="Owner5">Crown Court</option>
+                                        <option value="Owner6">DCP Triage Team</option>
+                                        <option value="Owner7">MC Contested</option>
+                                        <option value="Owner8">MC General</option>
+                                        <option value="Owner9">PO Tasking</option>
+                                    </select>
+                                </fieldset>
+                            </div>
                         </div>
                     </div>
                     <div class="govuk-grid-column-one-quarter" id="" style="padding-right:0">
                         <div class="govuk-form-group mb15">
-                         <div id="option-severity" data-col="severity" >
-                            <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
-                                            Severity
-                                        </h2>
-                                            <fieldset class="govuk-fieldset">
-                                             <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
-                                                <option value="sev1" selected></option>
-                                                <option value="sev2">Escalates, Overdue, Due</option>
-                                                <option value="sev3">Due Soon</option>
-                                                <option value="sev4">Urgent</option>
-                                            </select>
-                                            </fieldset>
-                                        </div>
+                            <div id="option-severity" data-col="severity">
+                                <h2 class="app-c-filter-section__summary-heading" style="margin:0 0 5px 0; font-weight:400">
+                                    Severity
+                                </h2>
+                                <fieldset class="govuk-fieldset">
+                                    <select class="govuk-select govuk-!-width-full" id="sort" name="sort">
+                                        <option value="sev1" selected></option>
+                                        <option value="sev2">Escalates, Overdue, Due</option>
+                                        <option value="sev3">Due Soon</option>
+                                        <option value="sev4">Urgent</option>
+                                    </select>
+                                </fieldset>
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
                 <div class="govuk-grid-column-full" style="padding-left:0; padding-right:0; margin-top:20px">
                     <div class="filterBar" style="background-color:#fff; border: solid 2px #b1b4b6;">
@@ -575,43 +557,33 @@
                             <i class="fa-solid fa-chevron-down" style="margin-left:15px"></i>
                             <p style="font-weight:700;margin-left:5px; margin-top:20px">Filter sets</p>
                         </div>
-
-
-<div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ;margin-block-start: 1em; padding-left:15px;">
-<!--     <h3 class="app-c-filter-summary__heading" style="margin-top:0; font-weight:700">Active
+                        <div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ;margin-block-start: 1em; padding-left:15px;">
+                            <!--     <h3 class="app-c-filter-summary__heading" style="margin-top:0; font-weight:700">Active
         filters</h3> -->
-    <div style="display:flex">
-        <ul class="app-c-filter-summary__remove-filters" data-active-filters>
-            <!-- Dynamic filter lozenges will be inserted here -->
-        </ul>
-<!--         <p style="margin:8px 15px"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear all
+                            <div style="display:flex">
+                                <ul class="app-c-filter-summary__remove-filters" data-active-filters>
+                                    <!-- Dynamic filter lozenges will be inserted here -->
+                                </ul>
+                                <!--         <p style="margin:8px 15px"> <a href="javascript:void(0)" class="clear-filters govuk-link govuk-link--no-visited-state">Clear all
                 filters</a></p> -->
-    </div>
-</div>
-
-
+                            </div>
+                        </div>
                         <div class="filterButtons" style="display:flex;   align-items: center; margin-left:auto">
-                            <button type="submit"  class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-bottom:0;">
-                              Save filter
+                            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-bottom:0;">
+                                Save filter
                             </button>
-                            <button type="submit"  class="govuk-button govuk-button--secondary clear-filters " data-module="govuk-button" style="margin-bottom:0; margin-left:15px">
-                              Clear filter
+                            <button type="submit" class="govuk-button govuk-button--secondary clear-filters " data-module="govuk-button" style="margin-bottom:0; margin-left:15px">
+                                Clear filter
                             </button>
-                          <!--   <button type="submit"  class="govuk-button" data-module="govuk-button" style="margin-bottom:0; margin-left:15px; margin-right:15px">
+                            <!--   <button type="submit"  class="govuk-button" data-module="govuk-button" style="margin-bottom:0; margin-left:15px; margin-right:15px">
                              Search
                             </button> -->
-
-                             <input type="submit" value="Apply filters" class="govuk-button " data-disable-with="Apply filters" style="margin-bottom:0; margin-left:15px; margin-right:15px">
-
+                            <input type="submit" value="Apply filters" class="govuk-button " data-disable-with="Apply filters" style="margin-bottom:0; margin-left:15px; margin-right:15px">
                         </div>
-                    </form>
+                        </form>
                     </div>
-                </div> 
-
-
-
-
-<!--                 <div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ; border-bottom: 1px solid #b1b4b6; margin-bottom:20px">
+                </div>
+                <!--                 <div class="app-c-filter-summary" id="activeFiltersArea" style="display:none ; border-bottom: 1px solid #b1b4b6; margin-bottom:20px">
                     <h3 class="app-c-filter-summary__heading" style="margin-top:0; font-weight:700">Active
                         filters</h3>
                     <div style="display:flex">
@@ -674,7 +646,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">21XX009875/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">21XX009875/1</a></td>
                             <td class="govuk-table__cell bold">Doe, J. McGregor,C</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagBlack" style="">Expired</strong>
                             </td>
@@ -705,7 +677,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">46BA339831/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">46BA339831/1</a></td>
                             <td class="govuk-table__cell bold">McGregor, Colin</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed" style="">3</strong></td>
                             <td class="govuk-table__cell">Check New Communications</td>
@@ -734,7 +706,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">98FG978547/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">98FG978547/1</a></td>
                             <td class="govuk-table__cell bold"> Bodger, Roisin</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagUnkown" style="">?</strong></td>
                             <td class="govuk-table__cell">Check CTL Case </td>
@@ -763,7 +735,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">45AA209820/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/E-case-overview">45AA209820/1</a></td>
                             <td class="govuk-table__cell bold">McLove, Eoin</td>
                             <td class="govuk-table__cell ">- </td>
                             <td class="govuk-table__cell">28 Day PCD Review</td>
@@ -793,7 +765,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">33FQ456221/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">33FQ456221/1</a></td>
                             <td class="govuk-table__cell bold">Priest, Kim</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed" style="">8</strong></td>
                             <td class="govuk-table__cell">Retrieve core details</td>
@@ -822,7 +794,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">91PC294683/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">91PC294683/1</a></td>
                             <td class="govuk-table__cell bold">Doe, Jack. McGregor, Colin</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong>
                             </td>
@@ -852,7 +824,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">33FY456221/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">33FY456221/1</a></td>
                             <td class="govuk-table__cell bold">McGregor, Colin. D, Tale</td>
                             <td class="govuk-table__cell"> -</td>
                             <td class="govuk-table__cell">Check New Communications</td>
@@ -881,7 +853,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">95YU134253/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">95YU134253/1</a></td>
                             <td class="govuk-table__cell bold">Stevens, Tom</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed" style="">8</strong></td>
                             <td class="govuk-table__cell">Retrieve Core Details</td>
@@ -909,7 +881,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">43LP879068/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">43LP879068/1</a><</td>
                             <td class="govuk-table__cell bold">Hall, Cat</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagRed " style="">12</strong></td>
                             </td>
@@ -938,7 +910,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">45AA209820/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">45AA209820/1</a></td>
                             <td class="govuk-table__cell bold">McGregor, Colin</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagUnkown" style="">?</strong></td>
                             <td class="govuk-table__cell">Check CTL Case</td>
@@ -966,7 +938,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">46BA339821/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">46BA339821/1</a></td>
                             <td class="govuk-table__cell bold">Bodger, Roisin. Bodger, Penny</td>
                             <td class="govuk-table__cell"> -</td>
                             <td class="govuk-table__cell">28 Day PCD Review</td>
@@ -994,7 +966,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">21XX109875/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">21XX109875/1</a></td>
                             <td class="govuk-table__cell bold">Georgia, Ella. Hall, Cat</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong>
                             </td>
@@ -1023,7 +995,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">95ZU134253/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">95ZU134253/1</a></td>
                             <td class="govuk-table__cell bold">Freeman, Natalie</td>
                             <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey cpsTagYellow" style="">Bail</strong>
                             </td>
@@ -1051,7 +1023,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">91PD294683/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">91PD294683/1</a></td>
                             <td class="govuk-table__cell bold">Bodger, Roisin. Voke, Gerry</td>
                             <td class="govuk-table__cell">- </td>
                             </td>
@@ -1080,7 +1052,7 @@
                                 <!-- </fieldset> -->
                                 <!-- </div> -->
                             </td>
-                            <td class="govuk-table__cell" data-col="urn">42LP879068/1</td>
+                            <td class="govuk-table__cell" data-col="urn"><a href="#">42LP879068/1</a></td>
                             <td class="govuk-table__cell bold">McGregor, Colin</td>
                             <td class="govuk-table__cell"> -</td>
                             </td>

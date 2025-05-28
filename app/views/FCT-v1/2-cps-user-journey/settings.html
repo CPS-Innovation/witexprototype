@@ -1,0 +1,257 @@
+<!-- "govuk-frontend": "^4.7.0", -->
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% block header %}
+{% include "../includes/banner-V6.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<style>
+    .cpsTagBlack {
+        background-color: black;
+        color: white;
+        width: 80%;
+        font-weight: 700 !important;
+        text-align: center;
+    }
+
+    .cpsTagRed {
+        background-color: #d4351c;
+        color: white;
+        width: 80%;
+        font-weight: 700 !important;
+        text-align: center;
+    }
+
+    .cpsTagYellow {
+        background-color: #ffdd00;
+        color: black;
+        width: 80%;
+        font-weight: 700 !important;
+        text-align: center;
+    }
+
+    .cpsTagUnkown {
+        background-color: white;
+        color: black;
+        width: 80%;
+        font-weight: 700 !important;
+        text-align: center;
+        border: 3px solid #d4351c;
+    }
+
+    .clear-float {
+        clear: both;
+    }
+
+    .taskCountBar {
+        margin-left: 100px
+    }
+
+    .taskOverViewContent {
+        display: flex;
+        margin-left: auto;
+        width: 80%
+    }
+
+    .taskOverViewContentPanel {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .taskCountItems {
+        border: 2px solid #b1b4b6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        margin-right: 15px;
+    }
+
+    .taskcCountItemNumber {
+        font-size: 16px;
+        font-weight: 700;
+        margin-left: auto;
+        margin-bottom: 0
+    }
+
+
+    .fa-triangle-exclamation {
+        color: #d4351c;
+    }
+
+    .fa-chevron-down,
+    .fa-triangle-exclamation {
+        font-size: 19px
+    }
+
+    .fa-comment,
+    .fa-star,
+    .fa-circle-exclamation,
+    .fa-circle-info {
+        font-size: 19px
+    }
+
+
+    .govuk-tag--red {
+
+        background: #f4cdc6;
+    }
+
+    .panelTagRed {
+        min-width: 200px;
+    }
+
+    .govuk-tag {
+        font-size: 16px !important;
+    }
+
+    /*pulls the content next to the checkboxes closer on the main panel*/
+    .govuk-checkboxes__item {
+        margin-right: -30px;
+    }
+
+    .expandable-panel {
+        display: none;
+    }
+
+
+    .cpsAdminMenuWrapper {
+        max-width: 1400px;
+    }
+
+    .mb15 {
+        margin-bottom: 15px;
+    }
+
+    .MT-15 {
+        margin-top: -10px;
+    }
+
+
+    .filterBar {
+        position: relative;
+        display: flex;
+        background-color: #f3f2f1;
+        width: 100%;
+        height: 75px;
+        margin-bottom: 25px
+    }
+
+    .filterSetBox:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        /* (100% - 75%) / 2 to center the line vertically */
+        width: 1px;
+        /* Adjust width of the line */
+        height: 60%;
+        /* 75% of the height of the parent box */
+        background-color: #505a5f;
+        /* Adjust color as needed */
+    }
+
+    .addRightLine {
+        position: relative
+    }
+
+    .addRightLine:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        /* (100% - 75%) / 2 to center the line vertically */
+        width: 1px;
+        /* Adjust width of the line */
+        height: 60%;
+        /* 75% of the height of the parent box */
+        background-color: #505a5f;
+        /* Adjust color as needed */
+    }
+
+    .makeBannerMiddle {
+        display: none;
+    }
+
+    .caseReviewHeader {
+        display: none
+    }
+
+    .govuk-tabs__panel {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border: 0 !important;
+    }
+
+
+
+    .bold {
+        font-weight: 700
+    }
+
+    nav {padding:0 !important}
+
+
+</style>
+
+<!-- <script>
+  function whereNow() {
+  var status = $('input[name=changedName]:checked').val();
+       switch (true) {
+          case  (status == 'yes'):
+                 window.location.href='dtmBranch';
+                break;
+
+        case  (status == 'no'):
+          window.location.href='dontHave';
+    
+            break
+        default:
+             console.log('gyahhhhhhhh, bork bork bork')
+             $(gatewayError).removeClass("rj-dont-display");
+            $(addTheError).addClass("govuk-form-group--error");
+            break;
+        }
+    }
+ </script> -->
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third" style="" id="">
+        <h1 class="govuk-heading-l" style="margin-top:25px">Settings
+        </h1>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds" style="" id="">
+        <form method="get" action="NavSettings">
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h1 class="govuk-fieldset__heading">
+                        Do you want the navigation to open in new tabs?
+                    </h1>
+                </legend>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+                        <label class="govuk-label govuk-radios__label" for="changedName">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+                        <label class="govuk-label govuk-radios__label" for="changedName-2">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+         <button class="govuk-button" >Continue</button>
+     </form>
+    </div>
+</div>
+{% endblock %}

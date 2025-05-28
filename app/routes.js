@@ -3104,5 +3104,29 @@ router.get('/*/caseManagement/resetChangeConfirm' , function (req, res) {
 })
 
 
+// Settings for the navigation to open in a new window
+router.get('/*/NavSettings' , function (req, res) {
+      var confirmTraining = req.query.changedName
+       switch (true) {
+          case  (confirmTraining == "yes"):
+              req.session.data['navTabs'] = true;
+              res.redirect(`./C-task-list-v3`)
+           break;
+
+          case  (confirmTraining == "no"):
+              req.session.data['navTabs'] = false;
+              res.redirect(`./C-task-list-v3`)
+           break;
+
+
+        default:
+            console.log("bork bork bork bork A");
+            req.session.data['navTabs'] = false;
+              res.redirect(`borkA`)
+            break;
+        } 
+})
+
+
 
 module.exports = router

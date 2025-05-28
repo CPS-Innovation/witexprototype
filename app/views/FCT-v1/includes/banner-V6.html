@@ -131,17 +131,21 @@ main.case-files {
         <div class="moj-primary-navigation__nav">
             <nav class="moj-primary-navigation" aria-label="Primary navigation">
                 <ul class="moj-primary-navigation__list">
-
                     <li class="moj-primary-navigation__item">
-                        <a class="moj-primary-navigation__link my-tasks" href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a>
+                        <!-- NOT THE IF THEN ELSE STATEMENT IN THE LINK -->
+                        <a class="moj-primary-navigation__link my-tasks" 
+                        {% if data.navTabs==true %} target="_blank" {% else %}{% endif %} 
+                        href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a>
                     </li>
+                     <!-- NOT THE IF THEN ELSE STATEMENT IN THE LINK -->
                     <li class="moj-primary-navigation__item">
-                        <a class="moj-primary-navigation__link my-cases" href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/D-my-cases">Cases</a>
+                        <a class="moj-primary-navigation__link my-cases" 
+                        {% if data.navTabs==true %} target="_blank" {% else %}{% endif %}
+                         href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/D-my-cases">Cases</a>
                     </li>
                 </ul>
             </nav>
         </div>
-
     </div>
 </div>
 <style>
