@@ -1,0 +1,175 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<style>
+    header.govuk-header .govuk-header__container {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+main.case-files {
+    padding-top: 0 !important
+}
+
+#secondary-navigation ul li a {
+    color: #1d70b8;
+    text-decoration: none;
+    /*    font-weight: bold;*/
+    font-size: 1.3em;
+}
+
+#secondary-navigation ul li {
+    box-sizing: border-box;
+    /*    height: 3.125rem;*/
+    padding: 0 15px;
+    /*    float: left;*/
+    /*    line-height: 50px;*/
+    position: relative;
+}
+
+#secondary-navigation ul:first-child {
+    padding-left: 0;
+}
+
+#secondary-navigation ul li.current {
+    /*    position: absolute;
+    bottom: -5px;
+    display: inline-block;
+    height: 5px;
+    background: #1d70b8;
+    left: 0px;
+    right: 0px;
+    content: " ";*/
+    font-weight: bold;
+}
+
+#global-navigation ul {
+    position: static;
+
+}
+
+#global-navigation ul li {
+    z-index: 9999;
+}
+
+
+.classicNav:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #1d70b8;
+    position: absolute;
+    left: 135px;
+    top: 21px;
+}
+
+
+
+/* Hide the dropdown menu by default */
+.dropdown-menu {
+    display: none;
+    /*  display: flex;
+    flex-direction: column;*/
+    position: absolute !important;
+    z-index: 99;
+    top: 100%;
+    background: #F5F5F5;
+    right: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 250px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    border-top: 5px solid #1d70b8;
+
+
+}
+
+.dropdown-menu li {
+    display: block;
+    padding: 10px 15px;
+    font-weight: 400;
+}
+
+.dropdown-menu li a {
+    font-weight: 400 !important;
+}
+
+
+
+/* Show the dropdown menu when the parent has the .show class */
+.menu-item.show .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+}
+</style>
+<script src="/public/javascripts/mojall.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#global-navigation').show();
+
+});
+
+
+</script>
+<header class="govuk-header {{ params.classes if params.classes }}" role="banner" data-module="govuk-header" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %} style=" border-bottom:10px solid #1d70b8">
+    <div class="govuk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
+        <div style="display:flex">
+            <div class="govuk-header__logo" style="max-height:30px">
+                <a href="../2-cps-user-journey/A-dashboard" class="govuk-header__link govuk-header__link--homepage">
+                    <span class="govuk-header__logotype" style="height:30px">
+                        <span class="moj-header__link moj-header__link--organisation-name" style="font-size:30px">CPS</span>
+                        <!-- <span class="moj-header__link moj-header__link--service-name" style="font-weight:400; font-size:30px;margin-left:-1px">Casey McCase Face</span> -->
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="moj-primary-navigation" style="border-bottom: 1px solid #b1b4b6;">
+    <div class="moj-primary-navigation__container" style="max-width:1400px">
+        <div class="moj-primary-navigation__nav">
+            <nav class="moj-primary-navigation" aria-label="Primary navigation">
+                <ul class="moj-primary-navigation__list">
+                    <li class="moj-primary-navigation__item">
+                        <!-- NOT THE IF THEN ELSE STATEMENT IN THE LINK -->
+                        <a class="moj-primary-navigation__link my-home" 
+                        {% if data.navTabs==true %} target="_blank" {% else %}{% endif %} 
+                        href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/home">Home</a>
+                    </li>
+                    <li class="moj-primary-navigation__item">
+                        <!-- NOT THE IF THEN ELSE STATEMENT IN THE LINK -->
+                        <a class="moj-primary-navigation__link my-tasks" 
+                        {% if data.navTabs==true %} target="_blank" {% else %}{% endif %} 
+                        href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/C-task-list">Tasks</a>
+                    </li>
+                     <!-- NOT THE IF THEN ELSE STATEMENT IN THE LINK -->
+                    <li class="moj-primary-navigation__item">
+                        <a class="moj-primary-navigation__link my-cases" 
+                        {% if data.navTabs==true %} target="_blank" {% else %}{% endif %}
+                         href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/D-my-cases">Cases</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+    visibility: hidden
+}
+</style>
+<script type="text/javascript">
+MOJFrontend.initAll();
+</script>
+<script>
+$(document).ready(function() {
+    $("body")
+        .contents()
+        .filter(function() {
+            return this.nodeType == Node.TEXT_NODE;
+        })
+        .remove();
+    $("body").css("visibility", "visible");
+});
+</script>
