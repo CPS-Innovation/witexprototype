@@ -3,50 +3,195 @@
 {% include "../includes/banner-V6.html" %}
 {% endblock %}
 {% block beforeContent %}
-{% include "includes/cps/universal-header-tweak.html" %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {{ govukBackLink({
 text: "Back",
-href: "javascript:history.back()"
+href: "javascript:history.back()",
+attributes: {
+style: "margin-top:15px !important"
+}
 }) }}
 {% endblock %}
 {% block content %}
+<script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.autocomplete-element').each(function() {
+        var selectEl = document.querySelector('#' + $(this).attr('id'))
+        accessibleAutocomplete.enhanceSelectElement({
+            autoselect: false,
+            defaultValue: '',
+            minLength: 2,
+            selectElement: selectEl,
+            placeholder: '',
+            showAllValues: false
+        })
+    })
+})
+</script>
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <form method="get" action="DTMMCourt">
                 <!-- <h1 class="govuk-heading-xl">Are you</h1> -->
                 <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                           How did the meeting take place?
+                            <h1 class="govuk-fieldset__heading">
+                                Search for a case
+                            </h1>
                         </legend>
-                        <div class="govuk-radios">
+                        <!--                         <div id="contact-hint" class="govuk-hint">
+                            Select one option
+                        </div> -->
+                        <div class="govuk-radios" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMCourt" name="DTMMCourt" type="radio" value="court">
-                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    Online
+                                <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+                                <label class="govuk-label govuk-radios__label" for="contact">
+                                    URN
                                 </label>
                             </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="contact-by-email">
+                                        URN
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" autocomplete="email">
+                                </div>
+                            </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMCourt" name="DTMMCourt" type="radio" value="police">
-                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
-                                    Phone
+                                <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                                <label class="govuk-label govuk-radios__label" for="contact-2">
+                                    Defendant
                                 </label>
                             </div>
-                             <div class="govuk-radios__divider">or</div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="contact-by-phone">
+                                        Defendant last name
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactByPhone" type="tel" autocomplete="tel">
+                                </div>
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="cms-area">
+                                        CMS area (add options)
+                                    </label>
+                                       <div class=" autocomplete-wrapper govuk-!-width-one-third">
+                        <select class="autocomplete-element " id="school-name" name="school-name">
+                            <option value="" disabled selected>Select an area</option>
+                            {% import 'includes/courts-list.html' as apprenticeshipsData %}
+                            {% for apprenticeship in apprenticeshipsData.apprenticeships %}
+                            <option name="school-name" value="{{apprenticeship.name}}">{{apprenticeship.name}}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+
+                                  <!--   <select class="govuk-select govuk-!-width-one-third" id="cms-area" name="cmsArea">
+                                        <option value="" disabled selected>Select an area</option>
+                                         {% import 'includes/courts-list.html' as apprenticeshipsData %}
+                            {% for apprenticeship in apprenticeshipsData.apprenticeships %}
+                            <option name="school-name" value="{{apprenticeship.name}}">{{apprenticeship.name}}</option>
+                            {% endfor %} -->
+                                        <!-- <option value="Avon &amp; Somerset">Avon &amp; Somerset</option>
+                                        <option value="Bedfordshire">Bedfordshire</option>
+                                        <option value="Cambridgeshire">Cambridgeshire</option>
+                                        <option value="Cheshire">Cheshire</option>
+                                        <option value="Cleveland">Cleveland</option>
+                                        <option value="Cumbria">Cumbria</option>
+                                        <option value="Derbyshire">Derbyshire</option>
+                                        <option value="Devon and Cornwall">Devon and Cornwall</option>
+                                        <option value="Dorset">Dorset</option>
+                                        <option value="Durham">Durham</option>
+                                        <option value="Dyfed Powys">Dyfed Powys</option>
+                                        <option value="Essex">Essex</option>
+                                        <option value="Gloucestershire">Gloucestershire</option>
+                                        <option value="Greater Manchester">Greater Manchester</option>
+                                        <option value="Gwent">Gwent</option>
+                                        <option value="Hampshire &amp; IOW">Hampshire &amp; IOW</option>
+                                        <option value="Hertfordshire">Hertfordshire</option>
+                                        <option value="HMCPSI">HMCPSI</option>
+                                        <option value="Humberside">Humberside</option>
+                                        <option value="Kent">Kent</option>
+                                        <option value="Lancashire">Lancashire</option>
+                                        <option value="Leatherhead">Leatherhead</option>
+                                        <option value="Leicestershire">Leicestershire</option>
+                                        <option value="Lincolnshire">Lincolnshire</option>
+                                        <option value="London">London</option>
+                                        <option value="London North">London North</option>
+                                        <option value="London South">London South</option>
+                                        <option value="Merseyside">Merseyside</option>
+                                        <option value="Norfolk">Norfolk</option>
+                                        <option value="North Wales">North Wales</option>
+                                        <option value="North Yorkshire">North Yorkshire</option>
+                                        <option value="Northamptonshire">Northamptonshire</option>
+                                        <option value="Northumbria">Northumbria</option>
+                                        <option value="Nottinghamshire">Nottinghamshire</option>
+                                        <option value="Records Management Team (RMT)">Records Management Team (RMT)</option>
+                                        <option value="RMU Area">RMU Area</option>
+                                        <option value="South Wales">South Wales</option>
+                                        <option value="South Yorkshire">South Yorkshire</option>
+                                        <option value="Stafford">Stafford</option>
+                                        <option value="Suffolk">Suffolk</option>
+                                        <option value="Surrey">Surrey</option>
+                                        <option value="Sussex">Sussex</option>
+                                        <option value="Thames Valley">Thames Valley</option>
+                                        <option value="Warwickshire">Warwickshire</option>
+                                        <option value="West Mercia">West Mercia</option>
+                                        <option value="West Midlands">West Midlands</option>
+                                        <option value="West Yorkshire">West Yorkshire</option>
+                                        <option value="Wilstshire">Wilstshire</option> -->
+                                    </select>
+                                </div>
+                            </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMCourt" name="DTMMCourt" type="radio" value="other">
-                                <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    Other
+                                <input class="govuk-radios__input" id="contact-5" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-5">
+                                <label class="govuk-label govuk-radios__label" for="contact-5">
+                                    CMS area
                                 </label>
                             </div>
-                           <!--  <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="DTMMWhere" name="DTMMWhere" type="radio" value="somewhere else">
-                                <label class="govuk-label govuk-radios__label" for="TRN-no">
-                                    In person (outside of court)
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-5">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="CMS-area">
+                                        Area (dropdown/type ahead)
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactByText" type="tel" autocomplete="tel">
+                                </div>
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="CMS-area">
+                                        Unit (dropdown/type ahead)
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactByText" type="tel" autocomplete="tel">
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
+                                <label class="govuk-label govuk-radios__label" for="contact-3">
+                                    Prosecutor
                                 </label>
-                            </div> -->
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="contact-by-text">
+                                        Prosecutor name
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactByText" type="tel" autocomplete="tel">
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="contact-4" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-4">
+                                <label class="govuk-label govuk-radios__label" for="contact-4">
+                                    Paralegal officer
+                                </label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="Paralegal-officer">
+                                        Paralegal officer name
+                                    </label>
+                                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactByText" type="tel" autocomplete="tel">
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
                 </div>
                 <button type="submit" class="govuk-button">Continue </button>
