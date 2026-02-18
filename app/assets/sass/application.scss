@@ -29,6 +29,29 @@
   src: url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff') format('woff');
 }
 
+@font-face {
+  font-family: "NewTransport2";
+    font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+/*  size-adjust: 95%;*/
+  src: url('/public/fonts/UpdatedNewTransport/NewTransport-Regular.woff2') format('woff2'), url('/public/fonts/UpdatedNewTransport/NewTransport-Regular.woff') format('woff');
+}
+
+
+
+@font-face {
+  font-family: "NewTransport2";
+    font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+/*  size-adjust: 86.5%;*/
+  src: url('/public/fonts/UpdatedNewTransport/NewTransport-Bold.woff2') format('woff2'), url('/public/fonts/UpdatedNewTransport/NewTransport-Bold.woff') format('woff');
+}
+
+
+/*$govuk-font-family: "NewTransport2" ;*/
+
 
 $govuk-font-family: "NewTransport" ;
 
