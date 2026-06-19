@@ -10,12 +10,27 @@
 <style>
 .search-bar-wrapper, .hods-status-message, .cps-bar-wrapper {padding:0}
 
+.home-actions {
+    margin-top: 40px;
+}
+
+.home-action {
+    margin-bottom: 25px;
+}
+
+.home-action .govuk-heading-m {
+    margin-bottom: 10px;
+}
+
+.home-section {
+    margin-top: 50px;
+}
 </style>
 
 <script>
     $(document).ready(function() {
     $('#global-navigation').show();
-     $('.dashboard').addClass('current');
+    $('.dashboard').addClass('current');
 
 });
 </script>
@@ -23,144 +38,45 @@
 <div id="image-wrapper" class="">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds" id="">
-            <!-- <span class="govuk-caption-l">CPS - New world</span> -->
-            <h1 class="govuk-heading-l">Latest updates</h1>
-            <p>The latest updates, improvements, and bug fixes for our service.</p>
-            <div class="wrapper">
-                <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-                      <div class="govuk-accordion__section">
-                        <div class="govuk-accordion__section-header">
-                          <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                              Tasks
-                            </span>
-                          </h2>
-                        </div>
-                        <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+            <h1 class="govuk-heading-l">Complete your casework tasks</h1>
+            <p class="govuk-body-l">Use the Casework app to manage your tasks, view your assigned cases and find a case when you need it.</p>
 
-                            <h2 class="govuk-heading-m"><span class="govuk-caption-m">8 Aug 2024</span>
-                            Introduction of ‘Priority Charging’ tab </h2>
-                            <p>We have added a new tab to show all of the priority charging tasks in one place. This view will show you when the request was received and the due date and time (which is three hours after the request was received).  </p>
+            <div class="govuk-grid-row home-actions">
+                <div class="govuk-grid-column-one-third home-action">
+                    <h2 class="govuk-heading-m"><a href="./C-task-list-v2">View your tasks</a></h2>
+                    <p>See the work assigned to you and what needs attention next.</p>
+                </div>
+                <div class="govuk-grid-column-one-third home-action">
+                    <h2 class="govuk-heading-m"><a href="./D-my-cases">View your cases</a></h2>
+                    <p>See the cases assigned to you and pick up where you left off.</p>
+                </div>
+                <div class="govuk-grid-column-one-third home-action">
+                    <h2 class="govuk-heading-m"><a href="./B-search-results">Find a case</a></h2>
+                    <p>Search for a case by URN to open it and continue your work.</p>
+                </div>
+            </div>
 
-                            <p>If a user has the ‘View Charging tasks – National’ right, then they will see the priority charging tasks nationally, as their default view. If a user does not have this right, then they can filter by Units to see the relevant priority tasks.
-                            </p>
+            <div class="home-section">
+                <h2 class="govuk-heading-m">What this service does</h2>
+                <p>This prototype is the Casework app homepage for CPS users. It brings together the main things users need to do at the start of their work:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>check and start tasks</li>
+                    <li>open assigned cases</li>
+                    <li>search for a case by URN</li>
+                </ul>
+            </div>
 
-                            <img src="/public/images/picturea.png" style="max-width:100%; margin: 20px 0;border: 1px solid grey;">
-
-                            <p>Please note: we are aware that the due date is calculated wrong at 4 hours and not 3 hours.  We will release a fix for this as soon as possible.</p>
-
-                             <h2 class="govuk-heading-m"><span class="govuk-caption-m">8 Aug 2024</span>
-                            ‘Activate Tasks’ now available:</h2>
-
-                            <p>You will now be able to activate tasks from the task list.  There will be a button in the expanded view of a task where there will be three possible outcomes depending on the type of task.  These are: </p>
-
-                            <ul class="govuk-list govuk-list--bullet">
-                              <li>when you select ‘Start task’ the CMS Classic/Modern tab will change to the appropriate screen for that case (similar to how Modern changes Classic)</li>
-                              <li>when you select ‘Mark as Complete’ the App will display a pop-up enabling you to mark the task as complete and add any relevant notes</li>
-                              <li>when you select ‘Start task’ the CMS Classic/Modern tab will change to the appropriate screen for that case and the Casework App will appear in another tab</li>
-                            </ul>
-
-                              <img src="/public/images/picture5.png" style="max-width:100%; margin: 20px 0 0 0;border: 1px solid grey;">
-                              <img src="/public/images/picture6.png" style="max-width:100%; margin: 0px 0 20px 0;border: 1px solid grey;">
-
-                              <p>Please note: the first time you activate one of these tasks – 28 day PCD Review, 5 day PCD review, Check New PCD Case, Priority PCD Review, you will get a ‘pop-up blocked’.  </p>
-<p>Please do the following – 
-</p>
-
-                           <ul class="govuk-list govuk-list--bullet">
-                              <li>click on ‘Start Task’</li>
-                              <li>you will see in the right-hand side of the URL a ‘Pop-up blocked’ message (in red below)</li>
-                              <li>when you select ‘Start task’ the CMS Classic/Modern tab will change to the appropriate screen for that case and the Casework App will appear in another tab</li>
-                            </ul>
-
-                            <img src="/public/images/Picture1.png" style="max-width:100%; margin: 20px 0;border: 1px solid grey;">
-
-                            <ul class="govuk-list govuk-list--bullet">
-                              <li>click on this and you will get the pop-up shown in red:</li>
-                            </ul>
-
-                            <img src="/public/images/Picture3.png" style="max-width:100%; margin: 0px 0 20px 0;border: 1px solid grey;">
-
-                           <ul class="govuk-list govuk-list--bullet">
-                              <li>click ‘Done’</li>
-                              <li>click on ‘Start Task’ again and then the casework app will open in a new tab and CMS Classic will be changed to the appropriate screen for that task</li>
-                              <li>you will not get this message again unless updates are made to Windows</li>
-                            </ul>
-
-                            <p><span style="font-weight:700">Please note:</span> as new Future Casework Tools are built, we will update the tasks with new links to take you to the appropriate place for that task. For example, in the future, we will take you to the correct case within the new FCT Review tool.</p>
-
-                            <p>If you click on the URN of a task, the CMS Classic tab will change to the case details screen for that case.</p>
-
-                             <h2 class="govuk-heading-m"><span class="govuk-caption-m">8 Aug 2024</span>
-                            Unit groups</h2>
-
-                            <p>A new Unit Group filter has been added enabling users to search for tasks assigned to the units in the group selected.</p>
-
-                            <img src="/public/images/Picture9.png" style="max-width:100%; margin: 20px 0;border: 1px solid grey;">
-
-
-                              <h2 class="govuk-heading-m"><span class="govuk-caption-m">8 Aug 2024</span>
-                            Updates to the Directions tab</h2>
-
-                            <p>We have introduced the CTL icons to the directions table to help users prioritise.   </p>
-
-
-
-
-                          
-                        </div>
-                      </div>
-                      <div class="govuk-accordion__section">
-                        <div class="govuk-accordion__section-header">
-                          <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                              Cases
-                            </span>
-                          </h2>
-                        </div>
-                        <div id="accordion-default-content-2" class="govuk-accordion__section-content">
-                          <p class="govuk-body"></p>
-                        </div>
-                      </div>
-                      <div class="govuk-accordion__section">
-                        <div class="govuk-accordion__section-header">
-                          <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-                              Details
-                            </span>
-                          </h2>
-                        </div>
-                        <div id="accordion-default-content-3" class="govuk-accordion__section-content">
-                         
-                        </div>
-                      </div>
-                      <div class="govuk-accordion__section">
-                        <div class="govuk-accordion__section-header">
-                          <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-                              Materials
-                            </span>
-                          </h2>
-                        </div>
-                        <div id="accordion-default-content-4" class="govuk-accordion__section-content">
-                         
-                        </div>
-                      </div>
-                       <div class="govuk-accordion__section">
-                        <div class="govuk-accordion__section-header">
-                          <h2 class="govuk-accordion__section-heading">
-                            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-                              Review
-                            </span>
-                          </h2>
-                        </div>
-                        <div id="accordion-default-content-4" class="govuk-accordion__section-content">
-                         
-                        </div>
-                      </div>
-                    </div>
-
-
+            <div class="home-section">
+                <h2 class="govuk-heading-m">Latest updates</h2>
+                <div class="ReleaseNotes">
+                    <h3 class="govuk-heading-s">Review and redact feature <span class="govuk-caption-m" style="font-size:16px; color:#000">17 June 2025</span></h3>
+                    <p>Users can review documents, redact sensitive information and check the final version before sending it on.</p>
+                </div>
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                <div class="ReleaseNotes">
+                    <h3 class="govuk-heading-s">Task list improvements <span class="govuk-caption-m" style="font-size:16px; color:#000">16 June 2025</span></h3>
+                    <p>The task list has been updated to make priority work easier to spot and quicker to start.</p>
+                </div>
             </div>
         </div>
     </div>
