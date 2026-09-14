@@ -49,10 +49,48 @@
 }
 
 
+/* Aliases: govuk-frontend stops emitting the "GDS Transport" @font-face once
+   $govuk-font-family is overridden, and the "TransportNew" @font-face below is
+   commented out. Both names are still hardcoded in MoJ Frontend and in our own
+   rules further down this file, so point them at NewTransport to stop those
+   elements silently falling back to Arial. */
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/public/fonts/NewTransport/NewTransport-RegularWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-RegularWEB.woff') format('woff');
+}
+
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff') format('woff');
+}
+
+@font-face {
+  font-family: "TransportNew";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/public/fonts/NewTransport/NewTransport-RegularWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-RegularWEB.woff') format('woff');
+}
+
+@font-face {
+  font-family: "TransportNew";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff2') format('woff2'), url('/public/fonts/NewTransport/NewTransport-BoldWEB.woff') format('woff');
+}
+
+
 /*$govuk-font-family: "NewTransport2" ;*/
 
 
-$govuk-font-family: "NewTransport" ;
+$govuk-font-family: "NewTransport", arial, sans-serif;
 
 
 /*@import url("//hello.myfonts.net/count/413f20");
