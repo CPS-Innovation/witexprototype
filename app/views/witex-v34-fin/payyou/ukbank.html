@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            {% if errorSummary %}
+              {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: errorSummary.items
+              }) }}
+            {% endif %}
+
+            <form method="post" action="/witex-v34-fin/payyou/ukbank">
+                <h1 class="govuk-heading-l">UK bank or building society account details</h1>
+
+                {{ govukInput({
+                  id: "name-on-the-account",
+                  name: "name-on-the-account",
+                  type: "text",
+                  spellcheck: false,
+                  autocomplete: "name",
+                  classes: "bold-label",
+                  value: data['name-on-the-account'],
+                  label: {
+                    text: "Name on the account",
+                    classes: "bold-label"
+                  }
+                }) }}
+
+                {{ govukInput({
+                  id: "sort-code",
+                  name: "sort-code",
+                  type: "text",
+                  spellcheck: false,
+                  pattern: "[0-9]*",
+                  inputmode: "numeric",
+                  classes: "govuk-input--width-5",
+                  value: data['sort-code'],
+                  label: {
+                    text: "Sort code",
+                    classes: "bold-label"
+                  },
+                  hint: {
+                    text: "Must be 6 digits long"
+                  },
+                  errorMessage: sortCodeError
+                }) }}
+
+                {{ govukInput({
+                  id: "account-number",
+                  name: "account-number",
+                  type: "text",
+                  spellcheck: false,
+                  pattern: "[0-9]*",
+                  inputmode: "numeric",
+                  classes: "govuk-input--width-10",
+                  value: data['account-number'],
+                  label: {
+                    text: "Account number",
+                    classes: "bold-label"
+                  },
+                  hint: {
+                    text: "Must be between 6 and 8 digits long"
+                  },
+                  errorMessage: accountNumberError
+                }) }}
+
+                {{ govukInput({
+                  id: "roll-number",
+                  name: "roll-number",
+                  type: "text",
+                  spellcheck: false,
+                  classes: "govuk-input--width-10",
+                  value: data['roll-number'],
+                  label: {
+                    text: "Building society roll number (if you have one)",
+                    classes: "bold-label"
+                  },
+                  hint: {
+                    text: "You can find it on your card, statement or passbook"
+                  }
+                }) }}
+
+                {{ govukButton({
+                  text: "Continue",
+                  preventDoubleClick: true
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,342 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Apprenticeships
+{% endblock %}
+
+{% block beforeContent %} 
+{% include "includes/version7/mainNav.html" %} 
+{% include "includes/version7/homeNav.html" %} 
+ {% endblock %} 
+
+{% block content %}
+
+
+<style>
+
+//new task list stuff goes here
+
+.task-list-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.task-list {
+  margin-top: 30px;
+  list-style-type: none;
+  padding-left:0;
+}
+
+@media (min-width: 641px) {
+  .task-list {
+ 
+  }
+}
+
+.find-list {
+  font-weight: 700;
+
+}
+
+.results-header a {
+  text-decoration: none;
+}
+
+
+.task-list-section-number {
+  display: table-cell;
+  padding-right: 5px;
+}
+
+@media (min-width: 641px) {
+  .task-list-section-number {
+    min-width: 35px;
+    padding-right: 0;
+  }
+}
+
+.task-list-items {
+  margin-bottom: 30px;
+}
+
+@media (min-width: 641px) {
+  .task-list-items {
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 641px) {
+  .task-list-items {
+    padding-left: 35px;
+  }
+}
+
+</style>
+
+<script>
+
+    var firstTimeReg = JSON.parse(localStorage.getItem('registration.firstTimeReg'));
+    var completeAgreement = JSON.parse(localStorage.getItem('registration.completeAgreement')); // "no" means not done the agreement
+    var completeTax = JSON.parse(localStorage.getItem('registration.completeTax')); //"no" means not done any of the tax stuff. 
+
+console.log(firstTimeReg, completeAgreement, completeTax )
+
+$(document).ready(function() {
+  var changeStuff = function() {  
+       switch (true) {
+        // Coming from registration and agreement and tax are both done
+          case  (firstTimeReg == 'yes') && (completeAgreement != 'no') && (completeTax != 'no'):
+              $(firstTimeRegMessage).removeClass("rj-dont-display");
+              localStorage.setItem("registration.firstTimeReg", JSON.stringify("no"));
+           break;
+        // Coming from registration and agreement and tax are both NOT done
+            case  (firstTimeReg == 'yes') && ((completeAgreement == 'no') && (completeTax == 'no')):
+              $(firstTimeRegMessageIncomplete).removeClass("rj-dont-display")
+            localStorage.setItem("registration.firstTimeReg", JSON.stringify("no"));
+           break;
+
+        // Coming from registration and agreement is not done but tax is done
+             case  (firstTimeReg == 'yes') && ((completeAgreement == 'no') || (completeTax == 'yes')):
+             console.log("agreement is not done but tax IS Done")
+              $(firstTimeRegMessageIncompleteAgreementOnly).removeClass("rj-dont-display")
+            localStorage.setItem("registration.firstTimeReg", JSON.stringify("no"));
+           break;
+
+         // Coming from registration and agreement is done but TAX is NOT done
+           case  (firstTimeReg == 'yes') && ((completeAgreement == 'yes') || (completeTax == 'no')):
+               console.log("agreement is  done but tax is NOT one")
+              $(firstTimeRegMessageIncompleteTaxOnly).removeClass("rj-dont-display")
+            localStorage.setItem("registration.firstTimeReg", JSON.stringify("no"));
+           break;
+
+           default:
+            localStorage.setItem("registration.firstTimeReg", JSON.stringify("no"));
+            console.log("bork bork bork what");
+            break;
+        } 
+      }
+changeStuff();
+});
+
+</script>
+
+
+ <div class="govuk-width-container">
+                <div style= "" id="firstTimeRegMessage" class="success-summary rj-dont-display"> 
+                   <h1 class="govuk-heading-l" style="margin-bottom:10px">Account setup complete</h1>
+             
+               </div>
+                <div style= "" id="firstTimeRegMessageIncomplete" class="success-summary rj-dont-display"> 
+                   <h1 class="govuk-heading-l" style="margin-bottom:10px">Account setup incomplete</h1>
+                   <p>You must add your tax details and sign your ESFA agreement before you can start using this account.</p>
+               </div>
+                <div style= "" id="firstTimeRegMessageIncompleteTaxOnly" class="success-summary rj-dont-display"> 
+                   <h1 class="govuk-heading-l" style="margin-bottom:10px">Account setup incomplete</h1>
+                   <p>You must add your tax details before you can start using this account.</p>
+               </div>
+                <div style= "" id="firstTimeRegMessageIncompleteAgreementOnly" class="success-summary rj-dont-display"> 
+                   <h1 class="govuk-heading-l" style="margin-bottom:10px">Account setup incomplete</h1>
+                   <p>You must sign your ESFA agreement before you can start using this account.</p>
+               </div>
+  <main class="govuk-main-wrapper govuk-main-wrapper--l">
+<section id="allContentHome" class="">
+   <h1 class="govuk-heading-xl rj-headings-border" style="" id="company-Name">Assurance Aerospace Engineering
+      <span class="govuk-caption-l">Account ID: XJBMNV</span></h1>
+    
+       
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds column-minimum">
+      <ol class="app-task-list" style="margin-top:0">
+<!--            <p class="" style="margin-bottom:35px" >Use this step by step list to help you employ an apprentice:</p> -->
+        <ol class="task-list">
+
+        <li class="">
+          <h2 class="app-task-list__section"><span class="task-list-section-number">1. </span>
+         Secure funding</h2>
+        <!--   <p style="padding-left:35px">You can get help from the government to pay for apprenticeship training.<br /> You will need to claim your funding in advance.</p> -->
+          <ul class="app-task-list__items"  style="">
+
+<!--             <li class="app-task-list__item " id="claimMyFunding">
+              <a class="app-task-list__task-name" href="./finance/reserve/new" aria-describedby="eligibility-completed">
+               How much does an apprenticeship cost?
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="claimMyFundingComplete">Completed</strong>
+            </li> -->
+
+            <li class="app-task-list__item " id="claimMyFunding">
+              <a class="app-task-list__task-name" href="./finance/reserve/new" aria-describedby="eligibility-completed">
+               Secure funding for taking on an apprentice
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed rj-dont-display" id="claimMyFundingComplete">Completed</strong>
+            </li>
+            <li class="app-task-list__item " id="claimMyFunding">
+              <a class="app-task-list__task-name" href="./finance/changeReserve" aria-describedby="eligibility-completed">
+               View and manage your funds
+              </a>
+
+            </li>
+          </ul>
+        </li>
+
+
+        <li>
+          <h2 class="app-task-list__section"><span class="task-list-section-number">2. </span>
+            Find apprenticeships
+          </h2>
+            <!--      <p style="padding-left:35px">Find the right apprenticeship for your business and find a training provider to deliver the training. You can save your searches.</p> -->
+          <ul class="app-task-list__items" >
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./find" aria-describedby="company-information-completed">
+                Find apprenticeship training and get costs
+              </a> 
+         
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./savedApprenticeships">
+                View your saved apprenticeships
+              </a>
+
+            </li>
+          </ul>
+        </li>
+
+      <li>
+          <h2 class="app-task-list__section"><span class="task-list-section-number">3. </span>
+            Find training providers
+          </h2>
+<!--          <p style="padding-left:35px">Find training providers to deliver training and save them to a list. You can give saved training providers permission to carry out tasks on your behalf.</p> -->
+          <ul class="app-task-list__items" style="">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./find/findaprovider" aria-describedby="contact-details-completed">
+                Find training providers
+              </a>
+           
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./savedProviders">
+                View your training providers 
+              </a>
+
+            </li>
+          </ul>
+       </li>
+
+       <li>
+          <h2 class="app-task-list__section"><span class="task-list-section-number">4. </span>
+             Recruit apprentices
+          </h2>
+<!--           <p style="padding-left:35px">Advertise your apprenticeships and view current applications you have been sent.</p> -->
+          <ul class="app-task-list__items" style="">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="recruit/step-1">
+                Advertise an apprenticeship
+              </a>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="recruit/vacancies">
+                Manage current vacancies
+              </a>
+   
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="recruit/applications">
+                View current applications
+              </a>
+
+            </li>
+          </ul>
+       </li>
+
+       <li>
+          <h2 class="app-task-list__section"><span class="task-list-section-number">5. </span>
+          Add and Manage apprentices
+          </h2>
+    <!--       <p style="padding-left:35px">Manage apprentices in your account.</p> -->
+          <ul class="app-task-list__items" style="padding-left:35px">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./apprentices/add">
+                Add a new apprentice
+              </a>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./apprentices/reviewApprove">
+                Review and approve new apprentices
+              </a>
+
+            </li>
+             <li class="app-task-list__item">
+              <a class="app-task-list__task-name"  href="./apprentices/manage">
+                View your current apprentices
+              </a>
+
+            </li>
+
+          </ul>
+       </li>
+
+      <li>
+          <h2 class="app-task-list__section"><span class="task-list-section-number">6. </span>
+           Manage account
+          </h2>
+<!--           <p style="padding-left:35px">Add the correct details to access your funds and authorise the spending of those funds.</p> -->
+          <ul class="app-task-list__items" style="">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="./orgs">
+                Add and view organisations and agreements
+              </a>
+
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name"  href="./paye">
+               Add and view Tax details
+              </a>
+ 
+            </li>
+              <li class="app-task-list__item">
+              <a class="app-task-list__task-name"  href="./team">
+               Add and manage team members
+              </a>
+ 
+            </li>
+          </ul>
+       </li>
+      </ol>
+    </div>
+  </li>
+                    <div class="govuk-grid-column-one-third">
+                        <section>
+                            <nav style="height:47px">
+                                <ul class="js-tabs" role="tablist">
+                                    <li role="tab" id="tab-tasks" aria-controls="pane-tasks"><a href="#pane-tasks" class="selected">Tasks</a></li>
+                                </ul>
+                            </nav>
+                            <div class="panes">
+                                <div class="js-tab-pane" id="pane-tasks" role="tabpanel"  style="">
+                                    <p>You do not have any tasks</p>
+                                </div>
+                                  <div class="js-tab-pane rj-dont-display " id="pane-tasks-tax" role="tabpanel"  style=";">
+                                    <h3 class="govuk-heading-s " style="margin-bottom:0"><a href="./paye">Add tax details</a></h3>
+                                    <p>You need to add your tax details to use this service</p>
+                                </div>
+                                    <div class="js-tab-pane rj-dont-display" id="pane-tasks-agreement" role="tabpanel"  style="">
+                                    <h3 class="govuk-heading-s " style="margin-bottom:0"><a href="./orgs">Sign your agreement</a></h3>
+                                    <p>You need to sign the agreement between you and the ESFA to use this service</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+  </div>
+</ol>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+</section>
+</main>
+
+
+{% endblock %}

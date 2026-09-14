@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+<!-- Here is the code to show conditional stuff in liquid-->
+{% if data.FAALoggedIn %}
+<div class="do-a-thing"></div>
+{% else %}
+<div class="dont-a-thing"></div>
+{% endif %}
+<!-- end of conditional statement -->
+<link type="text/css" rel="stylesheet" href="/public/css/hmrc-design-system.min.css" media="all">
+    <script src="/public/javascripts/hmrc-design-system.js"></script>
+
+    <meta name="hmrc-timeout-dialog" content="hmrc-timeout-dialog" data-language="en" data-timeout="70" data-countdown="68" data-keep-alive-url="?continue=true" data-sign-out-url="?lang=English" data-timeout-url="" data-title="" data-message="" data-message-suffix="" data-keep-alive-button-text="Continue checking what help you can get with childcare costs" data-sign-out-button-text="Delete your answers" data-synchronise-tabs="">
+
+    <div id="hmrc-timeout-dialog" tabindex="-1" role="dialog" aria-modal="true" class="hmrc-timeout-dialog" aria-labelledby="hmrc-timeout-heading hmrc-timeout-message">
+        <div>
+            <h1 id="hmrc-timeout-heading" class="govuk-heading-m push--top">You’re about to be signed out</h1>
+            <p class="govuk-body hmrc-timeout-dialog__message" aria-hidden="true">For your security, we will sign you out and delete your answers in <span id="hmrc-timeout-countdown" class="hmrc-timeout-dialog__countdown">2 minutes</span>.</p>
+            <p id="hmrc-timeout-message" class="govuk-visually-hidden screenreader-content" aria-live="assertive">For your security, we will sign you out and delete your answers in 1 minute.</p><button id="hmrc-timeout-keep-signin-btn" class="govuk-button">Continue claiming witness expenses</button>
+            <div class="hmrc-timeout-dialog__link-wrapper"><a id="hmrc-timeout-sign-out-link" class="govuk-link hmrc-timeout-dialog__link" href="?lang=English">Delete your answers</a></div>
+        </div>
+    </div>
+    <div id="hmrc-timeout-overlay" class="hmrc-timeout-overlay"></div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
+        <p class="govuk-body">Try again later.</p>
+        <p class="govuk-body">We saved your answers. They will be available for 30 days.</p>
+        <p class="govuk-body">
+            <a class="govuk-link" href="#">Contact the Tax Credits Helpline</a> if you need to make changes to your claim or speak to someone about your tax credits.
+        </p>
+    </div>
+</div>
+{% endblock %}
