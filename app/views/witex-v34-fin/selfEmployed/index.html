@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <!-- <form method="get" action="selfEmployed/claimPayRoute4"> -->
+                      <form method="get" action="selfEmployed/lostIncome">
+                <h1 class="govuk-heading-xl">Claiming for time off work</h1>
+                <p>You can claim up to £42.95 for every half day and £85.90 for every full day you had to go to court and lost earnings.</p>
+
+              
+                <div class="govuk-inset-text">
+ You will need to upload proof that you are self-employed
+</div>
+
+                <p>We will accept one of the following:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>a business card or letterhead with full name and business name</li>
+                  <li>a copy of your tax return to HMRC</li>
+                  <li>a letter from your accountant confirming you're self-employed </li>
+                  <li>a copy of your sub-contractors certificate issued by HMRC</li>
+                  <li>a copy of your Hackney Carriage Licence </li>
+                  <li>a letter from the company for which you are currently subcontracting to confirm that you are self-employed </li>
+                </ul>
+<!--                 <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                       <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                         
+                            <label class="govuk-label  bold-label" for="firstName">
+                             Did you lose income because you went to court?
+                            </label>
+                        </legend>
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="employmentType" name="employmentType" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="employmentType" name="employmentType" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                   No
+                                </label>
+                            </div>
+
+                    </fieldset>
+                </div> -->
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

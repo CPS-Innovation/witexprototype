@@ -144,6 +144,9 @@ utils.addNunjucksFilters(nunjucksAppEnv)
 app.set('view engine', 'html')
 
 // Middleware to serve static assets
+// Fonts are cached so the browser doesn't revalidate them on every page load,
+// which is what makes the webfont swap in visibly on each navigation
+app.use('/public/fonts', express.static(path.join(__dirname, '/public/fonts'), { maxAge: '30d' }))
 app.use('/public', express.static(path.join(__dirname, '/public')))
 
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+<div class="">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="foodRoute">
+                <h1 class="govuk-heading-l">Claiming food and drink</h1>
+                <p>We will pay you a fixed amount towards the cost of food and drink, depending on how long you were away from home or work.</P>
+<!--                 <ul class="govuk-list govuk-list--bullet">
+                    <li>£2.25 for less than 5 hours
+                    </li>
+                    <li>£4.50 for between 5 and 10 hours</li>
+                    <li>£9.75 for more than 10 hours
+                    </li>
+                </ul> -->
+                <p>You do not need receipts for food and drink claims.</P>
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            Do you want to claim for food and drink?
+                        </legend>
+                        <div class="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="foodclaim" name="foodclaim" type="radio" value="Yes">
+                                <label class="govuk-label govuk-radios__label" for="TRN-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="foodclaim" name="foodclaim" type="radio" value="No">
+                                <label class="govuk-label govuk-radios__label" for="TRN-no">
+                                    No
+                                </label>
+                            </div>
+                    </fieldset>
+                </div>
+                <button type="submit" class="govuk-button">Continue </button>
+            </form>
+            {% include "includes/cps/v11/help.html" %}
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}

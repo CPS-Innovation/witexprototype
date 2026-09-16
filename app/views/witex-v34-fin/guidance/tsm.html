@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% endblock %}
+{% block content %}
+<script src="/public/javascripts/accordion.js"></script>
+<script>
+// uncomment this to turn on the accordions
+
+if (
+    'addEventListener' in document &&
+    document.querySelectorAll
+) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var accordions = document.querySelectorAll('.accordion')
+        for (var i = accordions.length - 1; i >= 0; i--) {
+            new Accordion(accordions[i])
+        };
+    })
+}
+</script>
+<!-- include "includes/webchat/chatjsuser.html" 
+ -->
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Claim witness expenses</h1>
+            <p class="linksAtTop">Contents</p>
+            <p class="linksAtTop">&#8212 <a href="./"> Start a claim</a></p>
+            <p class="linksAtTop">&#8212 <a href="pay"> Food and drink</a></p>
+            <p class="linksAtTop">&#8212 <a href="study">Travel </a></p>
+            <p class="linksAtTop">&#8212 <a href="courses"> Overnight stays</a></p>
+            <p class="linksAtTop">&#8212 <a href="provider"> Loss of earnings</a></p>
+            <p class="linksAtTop">&#8212 <a href="apply">Childcare </a></p>
+            <p class="linksAtTop">&#8212 <a href="adult"> Adult care </a></p>
+             <p class="linksAtTop">&#8212 <a href="other"> Other expenses </a></p>
+            <p class="linksAtTop">&#8212 CPS Pre-Trial meeting </a></p>
+            <h2 class="govuk-heading-m">Claiming expenses for a CPS Pre-Trial meeting</h2>
+            <p>If you are an adult victim of rape or another serious sexual offence and you have been advised that the case is going to trial, you are entitled to a CPS Pre-Trial meeting with members of the prosecution team, ahead of giving evidence.</p>
+            <p>If you attended a CPS Pre-Trial meeting in person with members of the prosecution team, you are entitled to claim expenses after your meeting.</p>
+            <p>There are limits on how much you can claim, but the CPS can pay for things like: </p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>food and drink</li>
+  <li>travel costs</li>
+  <li>overnight stays</li>
+   <li>loss of earnings</li>
+  <li>childcare costs or adult care costs</li>
+</ul>
+    <p>You must be able to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+  <li>upload receipts as a PDF or an image</li>
+  <li>provide your bank account details if you want your expenses to be paid into a UK bank, building society or non-UK bank</li>
+  <li>provide a UK address if you want to be paid by cheque</li>
+</ul>
+<p>We will deal with your claim as quickly as possible and, as long as you have filled the form in correctly, we aim to pay within 10 working days. </p>
+<p>You will also be able to claim expenses for the trial at which you give evidence. </p>
+
+
+
+            {% include "includes/cps/v11/help.html" %}
+
+        </div>
+        <div class="column-one-third">
+            <!--       <h3 class="govuk-heading-s"  >Related content</h3> -->
+        </div>
+    </div>
+    <!--  include "includes/webchat/chatbox.html" 
+ -->
+    </main>
+    {% endblock %}

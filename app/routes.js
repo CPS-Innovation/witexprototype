@@ -1339,6 +1339,38 @@ router.get('/*/payyou/paymetypeRoute2' , function (req, res) {
         }
 })
 
+// Demo: always show a GOV.UK error attached to sort code and account number
+// on the first Continue click, then let the user through unconditionally on
+// the second click - no real validation. Resets on every fresh GET to the
+// page. Scoped to the literal witex-v34-fin path only, not a /*/ wildcard,
+// so other version folders' own ukbank pages are unaffected.
+router.get('/witex-v34-fin/payyou/ukbank', function (req, res) {
+  req.session.data._ukbankErrorShown = false
+  res.render('witex-v34-fin/payyou/ukbank')
+})
+
+router.post('/witex-v34-fin/payyou/ukbank', function (req, res) {
+  if (!req.session.data._ukbankErrorShown) {
+    req.session.data._ukbankErrorShown = true
+
+    var sortCodeError = { text: 'PLACEHOLDER COPY: enter a sort code' }
+    var accountNumberError = { text: 'PLACEHOLDER COPY: enter an account number' }
+
+    res.render('witex-v34-fin/payyou/ukbank', {
+      errorSummary: {
+        items: [
+          { text: sortCodeError.text, href: '#sort-code' },
+          { text: accountNumberError.text, href: '#account-number' }
+        ]
+      },
+      sortCodeError: sortCodeError,
+      accountNumberError: accountNumberError
+    })
+  } else {
+    res.redirect('/witex-v34-fin/checkdetails/')
+  }
+})
+
 router.get('/*/unpaidDay/takeHomeRoute2' , function (req, res) {
   var confirmTraining = req.query.takehome
        switch (true) {

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block header %}
+{% include "includes/cps/v11/banner.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% include "includes/cps/universal-header-tweak.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:history.back()"
+}) }}
+{% endblock %}
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form method="get" action="cheque2">
+                <h1 class="govuk-heading-l">Who's the cheque for?</h1>
+                <!-- <p>Tell us the name of the person the cheque should be made out to. -->
+                <div class="govuk-form-group">
+                    <label class="govuk-label bold-label" for="name-on-the-account">
+                        Full name 
+                    </label>
+                    <div id="sort-code-hint" class="govuk-hint">
+                        As it should appear on the cheque
+                    </div>
+                    <input class="govuk-input " id="name-on-the-account" name="name-on-the-account" type="text" spellcheck="false" autocomplete="name">
+                </div>
+
+                     
+                    </fieldset>
+
+                <button class="govuk-button" data-module="govuk-button">
+                    Continue
+                </button>
+            </form>
+        </div>
+    </div>
+    </main>
+</div>
+{% endblock %}
