@@ -1358,7 +1358,7 @@ router.post('/witex-v34-fin/payyou/ukbank', function (req, res) {
 
     res.render('witex-v34-fin/payyou/ukbank', {
       errorSummary: {
-        descriptionHtml: 'The sort code or account number you entered may be wrong.<br>Check your details before continuing.',
+        descriptionHtml: 'The sort code or account number you entered may be wrong.<br><br>Check your details before continuing.',
         items: [
           { text: sortCodeError.text, href: '#sort-code' },
           { text: accountNumberError.text, href: '#account-number' }
