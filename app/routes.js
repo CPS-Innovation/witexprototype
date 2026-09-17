@@ -1353,11 +1353,12 @@ router.post('/witex-v34-fin/payyou/ukbank', function (req, res) {
   if (!req.session.data._ukbankErrorShown) {
     req.session.data._ukbankErrorShown = true
 
-    var sortCodeError = { text: 'PLACEHOLDER COPY: enter a sort code' }
-    var accountNumberError = { text: 'PLACEHOLDER COPY: enter an account number' }
+    var sortCodeError = { text: 'The sort code you entered may be wrong' }
+    var accountNumberError = { text: 'The account number you entered may be wrong' }
 
     res.render('witex-v34-fin/payyou/ukbank', {
       errorSummary: {
+        descriptionHtml: 'The sort code or account number you entered may be wrong.<br><br>Check your details before continuing.',
         items: [
           { text: sortCodeError.text, href: '#sort-code' },
           { text: accountNumberError.text, href: '#account-number' }

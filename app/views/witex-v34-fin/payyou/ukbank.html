@@ -18,6 +18,7 @@ href: "javascript:history.back()"
             {% if errorSummary %}
               {{ govukErrorSummary({
                 titleText: "There is a problem",
+                descriptionHtml: errorSummary.descriptionHtml,
                 errorList: errorSummary.items
               }) }}
             {% endif %}
