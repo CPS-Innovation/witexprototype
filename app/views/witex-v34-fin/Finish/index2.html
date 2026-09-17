@@ -20,7 +20,7 @@
     <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
             <h1 class="govuk-panel__title">
-                Expenses submitted
+                Expenses claim sent
             </h1>
               <div class="govuk-panel__body">
     Your reference number<br><strong>HDJ2123F</strong>
@@ -29,14 +29,22 @@
   <!--       <p class="govuk-body">
            <i class="far fa-envelope" style="margin-right:3px"></i>We've sent you an email confirming your <span style="font-weight:700">Business admin apprentice</span> application
         </p> -->
-        <p>An email confirmation has been sent to {{ data['email'] }}.  </p>
-         <h2 class="govuk-heading-m">What happens next</h2>
-         <p>We will now review your claim - the amount you receive may change when we have completed our checks.</p>
-         <p>We aim to pay within 10 working days. </p>
-            <p>If you are not paid within 20 working days, call 01924 205 200 or email <a href="">witness.query@cps.gov.uk</a> </p>
-                    <div class="govuk-inset-text">
+        <p>A confirmation email has been sent to {{ data['email'] }}.  </p>
+        
+         <h2 class="govuk-heading-m" style="">What happens next</h2>
+         <p>Thank you for your claim.</p>
+        <p>Someone from the claims team may contact you to arrange your payment.  </p>
+         <p>Be aware that:</p>
+         <ul class="govuk-list govuk-list--bullet">
+              <li>we aim to pay within 10 working days</li>
+              <li>the amount you receive may change when we have completed our checks</li>
+        </ul>
+
+        
+            <p>If you are not paid within 20 working days, call 01924 205 200 (standard networks rates apply) or email <a href="">witness.query@cps.gov.uk</a> </p>
+<!--                     <div class="govuk-inset-text">
             You can now destroy your blue witness expense claim form. Make sure your personal information cannot be seen, and your form is cut in half.
-        </div>
+        </div> -->
 
 <form method="get" action="feedback3">
                  <h2 class="govuk-heading-m" style="margin-top:45px">Help us improve our service</h2>
