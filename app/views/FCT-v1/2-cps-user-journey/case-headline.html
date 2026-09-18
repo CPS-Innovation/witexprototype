@@ -47,6 +47,22 @@
         box-shadow: inset 0 0 0 2px;
     }
 
+    /* The shared layout (includes/wide.html) sets the page width to 1400px,
+       but the real CPS site this page is modelled on is 1200px wide. Since
+       that shared file affects every other page using this layout, the
+       narrower width is overridden here instead, scoped to this page only.
+       A later <style> block wins the cascade over an earlier one of equal
+       specificity, regardless of where each sits in the page structure, so
+       this also correctly narrows the header/case-context-bar above, which
+       reuse the same classes. */
+    .govuk-main-wrapper {
+        max-width: 1200px;
+    }
+
+    .govuk-width-container {
+        max-width: 1200px;
+    }
+
     /* Keeps the page's <h1> as the first heading in the DOM (the nav's own
        h2/h3 step titles come after it) while still showing the nav visually
        on the left - see accessibility heading-order rule in ai-context.md */
