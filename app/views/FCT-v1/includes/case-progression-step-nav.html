@@ -1,0 +1,133 @@
+{#
+  Reusable "Case Progression" left-hand navigation.
+
+  Built from the real GOV.UK step-by-step-nav pattern (app-step-nav__* classes,
+  already vendored in app/assets/sass/patterns/_step-by-step-nav.scss) used two
+  levels deep: an outer list of case-review phases, and - for whichever phase
+  contains the current page - an inner list of that phase's tasks.
+
+  Usage:
+    {% from "../includes/case-progression-step-nav.html" import caseProgressionStepNav %}
+    {{ caseProgressionStepNav("case-headline") }}
+
+  activeTaskSlug must match one of the `slug` values in the `tasks` list below.
+#}
+
+{% macro caseProgressionStepNav(activeTaskSlug) %}
+  {% set reviewTitle = "Police charged case - first review" %}
+  {% set phases = [
+    {
+      title: "Post-charge decision analysis",
+      tasks: [
+        { text: "Case headline", slug: "case-headline" },
+        { text: "Evidential analysis", slug: "evidential-analysis" },
+        { text: "Public interest assessment", slug: "public-interest-assessment" },
+        { text: "Disclosure management", slug: "disclosure-management" },
+        { text: "Victim and witness needs", slug: "victim-and-witness-needs" },
+        { text: "Allocation", slug: "allocation" },
+        { text: "Trial and sentencing preparation", slug: "trial-and-sentencing-preparation" },
+        { text: "Human rights", slug: "human-rights" },
+        { text: "Advocate and operational delivery instructions", slug: "advocate-and-operational-delivery-instructions" },
+        { text: "Monitoring codes", slug: "monitoring-codes" },
+        { text: "Preview", slug: "preview" }
+      ]
+    },
+    { title: "DG file quality assessment", tasks: [] },
+    { title: "Case action plan", tasks: [] },
+    { title: "Submit review", tasks: [] }
+  ] %}
+
+  {# The --large variant's circle top-offset (30px) doesn't match its own
+     header/task padding rhythm at the same breakpoint in the way the base
+     variant's does (both 15px) - using base here keeps the nested task
+     circles aligned with their labels and keeps the gap under "Hide"
+     proportionate, matching the narrower one-third sidebar column this
+     nav renders in (rather than a full-width content page). #}
+  <div class="app-step-nav js-step-nav" data-module="case-progression-step-nav">
+    <p class="app-step-nav__title govuk-!-margin-bottom-1">{{ reviewTitle }}</p>
+    <p class="app-step-nav__paragraph govuk-!-margin-bottom-0">Due by <span class="js-review-due-date">2 September 2025</span></p>
+    <ol class="app-step-nav__steps">
+      {% for phase in phases %}
+        {% set phaseNumber = loop.index %}
+        {% set phaseIsActive = phase.tasks | selectattr("slug", "equalto", activeTaskSlug) | list | length > 0 %}
+        <li class="app-step-nav__step js-step">
+          <div class="app-step-nav__header js-toggle-panel" data-position="{{ phaseNumber }}">
+            <h2 class="app-step-nav__title">
+              <span class="app-step-nav__circle app-step-nav__circle--number">
+                <span class="app-step-nav__circle-inner">
+                  <span class="app-step-nav__circle-background">
+                    <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                    {{ phaseNumber }}<span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                  </span>
+                </span>
+              </span>
+              <button type="button" class="app-step-nav__button app-step-nav__button--title js-step-toggle" aria-expanded="{{ 'true' if phaseIsActive else 'false' }}">
+                {{ phase.title }}
+              </button>
+            </h2>
+            {% if phase.tasks | length %}
+              <p class="app-step-nav__controls govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+                <button type="button" class="app-step-nav__button app-step-nav__button--controls js-step-toggle" aria-expanded="{{ 'true' if phaseIsActive else 'false' }}">
+                  <span class="js-toggle-link">{{ "Hide" if phaseIsActive else "Show" }}</span>
+                </button>
+              </p>
+            {% endif %}
+          </div>
+
+          {% if phase.tasks | length %}
+            <div class="app-step-nav__panel js-panel{{ '' if phaseIsActive else ' js-hidden' }}">
+              <ol class="app-step-nav__steps">
+                {% for task in phase.tasks %}
+                  {% set taskIsActive = task.slug == activeTaskSlug %}
+                  <li class="app-step-nav__step app-step-nav__step--task">
+                    <span class="app-step-nav__circle{{ ' app-step-nav__circle--current' if taskIsActive }}"></span>
+                    {% if taskIsActive %}
+                      <span class="app-step-nav__step--task-current" aria-current="page">{{ task.text }}</span>
+                    {% else %}
+                      <a class="app-step-nav__link" href="/not-yet-built">{{ task.text }}</a>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ol>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+
+  <script>
+    (function () {
+      var dueDateEl = document.querySelector('.js-review-due-date');
+      if (dueDateEl) {
+        var dueDate = new Date();
+        dueDate.setDate(dueDate.getDate() + 14);
+        dueDateEl.textContent = dueDate.toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+      }
+
+      document.querySelectorAll('.js-step-nav .js-step-toggle').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var header = button.closest('.js-toggle-panel');
+          var panel = header.nextElementSibling;
+          if (!panel || !panel.classList.contains('js-panel')) { return; }
+
+          var expanded = header.querySelectorAll('.js-step-toggle');
+          var willExpand = panel.classList.contains('js-hidden');
+
+          panel.classList.toggle('js-hidden', !willExpand);
+          expanded.forEach(function (toggleButton) {
+            toggleButton.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
+          });
+          var toggleLink = header.querySelector('.js-toggle-link');
+          if (toggleLink) {
+            toggleLink.textContent = willExpand ? 'Hide' : 'Show';
+          }
+        });
+      });
+    })();
+  </script>
+{% endmacro %}

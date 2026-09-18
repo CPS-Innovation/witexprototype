@@ -221,6 +221,108 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 }
 
+// modifier for a nested sub-task circle representing the current task
+// (kept distinct from .app-step-nav__step--active, whose rules are
+// descendant selectors that would otherwise bleed onto nested steps)
+.app-step-nav__circle--current {
+  background: $govuk-link-colour;
+  border-color: $govuk-link-colour;
+  color: govuk-colour("white");
+}
+
+// Case Progression sub-task rows: reuses .app-step-nav__step for its
+// circle/vertical-line mechanic, but without the accordion header's
+// border/toggle padding, and with the current task shown in the GOV.UK link
+// colour (not the default black text) - matching the Case Progression
+// Figma design, where every task (not just the active one) is a plain row
+// rather than a link, and the current one is blue and bold.
+li.app-step-nav__step--task {
+  .app-step-nav__circle {
+    border: solid $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
+  }
+
+  .app-step-nav__link,
+  .app-step-nav__step--task-current {
+    display: inline-block;
+    // matches the govuk-spacing(3) rhythm .app-step-nav__header already
+    // uses, so nested task rows line up with the outer step rows above them
+    padding: govuk-spacing(3) 0;
+  }
+
+  // higher specificity than .app-step-nav__link's own :link/:visited rules
+  // (defined later in this file), which would otherwise win the cascade
+  a.app-step-nav__link:link,
+  a.app-step-nav__link:visited {
+    color: govuk-colour("black");
+    text-decoration: none;
+  }
+
+  a.app-step-nav__link:hover,
+  a.app-step-nav__link:focus {
+    text-decoration: underline;
+  }
+
+  .app-step-nav__step--task-current {
+    color: $govuk-link-colour;
+    font-weight: bold;
+  }
+
+  // .app-step-nav__step:last-child normally draws a short horizontal dash
+  // to cap the *outer* step list's line - reused here for the nested task
+  // list, it wrongly draws that dash over the last task's own circle.
+  // The line itself (.app-step-nav__step:after) is positioned `top: 15px`
+  // (level with the circle) and sized `height: 100%` of the <li> - which
+  // overshoots the circle for *any* row, because the row is taller than the
+  // circle (the rest is bottom padding reserved for spacing to the next
+  // row). That overshoot is normally hidden by the next row's own circle
+  // sitting on top of it, so it only becomes visible - as a stray stub -
+  // on the true last row, which has nothing below it to hide it. Capping
+  // the height at the circle's own diameter stops the line exactly where
+  // the circle ends, instead of continuing into that row's bottom padding.
+  &:last-child {
+    &:before {
+      content: none;
+    }
+
+    &:after {
+      height: $number-circle-size;
+    }
+  }
+}
+
+// Extra breathing room between the last task row and the divider above the
+// next outer step's header - without this the two sit almost flush.
+.app-step-nav__panel {
+  padding-bottom: govuk-spacing(3);
+}
+
+// The outer step list's real last-child (step 4, "Submit review" here) has
+// the same overshoot problem described above for nested task rows, and the
+// Case Progression Figma design doesn't show its trailing dash-cap either.
+.js-step-nav > .app-step-nav__steps > .app-step-nav__step:last-child {
+  &:before {
+    content: none;
+  }
+
+  &:after {
+    height: $number-circle-size;
+  }
+}
+
+// The real step-nav component right-aligns its "Hide"/"Show" toggle, but
+// the Case Progression Figma design shows it left-aligned, directly under
+// the step title rather than pushed to the far edge of the column.
+.js-step-nav .app-step-nav__controls {
+  text-align: left;
+}
+
+// .app-step-nav__header's top border exists to separate consecutive outer
+// steps from each other - on the first step it just duplicates the spacing
+// already under the review title/due-date caption above it.
+.js-step-nav > .app-step-nav__steps > .app-step-nav__step:first-child > .app-step-nav__header {
+  border-top: none;
+}
+
 .app-step-nav__circle--logic {
   @include step-nav-font(16, $weight: bold, $line-height: 28px);
 
