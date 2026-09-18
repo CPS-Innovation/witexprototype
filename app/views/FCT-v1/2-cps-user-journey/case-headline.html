@@ -1,0 +1,136 @@
+{% extends "layoutCPS-NEW-CASEFILE.html" %}
+{% from "../includes/case-progression-step-nav.html" import caseProgressionStepNav %}
+{% block header %}
+{% include "../includes/banner-V7-REVIEW.html" %}
+{% endblock %}
+{% block beforeContent %}
+{% endblock %}
+{% block content %}
+<style>
+    /* Toolbar for the rich-text answer box below. GOV.UK Frontend has no
+       rich-text-editor component - this is a bespoke pattern matching the
+       existing contenteditable toolbar in L-case-review-html-3.html. */
+    .app-answer-editor {
+        border: 2px solid #0b0c0c;
+    }
+
+    .app-answer-editor__toolbar {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        padding: 16px;
+        background: #f2f2f2;
+    }
+
+    .app-answer-editor__toolbar button {
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .app-answer-editor__toolbar img {
+        display: block;
+        width: 24px;
+        height: 24px;
+    }
+
+    .app-answer-editor__body {
+        min-height: 300px;
+        padding: 15px;
+        outline: none;
+    }
+
+    .app-answer-editor__body:focus {
+        outline: 3px solid #ffdd00;
+        outline-offset: 0;
+        box-shadow: inset 0 0 0 2px;
+    }
+
+    /* Keeps the page's <h1> as the first heading in the DOM (the nav's own
+       h2/h3 step titles come after it) while still showing the nav visually
+       on the left - see accessibility heading-order rule in ai-context.md */
+    .app-case-headline-row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .app-case-headline-row .govuk-grid-column-one-third {
+        order: 1;
+    }
+
+    .app-case-headline-row .govuk-grid-column-two-thirds {
+        order: 2;
+    }
+</style>
+
+<div class="govuk-grid-row app-case-headline-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Case headline</h1>
+
+        <p class="govuk-body">Give a brief overview of the charges and the offences in the case, potential legal issues and the current bail or remand status of the defendants.</p>
+
+        <p class="govuk-body">To comply with the Full Code Test, confirm that one of the following conditions has been met:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>all outstanding reasonable lines of inquiry have been pursued (4.3a)</li>
+            <li>it is unlikely any further evidence or material will affect the application of the Full Code Test (4.3b)</li>
+        </ul>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-visually-hidden" for="case-headline-answer">Case headline</label>
+            <div class="app-answer-editor">
+                <div class="app-answer-editor__toolbar" role="toolbar" aria-label="Text formatting">
+                    <button type="button" data-command="bold" aria-label="Bold"><img src="/public/images/icons/toolbar-bold.svg" alt=""></button>
+                    <button type="button" data-command="italic" aria-label="Italic"><img src="/public/images/icons/toolbar-italic.svg" alt=""></button>
+                    <button type="button" data-command="underline" aria-label="Underline"><img src="/public/images/icons/toolbar-underline.svg" alt=""></button>
+                    <button type="button" data-command="fontSize" data-value="4" aria-label="Text size"><img src="/public/images/icons/toolbar-fontsize.svg" alt=""></button>
+                    <button type="button" data-command="notes" aria-label="Notes"><img src="/public/images/icons/toolbar-notes.svg" alt=""></button>
+                    <button type="button" data-command="formatBlock" data-value="p" aria-label="Paragraph"><img src="/public/images/icons/toolbar-paragraph.svg" alt=""></button>
+                    <button type="button" data-command="insertUnorderedList" aria-label="Bulleted list"><img src="/public/images/icons/toolbar-list.svg" alt=""></button>
+                </div>
+                <div class="app-answer-editor__body" id="case-headline-answer" contenteditable="true" role="textbox" aria-multiline="true" aria-describedby="case-headline-answer-info"></div>
+            </div>
+            <div id="case-headline-answer-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                You have 32,767 characters remaining
+            </div>
+        </div>
+
+        <div class="govuk-button-group">
+            {{ govukButton({
+                text: "Save and continue",
+                href: "/not-yet-built"
+            }) }}
+            <a class="govuk-link" href="A-dashboard">Save and exit</a>
+        </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+        {{ caseProgressionStepNav("case-headline") }}
+    </div>
+</div>
+
+<script>
+    (function () {
+        var MAX_CHARACTERS = 32767;
+        var editor = document.getElementById('case-headline-answer');
+        var message = document.getElementById('case-headline-answer-info');
+
+        document.querySelectorAll('.app-answer-editor__toolbar button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var command = button.dataset.command;
+                if (command === 'notes') { return; }
+                editor.focus();
+                document.execCommand(command, false, button.dataset.value || null);
+            });
+        });
+
+        function updateCount() {
+            var remaining = MAX_CHARACTERS - editor.textContent.length;
+            message.textContent = 'You have ' + remaining.toLocaleString() + ' characters remaining';
+        }
+
+        editor.addEventListener('input', updateCount);
+    })();
+</script>
+{% endblock %}
