@@ -316,6 +316,13 @@ li.app-step-nav__step--task {
   text-align: left;
 }
 
+// .app-step-nav__header's top border exists to separate consecutive outer
+// steps from each other - on the first step it just duplicates the spacing
+// already under the review title/due-date caption above it.
+.js-step-nav > .app-step-nav__steps > .app-step-nav__step:first-child > .app-step-nav__header {
+  border-top: none;
+}
+
 .app-step-nav__circle--logic {
   @include step-nav-font(16, $weight: bold, $line-height: 28px);
 

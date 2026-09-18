@@ -200,13 +200,6 @@
 
 });
 
-$(document).ready(function() {
-    var autosaveTime = document.getElementById('autosave-time');
-    if (autosaveTime) {
-        autosaveTime.textContent = new Date().toLocaleTimeString();
-    }
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     var dropdownToggle = document.querySelector('.dropdown-toggle');
     var dropdownMenu = dropdownToggle.nextElementSibling;
@@ -344,18 +337,11 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </nav> -->
 
-<div class="bottom-border" style="border-bottom: 1px solid #b1b4b6; margin-bottom:40px; padding-bottom:8px">
+<div class="bottom-border" style="border-bottom: 1px solid #b1b4b6; padding-bottom:8px">
     <div class="govuk-width-container">
-        <div class="case-info" id="test-nav" style="display:inline-block; float:left">
-            <p class="govuk-heading-s" style="margin:0; padding: 0.6em 0.5em; background: #f3f2f1;">
-                <span style="position: relative; z-index:2; margin-left:-12px">McLOVE, Eoin +4<span style="display:block; font-size:12px; font-weight:400; margin-left:-12px">45AA209820/1
-                    </span> </span>
-            </p>
-        </div>
-        <p class="govuk-body-s" style="float:right; margin:0.6em 0.5em">Autosave is on. Last saved <span id="autosave-time"></span></p>
         <nav class="moj-sub-navigation" aria-label="Sub navigation" style="margin-bottom:0">
             <ul class="moj-sub-navigation__list" style="box-shadow:none">
-                <li class="moj-sub-navigation__item" style="margin-left:40px">
+                <li class="moj-sub-navigation__item">
                     <a class="moj-sub-navigation__link sub-overview" href="https://witness-expenses.herokuapp.com/FCT-v1/2-cps-user-journey/E-case-overview">Details</a>
                 </li>
                 <li class="moj-sub-navigation__item">
@@ -383,9 +369,26 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+<div class="case-context-bar" style="margin-bottom:40px; padding: 15px 0;">
+    <div class="govuk-width-container" style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom: 1px solid #b1b4b6; padding-bottom:15px;">
+        <div>
+            <p class="govuk-heading-s govuk-!-margin-bottom-0">McLOVE, Eoin</p>
+            <p class="govuk-body-s govuk-!-margin-bottom-0">45AA209820/1</p>
+        </div>
+        <p class="govuk-body-s govuk-!-margin-bottom-0">Autosave is on. Last saved <span id="autosave-time"></span></p>
+    </div>
+</div>
 
 <script type="text/javascript">
 MOJFrontend.initAll();
+</script>
+<script>
+$(document).ready(function() {
+    var autosaveTime = document.getElementById('autosave-time');
+    if (autosaveTime) {
+        autosaveTime.textContent = new Date().toLocaleTimeString();
+    }
+});
 </script>
 
 <style>
