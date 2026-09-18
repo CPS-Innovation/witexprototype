@@ -15,7 +15,6 @@
 
 {% macro caseProgressionStepNav(activeTaskSlug) %}
   {% set reviewTitle = "Police charged case - first review" %}
-  {% set reviewDue = "Due by 2 Sept 2025" %}
   {% set phases = [
     {
       title: "Post-charge decision analysis",
@@ -46,7 +45,7 @@
      nav renders in (rather than a full-width content page). #}
   <div class="app-step-nav js-step-nav" data-module="case-progression-step-nav">
     <p class="app-step-nav__title govuk-!-margin-bottom-1">{{ reviewTitle }}</p>
-    <p class="app-step-nav__paragraph govuk-!-margin-bottom-0">{{ reviewDue }}</p>
+    <p class="app-step-nav__paragraph govuk-!-margin-bottom-0">Due by <span class="js-review-due-date">2 September 2025</span></p>
     <ol class="app-step-nav__steps">
       {% for phase in phases %}
         {% set phaseNumber = loop.index %}
@@ -99,6 +98,17 @@
 
   <script>
     (function () {
+      var dueDateEl = document.querySelector('.js-review-due-date');
+      if (dueDateEl) {
+        var dueDate = new Date();
+        dueDate.setDate(dueDate.getDate() + 14);
+        dueDateEl.textContent = dueDate.toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+      }
+
       document.querySelectorAll('.js-step-nav .js-step-toggle').forEach(function (button) {
         button.addEventListener('click', function () {
           var header = button.closest('.js-toggle-panel');

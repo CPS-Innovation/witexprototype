@@ -385,9 +385,16 @@ MOJFrontend.initAll();
 <script>
 $(document).ready(function() {
     var autosaveTime = document.getElementById('autosave-time');
-    if (autosaveTime) {
-        autosaveTime.textContent = new Date().toLocaleTimeString();
+    if (!autosaveTime) { return; }
+
+    function updateAutosaveTime() {
+        var now = new Date();
+        now.setSeconds(now.getSeconds() - 10);
+        autosaveTime.textContent = now.toLocaleTimeString();
     }
+
+    updateAutosaveTime();
+    setInterval(updateAutosaveTime, 11000);
 });
 </script>
 
